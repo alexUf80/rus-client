@@ -1,0 +1,73 @@
+AddDefaultCharset UTF-8
+ErrorDocument 404 /404
+ErrorDocument 403 /403
+
+RewriteEngine on
+
+RedirectMatch 404 /\.git
+
+#RewriteCond %{HTTPS} off
+#RewriteCond %{THE_REQUEST} !/(files|document)/ [NC]
+#RewriteCond %{HTTP:X-Forwarded-Proto} !https
+#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{HTTPS} on
+RewriteCond %{THE_REQUEST} /document/ [NC]
+RewriteRule ^ http://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+RewriteCond %{HTTPS} on
+RewriteCond %{THE_REQUEST} /files/ [NC]
+RewriteRule ^ http://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+
+RewriteRule ^wl/?$             index.php  [L,QSA]
+
+RewriteRule ^lk/?$                index.php?module=LoginController  [L,QSA]
+RewriteRule ^lk/login/?$          index.php?module=LoginController  [L,QSA]
+RewriteRule ^lk/logout/?$         index.php?module=LoginController&action=logout  [L,QSA]
+
+RewriteRule ^import/?$            index.php?module=UserImportController [L,QSA]
+
+RewriteRule ^account/?$             index.php?module=AccountController  [L,QSA]
+RewriteRule ^account/history/?$     index.php?module=AccountHistoryController  [L,QSA]
+RewriteRule ^account/cards/?$       index.php?module=AccountCardsController  [L,QSA]
+RewriteRule ^account/data/?$        index.php?module=AccountDataController  [L,QSA]
+RewriteRule ^account/docs/?$        index.php?module=AccountDocsController  [L,QSA]
+RewriteRule ^account/pay/?$         index.php?module=AccountPayController [L,QSA]
+RewriteRule ^account/password/?$    index.php?module=AccountPasswordController [L,QSA]
+RewriteRule ^account/anketa/?$      index.php?module=AccountAnketaController [L,QSA]
+RewriteRule ^html2pdf/?$            index.php?module=Html2PdfController&user_id=$1&document_name=$2&contract_id=$3 [L,QSA]
+RewriteRule ^reset_password/?$      index.php?module=AccountResetPasswordController [L,QSA]
+
+RewriteRule ^stage/personal/?$      index.php?module=StagePersonalController  [L,QSA]
+RewriteRule ^stage/passport/?$      index.php?module=StagePassportController  [L,QSA]
+RewriteRule ^stage/address/?$       index.php?module=StageAddressController  [L,QSA]
+RewriteRule ^stage/work/?$          index.php?module=StageWorkController  [L,QSA]
+RewriteRule ^stage/files/?$         index.php?module=StageFilesController  [L,QSA]
+RewriteRule ^stage/card/?$          index.php?module=StageCardController  [L,QSA]
+
+RewriteRule ^go/([^/]*)/?$        	index.php?module=ShortLinkController&page_url=$1 [L,QSA]
+
+RewriteRule ^accept/([^/]*)/?$      index.php?module=ContractAcceptController&id=$1  [L,QSA]
+
+RewriteRule ^p/([^/]*)/?$           index.php?module=C2oPaymentController&code=$1  [L,QSA]
+RewriteRule ^p/([^/]*)/pay?$        index.php?module=C2oPaymentController&code=$1&action=pay  [L,QSA]
+
+RewriteRule ^best2pay_callback/([^/]*)/?$   index.php?module=Best2payCallback&action=$1  [L,QSA]
+RewriteRule ^best2pay_callback2/([^/]*)/?$   index.php?module=Best2payCallback2&action=$1  [L,QSA]
+
+RewriteRule ^docs/([^/]*)/([^/]*)/?$   index.php?module=PdfController&object=$1&type=$2  [L,QSA]
+
+RewriteRule ^document/([^/]*)/([^/]*)/?$    index.php?module=DocumentController&user_id=$1&id=$2  [L,QSA]
+RewriteRule ^preview/([^/]*)/?$    index.php?module=DocumentController&action=preview&type=$1  [L,QSA]
+
+RewriteRule ^looker/?$              index.php?module=LookerController [L,QSA]
+
+RewriteRule ^для-qr-кода/?$            index.php?module=PageQRController [L,QSA]
+
+# Статические страницы
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^page/([^/]*)/?$        index.php?module=PageController&page_url=$1 [L,QSA]
+
+RewriteRule ^/?$                    index.php?module=MainController&page_url= [L,QSA]

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Home</title>
+  <meta name="description" content="">
+  <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- style -->
+  <link rel="stylesheet" href="libs/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="libs/range/ion.rangeSlider.min.css" />
+  <link rel="stylesheet" href="libs/fancybox/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="libs/jquery/jquery-ui/jquery-ui.min.css" />
+  <link rel="stylesheet" href="libs/jquery/jquery-ui/jquery-ui.theme.min.css" />
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body class="home">
+  <div class="wrapper">
+    <header class="header">
+      <div class="container">
+        <div class="header_row row">
+          <div class="col-sm-6 col-md-4 col-lg-3 header-col-logo">
+            <div class="header_logo">
+              <a href="/" class="logo"><img src="i/logo.png" alt=""></a>
+            </div>
+          </div>
+          <div class="col-lg-4 header-col-nav">
+            <div class="header_nav">
+              <nav class="navbar header_menu">
+                <ul class="nav header_menu_nav -gil-m">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Как получить</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Как погасить</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">О компании</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-8 col-lg-5 header-col-contact">
+            <div class="header_right">
+              <div class="header_right_row">
+                <div class="header_btn">
+                  <a href="#" class="btn btn-primary -lk-btn">Личный кабинет</a>
+                </div>
+                <div class="header_contacts">
+                  <a href="tel:880073499388" class="header_phone -gil-b -fs-24">8 800 7349 93 88</a>
+                  <span class="info -fs-14">звонок бесплатный</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="section section_itop">
+        <div class="container">
+          <div class="section_row row">
+            <div class="col-lg-7">
+              <div class="itop_info">
+                <div class="section_title itop_info_title">
+                  <span class="-black -fs-48 -gil-m">Получите займ на карту</span>
+                  <span class="-orange -fs-52 -gil-b">не выходя из дома</span>
+                </div>
+                <div class="itop_info_subtitle -fs-22">
+                  Оформите займ за 3 минуты. и получите деньги на карту уже через 15 минут
+                </div>
+                <div class="itop_info_desc">
+                  <div class="itop_info_desc_row row">
+                    <div class="col-6 col-sm-2 col-md-3 col-lg-2">
+                      <div class="itop_info_desc_item">
+                        <div class="itop_info_desc_item_title -fs-32 -gil-bl">1%</div>
+                        <div class="itop_info_desc_item_text -fs-22">низкая ставка</div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-sm-3 col-md-3 col-lg-3">
+                      <div class="itop_info_desc_item">
+                        <div class="itop_info_desc_item_title -fs-32 -gil-bl">30 дней</div>
+                        <div class="itop_info_desc_item_text -fs-22">максимальный срок займа</div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-sm-3 col-md-3 col-lg-3">
+                      <div class="itop_info_desc_item">
+                        <div class="itop_info_desc_item_title -fs-32 -gil-bl">30 000₽</div>
+                        <div class="itop_info_desc_item_text -fs-22">максимальная сумма займа</div>
+                      </div>
+                    </div>
+                    <div class="col-6 col-sm-3 col-md-3 col-lg-3">
+                      <div class="itop_info_desc_item">
+                        <div class="itop_info_desc_item_title -fs-32 -gil-bl">15 мин.</div>
+                        <div class="itop_info_desc_item_text -fs-22">срок одобрения</div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-5">
+              <div class="itop_calc">
+                <form class="calculator">
+                  <div class="form-group form-group-one">
+                    <div class="form_row">
+                      <label class="form-group-title -fs-18 -gil-m" for="amount-one">
+                        Выберите сумму:
+                      </label>
+                      <span class="range_res -fs-26 -gil-b" id="demo"></span>
+                    </div>
+                    <div class="amount">
+                      <input type="range" min="5000" max="12000" value="50000" class="slider" id="amount-one">
+                    </div>
+                  </div>
+                  <div class="form-group form-group-two">
+                    <div class="form_row">
+                      <label class="form-group-title -fs-18 -gil-m" for="amount-two">
+                        Выберите срок:
+                      </label>
+                      <span class="range_res -fs-26 -gil-b" id="demo2"></span>
+                    </div>
+                    <div class="amount">
+                      <input type="range" min="7" max="30" value="7" class="slider" id="amount-two">
+                    </div>
+                  </div>
+                  <div class="form-group form-group-res">
+                    <div class="form_row">
+                      <div class="res_title -fs-18 -gil-m">Итого к возврату:</div>
+                      <div class="res_info_sum -fs-20 -gil-b">5 500 ₽</div>
+                    </div>
+                    <div class="form_row">
+                      <div class="res_title -fs-18 -gil-m">Срок до:</div>
+                      <div class="res_info_data  -fs-20 -gil-b">12.12.2020 г.</div>
+                    </div>
+                  </div>
+                  <div class="form-group form-phone">
+                    <span class="phone_info -fs-14">Ваш номер телефона</span>
+                    <input type="text" name="phone" id="phone" class="form-control -fs-18 -gil-m"
+                      value="+7 912 345-67-89">
+                  </div>
+                  <div class="form-group form-btn">
+                    <a href="#" class="btn btn-secondary -fs-20 -fullwidth">Получить займ</a>
+                    <span class="bottom_text -fs-14 -center">нажимая на кнопку, вы соглашаетесь с договором
+                      оферты</span>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="section section_bonuses">
+        <div class="container">
+          <div class="section_row row">
+            <div class="col-lg-6">
+              <div class="bonus_item bonus_item_one">
+                <div class="bonus_item_icon"><img src="i/icon01.svg" alt=""></div>
+                <div class="bonus_item_title -fs-32 -gil-b">Переводим сразу на карту</div>
+                <div class="bonus_item_text -fs-22">Деньги будут у вас на счете уже через 15 минут</div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="bonus_item bonus_item_two">
+                <div class="bonus_item_icon"><img src="i/icon02.svg" alt=""></div>
+                <div class="bonus_item_title -fs-32 -gil-b">Простое оформление</div>
+                <div class="bonus_item_text -fs-22">Вам понадобится только паспорт и 3 минуты времени</div>
+              </div>
+            </div>
+          </div>
+          <div class="bottom_btn -center">
+            <a href="#" class="btn btn-secondary -fs-20 -gil-b">Получить займ</a>
+          </div>
+        </div>
+      </div>
+      <div class="section section_steps">
+        <div class="container">
+          <div class="section_title">Займ на комфортных условиях</div>
+          <div class="section_subtitle">Теперь это легко!</div>
+          <div class="section_row steps_row">
+            <div class="steps_item step_first">
+              <div class="steps_item_num -gil-b -fs-76"><span>01</span></div>
+              <div class="steps_item_title -fs-22 -gil-m">Заполните заявку </div>
+              <div class="steps_item_text">
+                Простая форма, нужен только паспорт. Среднее время заполнения: 3 минуты
+              </div>
+            </div>
+            <div class="steps_points">
+              <div class="steps_points_row">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <div class="steps_item step_second">
+              <div class="steps_item_num -gil-b -fs-76"><span>02</span></div>
+              <div class="steps_item_title -fs-22 -gil-m">Получите одобрение </div>
+              <div class="steps_item_text">
+                В течение 15 минут мы проверим все ваши данные для одобрения займа
+              </div>
+            </div>
+            <div class="steps_points">
+              <div class="steps_points_row">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <div class="steps_item step_third">
+              <div class="steps_item_num -gil-b -fs-76"><span>03</span></div>
+              <div class="steps_item_title -fs-22 -gil-m">Деньги у вас на карте</div>
+              <div class="steps_item_text">
+                После одобрения мы сразу отправляем деньги вам на банковскую карту
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="section section_repay">
+        <div class="container">
+          <div class="section_repay_row row">
+            <div class="col-lg-5">
+              <div class="repay_info">
+                <div class="section_title">Хотите погасить займ?</div>
+                <div class="section_text -fs-26">Вы можете сделать это любым удобным для вас способом:</div>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="repay_items_row row">
+                <div class="col-sm-6">
+                  <div class="repay_item" style="background: url(i/paiitem01.png) no-repeat;">
+                    <div class="repay_item_text">
+                      <span class="repay_text -fs-26 -gil-b">В любом отделении банка</span>
+                      <a href="#" class="repay_item_link link_more -fs-16">Подробнее</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="repay_item" style="background: url(i/paiitem02.png) no-repeat;">
+                    <div class="repay_item_text">
+                      <span class="repay_text -fs-26 -gil-b">Банковской картой</span>
+                      <a href="#" class="repay_item_link link_more -fs-16">Подробнее</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer_row row">
+          <div class="col-md-4 col-lg-2 footer-col-logo">
+            <div class="footer_logo">
+              <a href="/" class="logo"><img src="i/logo-white.svg" alt="logo"></a>
+              <span class="logo_info -fs-15 -gil-l">Комфортные займы
+                на вашу карту
+                не выходя из дома</span>
+            </div>
+          </div>
+          <div class="col-lg-4 footer-col-nav">
+            <div class="footer_nav">
+              <nav class="navbar navbar-expand-lg footer_menu">
+                <button class="navbar-toggler">
+                  <span class="line"></span>
+                  <span class="line"></span>
+                  <span class="line"></span>
+                </button>
+                <ul class="nav footer_menu_nav -gil-m -fs-16">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">О компании</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Как получить</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Реквизиты</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Как погасить</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Документы</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Условия</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Контакты</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 footer-col-btn">
+            <div class="footer_btn">
+              <a href="#" class="btn btn_link">Консультация</a>
+              <a href="#" class="btn btn_link">Договор оферты</a>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 footer-col-contacts">
+            <div class="footer_contacts -fs-14">
+              <a href="tel:880073499388" class="footer_phone -fs-24 -gil-b">8 800 7349 93 88</a>
+              <span class="footer_text -gil-m">звонок бесплатный</span>
+              <a href="mailto:info@nalichnoe.com" class="footer_email -gil-b">info@nalichnoe.com</a>
+              <div class="work_time">
+                <div class="work_time_title -gil-b">Время работы:</div>
+                <div class="work_time_text">понедельник - пятница <br>с 9:00 до 21:00 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer_row">
+          <div class="copyright -fs-15">ООО МИКА. Все права защищены</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="libs/jquery/jquery-3.4.1.min.js"></script>
+  <script src="libs/bootstrap/bootstrap.min.js"></script>
+  <script src="libs/range/ion.rangeSlider.min.js"></script>
+  <script src="libs/jquery/jquery.maskedinput.min.js"></script>
+  <script src="libs/fancybox/jquery.fancybox.min.js"></script>
+  <script src="libs/jquery/jquery-ui/jquery-ui.min.js"></script>
+  <script src="js/common.js"></script>
+</body>
+
+</html>

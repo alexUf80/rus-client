@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Форма</title>
+  <meta name="description" content="">
+  <link rel="shortcut icon" href="img/favicon/favicon.ico" type="image/x-icon">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- style -->
+  <link rel="stylesheet" href="libs/bootstrap/bootstrap.min.css">
+  <link rel="stylesheet" href="libs/range/ion.rangeSlider.min.css" />
+  <link rel="stylesheet" href="libs/fancybox/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="libs/jquery/jquery-ui/jquery-ui.min.css" />
+  <link rel="stylesheet" href="libs/jquery/jquery-ui/jquery-ui.theme.min.css" />
+  <link rel="stylesheet" href="css/common.css">
+</head>
+
+<body class="page">
+  <div class="wrapper">
+    <header class="header">
+      <div class="container">
+        <div class="header_row row">
+          <div class="col-sm-6 col-md-4 col-lg-3 header-col-logo">
+            <div class="header_logo">
+              <a href="/" class="logo"><img src="i/logo.png" alt=""></a>
+            </div>
+          </div>
+          <div class="col-lg-4 header-col-nav">
+            <div class="header_nav">
+              <nav class="navbar header_menu">
+                <ul class="nav header_menu_nav -gil-m">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Как получить</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Как погасить</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">О компании</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-8 col-lg-5 header-col-contact">
+            <div class="header_right">
+              <div class="header_right_row">
+                <div class="header_btn">
+                  <a href="#" class="btn btn-primary -lk-btn">Личный кабинет</a>
+                </div>
+                <div class="header_contacts">
+                  <a href="tel:880073499388" class="header_phone -gil-b -fs-24">8 800 7349 93 88</a>
+                  <span class="info -fs-14">звонок бесплатный</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <main class="main">
+      <div class="section section_form">
+        <div class="container">
+          <div class="section_form_row row">
+            <div class="col-lg-5">
+              <div class="main_form_info">
+                <div class="form_info_title -fs-28">
+                  <span class="-black">Пройдите короткую регистрацию</span>
+                  <span class="-orange">чтобы получить займ</span>
+                </div>
+                <div class="form_info_subtitle">
+                  <p>Вы выбрали сумму: <span class="sum">7 000 рублей</span></p>
+                  <p>На срок: <span class="days">14 дней</span></p>
+                </div>
+                <div class="form_info_progress">
+                  <div class="form_info_progress_text -step1 active">До получения займа осталось: <span
+                      class="step -green">4 этапа</span></div>
+                  <div class="form_info_progress_text -step2">До получения займа осталось: <span class="step -green">3
+                      этапа</span></div>
+                  <div class="form_info_progress_text -step3">До получения займа осталось: <span class="step -green">2
+                      этапа</span></div>
+                  <div class="form_info_progress_text -step4">До получения займа осталось: <span class="step -green">1
+                      этап</span></div>
+                  <div class="form_info_progress_text -step5"><span class="step -green">Последний этап</span></div>
+                  <div class="form_info_progress_control -step1"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-7">
+              <div class="main_form">
+                <form action="" method="" class="regform">
+                  <div class="step_box step1">
+                    <div class="form_group -fs-18">
+                      <div class="form_group-title -gil-m">ФИО как в паспорте:</div>
+                      <div class="form_row">
+                        <label class="input_box -ok">
+                          <input type="text" class="form-control" name="last_name" id="last_name" value="Соколов">
+                          <span class="input_name -top">Фамилия</span>
+                        </label>
+                        <label class="input_box -error">
+                          <input type="text" class="form-control" name="first_name" id="first_name" value="">
+                          <span class="input_name">Имя</span>
+                        </label>
+                      </div>
+                      <div class="form_row">
+                        <label class="input_box -error">
+                          <input type="text" class="form-control" name="patronym" id="patronym" value="">
+                          <span class="input_name">Отчество</span>
+                        </label>
+                        <label class="input_box -error">
+                          <input type="text" class="form-control" name="maiden_name" id="maiden_name" value="">
+                          <span class="input_name">Девичья фамилия</span>
+                        </label>
+                      </div>
+                      <div class="error_text">Не верный формат</div>
+                    </div>
+                    <div class="form_group -fs-18">
+                      <div class="form_group-title -gil-m">Укажите ваш пол:</div>
+                      <div class="form_row justify-content-start">
+                        <div class="form_radio_btn">
+                          <input id="radio-1" type="radio" name="radio" value="1" checked>
+                          <label for="radio-1">Мужской</label>
+                        </div>
+                        <div class="form_radio_btn">
+                          <input id="radio-2" type="radio" name="radio" value="2">
+                          <label for="radio-2">Женский</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form_group -fs-18">
+                      <div class="form_group-title -gil-m">Дата и место рождения:</div>
+                      <div class="form_row">
+                        <label class="input_box">
+                          <input type="text" class="form-control" name="birth_date" id="birth_date" value="">
+                          <span class="input_name">Дата рождения</span>
+                        </label>
+                        <label class="input_box">
+                          <input type="text" class="form-control" name="birthplace" id="birthplace" value="">
+                          <span class="input_name">Место рождения</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form_group -fs-18">
+                      <div class="form_group-title -gil-m">Социальные сети</div>
+                      <div class="form_row">
+                        <label class="input_box -fullwidth">
+                          <input type="text" class="form-control " name="social" id="social" value="">
+                          <span class="input_name">Ссылки на соц. сети</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="step_box_btn">
+                      <a href="#" class="btn btn_back btn-link -green -gil-m">Назад</a>
+                      <a href="#" class="btn btn_next btn-secondary">Далее</a>
+                    </div>
+                  </div>
+                  <div class="step_box step2">
+                    <div class="form_group -fs-18">
+                      <div class="form_group-title -gil-m">Паспортные данные:</div>
+                      <div class="form_row">
+                        <label class="input_box -ok">
+                          <input type="text" class="form-control" name="series" id="series" value="">
+                          <span class="input_name">Серия и номер</span>
+                        </label>
+                        <label class="input_box -error">
+                          <input type="text" class="form-control" name="issue" id="issue" value="">
+                          <span class="input_name">Дата выдачи</span>
+                        </label>
+                      </div>
+                      <div class="form_row">
+                        <label class="input_box -error">
+                          <input type="text" class="form-control" name="issued_by" id="issued_by" value="">
+                          <span class="input_name">Кем выдан</span>
+                        </label>
+                        <label class="input_box -error">
+                          <input type="text" class="form-control" name="department_code" id="department_code" value="">
+                          <span class="input_name">Код подразделения</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form_group -fs-18">
+                      <div class="form_group-title -gil-m">СНИЛС</div>
+                      <div class="form_row">
+                        <label class="input_box -ok -fullwidth">
+                          <input type="text" class="form-control" name="snils" id="snils" value="">
+                          <span class="input_name">СНИЛС</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="step_box_btn">
+                      <a href="#" class="btn btn_back btn-link -green -gil-m">Назад</a>
+                      <a href="#" class="btn btn_next btn-secondary">Далее</a>
+                    </div>
+                  </div>
+                  <div class="step_box step3">
+                    <div class="form_group -fs-18">
+                      <div class="form_group-title -gil-m">Адрес места жительства</div>
+                      <div class="form_row">
+                        <label class="input_box -ok">
+                          <input type="text" class="form-control" name="city" id="city" value="">
+                          <span class="input_name">Город</span>
+                        </label>
+                        <label class="input_box">
+                          <input type="text" class="form-control" name="code" id="code" value="">
+                          <span class="input_name">Индекс</span>
+                        </label>
+                      </div>
+                      <div class="form_row">
+                        <label class="input_box">
+                          <input type="text" class="form-control" name="street" id="street" value="">
+                          <span class="input_name">Улица</span>
+                        </label>
+                        <label class="input_box">
+                          <input type="text" class="form-control" name="house" id="house" value="">
+                          <span class="input_name">Дом</span>
+                        </label>
+                        <label class="input_box">
+                          <input type="text" class="form-control" name="flat" id="flat" value="">
+                          <span class="input_name">Кв.</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="form_group -fs-18">
+                      <div class="form_group-title -gil-m">Адрес места регистрации</div>
+                      <div class="form_row">
+                        <div class="check">
+                          <input type="checkbox" class="custom-checkbox" id="clone_address" name="clone_address">
+
+                          <label for="clone_address" class="check_box -gil-m">
+                            Совпадает с адресом места жительства
+                          </label>
+                        </div>
+                      </div>
+                      <div class="form_row">
+                        <label class="input_box -ok">
+                          <input type="text" class="form-control" name="reg-city" id="reg-city" value="">
+                          <span class="input_name">Город</span>
+                        </label>
+                        <label class="input_box">
+                          <input type="text" class="form-control" name="reg-code" id="reg-code" value="">
+                          <span class="input_name">Индекс</span>
+                        </label>
+                      </div>
+                      <div class="form_row">
+                        <label class="input_box">
+                          <input type="text" class="form-control" name="reg-street" id="reg-street" value="">
+                          <span class="input_name">Улица</span>
+                        </label>
+                        <label class="input_box">
+                          <input type="text" class="form-control" name="reg-house" id="reg-house" value="">
+                          <span class="input_name">Дом</span>
+                        </label>
+                        <label class="input_box">
+                          <input type="text" class="form-control" name="reg-flat" id="reg-flat" value="">
+                          <span class="input_name">Кв.</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="step_box_btn">
+                      <a href="#" class="btn btn_back btn-link -green -gil-m">Назад</a>
+                      <a href="#" class="btn btn_next btn-secondary">Далее</a>
+                    </div>
+                  </div>
+                  <div class="step_box step4">
+                    <div class="form_group -fs-18">
+                      <div class="form_group-title -gil-m">Информация о работе</div>
+                      <div class="form_row">
+                        <label class="input_box -ok -fullwidth">
+                          <input type="text" class="form-control" name="company" id="company" value="">
+                          <span class="input_name">Компания</span>
+                        </label>
+                      </div>
+                      <div class="form_row">
+                        <label class="input_box">
+                          <input type="text" class="form-control" name="post" id="post" value="">
+                          <span class="input_name">Должность</span>
+                        </label>
+                        <label class="input_box">
+                          <input type="text" class="form-control" name="work_phone" id="work_phone" value="">
+                          <span class="input_name">Рабочий телефон</span>
+                        </label>
+                      </div>
+                      <div class="form_row">
+                        <label class="input_box">
+                          <input type="text" class="form-control" name="income" id="income" value="">
+                          <span class="input_name">Ежемесячный доход</span>
+                        </label>
+                        <label class="input_box">
+                          <input type="text" class="form-control" name="expenses" id="expenses" value="">
+                          <span class="input_name">Ежемесячные расходы</span>
+                        </label>
+                      </div>
+                      <div class="form_row">
+                        <label class="input_box -fullwidth">
+                          <input type="text" class="form-control" name="chief_name" id="chief_name" value="">
+                          <span class="input_name">ФИО начальника</span>
+                        </label>
+                      </div>
+                      <div class="form_row">
+                        <label class="input_box">
+                          <input type="text" class="form-control" name="chief_position" id="chief_position" value="">
+                          <span class="input_name">Должность начальника</span>
+                        </label>
+                        <label class="input_box">
+                          <input type="text" class="form-control" name="chief_phone" id="chief_phone" value="">
+                          <span class="input_name">Телефон начальника</span>
+                        </label>
+                      </div>
+                      <div class="form_row">
+                        <label class="input_box -fullwidth">
+                          <input type="text" class="form-control" name="contact_person1" id="contact_person1" value="">
+                          <span class="input_name">ФИО контактного лица</span>
+                        </label>
+                      </div>
+                      <div class="form_row">
+                        <label class="input_box">
+                          <input type="text" class="form-control" name="contact_person_phone1"
+                            id="contact_person_phone1" value="">
+                          <span class="input_name">Телефон контактного лица</span>
+                        </label>
+                      </div>
+                      <div class="form_row">
+                        <label class="input_box -fullwidth">
+                          <input type="text" class="form-control" name="contact_person2" id="contact_person2" value="">
+                          <span class="input_name">ФИО контактного лица</span>
+                        </label>
+                      </div>
+                      <div class="form_row">
+                        <label class="input_box">
+                          <input type="text" class="form-control" name="contact_person_phone2"
+                            id="contact_person_phone2" value="">
+                          <span class="input_name">Телефон контактного лица</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="step_box_btn">
+                      <a href="#" class="btn btn_back btn-link -green -gil-m">Назад</a>
+                      <a href="#" class="btn btn_next btn-secondary">Далее</a>
+                    </div>
+
+                  </div>
+                  <div class="step_box step5">
+                    <div class="form_group -fs-18">
+                      <div class="form_group-title -gil-m">Загрузите документы:</div>
+
+                      <div class="form_file_item">
+                        <p>Первая страница паспорта</p>
+                        <input type="file" name="file1" id="file1" class="input_file">
+                        <label for="file1" class="btn btn-third js-labelFile">
+                          <span class="js-fileName">Загрузить файл</span>
+                        </label>
+
+                      </div>
+                      <div class="form_file_item">
+                        <p>Страница с пропиской</p>
+                        <input type="file" name="file2" id="file2" class="input_file">
+                        <label for="file2" class="btn btn-third js-labelFile">
+                          <span class="js-fileName">Загрузить файл</span>
+                        </label>
+                      </div>
+                      <div class="form_file_item">
+                        <p>Ваше фото с разворотом паспорта</p>
+                        <input type="file" name="file3" id="file3" class="input_file">
+                        <label for="file3" class="btn btn-third js-labelFile">
+                          <span class="js-fileName">Загрузить файл</span>
+                        </label>
+                      </div>
+                      <div class="form_file_item">
+                        <p>Фото кредитной карты</p>
+                        <input type="file" name="file4" id="file4" class="input_file">
+                        <label for="file4" class="btn btn-third js-labelFile">
+                          <span class="js-fileName">Загрузить файл</span>
+                        </label>
+
+                      </div>
+                    </div>
+                    <div class="step_box_btn">
+                      <a href="#" class="btn btn_back btn-link -green -gil-m">Назад</a>
+                      <a href="#" class="btn btn_next btn-secondary -fs-20">Получить займ</a>
+                    </div>
+
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+
+
+
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer_row row">
+          <div class="col-md-4 col-lg-2 footer-col-logo">
+            <div class="footer_logo">
+              <a href="/" class="logo"><img src="i/logo-white.svg" alt="logo"></a>
+              <span class="logo_info -fs-15 -gil-l">Комфортные займы
+                на вашу карту
+                не выходя из дома</span>
+            </div>
+          </div>
+          <div class="col-lg-4 footer-col-nav">
+            <div class="footer_nav">
+              <nav class="navbar navbar-expand-lg footer_menu">
+                <button class="navbar-toggler">
+                  <span class="line"></span>
+                  <span class="line"></span>
+                  <span class="line"></span>
+                </button>
+                <ul class="nav footer_menu_nav -gil-m -fs-16">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">О компании</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Как получить</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Реквизиты</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Как погасить</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Документы</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Условия</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Контакты</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 footer-col-btn">
+            <div class="footer_btn">
+              <a href="#" class="btn btn_link">Консультация</a>
+              <a href="#" class="btn btn_link">Договор оферты</a>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-4 col-lg-3 footer-col-contacts">
+            <div class="footer_contacts -fs-14">
+              <a href="tel:880073499388" class="footer_phone -fs-24 -gil-b">8 800 7349 93 88</a>
+              <span class="footer_text -gil-m">звонок бесплатный</span>
+              <a href="mailto:info@nalichnoe.com" class="footer_email -gil-b">info@nalichnoe.com</a>
+              <div class="work_time">
+                <div class="work_time_title -gil-b">Время работы:</div>
+                <div class="work_time_text">понедельник - пятница <br>с 9:00 до 21:00 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer_row">
+          <div class="copyright -fs-15">ООО МИКА. Все права защищены</div>
+        </div>
+      </div>
+    </footer>
+  </div>
+  <script src="libs/jquery/jquery-3.4.1.min.js"></script>
+  <script src="libs/bootstrap/bootstrap.min.js"></script>
+  <script src="libs/range/ion.rangeSlider.min.js"></script>
+  <script src="libs/jquery/jquery.maskedinput.min.js"></script>
+  <script src="libs/fancybox/jquery.fancybox.min.js"></script>
+  <script src="libs/jquery/jquery-ui/jquery-ui.min.js"></script>
+  <script src="js/common.js"></script>
+</body>
+
+</html>
