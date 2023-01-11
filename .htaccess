@@ -88,3 +88,6 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^page/([^/]*)/?$        index.php?module=PageController&page_url=$1 [L,QSA]
 
 RewriteRule ^/?$                    index.php?module=MainController&page_url= [L,QSA]
+
+RewriteRule ^documentation/?$    index.php?module=DocumentationController [L,QSA]
+RewriteRule ^archive/?$    index.php?module=DocumentationController [L,QSA]
