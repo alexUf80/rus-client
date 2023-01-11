@@ -147,7 +147,7 @@
 }
 
 .check_box span { font-size:14px;padding:5px 0; }
-.check_box a { color:#63b630}
+.check_box a { color:rgb(189, 148, 87)}
 .-error .check_box span {color:#dd2222}
 .-error input[type="checkbox"] + label::before {
     border-color: #dd2222
@@ -330,7 +330,10 @@
     }
 }
 
-.password_info{position: absolute; top:10px; left:70px; color: #a8a8a8;}
+.reset_password {
+    font-size: 16px;
+}
+
 .form-password {
     position: relative;
 }
@@ -1280,23 +1283,23 @@ body{
     font-size: 42px;
     line-height: 110%;
     letter-spacing: 0.5px;
-    color: #543093;
+    color: #e15050;
     margin-bottom: 32px;
 }
 
 .form_radio_btn input[type=radio]:checked + label{
-    background-color: #532E91;
+    background-color: #e15050;
 }
 
 .-green {
-    color: #532E91;
+    color: #bd9457;
 }
 .form_info_progress_control.-step2:before,
 .form_info_progress_control.-step3:before,
 .form_info_progress_control.-step4:before,
 .form_info_progress_control.-step5:before
 {
-    background-color: #532E91;
+    background-color: #bd9457;
 
 }
 input[type="checkbox"] + label:before{

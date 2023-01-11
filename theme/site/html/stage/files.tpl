@@ -64,7 +64,7 @@
                         {if $user_files['passport1']}
                         <img src="{$config->user_files_dir}{$user_files['passport1']->name}" width="150" />
                         {else}
-                        <img src="/theme/site/i/passport.png" width="150" />
+                        <img src="theme/site/i/passport.png" width="150" />
                         {/if}
                       </span>
                         {if $user_files['passport1']->status == 3}
@@ -88,7 +88,7 @@
                         {if $user_files['passport2']}
                         <img src="{$config->user_files_dir}{$user_files['passport2']->name}" width="150" />
                         {else}
-                        <img src="/theme/site/i/registration.png" width="150" />
+                        <img src="theme/site/i/registration.png" width="150" />
                         {/if}
                       </span>
                         {if $user_files['passport2']->status == 3}
@@ -112,7 +112,7 @@
                         {if $user_files['face']}
                         <img src="{$config->user_files_dir}{$user_files['face']->name}" width="150" />
                         {else}
-                        <img src="/theme/site/i/selfi.png" width="150" />
+                        <img src="theme/site/i/selfi.png" width="150" />
                         {/if}
                       </span>
                         {if $user_files['passport2']->status == 3}
@@ -137,7 +137,7 @@
                         {if $user_files['card']}
                         <img src="{$config->user_files_dir}{$user_files['card']->name}" width="150" />
                         {else}
-                        <img src="/theme/site/i/card.png" width="150" />
+                        <img src="theme/site/i/card.png" width="150" />
                         {/if}
                       </span>
                         {if $user_files['card']->status == 3}

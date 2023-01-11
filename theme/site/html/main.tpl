@@ -8,266 +8,22 @@
 {capture name='page_styles'}
 
 {/capture}
+
 {if $bankiru}
 
 {/if}
-  <div class="section section_itop mb-5">
-    <div class="wrapper">
-      <div class="section_row row">
 
-        <div class="col-lg-5 order-lg-2">
-          <div class="itop_calc">
-            <form class="calculator js-loan-start-form js-calc" method="POST" data-percent="{$loan_percent}">
-              <input type="hidden" name="local_time" />
-              <div class="form-group form-group-one">
-                <div class="form_row">
-                  <label class="form-group-title -fs-18 -com-m" for="amount-one">
-                    Какая сумма вам нужна?
-                  </label>
-                </div>
-                
-                <div class="ddd">
-                  <div class="amount">
-                    <input type="range" name="amount" min="{$min_summ}" max="{$max_summ}" value="{$current_summ}" class="slider js-input-summ" id="amount-one">                
-                  </div>
-                  <span class="range_res -fs-26 -com-m js-info-summ" id="demo"></span>
-                </div>
+{include file='calculator.tpl'}
 
-              </div>
-              <div class="form-group form-group-two">
-                <div class="form_row">
-                  <label class="form-group-title -fs-18 -com-m" for="amount-two">
-                    На какой срок?
-                  </label>
-                </div>
-                <div class="ddd">
-                <div class="amount">
-                  <input type="range" name="period" min="{$min_period}" max="{$max_period}" value="{$current_period}" class="slider js-input-period" id="amount-two">
-                </div>
-                  <span class="range_res -fs-26 -com-m js-info-period" id="demo2"></span>
+{include file='misc.tpl'}
 
-                </div>
-              </div>
-              <div class="form-group form-group-res">
-              <div class="form_row">
-                  <div class="res_title -fs-18 ">Сумма кредита:</div>
-                  <div class="res_info_sum -fs-20 -com-sb"><span class="js-info-summ"></span> ₽</div>
-                </div>
-                <div class="form_row">
-                  <div class="res_title -fs-18 ">Дата погашения:</div>
-                  <div class="res_info_data  -fs-20 -com-sb"><span class="js-total-period"></span> г.</div>
-                </div>
-                <div class="form_row">
-                  <div class="res_title -fs-18 ">К возврату:</div>
-                  <div class="res_info_sum -fs-20 -com-sb"><span class="js-total-summ"></span> ₽</div>
-                </div>
-              </div>
-                {*
-              <div class="form-group form-phone ">
-                <span class="phone_info -fs-14">Ваш номер телефона</span>
-                <input type="text" name="phone" id="phone" class="form-control -fs-18 -gil-m js-mask-phone js-loan-phone" value="">
-                <input type="hidden" name="code" id="" class="js-mask-sms js-loan-code" value="">
-                <div class="error_text js-loan-phone-error" style="display:none">Укажите номер телефона</div>
-              </div>
-              <div class="form-group">
-                <div class="form_row">
-                    <div class="check mb-0 js-loan-agreement-block">
-                      <input type="checkbox" class="custom-checkbox js-loan-agreement" id="check_agreement" name="agreement" value="1"/>
-                      <label for="check_agreement" class="check_box -gil-m">
-                         <span>Я ознакомлен со <a href="#agreement_list" style="color: #4A2982" class="js-toggle-agreement-list" >следующим</a></span>
-                      </label>
-                    </div>
-                  </div>
-              </div>
-                {include file='agreement_list.tpl'}
+{include file='faq.tpl'}
 
-              <div class="form-group form-btn">
-                <a href="javascript:void(0);" class="btn btn-secondary -fs-20 -fullwidth js-loan-start">Получить займ</a>
-                <!--<span class="bottom_text -fs-14 -center">нажимая на кнопку, вы соглашаетесь с
-                <a href="#agreement_list" data-fancybox>договором оферты</a>
-                </span>-->
-              </div>
-                <div class="form-group">
-                  <div class="form_row">
-                      <div class="check mb-0 check_box justify-content-center">
-                          <span><a href="#promo_code" class="js-toggle-promo-code" style="color: #4A2982">У меня есть промокод</a></span>
-                      </div>
-                  </div>
-                </div>
-                   <div id="promo_code" style="display:none" class="pr-3 pl-3">
-                  <div style="color: #4A2982" class="text-center js-success-promo" style="display:none">
-                      <p>Промокод активирован            <svg xmlns="http://www.w3.org/2000/svg" width="10" height="8" viewBox="0 0 10 8" fill="none">
-                              <path d="M9.88442 1.8301L4.15429 7.55898C4.00072 7.71194 3.75208 7.71194 3.59912 7.55898L0.114476 4.05205C-0.0384842 3.89847 -0.0384842 3.6489 0.114476 3.49625L0.947087 2.66426C1.10067 2.51099 1.3493 2.51099 1.50226 2.66426L3.87965 5.05744L8.4957 0.441075C8.64866 0.288115 8.8973 0.288115 9.0515 0.441075L9.88411 1.2743C10.0386 1.42757 10.0386 1.67714 9.88442 1.8301Z" fill="#33CC66"></path>
-                          </svg>
-                      </p>
-                  </div>
-                  <div class="text-center text-danger js-error-promo" style="display:none">
-                      <p>Промокод не применен</p>
-                  </div>
-                  <div id="promo_input" class="form-group form-phone">
-                      <input id="promoCode" type="text" class="form-control -fs-18 -gil-m">
-                      <span class="phone_info -fs-14">Промокод</span>
-                  </div>
-                  <div class="form-group form-btn">
-                    <a id="check_promo_code" href="javascript:void(0);" class="btn btn-secondary  -fs-20 -fullwidth  js-promo-code-ckeck">Применить</a>
-                  </div>
-                </div>
-*}
-
-            </form>
-          </div>
-        </div>
-
-
-        <div class="col-lg-7">
-             
-        </div>
-      </div>
-
-    </div>
-  </div>
-<div class="wrapper">
-    <div class="new-advantages">
-        <div class="new-advantages__title title">ВСЁ МАКСИМАЛЬНО ПРОСТО, БЫСТРО И БЕЗОПАСНО</div>
-        <div class="new-advantages__list">
-            <div class="new-advantages__item">
-                <div class="new-advantages__item-icon">
-                    <img src="/theme/site/i/icon-1.svg" alt="">
-                </div>
-                <div class="new-advantages__item-title">От 5 000 до 30 000 <br>рублей</div>
-            </div>
-            <div class="new-advantages__item">
-                <div class="new-advantages__item-icon">
-                    <img src="/theme/site/i/icon-2.svg" alt="">
-                </div>
-                <div class="new-advantages__item-title">От 5 до 30 дней <br>Возможность продления</div>
-            </div>
-            <div class="new-advantages__item">
-                <div class="new-advantages__item-icon">
-                    <img src="/theme/site/i/icon-3.svg" alt="">
-                </div>
-                <div class="new-advantages__item-title">Обработка заявки <br>за 10 минут</div>
-            </div>
-            <div class="new-advantages__item">
-                <div class="new-advantages__item-icon">
-                    <img src="/theme/site/i/icon-4.svg" alt="">
-                </div>
-                <div class="new-advantages__item-title">Минимум <br>документов</div>
-            </div>
-            <div class="new-advantages__item">
-                <div class="new-advantages__item-icon">
-                    <img src="/theme/site/i/icon-5.svg" alt="">
-                </div>
-                <div class="new-advantages__item-title">Зачисление денег <br>на карту любого банка</div>
-            </div>
-        </div>
-    </div>
-
-    <div class="new-why-we">
-      <div class="new-why-we__list">
-          <div class="new-why-we__item new-why-we__item-special">
-              Почему так удобно брать кредит у нас?
-          </div>
-          <div class="new-why-we__item">
-              <div class="new-why-we__item-icon">
-                  <img src="/theme/site/i/ppphone.png" alt="">
-              </div>
-              <div class="new-why-we__item-content">
-                  <div class="new-why-we__item-title">Безопасно и надежно</div>
-                  <div class="new-why-we__item-text">Все персональные данные клиентов надежно защищены новейшим программным обеспечением. Мы соответствуем международным стандартам безопасности данных платежных карт.</div>
-              </div>
-          </div>
-          <div class="new-why-we__item">
-              <div class="new-why-we__item-icon">
-                  <img src="/theme/site/i/why-2.svg" alt="">
-              </div>
-              <div class="new-why-we__item-content">
-                  <div class="new-why-we__item-title">Честно! Без скрытых платежей</div>
-                  <div class="new-why-we__item-text">Ставка по займу в заявке неизменна. У нас нет скрытых платежей и дополнительных комиссий.</div>
-              </div>
-          </div>
-          <div class="new-why-we__item">
-              <div class="new-why-we__item-icon">
-                  <img src="/theme/site/i/why-3.svg" alt="">
-              </div>
-              <div class="new-why-we__item-content">
-                  <div class="new-why-we__item-title">Одобряем 9 из 10 заявок</div>
-                  <div class="new-why-we__item-text">Наша миссия - доступная финансовая помощь для каждого! Одобрение заемщикам без официальной работы, студентам, пенсионерам и даже клиентам с неидеальной кредитной историей.</div>
-              </div>
-          </div>
-          <div class="new-why-we__item">
-              <div class="new-why-we__item-icon">
-                  <img src="/theme/site/i/why-4.svg" alt="">
-              </div>
-              <div class="new-why-we__item-content">
-                  <div class="new-why-we__item-title">Автопродление кредита при оплате процентов</div>
-                  <div class="new-why-we__item-text">Мы на вашей стороне. Поможем вам избежать просрочки по кредиту и ухудшения кредитной истории.</div>
-              </div>
-          </div>
-          <div class="new-why-we__item">
-              <div class="new-why-we__item-icon">
-                  <img src="/theme/site/i/why-5.svg" alt="">
-              </div>
-              <div class="new-why-we__item-content">
-                  <div class="new-why-we__item-title">Быстро и круглосуточно</div>
-                  <div class="new-why-we__item-text">Мы работаем 24/7. Вы в любой момент сможете оформить кредит. Деньги поступают на карту через несколько секун после оформления заявки.</div>
-              </div>
-          </div>
-      </div>
-  </div>
-
-</div>
-<div class="new-banner">
-  <img src="/theme/site/i/banner.jpg" alt="">
-</div>
-<div class="wrapper">
-  <div class="new-questions">
-      <div class="new-questions__title title">Частые вопросы</div>
-      <div class="new-questions__list">
-          <div class="new-questions__item">
-              <div class="new-questions__item-image">
-                  <img src="/theme/site/i/questions-1.jpg" alt="">
-              </div>
-              <div class="new-questions__item-content">
-                  <div class="new-questions__item-title">Получить деньги</div>
-                  <div class="new-questions__item-text">
-                      <p>Готовы зачислить деньги на вашу банковскую карту прямо сейчас.</p>
-                      <p>Заполните анкету с данными, получите индивидуальное предложение!</p>
-                  </div>
-              </div>
-              <div class="new-questions__item-btn">Подробнее</div>
-          </div>
-          <div class="new-questions__item">
-              <div class="new-questions__item-image">
-                  <img src="/theme/site/i/questions-2.jpg" alt="">
-              </div>
-              <div class="new-questions__item-content">
-                  <div class="new-questions__item-title">Погасить кредит</div>
-                  <div class="new-questions__item-text">
-                      <p>Погасите ваш кредит онлайн, не выходя из дома. Просто перейдите в личный кабинет и оплатите займ банковской картой. В срок, частями, досрочно. Выбирайте как вам удобно.</p>
-                  </div>
-              </div>
-              <div class="new-questions__item-btn">Подробнее</div>
-          </div>
-          <div class="new-questions__item">
-              <div class="new-questions__item-image">
-                  <img src="/theme/site/i/questions-3.jpg" alt="">
-              </div>
-              <div class="new-questions__item-content">
-                  <div class="new-questions__item-title">Продлить кредит</div>
-                  <div class="new-questions__item-text">
-                      <p>Пролонгация займа – отличная возможность исправить текущее финансовое положение без вреда для кредитной истории.</p>
-                  </div>
-              </div>
-              <div class="new-questions__item-btn">Подробнее</div>
-          </div>
-      </div>
-  </div>
     {*
   <div class="new-actions">
     <div class="new-actions__main">
         <div class="new-actions__main-image">
-            <img src="/theme/site/i/action.jpg" alt="">
+            <img src="theme/site/i/action.jpg" alt="">
         </div>
         <div class="new-actions__main-content">
             <div class="new-actions__main-title">Все клиенты Баренц Финанс участвуют в программе «Уровни лояльности»</div>
@@ -362,7 +118,8 @@
                     </div>
                   </div>
               </div>
-                {include file='agreement_list.tpl'}
+
+              {include file='agreement_list.tpl'}
 
               <div class="form-group form-btn">
                 <a href="javascript:void(0);" class="btn btn-secondary -fs-20 -fullwidth js-loan-start">Получить займ</a>

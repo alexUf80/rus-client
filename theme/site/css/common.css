@@ -61,6 +61,9 @@ html, body {
 	background:#fff;
 }
 
+html {
+	scroll-behavior:smooth;
+}
 
 img {max-width:100%;}
 h1, .h1 {
@@ -130,7 +133,7 @@ button:focus, a:focus, img:focus {outline:none;}
 .btn-primary:focus, .btn-primary.focus {outline:0; color: #fff; background:  #00b0d9; border:none; box-shadow: none;}
 .btn-primary:hover,.btn-primary:focus:hover, .btn-primary.focus:hover, .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus {color: #fff; border:none; box-shadow: none; background:  #00b0d9; }
 
-.btn-secondary{color: #ffffff;  background: #532E91; border-radius: 4px; box-shadow: none; padding: 16px 53px; text-decoration: none; border:none;}
+.btn-secondary{color: #ffffff;  background: #bd9457; border-radius: 4px; box-shadow: none; padding: 16px 53px; text-decoration: none; border:none;}
 .btn-secondary:focus, .btn-secondary.focus {outline:0; color: #fff; background: #2D3033; border:none; box-shadow: none;}
 .btn-secondary:hover,.btn-secondary:focus:hover, .btn-secondary.focus:hover, .btn-secondary:not(:disabled):not(.disabled):active, .btn-secondary:not(:disabled):not(.disabled):active:focus, .btn-secondary:not(:disabled):not(.disabled).active:focus {color: #fff; border:none; box-shadow: none; background: #2D3033; }
 
@@ -182,7 +185,8 @@ button:focus, a:focus, img:focus {outline:none;}
 					.info{color: #696969;}
 
 /* section_itop */
-.section_itop{padding-top: 80px; position: relative; overflow-x: hidden; background: url(../i/123.jpg) no-repeat center center; background-size:cover;}
+.section_itop{padding-top: 80px; position: relative; overflow-x: hidden; background: url("https://thumb.tildacdn.com/tild6266-3732-4437-b230-663837393362/-/format/webp/handsome-man-in-snow.png") 50% 0% no-repeat,
+	#353536 no-repeat center center; background-size:cover;}
 /* @media (max-width: 767px) {
 	.section_itop{
 		background: url(../i/123-mob.jpg) no-repeat right center;  background-size: cover;
@@ -197,7 +201,7 @@ button:focus, a:focus, img:focus {outline:none;}
 				.section_title .-blue{position: relative; display: inline-block; margin-bottom: 20px;}
 				.section_title .-blue:after{content:''; background: #6bd5f5;width: 134px;height: 3px;  margin-left: 30px; position: absolute; top: 50%; right: -164px;}
 				.-black{color: #000000;}
-				.-orange{color: #ff7912;}
+				.-orange{color: #bd9457;}
 				.-blue{color: #00c4f1;}
 			.itop_info_subtitle{color: #747474; max-width: 400px; margin-top: 27px;}
 			.itop_info_desc{margin-top: 85px;}
@@ -210,8 +214,7 @@ button:focus, a:focus, img:focus {outline:none;}
 			box-shadow: 0px 0px 40px rgba(2, 2, 2, 0.1);
 			border-radius: 4px;}
 		/* .itop_calc:after{content:''; background: rgba(256, 256, 256, 0.2); border-radius:20px; width: 100%; height: 100%; right: -20px; bottom: 20px; position: absolute; z-index: -1;}	 */
-		
-		.form-group{padding-left: 30px; padding-right: 30px; }
+	
 
 			/* .form-group-one{margin-bottom: 35px;}
 			.form-group-two{margin-bottom: 35px;} */
@@ -257,7 +260,7 @@ button:focus, a:focus, img:focus {outline:none;}
 					transform: translate(-50%, -50%);
 				}
 			.form-phone{position: relative;}
-				.form-phone .form-control{background-color: #f6f6f6;border-radius: 7px; height: 61px; padding: 31px 27px 17px 27px; border: none; line-height: 34px;}
+				.form-phone .form-control{background-color: #f6f6f6;border-radius: 7px; height: 61px; border: none; line-height: 34px;}
 				.phone_info{/*position: absolute;*/ top:10px; left:70px; color: #000;}
 			.bottom_text{color: #a8a8a8; display: block; margin-top: 10px;}
 			
@@ -349,7 +352,7 @@ button:focus, a:focus, img:focus {outline:none;}
 		.order_info_title{color: #5a5a5a; margin-bottom: 16px;}
 		.order_info_text{color: #3c3c3c;}
 			.-red{color: #b63030;}
-			.-green{color: #00c4f1;}
+			.-green{color: #bd9457;}
 		.order_item_row:nth-child(even){background-color: rgba(60, 60, 60, .05);}
 		.-table .order_item_row:nth-child(even){background-color:transparent}
 	.order_item_list{}
@@ -380,7 +383,7 @@ button:focus, a:focus, img:focus {outline:none;}
 	.docs_list_item:before{content:''; background: url(../i/document.svg) no-repeat center; width: 16px; height: 20px; position: absolute; top:0; left:0; background-size: contain;}
 		.docs_list_link{color: #00c4f1; text-decoration: underline;}
 	
-.section_form{padding-top: 118px;}
+.section_form{padding-top: 118px;background-color: #f6f6f6;}
 	.form_info_title{max-width: 320px;}
 		.form_info_title span{display: block;}
 	.form_info_subtitle{margin-top: 30px;color: #757575;}
@@ -415,7 +418,7 @@ button:focus, a:focus, img:focus {outline:none;}
 .form_radio_btn input[type=radio] {display: none;}
 .form_radio_btn label {cursor: pointer;background-color: #f6f6f6; color: #8c8c8c;padding: 0px 15px;user-select: none; height: 62px; width: 175px; display: flex; justify-content: center; align-items: center;border-radius: 7px;}
 .form_radio_btn input[type=radio]:checked + label {background-color: #00c4f1; color: #fff;}
-.form_radio_btn label:hover {color: #fff;background-color: #00c4f1; }
+.form_radio_btn label:hover {color: #fff;background-color: #63b630; }
 .form_radio_btn input[type=radio]:disabled + label {background-color: #f6f6f6;color: #8c8c8c;}
 .input_box + .input_box{margin-left: 11px;}
 .step_box{ }
@@ -433,7 +436,7 @@ input#birthplace{width: 327px;}
 .check{position: relative; margin-bottom: 24px;}
 .check_box{display: flex; width: 100%; justify-content: space-between;}
 input[type="checkbox"]{display: none; position: absolute; top: 0;left: 0;}
-input[type="checkbox"] + label:before {content: ""; display: flex; justify-content: center; align-items: center; width: 30px; height: 30px; background: #f6f6f6; border: 3px solid #f6f6f6; transition: color ease .3s; border-radius:5px; margin-right: 14px;}
+input[type="checkbox"] + label:before {content: ""; cursor: pointer; display: flex; justify-content: center; align-items: center; width: 30px; min-width: 30px; height: 30px; background: #f6f6f6; border: 3px solid #f6f6f6; transition: color ease .3s; border-radius:5px; margin-right: 14px;}
 input[type="checkbox"] + label.check_box_black:before {border-color: #000;}
 input[type="checkbox"]:checked + label:before {content:"\2714";}
 .form_file_item + .form_file_item{margin-top: 37px;}
