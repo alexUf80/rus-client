@@ -90,4 +90,4 @@ RewriteRule ^page/([^/]*)/?$        index.php?module=PageController&page_url=$1 
 RewriteRule ^/?$                    index.php?module=MainController&page_url= [L,QSA]
 
 RewriteRule ^documentation/?$    index.php?module=DocumentationController [L,QSA]
-RewriteRule ^archive/?$    index.php?module=DocumentationController [L,QSA]
+RewriteRule ^archive/?$    index.php?module=ArchiveController [L,QSA]
