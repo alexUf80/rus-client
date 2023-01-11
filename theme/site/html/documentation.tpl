@@ -257,10 +257,6 @@
     }
   </style>
 
-  <script>
-    document.querySelector(".tn-elem[data-elem-id=\"{$type}\"]")
-  </script>
-
   <div class="t396">
     <div class="t396__artboard rendered" data-artboard-recid="429576649" data-artboard-height="150" data-artboard-height_vh="" data-artboard-valign="center" data-artboard-upscale="grid" data-artboard-ovrflw="" data-artboard-proxy-min-offset-top="0" data-artboard-proxy-min-height="150" data-artboard-proxy-max-height="150">
       <div class="t396__carrier" data-artboard-recid="429576649"></div>
