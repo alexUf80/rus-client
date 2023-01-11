@@ -81,6 +81,36 @@
       }
     }
   </style>
+
+
+  <style>
+    .t585__accordion .t585__content {
+      display: block;
+      max-height: 0;
+    }
+
+    .t585__accordion_opened .t585__content {
+      display: block;
+      max-height: 100vh;
+      transition: all 0.3s ease-in;
+    }
+
+    .t585__icon {
+      width: unset;
+      height: unset;
+      translate: 0 -50%;
+    }
+
+    .t585__accordion .t585__icon {
+      transform: rotate(0deg);
+    }
+
+    .t585__accordion_opened .t585__icon {
+      transform: rotate(45deg);
+      transition: all 0.3s ease-in;
+    }
+  </style>
+
   <div class="t396">
     <div class="t396__artboard rendered" data-artboard-recid="275434554" data-artboard-height="180" data-artboard-height-res-320="150" data-artboard-height_vh="" data-artboard-valign="center" data-artboard-upscale="" data-artboard-ovrflw="" data-artboard-proxy-min-offset-top="0" data-artboard-proxy-min-height="180" data-artboard-proxy-max-height="180">
       <div class="t396__carrier" data-artboard-recid="275434554"></div>
@@ -619,3 +649,11 @@
     });
   </script>
 </div>
+
+<script>
+  document.querySelectorAll(".t585__accordion").forEach(e => {
+    e.addEventListener("click", () => {
+      e.classList.toggle("t585__accordion_opened")
+    })
+  })
+</script>

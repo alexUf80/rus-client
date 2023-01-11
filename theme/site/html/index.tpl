@@ -13,12 +13,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!--metatextblock-->
   <title>РУСЗАЙМ</title>
-  <meta property="og:url" content="https://rus-zaym.ru">
+  <meta property="og:url" content="{$config->root_url}">
   <meta property="og:title" content="РУСЗАЙМ">
   <meta property="og:description" content="Онлайн займы">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://static.tildacdn.com/tild6466-6539-4930-b537-343865373534/_.svg">
-  <link rel="canonical" href="https://rus-zaym.ru">
+  <link rel="canonical" href="{$config->root_url}">
   <!--/metatextblock-->
   <meta property="fb:app_id" content="257953674358265">
   <meta name="format-detection" content="telephone=no">
