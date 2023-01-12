@@ -45,6 +45,10 @@ class CheckPhone extends Core
                 if (empty($this->is_developer))
                     $this->response['have_pass'] = (int)!empty($user->password);
             }
+            else
+            {
+                $this->response['not_found'] = 1;
+            }
         }
 
         $this->output();
