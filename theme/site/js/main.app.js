@@ -176,6 +176,6 @@ function MainApp() {
 };
 
 $(function () {
-    if ($('.js-loan-start-form').length > 0)
+    if ($('.js-loan-start').length > 0)
         new MainApp();
 });
