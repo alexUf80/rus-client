@@ -1,7 +1,7 @@
 <?php
 
-define("SMS_LOGIN", "BF02092021");
-define("SMS_PASSWORD", "82e63217cdda82fae80ec99e231b47967e99e2fc");
+define("SMS_LOGIN", "ruszaimservis@yandex.ru");
+define("SMS_PASSWORD", "f0f35490b83ce8a058c7a42a61a5ffc492a89428");
 
 class Sms extends Core
 {
