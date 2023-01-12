@@ -292,6 +292,29 @@
 
     {$content}
 
+    <div class="hide">
+      <div class="info-modal" id="user_exists_modal">
+        <span class="error-icon"></span>
+        <span class="error-message">
+          Пользователь с номером телефона <strong class="js-error-phone-number"></strong> уже зарегистрирован.
+        </span>
+        <p>
+          Войдите в личный кабинет через <a href="lk/login">форму входа</a>
+        </p>
+      </div>
+
+      <div class="info-modal" id="user_error_modal">
+        <span class="error-icon"></span>
+        <span class="error-message"></span>
+      </div>
+
+      <div class="info-modal" id="sms_code_modal"></div>
+      <div class="info-modal" id="error_modal">
+        <span class="error-icon"></span>
+        <span class="error-message js-error-message"></span>
+      </div>
+    </div>
+
     {include "footer.tpl"}
 
   </div>
