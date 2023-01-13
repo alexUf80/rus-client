@@ -289,9 +289,9 @@
                         </div>
                         <div class="col-md-6">
 
-                            {{!-- <div class="pt-4 pr-5 pl-5 text-center">
+                            <!-- <div class="pt-4 pr-5 pl-5 text-center">
 
-                            </div> --}}
+                            </div> -->
 
                             <div id="agreement_list" style="display:none">
                             <div class="">
