@@ -493,7 +493,7 @@
                             </div>
                             <div class="col-md-6"></div>
                             <div class="col-md-6">
-                                <div id="agreement_list" style="display:none">
+                                <div id="agreement_list">
                                     <div class="">
                                         <div class="form_row">
                                             <div class="check">
