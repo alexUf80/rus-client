@@ -26,7 +26,7 @@
                 <label for="soglasie_pep" class="check_box -gil-m">
                  <span>
                      Соглашение
-                    <a style="color: RGB(189, 148, 87)" href="/files/about/soglashenie_o_ispolzovanii_pep.pdf" target="_blank"> АСП</a>
+                    <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/soglashenie_o_ispolzovanii_pep.pdf" target="_blank"> АСП</a>
                  </span>
                 </label>
             </div>
@@ -40,7 +40,7 @@
                 <label for="pravila" class="check_box -gil-m">
                  <span>
                      Правила предоставления
-                    <a style="color: RGB(189, 148, 87)" href="/files/about/pravila_predostavleniya.pdf" target="_blank"> микрозаймов</a>
+                    <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/Pravila_predostavleniya_mikrozaimov.pdf" target="_blank"> микрозаймов</a>
                  </span>
                 </label>
             </div>
@@ -56,7 +56,7 @@
                 <label for="service_reason" class="check_box -gil-m">
                  <span>
                     В случае отказа по заявке, я хочу получить информацию о <a style="color: RGB(189, 148, 87)"
-                                                                               href="/files/about/prichina_otkaza.pdf"
+                                                                               href="theme/site/new/docs/prichina_otkaza.pdf"
                                                                                target="_blank">причине отказа</a>
                  </span>
                 </label>
@@ -73,7 +73,7 @@
                 <label for="service_insurance" class="check_box -gil-m">
                  <span>
                     согласен заключить договор страхования в соответствии
-                    <a style="color: RGB(189, 148, 87)" href="/files/about/Pravila_195_strahovanie_ot_ns.pdf" target="_blank">с правилами</a>
+                    <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/Pravila_predostavleniya_mikrozaimov.pdf" target="_blank">с правилами</a>
                  </span>
                 </label>
             </div>
@@ -89,7 +89,7 @@
                 <label for="obshie_usloviya" class="check_box -gil-m">
                  <span>
                     Общие условия
-                    <a style="color: RGB(189, 148, 87)" href="/files/about/obshie_usloviya.pdf" target="_blank"> потребительского микрозайма</a>
+                    <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/Obschie_usloviya_dogovora_potrebitelskogo_zaima.pdf" target="_blank"> потребительского микрозайма</a>
                  </span>
                 </label>
             </div>
@@ -105,7 +105,7 @@
                 <label for="vozvrat" class="check_box -gil-m">
                  <span>
                     Информация об условиях предоставления, использования
-                    <a style="color: RGB(189, 148, 87)" href="/files/about/predostavlenie_vozvrat.pdf" target="_blank"> и возврата потребительского микрозайма</a>
+                    <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/Informaciya_ob_usloviyah_predostavleniya_ ispolzovaniya_i_vozvrata_zaima.pdfpredostavlenie_vozvrat.pdf" target="_blank"> и возврата потребительского микрозайма</a>
                  </span>
                 </label>
             </div>
@@ -121,7 +121,7 @@
                 <label for="cards_insurance" class="check_box -gil-m">
                  <span>
                     Правила
-                    <a style="color: RGB(189, 148, 87)" href="/files/about/strahovanie_kart.pdf" target="_blank"> страхования карт</a>
+                    <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/strahovanie_kart.pdf" target="_blank"> страхования карт</a>
                  </span>
                 </label>
             </div>
