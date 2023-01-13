@@ -646,7 +646,7 @@
                         <div class="row">
                             <div class="col-12">
                                 <div class="-fs-32 -gil-b -green text-center pb-3">
-                                    У Вас есть активный займ от {$order->contract->create_date|date}г.
+                                    У Вас есть активный займ2 от {$order->contract->create_date|date}г.
                                 </div>
                             </div>
                             <div class="col-md-6 pt-4">
