@@ -316,12 +316,16 @@
     <tr>
         <td width="50%">Юр. адрес 163045, г. Архангельск, пр. К.С. Бадигина д.19, оф.107
         </td>
-        <td width="50%">Паспорт гражданина РФ: {$passport_serial}<br>
-            Кем выдан: {$passport_issued|upper}<br>
-            Дата выдачи: {$passport_date|date} код подр.: {$subdivision_code}<br>
-            Адрес регистрации: {$regaddress_full}<br>
-            Телефон:<br>
-            E-mail:<br>
+        <td width="50%">
+            <p>
+                паспорт гражданина РФ: {$passport_serial}<br>
+                Кем выдан: {$passport_issued|upper}<br>
+                Дата выдачи: {$passport_date|date} код подр.: {$subdivision_code}<br>
+                Адрес регистрации: {$regaddress_full}<br>
+                Телефон: {$contract->user_phone_mobile}<br>
+                E-mail: {$contract->user_email}<br>
+            </p>
+            
         </td>
     </tr>
     <tr>
@@ -360,8 +364,8 @@
         <td width="50%">Телефон 8 (977) 277-23-23</td>
     </tr>
     <tr>
-        <td width="50%">Подпись _______________________ дата __.__.____г.</td>
-        <td width="50%">Подпись    _____________    дата ___________.</td>
+        <td width="50%">Подпись _______________________ дата {$contract->issuance_date|date}г.</td>
+        <td width="50%">Подпись    _____________    дата {$contract->issuance_date|date} </td>
     </tr>
     <tr>
         <td width="50%">М.П.</td>
@@ -373,8 +377,8 @@
             сайта https://rus-zaym.ru/<br>
             СМС – код, являющийся аналогом собственноручной <br>
             подписи, отправленный<br>
-            на номер ______ введен верно<br>
-            в<br>
+            на номер {$contract->user_phone_mobile} введен верно<br>
+            в {$contract->issuance_date|date} {$contract_date|time}<br>
         </td>
     </tr>
     
@@ -382,186 +386,5 @@
 </table>
 <div>
 
-</div>
-<table style="width: 50%">
-    <tr>
-        <td><strong>Кредитор</strong></td>
-        <td>Кройтор В.В</td>
-    </tr>
-</table>
-<table style="page-break-after: always">
-    <tr>
-        <td></td>
-        <td>
-            <table border="1" cellpadding="4">
-                <tr>
-                    <td>Подписано Аналогом собственноручной подписи (АСП)<br>Идентификатор клиента: {$contract->user_id}
-                        <br>Дата: {$contract->issuance_date|date}
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
-<table>
-    <tr>
-        <td style="width: 40%"></td>
-        <td style="width: 40%"></td>
-        <td><i>Приложение №1</i></td>
-    </tr>
-</table>
-<div>
 
-</div>
-<div align="center">
-    <i>к индивидуальным условиям договора потребительского микрозайма № {$contract->number}
-        от {$contract->issuance_date|date}</i>
-</div>
-<div align="center">
-    <strong><h3>ГРАФИК ПЛАТЕЖЕЙ</h3></strong>
-</div>
-<div>
 
-</div>
-<table>
-    <tr>
-        <td width="20%"><strong>{$contract->issuance_date|date}</strong></td>
-        <td width="60%"></td>
-        <td width="20%"><strong>Г. АРХАНГЕЛЬСК</strong></td>
-    </tr>
-</table>
-<div>
-
-</div>
-<div align="justify">Общество с ограниченной ответственностью Микрокредитная компания «Баренц Финанс» ОГРН
-    1217700350812,
-    зарегистрированное в реестре микрофинансовых организаций 02.09.2021 года за № 2103045009732, именуемое в дальнейшем
-    Займодавец (Кредитор), в лице Генерального директора Кройтор Виктории Викторовны, действующего на основании Устава,
-    с одной стороны, и гр.РФ {$lastname|upper} {$firstname|upper} {$patronymic|upper},
-    паспорт {$passport_serial} выдан {$passport_issued|upper} {$passport_date|date}
-    года, код подразделения {$subdivision_code}, именуемый в дальнейшем Заемщик, зарегистрированный(-ая) по
-    адресу: {$regaddress_full}, aс другой стороны, далее вместе именуемые Стороны, согласовали График платежей по
-    Договору потребительского кредита
-    (займа) № {$contract->number} от {$contract->issuance_date|date} в следующий редакции:
-</div>
-<div>
-
-</div>
-<table border="1" cellpadding="4" align="center">
-    <tbody>
-    <tr>
-        <td rowspan="2">Дата платежа</td>
-        <td rowspan="2">Сумма платежа (руб)</td>
-        <td colspan="2">В том числе</td>
-        <td rowspan="2">Остаток задолженности</td>
-    </tr>
-    <tr>
-        <td>Сумма основного долга (руб.)</td>
-        <td>Сумма процентов (руб.)</td>
-    </tr>
-    <tr>
-        <td>{$contract->return_date|date}</td>
-        <td>{$return_amount}</td>
-        <td>{$contract->amount}</td>
-        <td>{$return_amount_percents}</td>
-        <td>0</td>
-    </tr>
-    <tr>
-        <td>Общая сумма выплат:</td>
-        <td>{$return_amount}</td>
-        <td>{$contract->amount}</td>
-        <td>{$return_amount_percents}</td>
-        <td></td>
-    </tr>
-    </tbody>
-</table>
-<div>
-
-</div>
-<table align="center">
-    <tr>
-        <td width="20%"></td>
-        <td width="60%"><strong>АДРЕСА И РЕКВИЗИТЫ СТОРОН</strong></td>
-        <td width="10%"></td>
-    </tr>
-</table>
-<div>
-
-</div>
-<table>
-    <tr>
-        <td width="50%"><u>ЗАЙМОДАВЕЦ</u></td>
-        <td width="50%"><u>ЗАЕМЩИК</u></td>
-    </tr>
-    <tr>
-        <td width="50%"></td>
-        <td width="50%"></td>
-    </tr>
-    <tr>
-        <td width="50%">ООО МКК "БАРЕНЦ ФИНАНС"</td>
-        <td width="50%">{$lastname|upper} {$firstname|upper} {$patronymic|upper}</td>
-    </tr>
-    <tr>
-        <td width="50%">Юр. адрес 163045, г. Архангельск, пр. К.С. Бадигина д.19, оф.107
-        </td>
-        <td width="50%">Паспорт гражданина РФ: {$passport_serial}</td>
-    </tr>
-    <tr>
-        <td width="50%">ИНН 9723120835</td>
-        <td width="50%">Кем выдан: {$passport_issued|upper}
-        </td>
-    </tr>
-    <tr>
-        <td width="50%">КПП 290101001</td>
-        <td width="50%">Дата выдачи: {$passport_date|date} код подр.: {$subdivision_code}</td>
-    </tr>
-    <tr>
-        <td width="50%">ОГРН 1217700350812
-        </td>
-        <td width="50%">Дата рождения: {$birth|date}</td>
-    </tr>
-    <tr>
-        <td width="50%">Банк: ТОЧКА ПАО БАНКА "ФК ОТКРЫТИЕ"</td>
-        <td width="50%">Место рождения: {$birth_place}</td>
-    </tr>
-    <tr>
-        <td width="50%">р\с 40701810702500001111</td>
-        <td width="50%">Адрес регистрации: {$regaddress_full}
-        </td>
-    </tr>
-    <tr>
-        <td width="50%">к\с 30101810845250000999</td>
-        <td width="50%">СНИЛС: {$snils}</td>
-    </tr>
-    <tr>
-        <td width="50%">БИК 044525999</td>
-        <td width="50%">Банковская карта: {$active_card}</td>
-    </tr>
-</table>
-<div>
-
-</div>
-<table style="width: 50%">
-    <tr>
-        <td><strong>Кредитор</strong></td>
-        <td>Кройтор В.В</td>
-    </tr>
-    <tr>
-        <td><img src="{$config->root_dir}/theme/site/html/pdf/i/bfSigna.png"></td>
-        <td><img src="{$config->root_dir}/theme/site/html/pdf/i/bfStamp.png"></td>
-    </tr>
-</table>
-<table>
-    <tr>
-        <td></td>
-        <td>
-            <table border="1" cellpadding="4">
-                <tr>
-                    <td>Подписано Аналогом собственноручной подписи (АСП)<br>Идентификатор клиента: {$contract->user_id}
-                        <br>Дата: {$contract->issuance_date|date}
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
