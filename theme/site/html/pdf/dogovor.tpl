@@ -302,8 +302,8 @@
 </div>
 <table>
     <tr>
-        <td width="50%"><u>Кредитор:</u></td>
-        <td width="50%"><u>ЗАЕМЩИК</u></td>
+        <td width="50%"><u><strong>Кредитор:</strong></u></td>
+        <td width="50%"><u><strong>Заемщик:</strong></u></td>
     </tr>
     <tr>
         <td width="50%"></td>
