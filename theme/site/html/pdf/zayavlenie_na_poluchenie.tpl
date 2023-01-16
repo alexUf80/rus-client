@@ -93,7 +93,7 @@
 
 </div>
 
-<table border="0.5" cellpadding="5">
+<!--<table border="0.5" cellpadding="5">
     <tbody>
     <tr>
         <td style="width: 100%" align="center"><strong>Реквизиты документа, удостоверяющего личность</strong></td>
@@ -198,9 +198,9 @@
     </tr>
 
     </tbody>
-</table>
+</table>-->
 
-<table border="0.5" cellpadding="5">
+<!--<table border="0.5" cellpadding="5">
     <tbody>
     <tr>
         <td style="width: 100%" align="center"><strong>Контактная информация</strong></td>
@@ -227,7 +227,7 @@
     </tr>
 
     </tbody>
-</table>
+</table>-->
 
 <table border="0.5" cellpadding="5">
     <tbody>
