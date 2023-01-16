@@ -123,47 +123,140 @@
             Дата рождения
         </td>
         <td style="width: 20%">
-            {birth}
+            {$birth|date_format:'%d.%m.%Y'}
         </td>
         <td style="width: 20%">
             Пол
         </td>
-        <td style="width: 20%">
+        <td style="width: 40%">
             {gender}
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 20%">
+            Место рождения
+        </td>
+        <td style="width: 20%">
+            {$birth_place|upper}
+        </td>
+        <td style="width: 20%">
+            Гражданство
+        </td>
+        <td style="width: 40%">
+            
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 40%">
+            Серия (при наличии) и номер документа, удостоверяющего личность
+        </td>
+        <td style="width: 20%">
+            {$passport_serial} № {$passport_number}
+        </td>
+        <td style="width: 20%">
+            Дата выдачи
+        </td>
+        <td style="width: 20%">
+             {$passport_date}
+        </td>
+    </tr>
+     <tr>
+        <td style="width: 40%">
+            Наименование органа, выдавшего документ
+        </td>
+        <td style="width: 20%">
+            {$passport_serial} № {$passport_number}
+        </td>
+        <td style="width: 20%">
+            Дата выдачи
+        </td>
+        <td style="width: 20%">
+             {$passport_date}
+        </td>
+    </tr>
+    <tr>
+        <td style="width: 40%">
+            Наименование органа, выдавшего документ
+        </td>
+        <td style="width: 20%">
+            {passport_issued}
+        </td>
+        <td style="width: 20%">
+            Код подразделения
+        </td>
+        <td style="width: 20%">
+             {$subdivision_code}
+        </td>
+    </tr>
+     <tr>
+        <td style="width: 40%">
+           Адрес регистрации
+        </td>
+        <td style="width: 60%">
+            {$regaddress_full}
+        </td>   
+    </tr>
+
+    </tbody>
+</table>
+
+<table border="0.5" cellpadding="5">
+    <tbody>
+    <tr>
+        <td style="width: 100%" align="center"><strong>Контактная информация</strong></td>
+    </tr>
+       <tr>
+        <td style="width: 20%">
+            Номер телефона
+        </td>
+        <td style="width: 20%">
+            {$phone_mobile}
+        </td>
+         <td style="width: 20%">
+            Дополнительный телефон
+        </td>
+        <td style="width: 20%">
+            
+        </td>
+         <td style="width: 20%">
+            Электронная почта
+        </td>
+        <td style="width: 20%">
+            {$patronymic|upper}
         </td>
     </tr>
 
     </tbody>
 </table>
-<div>
 
+<table border="0.5" cellpadding="5">
+    <tbody>
+    <tr>
+        <td style="width: 100%" align="center"><strong>Сведения о работе</strong></td>
+    </tr>
+       <tr>
+        <td style="width: 20%">
+            Место работы
+        </td>
+        <td style="width: 40%">
+            {$workplace}
+        </td>
+         <td style="width: 20%">
+            Доход
+        </td>
+        <td style="width: 40%">
+            {$income}
+        </td>
 
+    </tr>
 
+    </tbody>
+</table>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<div>В случае изменения представленных сведений я обязуюсь внести изменения в информацию о себе в Личном кабинете, я оповещен и согласен с тем, что обновленные сведения будут храниться в анкете, формируемой Обществом в электронном виде.
+</div>
+<div>Я подтверждаю достоверность всех представленных мной сведений в процессе Регистрации в Личном кабинете и настоящем заявлении, обязуюсь сообщать об их изменении в срок, предусмотренный Правилами.
+</div>
 <div>И предоставить мне потребительский заем на следующих условиях:
 </div>
 <div>
@@ -184,10 +277,8 @@
     <tr style="width: 100%">
         <td style="width: 25%"></td>
         <td style="width: 25%"></td>
-        <td style="width: 50%">электронный документ создан с использованием<br>системы сайта www.barents-finans.ru<br>СМС
-            –
-            код, являющийся аналогом<br>собственноручной подписи, отправленный<br>на
-            номер {$lastname|upper} {$firstname|upper} {$patronymic|upper} {$phone_mobile} введен
+        <td style="width: 50%">электронный документ создан с использованием системы <br>сайта https://rus-zaym.ru/
+            <br>СМС – код, являющийся аналогом собственноручной <br>подписи, отправленный<br>на номер{$phone_mobile} введен
             верно<br>в {$created}
         </td>
     </tr>
