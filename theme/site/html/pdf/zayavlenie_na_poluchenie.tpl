@@ -16,7 +16,7 @@
 <div>
 
 </div>
-<!--<div style="text-align: justify">Я,
+<div style="text-align: justify">Я,
     <strong>{$lastname|upper} {$firstname|upper} {$patronymic|upper} {$birth|date_format:'%d.%m.%Y'}</strong>
     , паспорт гражданина Российской Федерации: <strong>{$passport_serial} № {$passport_number} выдан {$passport_issued|upper} {$passport_date}</strong>
     года, код подразделения <strong>{$subdivision_code}</strong>адрес места жительства или пребывания: <strong>{$birth_place|upper}</strong>, адрес фактического места жительства (почтовый): , номер мобильного телефона:
@@ -93,7 +93,7 @@
 
 </div>
 
-<!--<table border="0.5" cellpadding="5">
+<table border="0.5" cellpadding="5">
     <tbody>
     <tr>
         <td style="width: 100%" align="center"><strong>Реквизиты документа, удостоверяющего личность</strong></td>
@@ -198,9 +198,9 @@
     </tr>
 
     </tbody>
-</table>-->
+</table>
 
-<!--<table border="0.5" cellpadding="5">
+<table border="0.5" cellpadding="5">
     <tbody>
     <tr>
         <td style="width: 100%" align="center"><strong>Контактная информация</strong></td>
@@ -227,9 +227,9 @@
     </tr>
 
     </tbody>
-</table>-->
+</table>
 
-<!--<table border="0.5" cellpadding="5">
+<table border="0.5" cellpadding="5">
     <tbody>
     <tr>
         <td style="width: 100%" align="center"><strong>Сведения о работе</strong></td>
@@ -282,4 +282,4 @@
             верно<br>в {$created}
         </td>
     </tr>
-</table>-->
+</table>
