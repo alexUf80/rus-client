@@ -229,7 +229,7 @@
     </tbody>
 </table>-->
 
-<table border="0.5" cellpadding="5">
+<!--<table border="0.5" cellpadding="5">
     <tbody>
     <tr>
         <td style="width: 100%" align="center"><strong>Сведения о работе</strong></td>
@@ -282,4 +282,4 @@
             верно<br>в {$created}
         </td>
     </tr>
-</table>
+</table>-->
