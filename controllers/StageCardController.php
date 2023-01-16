@@ -105,6 +105,12 @@ class StageCardController extends Controller
         $passport = str_replace([' ','-'], '', $this->user->passport_serial);
         $passport_serial = substr($passport, 0, 4);
         $passport_number = substr($passport, 4, 6);
+        $contract = $this->contract->get_contract($this->user->id);
+
+        $contract = $contract[0];
+        
+        // $contract->user_phone_mobile = $user->phone_mobile;
+        // $contract->user_email = $user->email;
             $params = array(
                 'lastname' => $this->user->lastname,
                 'firstname' => $this->user->firstname,
@@ -154,6 +160,7 @@ class StageCardController extends Controller
                 'number' => $order_id,
                 'create_date' => date('Y-m-d'),
                 'asp' => $this->user->sms,
+                'accept_code' => $contract->accept_code,
             );
             if (!empty($this->user->contact_person_name))
             {
