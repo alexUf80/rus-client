@@ -199,14 +199,14 @@
 
     </tbody>
 </table>
-
+<br>
 <table border="0.5" cellpadding="5">
     <tbody>
     <tr>
         <td style="width: 100%" align="center"><strong>Контактная информация</strong></td>
     </tr>
        <tr>
-        <td style="width: 16%">
+        <td style="width: 20%">
             Номер телефона
         </td>
         <td style="width: 20%">
@@ -226,7 +226,7 @@
 
     </tbody>
 </table>
-
+<br>
 <table border="0.5" cellpadding="5">
     <tbody>
     <tr>
