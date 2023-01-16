@@ -16,7 +16,7 @@
 <div>
 
 </div>
-<div style="text-align: justify">Я,
+<!--<div style="text-align: justify">Я,
     <strong>{$lastname|upper} {$firstname|upper} {$patronymic|upper} {$birth|date_format:'%d.%m.%Y'}</strong>
     , паспорт гражданина Российской Федерации: <strong>{$passport_serial} № {$passport_number} выдан {$passport_issued|upper} {$passport_date}</strong>
     года, код подразделения <strong>{$subdivision_code}</strong>адрес места жительства или пребывания: <strong>{$birth_place|upper}</strong>, адрес фактического места жительства (почтовый): , номер мобильного телефона:
