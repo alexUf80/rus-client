@@ -360,7 +360,7 @@
     </tr>
     <tr>
         <td width="50%">Подпись _______________________ дата {$contract->issuance_date|date}г.</td>
-        <td width="50%">Подпись   {$contract->user_id}    дата {$contract->issuance_date|date} </td>
+        <td width="50%">Подпись   {$contract->accept_code}    дата {$contract->issuance_date|date} </td>
     </tr>
     <tr>
         <td width="50%">М.П.</td>

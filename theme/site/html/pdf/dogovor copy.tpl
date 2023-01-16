@@ -427,7 +427,7 @@
         <td>
             <table border="1" cellpadding="4">
                 <tr>
-                    <td>Подписано Аналогом собственноручной подписи (АСП)<br>Идентификатор клиента: {$contract->accept_code}
+                    <td>Подписано Аналогом собственноручной подписи (АСП)<br>Идентификатор клиента: {$contract->user_id}
                         <br>Дата: {$contract->issuance_date|date}
                     </td>
                 </tr>
