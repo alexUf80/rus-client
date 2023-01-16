@@ -129,7 +129,7 @@
             Пол
         </td>
         <td style="width: 40%">
-            {gender}
+            {$gender}
         </td>
     </tr>
     <tr>
