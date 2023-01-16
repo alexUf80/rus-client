@@ -319,31 +319,31 @@
         <td width="50%">
             <p>
                 паспорт гражданина РФ: {$passport_serial}<br>
-                Кем выдан: {$passport_issued|upper}<br>
-                Дата выдачи: {$passport_date|date} код подр.: {$subdivision_code}<br>
-                Адрес регистрации: {$regaddress_full}<br>
-                Телефон: {$contract->user_phone_mobile}<br>
-                E-mail: {$contract->user_email}<br>
             </p>
             
         </td>
     </tr>
     <tr>
         <td width="50%">ОГРН: 1197746729806; ИНН/КПП</td>
+        <td width="50%">Кем выдан: {$passport_issued|upper}</td>
 
     </tr>
     <tr>
         <td width="50%">9717088848/770301001;</td>
+        <td width="50%">Дата выдачи: {$passport_date|date} код подр.: {$subdivision_code}</td>
     </tr>
     <tr>
         <td width="50%">р/с 40701810438000000421
         </td>
+        <td width="50%">Адрес регистрации: {$regaddress_full}</td>
     </tr>
     <tr>
         <td width="50%">в ПАО СБЕРБАНК, г. Москва</td>
+        <td width="50%">Телефон: {$contract->user_phone_mobile}</td>
     </tr>
     <tr>
         <td width="50%">к/с: 30101810400000000225</td>
+        <td width="50%">E-mail: {$contract->user_email}</td>
     </tr>
     <tr>
         <td width="50%">БИК 044525225</td>
@@ -365,7 +365,7 @@
     </tr>
     <tr>
         <td width="50%">Подпись _______________________ дата {$contract->issuance_date|date}г.</td>
-        <td width="50%">Подпись    _____________    дата {$contract->issuance_date|date} </td>
+        <td width="50%">Подпись   {$contract->user_id}    дата {$contract->issuance_date|date} </td>
     </tr>
     <tr>
         <td width="50%">М.П.</td>
