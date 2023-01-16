@@ -179,7 +179,7 @@
             Наименование органа, выдавшего документ
         </td>
         <td style="width: 20%">
-            {passport_issued}
+            {$passport_issued}
         </td>
         <td style="width: 20%">
             Код подразделения
