@@ -4,7 +4,7 @@
 <table align="center">
     <tr>
         <td width="100%" align="center"><strong>ДОГОВОР ПОТРЕБИТЕЛЬСКОГО КРЕДИТА (ЗАЙМА)
-                № {$contract->number} от {$contract->issuance_date|date}</strong></td>
+                № {$contract->number} от {$contract->inssuance_date|date}</strong></td>
     </tr>
 </table>
 <div>
