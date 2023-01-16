@@ -99,19 +99,19 @@
         <td style="width: 100%" align="center"><strong>Реквизиты документа, удостоверяющего личность</strong></td>
     </tr>
     <tr>
-        <td style="width: 20%">
+        <td style="width: 16%">
             Фамилия
         </td>
-        <td style="width: 20%">
+        <td style="width: 16%">
             {$lastname|upper}  {$patronymic|upper}
         </td>
-         <td style="width: 20%">
+         <td style="width: 16%">
             Имя
         </td>
-        <td style="width: 20%">
+        <td style="width: 16%">
             {$firstname|upper}
         </td>
-         <td style="width: 20%">
+         <td style="width: 16%">
             Отчество (при наличии)
         </td>
         <td style="width: 20%">
@@ -206,7 +206,7 @@
         <td style="width: 100%" align="center"><strong>Контактная информация</strong></td>
     </tr>
        <tr>
-        <td style="width: 20%">
+        <td style="width: 16%">
             Номер телефона
         </td>
         <td style="width: 20%">
@@ -215,9 +215,7 @@
          <td style="width: 20%">
             Дополнительный телефон
         </td>
-        <td style="width: 20%">
-            
-        </td>
+        
          <td style="width: 20%">
             Электронная почта
         </td>
@@ -244,7 +242,7 @@
          <td style="width: 20%">
             Доход
         </td>
-        <td style="width: 40%">
+        <td style="width: 20%">
             {$income}
         </td>
 
