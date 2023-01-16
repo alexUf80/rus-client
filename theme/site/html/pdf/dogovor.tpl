@@ -359,10 +359,6 @@
         <td width="50%">Телефон 8 (977) 277-23-23</td>
     </tr>
     <tr>
-        <td width="50%">Подпись _______________________ дата {$contract->issuance_date|date}г.</td>
-        <td width="50%">Подпись   {$contract->accept_code}    дата {$contract->issuance_date|date} </td>
-    </tr>
-    <tr>
         <td width="50%">М.П.</td>
     </tr>
     <tr>
@@ -370,7 +366,7 @@
         <td width="50%">
             электронный документ создан с использованием системы<br>
             сайта https://rus-zaym.ru/<br>
-            СМС – код, являющийся аналогом собственноручной <br>
+            СМС – код  {$contract->accept_code}, являющийся аналогом собственноручной <br>
             подписи, отправленный<br>
             на номер {$contract->user_phone_mobile} введен верно<br>
             в {$contract->issuance_date|date} {$contract_date|time}<br>
