@@ -17,6 +17,8 @@ class AccountAnketaController extends Controller
             
             $update = array();
 
+
+
             if ($lastname = $this->request->post('lastname'))
                 $update['lastname'] = $lastname;
             if ($firstname = $this->request->post('firstname'))
