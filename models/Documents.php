@@ -11,7 +11,7 @@ class Documents extends Core
         'DOP_SOGLASHENIE' => 'prolongation.tpl',
         'POLIS_PROLONGATION' => 'polis_prolongation.tpl',
 
-        'ANKETA_FL' =>  'anketa_fl'
+        'ANKETA_FL' =>  'anketa_fl.tpl'
     );
 
 
