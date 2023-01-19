@@ -522,6 +522,26 @@
         <td style="width: 20%">Номер и дата Перечня организаций и физических лиц, в отношении которых имеются сведения об их причастности к распространению оружия массового уничтожения</td>
         <td style="width: 20%">Номер и дата решения Комиссии о замораживании (блокировании) денежных средств или иного имущества</td>
     </tr>
+    <tr>
+        <td style="width: 20%"></td>
+        <td style="width: 20%"></td>
+        <td style="width: 20%"></td>
+        <td style="width: 20%"></td>
+        <td style="width: 20%"></td>
+    </tr>    <tr>
+        <td style="width: 20%"></td>
+        <td style="width: 20%"></td>
+        <td style="width: 20%"></td>
+        <td style="width: 20%"></td>
+        <td style="width: 20%"></td>
+    </tr>
+        <tr>
+        <td style="width: 20%"></td>
+        <td style="width: 20%"></td>
+        <td style="width: 20%"></td>
+        <td style="width: 20%"></td>
+        <td style="width: 20%"></td>
+    </tr>
     
     </tbody>
 </table>
