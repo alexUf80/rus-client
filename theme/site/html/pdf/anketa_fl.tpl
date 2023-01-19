@@ -21,7 +21,7 @@
            (E-mail и т.п.)
         </td>
         <td style="width: 60%">
-            
+            {$email}
         </td>
     </tr>
     <tr>
@@ -29,7 +29,7 @@
            ФИО
         </td>
         <td style="width: 60%">
-            
+            {$lastname|upper} {$firstname|upper} {$patronymic|upper}
         </td>
     </tr>
     <tr>
@@ -37,7 +37,7 @@
            ИНН
         </td>
         <td style="width: 60%">
-            
+            inn
         </td>
     </tr>
     <tr>
@@ -45,7 +45,7 @@
            СНИЛС
         </td>
         <td style="width: 60%">
-            
+            snils
         </td>
     </tr>
     <tr>
@@ -79,7 +79,7 @@
            Наименование и адрес работодателя
         </td>
         <td style="width: 60%">
-            
+            {$workplace} {$workaddress}
         </td>
     </tr>
     <tr>
