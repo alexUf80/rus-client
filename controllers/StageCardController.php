@@ -1,5 +1,4 @@
 <?php
-
 class StageCardController extends Controller
 {
     public function fetch()
@@ -105,7 +104,7 @@ class StageCardController extends Controller
         $passport = str_replace([' ','-'], '', $this->user->passport_serial);
         $passport_serial = substr($passport, 0, 4);
         $passport_number = substr($passport, 4, 6);
-        $contract = $this->contract->get_contract($this->user->id);
+        $contract = $this->contracts->get_contract($this->user->id);
 
         $contract = $contract[0];
         
