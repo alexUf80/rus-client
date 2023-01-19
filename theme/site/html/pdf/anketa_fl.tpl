@@ -1,5 +1,5 @@
 <div style="text-align: center;">
-    <strong>Заявление о предоставлении потребительского займа</strong>
+    <strong>Сведения о физическом лице</strong>
 </div>
 <table border="0.5" cellpadding="5">
     <tbody>
