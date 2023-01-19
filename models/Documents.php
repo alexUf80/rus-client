@@ -24,7 +24,7 @@ class Documents extends Core
         'DOP_SOGLASHENIE' => 'Дополнительное соглашение о пролонгации',
         'POLIS_PROLONGATION' => 'Полис страхования',
 
-        'ANKETA_FL' =>  'Анкета ФЛ'
+        'ANKETA_FL' =>  'Сведения о физическом лице'
     );
 
     private $client_visible = array(
