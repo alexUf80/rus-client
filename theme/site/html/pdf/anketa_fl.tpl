@@ -523,20 +523,20 @@
         <td style="width: 20%">Номер и дата решения Комиссии о замораживании (блокировании) денежных средств или иного имущества</td>
     </tr>
     <tr>
-        <td style="width: 20%"></td>
+        <td style="width: 20%">&nbsp;</td>
         <td style="width: 20%"></td>
         <td style="width: 20%"></td>
         <td style="width: 20%"></td>
         <td style="width: 20%"></td>
     </tr>    <tr>
-        <td style="width: 20%"></td>
+        <td style="width: 20%">&nbsp;</td>
         <td style="width: 20%"></td>
         <td style="width: 20%"></td>
         <td style="width: 20%"></td>
         <td style="width: 20%"></td>
     </tr>
         <tr>
-        <td style="width: 20%"></td>
+        <td style="width: 20%">&nbsp;</td>
         <td style="width: 20%"></td>
         <td style="width: 20%"></td>
         <td style="width: 20%"></td>
