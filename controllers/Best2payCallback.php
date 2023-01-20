@@ -84,7 +84,6 @@ class Best2PayCallback extends Controller
                             $passport_issued = $contract_order->passport_issued;
                             $passport_date = $contract_order->passport_date;
 
-                            $date = date('Y-m-d H:i:s');
 
                             $document_params = array(
                                 'lastname' => $contract_order->lastname,
