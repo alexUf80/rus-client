@@ -147,8 +147,6 @@ class Best2PayCallback extends Controller
 
                                     $rest_amount = $rest_amount - $this->settings->prolongation_amount;
 
-                                    //Отправляем чек по страховке
-                                    $this->Cloudkassir->send_insurance($operation_id);
                                     $payment_amount -= $this->settings->prolongation_amount;
 
                                     $docs = 2;
