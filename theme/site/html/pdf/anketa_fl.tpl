@@ -12,7 +12,7 @@
             Телефон/фак:
         </td>
         <td style="width: 20%">
-            
+            phone_mobile
         </td>
     </tr>
     <tr>
@@ -21,7 +21,7 @@
            (E-mail и т.п.)
         </td>
         <td style="width: 60%">
-            {$email}
+            $email
         </td>
     </tr>
     <tr>
@@ -29,7 +29,7 @@
            ФИО
         </td>
         <td style="width: 60%">
-            {$lastname|upper} {$firstname|upper} {$patronymic|upper}
+            $lastname|upper $firstname|upper $patronymic|upper
         </td>
     </tr>
     <tr>
@@ -72,6 +72,7 @@
            Должность
         </td>
         <td style="width: 60%">
+            profession
         </td>
     </tr>
     <tr>
@@ -79,7 +80,7 @@
            Наименование и адрес работодателя
         </td>
         <td style="width: 60%">
-            {$workplace} {$workaddress}
+            $workplace $workaddress
         </td>
     </tr>
     <tr>
@@ -164,7 +165,7 @@
            Страна места регистрации
         </td>
         <td style="width: 60%">
-           
+           s_addresses 
         </td>
     </tr>
     <tr>
@@ -172,7 +173,7 @@
            Код субъекта Российской Федерации
         </td>
         <td style="width: 60%">
-           
+           s_addresses  region
         </td>
     </tr>
     <tr>
@@ -312,10 +313,10 @@
     </tr>
     <tr>
         <td  style="width: 20%">
-          
+          Серия
         </td>
         <td  style="width: 20%">
-          Серия
+          
         </td>
         <td  style="width: 20%">
           

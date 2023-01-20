@@ -191,8 +191,7 @@
         <td style="width: 25%"></td>
         <td style="width: 25%"></td>
         <td style="width: 50%">электронный документ создан с использованием<br>системы сайта www.barents-finans.ru<br>СМС
-            –
-            код, являющийся аналогом<br>собственноручной подписи, отправленный<br>на
+            – {$accept_code} код, являющийся аналогом<br>собственноручной подписи, отправленный<br>на
             номер {$lastname|upper} {$firstname|upper} {$patronymic|upper} {$phone_mobile} введен
             верно<br>в {$created}
         </td>
