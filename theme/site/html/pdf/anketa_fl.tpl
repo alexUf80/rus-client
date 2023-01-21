@@ -381,7 +381,7 @@
           Код подразделения, выдавшего документ
         </td>
         <td style="width: 60%">
-           {$birth_place}
+           {$subdivision_code}
         </td>
     </tr>
     <tr>
