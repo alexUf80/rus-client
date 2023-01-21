@@ -12,7 +12,7 @@
             Телефон/фак:
         </td>
         <td style="width: 20%">
-            phone_mobile
+            {$phone}
         </td>
     </tr>
     <tr>
@@ -21,7 +21,7 @@
            (E-mail и т.п.)
         </td>
         <td style="width: 60%">
-            $email
+            {$email}
         </td>
     </tr>
     <tr>
@@ -29,7 +29,7 @@
            ФИО
         </td>
         <td style="width: 60%">
-            $lastname|upper $firstname|upper $patronymic|upper
+            {$lastname|upper} {$firstname|upper} {$patronymic|upper}
         </td>
     </tr>
     <tr>
@@ -37,7 +37,7 @@
            ИНН
         </td>
         <td style="width: 60%">
-            inn
+            {$inn}
         </td>
     </tr>
     <tr>
@@ -45,7 +45,7 @@
            СНИЛС
         </td>
         <td style="width: 60%">
-            snils
+            {$snils}
         </td>
     </tr>
     <tr>
@@ -61,7 +61,7 @@
            Сведения о принадлежности Клиента (регистрация, место жительства, место нахождения, наличие счета в банке) к государству (территории), которое (которая) не выполняет рекомендации Группы разработки финансовых мер борьбы с отмыванием денег (ФАТФ).
         </td>
         <td style="width: 60%">
-           
+           {$regaddress_full|escape}
         </td>
     </tr>
     <tr>
@@ -72,7 +72,7 @@
            Должность
         </td>
         <td style="width: 60%">
-            profession
+            {$profession}
         </td>
     </tr>
     <tr>
@@ -80,7 +80,7 @@
            Наименование и адрес работодателя
         </td>
         <td style="width: 60%">
-            $workplace $workaddress
+            {$workplace} {$workaddress}
         </td>
     </tr>
     <tr>
@@ -96,7 +96,7 @@
            Дата начала отношений с Клиентом (дата заключения первого договора на проведение операции с денежными средствами или иным имуществом)
         </td>
         <td style="width: 60%">
-           
+           {$created|date}
         </td>
     </tr>
     <tr>
@@ -104,7 +104,7 @@
            Дата прекращения отношений с Клиентом
         </td>
         <td style="width: 60%">
-           
+           {$return_date|date}
         </td>
     </tr>
     <tr>
@@ -165,7 +165,7 @@
            Страна места регистрации
         </td>
         <td style="width: 60%">
-           s_addresses 
+           РФ 
         </td>
     </tr>
     <tr>
@@ -173,7 +173,7 @@
            Код субъекта Российской Федерации
         </td>
         <td style="width: 60%">
-           s_addresses  region
+           {$regindex}
         </td>
     </tr>
     <tr>
@@ -181,7 +181,7 @@
            Район
         </td>
         <td style="width: 60%">
-           
+           {$regregion}
         </td>
     </tr>
     <tr>
@@ -189,7 +189,7 @@
            Населенный пункт
         </td>
         <td style="width: 60%">
-           
+           {$regcity}
         </td>
     </tr>
     <tr>
@@ -197,7 +197,7 @@
            Улица
         </td>
         <td style="width: 60%">
-           
+           {$reglocality}
         </td>
     </tr>
     <tr>
@@ -205,7 +205,7 @@
            Дом
         </td>
         <td style="width: 60%">
-           
+           {$reghousing}
         </td>
     </tr>
     <tr>
@@ -213,7 +213,7 @@
            Корпус
         </td>
         <td style="width: 60%">
-           
+           {$regbuilding}
         </td>
     </tr>
     <tr>
@@ -221,7 +221,7 @@
           Квартира
         </td>
         <td style="width: 60%">
-           
+           {$regroom}
         </td>
     </tr>
     <tr>
@@ -239,7 +239,7 @@
           Страна места нахождения
         </td>
         <td style="width: 60%">
-           
+           РФ 
         </td>
     </tr>
     <tr>
@@ -247,7 +247,7 @@
            Код субъекта Российской Федерации
         </td>
         <td style="width: 60%">
-           
+           {$faktregindex}
         </td>
     </tr>
     <tr>
@@ -255,7 +255,7 @@
            Район
         </td>
         <td style="width: 60%">
-           
+           {$faktregion}
         </td>
     </tr>
     <tr>
@@ -263,7 +263,7 @@
            Населенный пункт
         </td>
         <td style="width: 60%">
-           
+           {$faktcity}
         </td>
     </tr>
     <tr>
@@ -271,7 +271,7 @@
            Улица
         </td>
         <td style="width: 60%">
-           
+           {$faktstreet}
         </td>
     </tr>
     <tr>
@@ -279,7 +279,7 @@
            Дом
         </td>
         <td style="width: 60%">
-           
+           {$fakthousing}
         </td>
     </tr>
     <tr>
@@ -287,7 +287,7 @@
            Корпус
         </td>
         <td style="width: 60%">
-           
+           {$faktbuilding}
         </td>
     </tr>
     <tr>
@@ -295,7 +295,7 @@
           Квартира
         </td>
         <td style="width: 60%">
-           
+           {$faktroom}
         </td>
     </tr>
     <tr>
@@ -308,7 +308,7 @@
           Вид документа
         </td>
         <td style="width: 50%">
-           
+           Паспорт
         </td>
     </tr>
     <tr>
@@ -316,7 +316,7 @@
           Серия
         </td>
         <td  style="width: 20%">
-          
+            {$passport_serial|escape}
         </td>
         <td  style="width: 20%">
           
@@ -325,7 +325,7 @@
           Номер
         </td>
         <td  style="width: 20%">
-          
+          {$passport_number|escape}
         </td>
     </tr>
     <tr>
@@ -333,7 +333,7 @@
           Дата выдачи
         </td>
         <td style="width: 60%">
-           
+           {$passport_date|date}
         </td>
     </tr>
     <tr>
@@ -341,7 +341,7 @@
           Кем выдан
         </td>
         <td style="width: 60%">
-           
+           {$passport_issued|escape}
         </td>
     </tr>
     <tr>
@@ -349,7 +349,7 @@
           Дата рождения
         </td>
         <td style="width: 60%">
-           
+           {$birth}
         </td>
     </tr>
     <tr>
@@ -357,7 +357,7 @@
           Место рождения: страна
         </td>
         <td style="width: 60%">
-           
+           РФ
         </td>
     </tr>
     <tr>
@@ -365,7 +365,7 @@
           Населенный пунк
         </td>
         <td style="width: 60%">
-           
+           {$birth_place}
         </td>
     </tr>
     <tr>
@@ -373,7 +373,7 @@
           Гражданство
         </td>
         <td style="width: 60%">
-           
+           РФ
         </td>
     </tr>
     <tr>
@@ -381,7 +381,7 @@
           Код подразделения, выдавшего документ
         </td>
         <td style="width: 60%">
-           
+           {$birth_place}
         </td>
     </tr>
     <tr>
