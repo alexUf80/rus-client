@@ -156,7 +156,7 @@ class SmsCode extends Core
                     $this->response['response'] = $send_response;
                     $sms_message['response'] = $send_response;
                 } else {
-                    $send_response = $this->sms->send($phone, "$rand_code - код подтверждения https://barents-finans.ru/lk/");
+                    $send_response = $this->sms->send($phone, "$rand_code - код подтверждения https://rus-zaym.ru/");
                     $this->response['response'] = $send_response;
                     $sms_message['response'] = $send_response;
 
