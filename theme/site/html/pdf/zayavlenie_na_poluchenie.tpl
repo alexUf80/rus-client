@@ -107,7 +107,7 @@
             Фамилия
         </td>
         <td style="width: 16%">
-            {$lastname|upper}  {$patronymic|upper}
+            {$lastname|upper}  
         </td>
          <td style="width: 16%">
             Имя
