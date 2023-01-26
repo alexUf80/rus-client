@@ -15,7 +15,7 @@
         <td style="width: 70%" align="center"><strong>Ключевой информационный документ<br>об условиях добровольного
                 страхования</strong>
         </td>
-        <td rowspan="3"><img src="{$config->root_dir}/theme/site/html/pdf/i/qr.png"></td>
+        <td rowspan="3"><img src="{$config->root_dir}/theme/site/html/pdf/i/kodkit.png"></td>
     </tr>
     <tr>
         <td></td>
