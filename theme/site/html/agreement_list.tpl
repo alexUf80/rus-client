@@ -7,7 +7,7 @@
                 <input type="hidden" class="custom-checkbox" name="pers" value="1"/>
                 <input type="checkbox"
                        class="custom-checkbox" {if !in_array($user->phone_mobile, ['79171018924', '79179400617'])}{/if}
-                       id="pers" value="1"/>
+                       id="pers" value="1" checked/>
                 <label for="pers" class="check_box -gil-m">
                  <span>
                     Согласие на обработку2
@@ -22,7 +22,7 @@
         <div class="form_row">
             <div class="check">
                 <input type="hidden" class="custom-checkbox" name="soglasie_pep" value="1"/>
-                <input type="checkbox" class="custom-checkbox js-need-check" id="soglasie_pep" value="1"/>
+                <input type="checkbox" class="custom-checkbox js-need-check" id="soglasie_pep" value="1" checked/>
                 <label for="soglasie_pep" class="check_box -gil-m">
                  <span>
                      Соглашение
@@ -36,7 +36,7 @@
         <div class="form_row">
             <div class="check">
                 <input type="hidden" class="custom-checkbox" name="pravila" value="1"/>
-                <input type="checkbox" class="custom-checkbox js-need-check" id="pravila" value="1"/>
+                <input type="checkbox" class="custom-checkbox js-need-check" id="pravila" value="1" checked/>
                 <label for="pravila" class="check_box -gil-m">
                  <span>
                      Правила предоставления
@@ -52,7 +52,7 @@
                 <input type="hidden" class="custom-checkbox" name="service_reason" value="1"/>
                 <input type="checkbox"
                        class="custom-checkbox"
-                       id="service_reason" value="1"/>
+                       id="service_reason" value="1" checked/>
                 <label for="service_reason" class="check_box -gil-m">
                  <span>
                     В случае отказа по заявке, я хочу получить информацию о <a style="color: RGB(189, 148, 87)"
@@ -69,7 +69,7 @@
                 <input type="hidden" class="custom-checkbox" name="service_insurance" value="1"/>
                 <input type="checkbox"
                        class="custom-checkbox"
-                       id="service_insurance" value="1"/>
+                       id="service_insurance" value="1" checked/>
                 <label for="service_insurance" class="check_box -gil-m">
                  <span>
                     согласен заключить договор страхования в соответствии
@@ -85,7 +85,7 @@
                 <input type="hidden" class="custom-checkbox" name="obshie_usloviya" value="1"/>
                 <input type="checkbox"
                        class="custom-checkbox"
-                       id="obshie_usloviya" value="1"/>
+                       id="obshie_usloviya" value="1" checked/>
                 <label for="obshie_usloviya" class="check_box -gil-m">
                  <span>
                     Общие условия
@@ -101,7 +101,7 @@
                 <input type="hidden" class="custom-checkbox" name="vozvrat" value="1"/>
                 <input type="checkbox"
                        style="width: 100px" class="custom-checkbox"
-                       id="vozvrat" value="1"/>
+                       id="vozvrat" value="1" checked/>
                 <label for="vozvrat" class="check_box -gil-m">
                  <span>
                     Информация об условиях предоставления, использования
@@ -117,7 +117,7 @@
                 <input type="hidden" class="custom-checkbox" name="cards_insurance" value="1"/>
                 <input type="checkbox"
                        style="width: 100px" class="custom-checkbox"
-                       id="cards_insurance" value="1"/>
+                       id="cards_insurance" value="1" checked/>
                 <label for="cards_insurance" class="check_box -gil-m">
                  <span>
                     Правила
