@@ -10,7 +10,7 @@
                        id="pers" value="1" checked/>
                 <label for="pers" class="check_box -gil-m">
                  <span>
-                    Согласие на обработку2
+                    Согласие на обработку
                     <a href="theme/site/new/docs/personaData.pdf" target="_blank"
                        style="color: RGB(189, 148, 87)">персональных данных</a>
                  </span>
@@ -132,7 +132,7 @@
             <div class="form_row">
                 <div class="check">
                     <input type="hidden" class="custom-checkbox" name="ind_usloviya" value="1"/>
-                    <input type="checkbox" class="custom-checkbox" id="ind_usloviya" value="1"/>
+                    <input type="checkbox" class="custom-checkbox" id="ind_usloviya" value="1" checked/>
                     <label for="ind_usloviya" class="check_box -gil-m">
                         <a style="color: RGB(189, 148, 87)"
                            href="{$config->root_url}/preview/ind_usloviya_nl?contract_id={$order->contract->id}"
