@@ -22,7 +22,7 @@
         <div class="form_row">
             <div class="check">
                 <input type="hidden" class="custom-checkbox" name="soglasie_pep" value="1"/>
-                <input type="checkbox" class="custom-checkbox js-need-check" id="soglasie_pep" value="1" checked/>
+                <input type="checkbox" class="custom-checkbox js-need-check" id="soglasie_pep" value="1" />
                 <label for="soglasie_pep" class="check_box -gil-m">
                  <span>
                      Соглашение
@@ -114,7 +114,7 @@
     <div class="">
         <div class="form_row">
             <div class="check">
-                <input type="hidden" class="custom-checkbox" name="cards_insurance" value="1"/>
+                <input type="hidden" class="custom-checkbox" name="cards_insurance" value="1" checked/>
                 <input type="checkbox"
                        style="width: 100px" class="custom-checkbox"
                        id="cards_insurance" value="1" checked/>
@@ -149,7 +149,7 @@
                     <div class="form_row">
                         <div class="check">
                             <input type="hidden" class="custom-checkbox" name="pep" value="1"/>
-                            <input type="checkbox" class="custom-checkbox" id="pep" value="1"/>
+                            <input type="checkbox" class="custom-checkbox" id="pep" value="1" checked/>
                             <label for="pep" class="check_box -gil-m">
                                 <a class="pep" style="color: RGB(189, 148, 87)"
                                    href="/document/{$order->user_id}/{$document->id}?insurance=1"
