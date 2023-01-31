@@ -40,7 +40,7 @@
                 <label for="pravila" class="check_box -gil-m">
                  <span>
                      Правила предоставления
-                    <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/Pravila_predostavleniya_mikrozaimov.pdf" target="_blank"> микрозаймов</a>
+                    <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/правила_предоставления_микрозаймов.pdf" target="_blank"> микрозаймов</a>
                  </span>
                 </label>
             </div>
