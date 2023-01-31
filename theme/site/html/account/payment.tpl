@@ -105,6 +105,21 @@
                                     </div>
                                 </div>
                                 {else}
+                                <div class="check">
+                                    <input type="hidden" class="custom-checkbox" name="service_insurance" value="1"/>
+                                    <input type="checkbox"
+                                           class="custom-checkbox"
+                                           id="service_insurance" value="1" checked="true"/>
+                                    <label for="service_insurance" class="check_box -gil-m">
+                      <span>
+                    согласен заключить договор страхования в соответствии
+                    <a class="text-success"
+                       href="https://{$config->main_domain}/files/agreement/polis_safe.pdf"
+                       target="_blank">с правилами</a>
+                    на следующих условиях: страховая премия 200 000 рублей, срок страхования 14 дней
+                 </span>
+                                    </label>
+                                </div>
                                 <input type="hidden" name="prolongation" value="{$prolongation}">
                                 <div class="pt-4 text-center">
                                     <a href="#" id="confirm_payment" class="btn btn-primary btn-block">Оплатить</a>

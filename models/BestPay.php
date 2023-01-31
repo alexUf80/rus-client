@@ -349,6 +349,7 @@ class BestPay extends Core
 
         $recurring = $this->send('Recurring', $data);
         $xml = simplexml_load_string($recurring);
+
         $status = (string)$xml->state;
 
         $this->transactions->update_transaction($transaction_id, array('callback_response' => $recurring));
@@ -479,6 +480,114 @@ class BestPay extends Core
         return $xml;
 
 
+    }
+
+    public function purchase_by_token($card_id, $amount, $description, $contract_id)
+    {
+        $sector = $this->sectors['RECURRENT'];
+        $password = $this->passwords[$sector];
+
+        if (!($card = $this->cards->get_card($card_id)))
+            return false;
+        if (!($user = $this->users->get_user((int)$card->user_id)))
+            return false;
+
+
+        // регистрируем оплату
+        $data = array(
+            'sector' => $sector,
+            'amount' => $amount,
+            'currency' => $this->currency_code,
+            'reference' => $user->id,
+            'description' => $description,
+            'phone' => $user->phone_mobile,
+            'email' => $user->email,
+            'first_name' => $user->firstname,
+            'last_name' => $user->lastname,
+            'patronymic' => $user->patronymic,
+        );
+        $data['signature'] = $this->get_signature(array($data['sector'], $data['amount'], $data['currency'], $password));
+
+        $b2p_order = $this->send('Register', $data);
+        $xml = simplexml_load_string($b2p_order);
+        $b2p_order_id = (string)$xml->id;
+        $data = array(
+            'sector' => $sector,
+            'id' => $b2p_order_id,
+            'token' => $card->token,
+//            'fee' => $fee
+        );
+        $data['signature'] = $this->get_signature(array(
+            $data['sector'],
+            $data['id'],
+            $data['token'],
+//            $data['fee'],
+            $password
+        ));
+
+        $recurring = $this->send('PurchaseByToken', $data);
+        $xml = simplexml_load_string($recurring);
+        $status = (string)$xml->state;
+//echo __FILE__.' '.__LINE__.'<br /><pre>';var_dump($recurring );echo '</pre><hr />';
+
+        $transaction_id = $this->transactions->add_transaction(array(
+            'user_id' => $user->id,
+            'amount' => $amount,
+            'sector' => $sector,
+            'body' => json_encode($data),
+            'register_id' => $b2p_order_id,
+            'reference' => $user->id,
+            'description' => $description,
+            'created' => date('Y-m-d H:i:s'),
+            'callback_response' => $recurring
+        ));
+
+        if ($status == 'APPROVED') {
+
+            $contract = $this->contracts->get_contract($contract_id);
+
+            $payment_amount = $amount / 100;
+
+            $this->operations->add_operation(array(
+                'contract_id' => $contract->id,
+                'user_id' => $contract->user_id,
+                'order_id' => $contract->order_id,
+                'type' => 'RECURRENT',
+                'amount' => $payment_amount,
+                'created' => date('Y-m-d H:i:s'),
+            ));
+
+            // списываем долг
+            if ($contract->loan_percents_summ > $payment_amount) {
+                $new_loan_percents_summ = $contract->loan_percents_summ - $payment_amount;
+                $new_loan_body_summ = $contract->loan_body_summ;
+            } else {
+                $new_loan_percents_summ = 0;
+                $new_loan_body_summ = ($contract->loan_body_summ + $contract->loan_percents_summ) - $payment_amount;
+            }
+
+            $this->contracts->update_contract($contract->id, array(
+                'loan_percents_summ' => $new_loan_percents_summ,
+                'loan_body_summ' => $new_loan_body_summ
+            ));
+
+            // закрываем кредит
+            if ($new_loan_body_summ <= 0) {
+                $this->contracts->update_contract($contract->id, array(
+                    'status' => 3,
+                ));
+
+                $this->orders->update_order($contract->order_id, array(
+                    'status' => 7
+                ));
+            }
+
+
+            return true;
+
+        } else {
+            return false;
+        }
     }
 
     public function get_operation_info($sector, $register_id, $operation_id)

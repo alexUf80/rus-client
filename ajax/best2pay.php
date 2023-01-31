@@ -25,6 +25,10 @@ class BestPayAjax extends Ajax
             case 'recurrent':
                 $this->recurrent_action();                
             break;
+
+            case 'recurrent_close':
+                $this->recurrent_close();
+                break;
             
             default:
                 $this->response['error'] = 'UNDEFINED_ACTION';
@@ -43,7 +47,7 @@ class BestPayAjax extends Ajax
         $amount = (float)str_replace(',', '.', $this->request->get('amount'));
         $contract_id = $this->request->get('contract_id', 'integer');
         $prolongation = $this->request->get('prolongation', 'integer');
-        
+
         if (empty($amount))
         {
             $this->response['error'] = 'EMPTY_AMOUNT';
@@ -62,7 +66,42 @@ class BestPayAjax extends Ajax
             $amount = $amount * 100;
             $response = $this->BestPay->recurrent_pay($card->id, $amount, $description, $contract_id, $prolongation);
             if (empty($response))
-                $this->response['error'] = 'Не удалось оплатить';
+                $this->response['error'] = $response;
+            else
+                $this->response['success'] = 1;
+        }
+    }
+
+    private function recurrent_close()
+    {
+        if (!empty($_SESSION['looker_mode']))
+            return false;
+
+        $card_id = $this->request->get('card_id', 'integer');
+        $amount = (float)str_replace(',', '.', $this->request->get('amount'));
+        $contract_id = $this->request->get('contract_id', 'integer');
+        $contract = $this->contracts->get_contract($contract_id);
+
+        if (empty($amount))
+        {
+            $this->response['error'] = 'EMPTY_AMOUNT';
+        }
+        elseif (empty($card_id))
+        {
+            $this->response['error'] = 'EMPTY_CARD';
+        }
+        elseif (!($card = $this->cards->get_card($card_id)))
+        {
+            $this->response['error'] = 'UNDEFINED_CARD';
+        }
+        else
+        {
+            $description = "Оплата по договору ".$contract->number;
+            $amount = $amount * 100;
+            $response = $this->BestPay->purchase_by_token($card->id, $amount, $description, $contract_id);
+
+            if (empty($response))
+                $this->response['error'] = $response;
             else
                 $this->response['success'] = 1;
         }

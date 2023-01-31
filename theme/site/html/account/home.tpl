@@ -4,6 +4,36 @@
     <script src="theme/site/js/calc.app.js?v=1.09"></script>
     <script src="theme/site/js/lk.app.js?v=1.10"></script>
     <script src="theme/site/js/contract_accept.app.js?v=1.09"></script>
+    <script>
+        $(function () {
+
+            $('.closeContract').on('click', function (e) {
+                e.preventDefault();
+
+                let form = $(this).closest('form').serialize();
+
+                $.ajax({
+                    url: 'ajax/best2pay.php',
+                    data: form,
+                    success: function (resp) {
+                        if (!!resp.error)
+                        {
+                            $('.payment-block-error').html('Ошибка: '+resp.error).removeClass('hide');
+
+                            return false;
+                        }
+                        else
+                        {
+                            $('.payment-block-error').addClass('hide');
+                            location.href = 'account';
+
+
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 {/capture}
 
 {capture name='page_styles'}
@@ -438,26 +468,22 @@
                                 <div class="pt-2 text-center">
                                     <form action="account/pay" method="POST" class="border rounded p-2">
                                         <input type="hidden" name="contract_id" value="{$order->contract->id}"/>
+                                        <input type="hidden" name="action" value="recurrent_close"/>
+                                        <input type="hidden" name="card_id" {foreach $cards as $card} {if $card->base_card == 1}value="{$card->id}"{/if}{/foreach}/>
                                         <div class="row">
                                             <div class="col-md-4 col-12">
                                                 <input type="text" class="form-control text-right" name="amount"
                                                        value="{$order->contract->loan_body_summ + $order->contract->loan_percents_summ + $order->contract->loan_charge_summ + $order->contract->loan_peni_summ}"
-                                                {if $order->contract->status == 11}
+                                                        {if $order->contract->status == 11}
                                                 readonly
-                                                {/if}/>
+                                                        {/if}/>
                                             </div>
                                             <div class="col-md-6 pt-1">
-                                                {if $order->contract->type == 'onec'}
-                                                    <a href="https://nalichnoe.com/login/"
-                                                       class="btn btn-primary btn-block">Перейти&nbsp;к&nbsp;оплате</a>
+                                                {if $order->contract->status == 11}
+                                                    <button type="submit" class="btn btn-primary btn-block">Оплатить
+                                                    </button>
                                                 {else}
-                                                    {if $order->contract->status == 11}
-                                                        <button type="submit" class="btn btn-primary btn-block">Оплатить
-                                                        </button>
-                                                    {else}
-                                                        <button type="submit" class="btn btn-primary btn-block">Закрыть
-                                                        </button>
-                                                    {/if}
+                                                    <div class="btn btn-primary btn-block closeContract">Закрыть</div>
                                                 {/if}
                                             </div>
                                         </div>
@@ -492,7 +518,7 @@
                                 {/if}
                             </div>
                             <div class="col-md-6"></div>
-                            
+
                         </div>
                     </div>
                 {/if}
