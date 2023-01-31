@@ -114,7 +114,7 @@
                       <span>
                     согласен заключить договор страхования в соответствии
                     <a class="text-success"
-                       href="https://{$config->main_domain}/theme/site/new/docs/Pravila_predostavleniya_mikrozaimov.pdf"
+                       href="https://{$config->main_domain}/theme/site/new/docs/polis.pdf"
                        target="_blank">с правилами</a>
                     на следующих условиях: страховая премия 200 000 рублей, срок страхования 14 дней
                  </span>
