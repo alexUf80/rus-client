@@ -11,7 +11,7 @@
                 <label for="pers" class="check_box -gil-m">
                  <span>
                     Согласие на обработку
-                    <a href="theme/site/new/docs/personaData.pdf" target="_blank"
+                    <a href="theme/site/new/docs/Согласие_на_обработку_персональных_данных.pdf" target="_blank"
                        style="color: RGB(189, 148, 87)">персональных данных</a>
                  </span>
                 </label>
