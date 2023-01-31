@@ -52,7 +52,11 @@
                                             <li class="docs_list_item">
                                                 <a href="{$config->root_url}/document/{$user->id}/{$document->id}"
                                                    class="docs_list_link" target="_blank">
-                                                    {$document->name|escape}
+                                                    {if $document->name|escape == 'Полис страхования' ||  $document->name|escape == 'Полис страхования при пролонгаци' ||  $document->name|escape == 'Дополнительное соглашение о реструктуризации'}
+                                                        {$document->name|escape} от {$document->created|date}
+                                                    {else}
+                                                        {$document->name|escape}
+                                                    {/if}
                                                 </a>
                                             </li>
                                     {/foreach}
