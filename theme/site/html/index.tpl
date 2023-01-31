@@ -25,7 +25,7 @@
   <meta http-equiv="x-dns-prefetch-control" content="on">
   <link rel="dns-prefetch" href="https://ws.tildacdn.com">
   <link rel="dns-prefetch" href="https://static.tildacdn.com">
-  <link rel="shortcut icon" href="https://static.tildacdn.com/tild3564-6639-4633-a665-323531353834/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="theme/site/i/favicon/favicon.ico" type="image/x-icon">
   <link rel="apple-touch-icon" href="https://static.tildacdn.com/tild3939-3761-4561-a431-356565393363/1-01.png">
   <link rel="apple-touch-icon" sizes="76x76" href="https://static.tildacdn.com/tild3939-3761-4561-a431-356565393363/1-01.png">
   <link rel="apple-touch-icon" sizes="152x152" href="https://static.tildacdn.com/tild3939-3761-4561-a431-356565393363/1-01.png">
