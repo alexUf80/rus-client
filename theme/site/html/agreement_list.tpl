@@ -26,7 +26,7 @@
                 <label for="soglasie_pep" class="check_box -gil-m">
                  <span>
                      Соглашение
-                    <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/soglashenie_o_ispolzovanii_pep.pdf" target="_blank"> АСП</a>
+                    <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/Согласия_Заемщика_на_обработку_персональных_данных_на_получение_из_бюро_кредитных_историй_информации.pdf" target="_blank"> АСП</a>
                  </span>
                 </label>
             </div>
