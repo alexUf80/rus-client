@@ -77,7 +77,7 @@ class SmsCode extends Core
         } else {
             $contract_id = $this->request->get('contract_id', 'integer');
             if ($contract = $this->contracts->get_contract($contract_id)) {
-                $msg = 'Активируй займ ' . ($contract->amount * 1) . ' в личном кабинете, код' . $contract->accept_code;
+                $msg = 'Активируй займ ' . ($contract->amount * 1) . ' в личном кабинете, код ' . $contract->accept_code;
                 if (!empty($this->is_developer)) {
                     $this->response['mode'] = 'developer';
                     $this->response['developer_code'] = $contract->accept_code;
