@@ -4,9 +4,9 @@
     <div class="">
         <div class="form_row">
             <div class="check">
-                <input type="hidden" class="custom-checkbox js-need-check" name="pers" value="1" />
+                <input type="hidden" class="custom-checkbox" name="pers" value="1" />
                 <input type="checkbox"
-                       class="custom-checkbox" {if !in_array($user->phone_mobile, ['79171018924', '79179400617'])}{/if}
+                       class="custom-checkbox  js-need-check" {if !in_array($user->phone_mobile, ['79171018924', '79179400617'])}{/if}
                        id="pers" value="1" checked/>
                 <label for="pers" class="check_box -gil-m">
                  <span>
