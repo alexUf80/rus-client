@@ -4,7 +4,7 @@
     <div class="">
         <div class="form_row">
             <div class="check">
-                <input type="hidden" class="custom-checkbox" name="pers" value="1" />
+                <input type="hidden" class="custom-checkbox js-need-check" name="pers" value="1" />
                 <input type="checkbox"
                        class="custom-checkbox" {if !in_array($user->phone_mobile, ['79171018924', '79179400617'])}{/if}
                        id="pers" value="1" checked/>
@@ -49,9 +49,9 @@
     <div class="">
         <div class="form_row">
             <div class="check">
-                <input type="hidden" class="custom-checkbox" name="service_reason" value="1"/>
+                <input type="hidden" class="custom-checkbox " name="service_reason" value="1"/>
                 <input type="checkbox"
-                       class="custom-checkbox"
+                       class="custom-checkbox js-need-check"
                        id="service_reason" value="1" checked/>
                 <label for="service_reason" class="check_box -gil-m">
                  <span>
@@ -68,7 +68,7 @@
             <div class="check">
                 <input type="hidden" class="custom-checkbox" name="service_insurance" value="1"/>
                 <input type="checkbox"
-                       class="custom-checkbox"
+                       class="custom-checkbox js-need-check"
                        id="service_insurance" value="1" checked/>
                 <label for="service_insurance" class="check_box -gil-m">
                  <span>
@@ -84,7 +84,7 @@
             <div class="check">
                 <input type="hidden" class="custom-checkbox" name="obshie_usloviya" value="1"/>
                 <input type="checkbox"
-                       class="custom-checkbox"
+                       class="custom-checkbox js-need-check"
                        id="obshie_usloviya" value="1" checked/>
                 <label for="obshie_usloviya" class="check_box -gil-m">
                  <span>
@@ -100,7 +100,7 @@
             <div class="check">
                 <input type="hidden" class="custom-checkbox" name="vozvrat" value="1"/>
                 <input type="checkbox"
-                       style="width: 100px" class="custom-checkbox"
+                       style="width: 100px" class="custom-checkbox js-need-check"
                        id="vozvrat" value="1" checked/>
                 <label for="vozvrat" class="check_box -gil-m">
                  <span>
@@ -116,7 +116,7 @@
             <div class="check">
                 <input type="hidden" class="custom-checkbox" name="cards_insurance" value="1" checked/>
                 <input type="checkbox"
-                       style="width: 100px" class="custom-checkbox"
+                       style="width: 100px" class="custom-checkbox js-need-check"
                        id="cards_insurance" value="1" checked/>
                 <label for="cards_insurance" class="check_box -gil-m">
                  <span>
@@ -132,7 +132,7 @@
             <div class="form_row">
                 <div class="check">
                     <input type="hidden" class="custom-checkbox" name="ind_usloviya" value="1"/>
-                    <input type="checkbox" class="custom-checkbox" id="ind_usloviya" value="1" checked/>
+                    <input type="checkbox" class="custom-checkbox js-need-check" id="ind_usloviya" value="1" checked/>
                     <label for="ind_usloviya" class="check_box -gil-m">
                         <a style="color: RGB(189, 148, 87)"
                            href="{$config->root_url}/preview/ind_usloviya_nl?contract_id={$order->contract->id}"
