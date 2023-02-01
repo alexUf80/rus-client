@@ -89,7 +89,7 @@
                 <label for="obshie_usloviya" class="check_box -gil-m">
                  <span>
                     Общие условия
-                    <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/Obschie_usloviya_dogovora_potrebitelskogo_zaima.pdf" target="_blank"> потребительского микрозайма</a>
+                    <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/общие_условия_договора_потребительского_займа.pdf" target="_blank"> потребительского микрозайма</a>
                  </span>
                 </label>
             </div>
@@ -105,7 +105,7 @@
                 <label for="vozvrat" class="check_box -gil-m">
                  <span>
                     Информация об условиях предоставления, использования
-                    <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/Informaciya_ob_usloviyah_predostavleniya_ispolzovaniya_i_vozvrata_zaima.pdf" target="_blank"> и возврата потребительского микрозайма</a>
+                    <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/информация_об_усовиях_предоставления_использования_и_возврата_займа.pdf" target="_blank"> и возврата потребительского микрозайма</a>
                  </span>
                 </label>
             </div>
@@ -121,7 +121,7 @@
                 <label for="cards_insurance" class="check_box -gil-m">
                  <span>
                     Правила
-                    <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/strahovanie_kart.pdf" target="_blank"> страхования карт</a>
+                    <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/страхование_кард.pdf" target="_blank"> страхования карт</a>
                  </span>
                 </label>
             </div>
