@@ -28,7 +28,7 @@ class Documents extends Core
         'POLIS_PROLONGATION' => 'Полис страхования при пролонгаци',
 
         'ANKETA_FL' =>  'Сведения о физическом лице',
-        'REASON_FOR_REFUSAL' =>  'Причину отказа'
+        'REASON_FOR_REFUSAL' =>  'Причина отказа'
     );
 
     private $client_visible = array(
