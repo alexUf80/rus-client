@@ -148,9 +148,9 @@
       ecommerce: "dataLayer"
     });
   </script>
-  <!--<noscript>
+  <noscript>
     <div><img src="https://mc.yandex.ru/watch/88054135" style="position:absolute; left:-9999px;" alt="" /></div>
-  </noscript>-->
+  </noscript>
   <!-- /Yandex.Metrika counter -->
   {/literal}
   {/if}
