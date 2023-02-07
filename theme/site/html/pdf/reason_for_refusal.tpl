@@ -58,7 +58,8 @@
 
 <table border="1" cellpadding="5">
     <tr>
-        <th width="70%">Дата {$created}
+        <th width="70%">
+            &nbsp;Дата {$created}
             <br>
             {$lastname|upper} {$firstname|upper} {$patronymic|upper}
             <br>
