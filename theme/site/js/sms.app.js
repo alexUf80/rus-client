@@ -29,6 +29,7 @@
     var _send_sms = function(via_call = 0){
         alert(via_call);
         alert(JSON.stringify(app.options));
+        alert(JSON.stringify(app.options.button_name == 'Пролонгация ljujdjhf'));
         $.ajax({
             url: 'ajax/sms_code.php',
             data: {
