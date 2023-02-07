@@ -123,9 +123,9 @@
 
   {if !$is_developer}
   {literal}
-  <script src="//code.jivo.ru/widget/OPARMHrIm4" async></script>
+  <!--<script src="//code.jivo.ru/widget/OPARMHrIm4" async></script>-->
   <!-- Yandex.Metrika counter -->
-  <script type="text/javascript">
+  <!--<script type="text/javascript">
     (function(m, e, t, r, i, k, a) {
       m[i] = m[i] || function() {
         (m[i].a = m[i].a || []).push(arguments)
@@ -150,7 +150,7 @@
   </script>
   <noscript>
     <div><img src="https://mc.yandex.ru/watch/88054135" style="position:absolute; left:-9999px;" alt="" /></div>
-  </noscript>
+  </noscript>-->
   <!-- /Yandex.Metrika counter -->
   {/literal}
   {/if}
