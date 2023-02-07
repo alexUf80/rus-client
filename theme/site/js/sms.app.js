@@ -23,7 +23,11 @@
         _init_repeat_sms();
         _init_confirm_sms();
 
-        _send_sms(1);
+        if (app.options.button_name == 'Пролонгация договора'){
+            _send_sms(0);
+        } else {
+            _send_sms(1);
+        } 
     };
 
     var _send_sms = function(via_call = 0){
