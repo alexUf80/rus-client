@@ -1,5 +1,6 @@
 ;function ProlongationSmsApp(phone, success_callback, _options)
 {
+    alert('ворк2');
     var app = this;
     
     app.code;

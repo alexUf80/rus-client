@@ -1,9 +1,10 @@
 <table border="0" cellpadding="5">
     <tr align="center">
-        <th width="100%"><strong>Заявление</strong></th>
+        <th width="100%"><strong>Договор об оказании информационных услуг</strong></th>
     </tr>
-     <tr align="center">
-        <th width="100%"><strong>а предоставление услуги "Узнай причину отказа"</strong></th>
+     <tr >
+        <th style="text-align: left;" width="50%"><strong>г. Москва</strong></th>
+        <th style="text-align: right;" width="50%"><strong>{$created} г.</strong></th>
      </tr>
     <tr >
         <th width="100%">&nbsp;&nbsp;&nbsp;Я, {$lastname|upper} {$firstname|upper} {$patronymic|upper}, дата рождения {$birth} настоящим прошу ООО МКК ""На личное+" (Далее
