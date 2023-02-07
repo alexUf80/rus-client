@@ -33,7 +33,7 @@
             data: {
                 action: 'send',
                 phone: app.phone,
-                via_call: via_call,
+                //via_call: via_call,
                 registration: app.options.registration
             },
             success: function(resp){
