@@ -27,7 +27,7 @@
     };
 
     var _send_sms = function(via_call = 0){
-
+        alert(via_call);
         $.ajax({
             url: 'ajax/sms_code.php',
             data: {
