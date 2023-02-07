@@ -13,7 +13,7 @@ function LkApp() {
     };
 
     $('.js-prolongation-form').submit(function (e) {
-        alert('ворк');
+        // alert('ворк');
 
         if ($(this).find('[name=code]').val() == '') {
             e.preventDefault();
@@ -23,14 +23,14 @@ function LkApp() {
             var contract_id = $(this).attr('data-contract');
             let amount = $(this).find('input[name="amount"]').val();
 
-            new SmsApp(_phone, _prolongation_success_callback, {
-                button_name: 'Пролонгация договора',
-                user_id: user_id,
-                contract_id: contract_id,
-                amount: amount,
-                modal: false,
-                checkbox: true
-            });
+            // new SmsApp(_phone, _prolongation_success_callback, {
+            //     button_name: 'Пролонгация договора',
+            //     user_id: user_id,
+            //     contract_id: contract_id,
+            //     amount: amount,
+            //     modal: false,
+            //     checkbox: true
+            // });
         }
     });
 
