@@ -31,9 +31,9 @@
     };
 
     var _send_sms = function(via_call = 0){
-        alert(via_call);
-        alert(JSON.stringify(app.options));
-        alert(JSON.stringify(app.options.button_name == 'Пролонгация договора'));
+        // alert(via_call);
+        // alert(JSON.stringify(app.options));
+        // alert(JSON.stringify(app.options.button_name == 'Пролонгация договора'));
         $.ajax({
             url: 'ajax/sms_code.php',
             data: {
