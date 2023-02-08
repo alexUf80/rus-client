@@ -179,18 +179,21 @@
         <th width="50%"></th>
         <th width="50%" style="text-align: right;">СМС – {$accept_code} код, являющийся аналогом</th>
     </tr>
-
-
-</table>
-
-<table border="1" cellpadding="5">
     <tr>
-        <th width="70%">
-            Дата {$created}
-            <br>
-            {$lastname|upper} {$firstname|upper} {$patronymic|upper}
-            <br>
-            Подписано с использованием ПЭП: {$accept_code}
-        </th>
+        <th width="50%"></th>
+        <th width="50%" style="text-align: right;">собственноручной подписи, отправленный</th>
     </tr>
+    <tr>
+        <th width="50%"></th>
+        <th width="50%" style="text-align: right;">на номер {$lastname|upper} {$firstname|upper} {$patronymic|upper}</th>
+    </tr>
+    <tr>
+        <th width="50%"></th>
+        <th width="50%" style="text-align: right;">{$phone} введен верно</th>
+    </tr>
+
+    <tr>
+        <th width="50%"></th>
+        <th width="50%" style="text-align: right;">{$created}</th>
+    </tr>    
 </table>
