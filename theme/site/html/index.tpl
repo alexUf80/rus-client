@@ -85,7 +85,19 @@
       } 
     }
   </script>
+
   <style type="text/css">
+
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance:textfield;
+    }
+
     @media screen and (min-width: 980px) {
       .t-records {
         opacity: 0;
