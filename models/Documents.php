@@ -13,7 +13,8 @@ class Documents extends Core
         'POLIS_PROLONGATION' => 'polis_prolongation.tpl',
         'ANKETA_FL' =>  'anketa_fl.tpl',
 
-        'REASON_FOR_REFUSAL' =>  'reason_for_refusal.tpl'
+        'REASON_FOR_REFUSAL' =>  'reason_for_refusal.tpl',
+        'INFORMATION_SERVICES_AGREEMENT' => 'information_services_agreement.tpl'
     );
 
 
@@ -28,7 +29,8 @@ class Documents extends Core
         'POLIS_PROLONGATION' => 'Полис страхования при пролонгаци',
 
         'ANKETA_FL' =>  'Сведения о физическом лице',
-        'REASON_FOR_REFUSAL' =>  'Причина отказа'
+        'REASON_FOR_REFUSAL' =>  'Причина отказа',
+        'INFORMATION_SERVICES_AGREEMENT' => 'Договор об оказании информационных услуг'
     );
 
     private $client_visible = array(
@@ -42,7 +44,8 @@ class Documents extends Core
         'POLIS_PROLONGATION' => 1, 
 
         'ANKETA_FL' => 1,
-        'REASON_FOR_REFUSAL' =>  1
+        'REASON_FOR_REFUSAL' =>  1,
+        'INFORMATION_SERVICES_AGREEMENT' => 1
     );
 
 
