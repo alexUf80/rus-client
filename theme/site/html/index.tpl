@@ -74,7 +74,16 @@
     window.dataLayer = window.dataLayer || [];
   </script>
    <script type="text/javascript">
-    alert('проверка');
+    function handleChange(input) {
+      if (input.value < 0) input.value = 0;
+      if (input.value > 9999) {
+          let val = input.value;
+          val = String(val);
+          val = val[0] + val[1] + val[2] + val[3];
+          val = Number(val);
+          input.value = val;
+      } 
+    }
   </script>
   <style type="text/css">
     @media screen and (min-width: 980px) {
