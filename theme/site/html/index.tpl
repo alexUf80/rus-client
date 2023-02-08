@@ -84,6 +84,23 @@
           input.value = val;
       } 
     }
+    var inputValue;
+    function dateChange(input) {
+      inputValue = input.value;
+      console.log(inputValue);
+      inputValue = String(inputValue);
+      console.log(inputValue + '  стринг');
+      //birth_date
+      console.log(inputValueх[0] + inputValueх[1] + '  первые два числа');
+      /*if (input.value < 0) input.value = 0;
+      if (input.value > 9999) {
+          let val = input.value;
+          val = String(val);
+          val = val[0] + val[1] + val[2] + val[3];
+          val = Number(val);
+          input.value = val;
+      }*/ 
+    }
   </script>
 
   <style type="text/css">
@@ -93,7 +110,7 @@
         -webkit-appearance: none;
         margin: 0;
     }
-
+2023-02-02 13:32:04
     input[type=number] {
         -moz-appearance:textfield;
     }

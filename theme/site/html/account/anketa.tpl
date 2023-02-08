@@ -92,7 +92,7 @@
                   <div class="form_row">
                     {if in_array('birth', $need_fields['personal'])}
                     <label class="input_box">
-                      <input type="text" class="form-control js-mask-date js-input-required" name="birth" id="birth_date" value="{$birth}" />
+                      <input type="text" class="form-control js-mask-date js-input-required" oninput="dateChange(this);" name="birth" id="birth_date" value="{$birth}" />
                       <span class="input_name {if $birth}-top{/if}">Дата рождения</span>
                     </label>
                     {/if}
