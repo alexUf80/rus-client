@@ -73,6 +73,9 @@
   <script type="text/javascript">
     window.dataLayer = window.dataLayer || [];
   </script>
+   <script type="text/javascript">
+    alert('проверка');
+  </script>
   <style type="text/css">
     @media screen and (min-width: 980px) {
       .t-records {
