@@ -136,64 +136,64 @@
 
     <tr>
         <th width="50%"><strong>Исполнитель:</strong></th>
-        <th width="50%" style="text-align: right;"><strong>Заказчик:</strong></th>
+        <th width="50%"><strong>Заказчик:</strong></th>
     </tr>
     <tr>
         <th width="50%"><strong>ООО МКК «Русзаймсервис»</strong></th>
-        <th width="50%" style="text-align: right;"><strong>{$lastname|upper} {$firstname|upper} {$patronymic|upper}</strong></th>
+        <th width="50%"><strong>{$lastname|upper} {$firstname|upper} {$patronymic|upper}</strong></th>
     </tr>
     <tr>
         <th width="50%">123112, г. Москва, наб. Пресненская, д. 12, этаж 29,
             помещение 2, комната А28</th>
-        <th width="50%" style="text-align: right;">Паспорт гражданина РФ: серия {$passport_serial}, номер {$passport_number},</th>
+        <th width="50%">Паспорт гражданина РФ: серия {$passport_serial}, номер {$passport_number},</th>
     </tr>
      <tr>
         <th width="50%">ИНН 9717088848 КПП 770301001</th>
-        <th width="50%" style="text-align: right;">Код подразделения: {$subdivision_code}</th>
+        <th width="50%">Код подразделения: {$subdivision_code}</th>
     </tr>
     <tr>
         <th width="50%">р/с № 40701810438000000421</th>
-        <th width="50%" style="text-align: right;">Адрес регистрации: {$regaddress_full}</th>
+        <th width="50%">Адрес регистрации: {$regaddress_full}</th>
     </tr>
     <tr>
         <th width="50%">ПАО СБЕРБАНК г. Москва</th>
-        <th width="50%" style="text-align: right;"></th>
+        <th width="50%" ></th>
     </tr>
     <tr>
         <th width="50%">к/с 30101810400000000225</th>
-        <th width="50%" style="text-align: right;"></th>
+        <th width="50%"></th>
     </tr>
     <tr>
         <th width="50%">БИК 044525225</th>
-        <th width="50%" style="text-align: right;"></th>
+        <th width="50%" ></th>
     </tr>
     <tr>
         <th width="50%"><strong>Генеральный директор</strong></th>
-        <th width="50%" style="text-align: right;">электронный документ создан с использованием</th>
+        <th width="50%" >электронный документ создан с использованием</th>
     </tr>
     <tr>
         <th width="50%"><strong>_________________ / Михалина К. О./</strong></th>
-        <th width="50%" style="text-align: right;">системы сайта https://rus-zaym.ru/</th>
+        <th width="50%">системы сайта https://rus-zaym.ru/</th>
     </tr>
     <tr>
         <th width="50%"></th>
-        <th width="50%" style="text-align: right;">СМС – {$accept_code} код, являющийся аналогом</th>
+        <th width="50%" >СМС – {$accept_code} код, являющийся аналогом</th>
     </tr>
     <tr>
         <th width="50%"></th>
-        <th width="50%" style="text-align: right;">собственноручной подписи, отправленный</th>
+        <th width="50%" >собственноручной подписи, отправленный</th>
     </tr>
     <tr>
         <th width="50%"></th>
-        <th width="50%" style="text-align: right;">на номер {$lastname|upper} {$firstname|upper} {$patronymic|upper}</th>
+        <th width="50%" >на номер {$lastname|upper} {$firstname|upper} {$patronymic|upper}</th>
     </tr>
     <tr>
         <th width="50%"></th>
-        <th width="50%" style="text-align: right;">{$phone} введен верно</th>
+        <th width="50%" >{$phone} введен верно</th>
     </tr>
 
     <tr>
         <th width="50%"></th>
-        <th width="50%" style="text-align: right;">{$created}</th>
+        <th width="50%">{$created}</th>
     </tr>    
 </table>
