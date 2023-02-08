@@ -123,6 +123,7 @@
 
   {if !$is_developer}
   {literal}
+  <script src="//code.jivo.ru/widget/OWL4njXCIc" async></script>
   <!--<script src="//code.jivo.ru/widget/OPARMHrIm4" async></script>-->
   <!-- Yandex.Metrika counter -->
   <!--<script type="text/javascript">
