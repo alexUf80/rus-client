@@ -60,9 +60,9 @@
                       <span class="input_name {if $passport_serial}-top{/if}">Серия и номер</span>
                     </label>
                     <label class="input_box ">
-                      <input type="date" class="form-control js-input-required" name="passport_date" id="issue"/>
+                      <input type="date" style="padding-top: 35px;" class="form-control js-input-required" name="passport_date" id="issue"/>
                       <!--<input type="text" class="form-control js-mask-date js-input-required" name="passport_date" id="issue" value="{$passport_date}" />-->
-                      <span class="input_name {if $passport_date}-top{/if}">Дата выдачи</span>
+                      <span style="margin-top: -18px;" class="input_name {if $passport_date}-top{/if}">Дата выдачи</span>
                     </label>
                   </div>
                   <div class="form_row">
