@@ -88,6 +88,7 @@
     function phoneInput(input) {
       phoneChange = input.value;
       phoneChange = String(phoneChange);
+      alert(phoneChange[0]);
       if (phoneChange[0] != '+') {
         input.value = 0;
       } 
