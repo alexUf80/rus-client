@@ -129,9 +129,8 @@
                     {/if}
                     {if in_array('passport_date', $need_fields['passport'])}
                     <label class="input_box ">
-                      <!--<input type="text" class="form-control js-mask-date js-input-required" name="passport_date" id="issue" value="{$passport_date}" />-->
-                      <input type="date" class="form-control js-input-required" name="passport_date" id="issue" />
-                      <span class="input_name {if $passport_date}-top{/if}">Дата выдачи2</span>
+                      <input type="text" class="form-control js-mask-date js-input-required" name="passport_date" id="issue" value="{$passport_date}" />
+                      <span class="input_name {if $passport_date}-top{/if}">Дата выдачи</span>
                     </label>
                     {/if}
                   </div>

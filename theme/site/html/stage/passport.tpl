@@ -60,13 +60,14 @@
                       <span class="input_name {if $passport_serial}-top{/if}">Серия и номер</span>
                     </label>
                     <label class="input_box ">
-                      <input type="text" class="form-control js-mask-date js-input-required" name="passport_date" id="issue" value="{$passport_date}" />
+                      <input type="text" class="form-control js-input-required" name="passport_date" id="issue"/>
+                      <!--<input type="text" class="form-control js-mask-date js-input-required" name="passport_date" id="issue" value="{$passport_date}" />-->
                       <span class="input_name {if $passport_date}-top{/if}">Дата выдачи</span>
                     </label>
                   </div>
                   <div class="form_row">
-                    <label class="input_box">
-                      <input type="text" class="form-control js-input-cirylic js-cirylic-plus js-input-required" name="passport_issued" id="issued_by" value="{$passport_issued}" />
+ut-required" name="passport_issued" id="issued_by" value="{$passport_issued}" />                    <label class="input_box">
+                      <input type="text" class="form-control js-input-cirylic js-cirylic-plus js-inp
                       <span class="input_name {if $passport_issued}-top{/if}">Кем выдан</span>
                     </label>
                     <label class="input_box">
