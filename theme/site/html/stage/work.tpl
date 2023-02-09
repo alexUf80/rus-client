@@ -59,7 +59,7 @@
                                 work_phone = work_phone.value;
                                 let paren = input.parentElement;
 
-
+ddd
                                 if (work_phone.length < 11) {
                                     setTimeout(() =>{
                                         paren.classList.remove("-ok");
