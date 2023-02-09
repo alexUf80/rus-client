@@ -53,7 +53,7 @@
                     <div class="main_form">
                         <!--js-form-app js-stage-work-form-->
                         <script type="text/javascript">
-                        alert(1);
+                       
                          function validateСhange2() {
                                 let work_phone = document.querySelector('#work_phone');
                                 work_phone = work_phone.value;
