@@ -99,7 +99,7 @@
                   <div class="js-regaddress-block">
                     <input class="form-control casing-upper-mask Faktaddress"
                            id="actual_address_toggle"
-                           style="width: 700px; margin-left: 25px;"
+                           style="width: 500px; margin-left: 25px;"
                            name="Faktadressfull"
                            {if !empty($Faktaddressfull)}value="{$Faktaddressfull->adressfull}"{/if}
                            type="text"/>
