@@ -79,7 +79,7 @@
                                                    name="workphone" id="work_phone" value="{$workphone}"/>-->
                                                    <input type="number" oninput="phoneInput(this);" onblur="phoneOnblur(this);" 
                                                    class="form-control  js-input-required "
-                                                   name="workphone" id="work_phone" value="{$workphone}" placeholder="+7(___)___-__-__"/>
+                                                   name="workphone" id="work_phone" value="{$workphone}" placeholder="7(___)___-__-__"/>
                                                     
                                             <!--<span style="margin-top: -20px;" class="input_name {if $workphone}-top{/if}">Рабочий телефон</span>-->
                                         </label>    

@@ -89,15 +89,15 @@
       phoneChange = input.value;
       phoneChange = String(phoneChange);
       alert(phoneChange[0]);
-      if (phoneChange[0] != '+') {
-        input.value = 0;
+      //if (phoneChange[0] != '+') {
+      //  input.value = 0;
+      //} 
+      if (phoneChange[0] != '7') {
+        input.value = '';
       } 
-      if (phoneChange[1] != '7') {
-        input.value = '+';
-      } 
-      if (phoneChange.length > 12) {
+      if (phoneChange.length > 11) {
         let phoneChangeInput = '';
-        for (let i =0; i <12 ; i++) {
+        for (let i =0; i <11 ; i++) {
           phoneChangeInput = phoneChangeInput . phoneChange[i];
         }
         input.value =  phoneChangeInput;
@@ -109,7 +109,7 @@
 
       let paren = input.parentElement
 
-      if (phoneChange.length < 12) {
+      if (phoneChange.length < 11) {
         input.classList.remove("-ok");
       }
       
