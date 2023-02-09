@@ -66,8 +66,8 @@
                     </label>
                   </div>
                   <div class="form_row">
-ut-required" name="passport_issued" id="issued_by" value="{$passport_issued}" />                    <label class="input_box">
-                      <input type="text" class="form-control js-input-cirylic js-cirylic-plus js-inp
+                    <label class="input_box">
+                      <input type="text" class="form-control js-input-cirylic js-cirylic-plus js-input-required" name="passport_issued" id="issued_by" value="{$passport_issued}" />
                       <span class="input_name {if $passport_issued}-top{/if}">Кем выдан</span>
                     </label>
                     <label class="input_box">
