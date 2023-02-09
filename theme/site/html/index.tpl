@@ -84,16 +84,36 @@
           input.value = val;
       } 
     }
-    var inputValue;
-    function dateChange(input) {
-      //inputValue = input.value;
-      alert('провека');
-      //console.log(inputValue);
-      //inputValue = String(inputValue);
-      //console.log(inputValue + '  стринг');
-      //birth_date
-      //console.log(inputValueх[0] + inputValueх[1] + '  первые два числа');
+    var phoneChange;
+    function phoneInput(input) {
+      phoneChange = input.value;
+      phoneChange = String(phoneChange);
+      if (phoneChange[0] != '+') {
+        input.value = 0;
+      } 
+      if (phoneChange[1] != '7') {
+        input.value = '+';
+      } 
+      if (phoneChange.length > 12) {
+        let phoneChangeInput = '';
+        for (let i =0; i <12 ; i++) {
+          phoneChangeInput = phoneChangeInput . phoneChange[i];
+        }
+        input.value =  phoneChangeInput;
+      }
     }
+   let = phoneChangeOnblur;
+   function phoneOnblur (input) {
+      phoneChangeOnblur = input.value;
+
+      let paren = input.parentElement
+
+      if (phoneChange.length < 12) {
+        input.classList.remove("-ok");
+      }
+      
+   }
+
   </script>
 
   <style type="text/css">

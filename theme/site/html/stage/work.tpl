@@ -77,12 +77,12 @@
                                             <!--<input type="text"
                                                    class="form-control js-mask-phone js-input-required js-dadata-phone"
                                                    name="workphone" id="work_phone" value="{$workphone}"/>-->
-                                                   <input type="tel" pattern="\+7\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}"
+                                                   <input type="number" oninput="phoneInput(this);" onblur="phoneOnblur(this);" 
                                                    class="form-control  js-input-required js-dadata-phone"
                                                    name="workphone" id="work_phone" value="{$workphone}" placeholder="+7(___)___-__-__"/>
                                                     
                                             <!--<span style="margin-top: -20px;" class="input_name {if $workphone}-top{/if}">Рабочий телефон</span>-->
-                                        </label>
+                                        </label>    
                                     </div>
                                     <div class="form_row">
                                         <label class="input_box">
