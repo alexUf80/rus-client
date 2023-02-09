@@ -84,6 +84,7 @@
                   <div class="form_row">
                     <label class="input_box {if in_array('bad_birth', (array)$errors)}-error{/if}">
                       <input type="text" class="form-control js-mask-date js-input-required" oninput="dateChange(this);" name="birth" id="birth_date" value="{$birth}" />
+                      <input type="text"  oninput="dateChange(this);"/>
                       <span class="input_name {if $birth}-top{/if}">Дата рождения</span>
                       {if in_array('bad_birth', $errors)}
                       <div class="error_text">Кредиты выдаются лицам старше 16 лет</div>

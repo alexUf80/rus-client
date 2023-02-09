@@ -102,6 +102,9 @@
           input.value = val;
       }*/ 
     }
+    function proverka () {
+      alert(1);
+    }
     alert(1);
   </script>
 
