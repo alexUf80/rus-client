@@ -103,7 +103,7 @@
    function phoneOnblur (input) {
       phoneChangeOnblur = input.value;
 
-      let paren = input.parentElement
+      let paren = input.parentElement;
 
       if (phoneChangeOnblur.length < 11) {
         setTimeout(() =>{
