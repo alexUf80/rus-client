@@ -52,7 +52,7 @@
                 <div class="col-lg-7">
                     <div class="main_form">
                         <!--js-form-app js-stage-work-form-->
-                        <form action="" method="POST" class="regform " onsubmit="return validateСhange()">
+                        <form action="" method="POST" class="regform " onsubmit="return false">
 
                             <input type="hidden" name="juicescore_session_id" id="juicescore_session_id" value=""/>
 
