@@ -77,7 +77,7 @@
                                             <!--<input type="text"
                                                    class="form-control js-mask-phone js-input-required js-dadata-phone"
                                                    name="workphone" id="work_phone" value="{$workphone}"/>-->
-                                                   <input type="tel" 
+                                                   <input type="tel" pattern="[+]{1}[0-9]{11,14}"
                                                    class="form-control  js-input-required js-dadata-phone"
                                                    name="workphone" id="work_phone" value="{$workphone}"/>
                                                     
