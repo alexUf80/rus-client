@@ -57,9 +57,7 @@
                          function validateСhange2() {
                                 let work_phone = document.querySelector('#work_phone');
                                 work_phone = work_phone.value;
-                                let paren = input.parentElement;
-
-ddd
+                                let paren = work_phone.parentElement;
                                 if (work_phone.length < 11) {
                                     setTimeout(() =>{
                                         paren.classList.remove("-ok");
