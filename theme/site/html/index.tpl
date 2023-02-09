@@ -106,7 +106,7 @@
       let paren = input.parentElement
 
       if (phoneChangeOnblur.length < 11) {
-        input.classList.remove("-ok");
+        paren.classList.remove("-ok");
       }
       
    }
