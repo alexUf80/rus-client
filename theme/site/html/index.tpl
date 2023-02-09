@@ -111,6 +111,10 @@
         }, 100);
         
       }
+
+      function validateСhange() {
+        return false;
+      }
       
    }
 
