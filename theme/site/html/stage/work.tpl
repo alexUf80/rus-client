@@ -63,20 +63,24 @@
                                     <div class="form_row">
                                         <label class="input_box -fullwidth">
                                             <input type="text" class="form-control js-input-required js-dadata-company"
-                                                   name="workplace" id="company" value="{$workplace|escape}"/>
+                                                   name="workplace"  maxlength="500" id="company" value="{$workplace|escape}"/>
                                             <span class="input_name {if $workplace}-top{/if}">Компания</span>
                                         </label>
                                     </div>
                                     <div class="form_row">
                                         <label class="input_box">
-                                            <input type="text" class="form-control js-input-required" name="profession"
+                                            <input maxlength="500" type="text" class="form-control js-input-required" name="profession"
                                                    id="post" value="{$profession|escape}"/>
                                             <span class="input_name {if $profession}-top{/if}">Должность</span>
                                         </label>
                                         <label class="input_box">
-                                            <input type="text"
+                                            <!--<input type="text"
                                                    class="form-control js-mask-phone js-input-required js-dadata-phone"
+                                                   name="workphone" id="work_phone" value="{$workphone}"/>-->
+                                                   <input type="tel" pattern="2[0-9]{3}-[0-9]{3}"
+                                                   class="form-control  js-input-required js-dadata-phone"
                                                    name="workphone" id="work_phone" value="{$workphone}"/>
+                                                    
                                             <span class="input_name {if $workphone}-top{/if}">Рабочий телефон</span>
                                         </label>
                                     </div>
