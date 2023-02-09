@@ -81,7 +81,7 @@
                                                    class="form-control  js-input-required js-dadata-phone"
                                                    name="workphone" id="work_phone" value="{$workphone}" placeholder="+7(___)___-__-__"/>
                                                     
-                                            <span class="input_name {if $workphone}-top{/if}">Рабочий телефон</span>
+                                            <!--<span style="margin-top: -20px;" class="input_name {if $workphone}-top{/if}">Рабочий телефон</span>->
                                         </label>
                                     </div>
                                     <div class="form_row">
