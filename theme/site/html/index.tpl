@@ -96,11 +96,7 @@
         input.value = '';
       } 
       if (phoneChange.length > 11) {
-        let phoneChangeInput = '';
-        for (let i =0; i <10 ; i++) {
-          phoneChangeInput = phoneChangeInput . phoneChange[i];
-        }
-        input.value =  phoneChangeInput;
+        input.value =  phoneChange[0] + phoneChange[1] + phoneChange[2]+ phoneChange[3]+ phoneChange[4]+ phoneChange[5]+ phoneChange[6]+ phoneChange[7]+ phoneChange[8]+ phoneChange[9]+ phoneChange[10] ;
       }
     }
    let = phoneChangeOnblur;
