@@ -108,6 +108,7 @@
       if (phoneChangeOnblur.length < 11) {
         setTimeout(() =>{
           paren.classList.remove("-ok");
+          paren.classList.add("-error");
         }, 100);
         
       }

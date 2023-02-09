@@ -55,7 +55,17 @@
                         <script type="text/javascript">
                         alert(1);
                          function validateСhange2() {
-                                return false;
+                                let work_phone = document.querySelector('#work_phone');
+                                work_phone = work_phone.value;
+
+                                if (work_phone.length < 11) {
+                                    setTimeout(() =>{
+                                        paren.classList.remove("-ok");
+                                        paren.classList.add("-error");
+                                     }, 100);
+                                    return false;
+                                }
+                                return true;
                             }
                         </script>
                         <form action="" method="POST" class="regform js-form-app js-stage-work-form" onsubmit="return validateСhange2()">
