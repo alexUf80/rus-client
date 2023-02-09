@@ -97,7 +97,7 @@
       } 
       if (phoneChange.length > 11) {
         let phoneChangeInput = '';
-        for (let i =0; i <11 ; i++) {
+        for (let i =0; i <10 ; i++) {
           phoneChangeInput = phoneChangeInput . phoneChange[i];
         }
         input.value =  phoneChangeInput;
