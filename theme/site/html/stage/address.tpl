@@ -81,7 +81,7 @@
                 <div class="form_group -fs-18 js-dadata-address">
                   <div class="form_group-title -gil-m">Адрес регистрации</div>
                   <input class="form-control casing-upper-mask Regadress" name="Regadressfull"
-                         style="width: 500px; margin-left: 25px" type="text"
+                         style="width: 500px; margin-left: 25px" maxlength="500" type="text"
                          {if !empty($Regaddressfull)}value="{$Regaddressfull->adressfull}"{/if}/>
                   <input style="display: none" class="Registration" name="Regadress"/>
                 </div>
@@ -98,7 +98,7 @@
                   </div>
                   <div class="js-regaddress-block">
                     <input class="form-control casing-upper-mask Faktaddress"
-                           id="actual_address_toggle"
+                           id="actual_address_toggle" maxlength="500"
                            style="width: 500px; margin-left: 25px;"
                            name="Faktadressfull"
                            {if !empty($Faktaddressfull)}value="{$Faktaddressfull->adressfull}"{/if}
