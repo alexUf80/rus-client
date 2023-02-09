@@ -102,6 +102,7 @@
           input.value = val;
       }*/ 
     }
+    alert(1);
   </script>
 
   <style type="text/css">
