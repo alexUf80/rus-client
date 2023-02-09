@@ -93,19 +93,7 @@
       //console.log(inputValue + '  стринг');
       //birth_date
       //console.log(inputValueх[0] + inputValueх[1] + '  первые два числа');
-      /*if (input.value < 0) input.value = 0;
-      if (input.value > 9999) {
-          let val = input.value;
-          val = String(val);
-          val = val[0] + val[1] + val[2] + val[3];
-          val = Number(val);
-          input.value = val;
-      }*/ 
     }
-    function proverka () {
-      alert(1);
-    }
-    alert(1);
   </script>
 
   <style type="text/css">
