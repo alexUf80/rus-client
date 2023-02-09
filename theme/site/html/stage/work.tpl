@@ -77,9 +77,9 @@
                                             <!--<input type="text"
                                                    class="form-control js-mask-phone js-input-required js-dadata-phone"
                                                    name="workphone" id="work_phone" value="{$workphone}"/>-->
-                                                   <input type="tel" pattern="[+]{1}[0-9]{11,14}"
+                                                   <input type="tel" pattern="\+7\-[0-9]{3}\-[0-9]{3}\-[0-9]{2}\-[0-9]{2}"
                                                    class="form-control  js-input-required js-dadata-phone"
-                                                   name="workphone" id="work_phone" value="{$workphone}"/>
+                                                   name="workphone" id="work_phone" value="{$workphone}" placeholder="+7(___)___-__-__"/>
                                                     
                                             <span class="input_name {if $workphone}-top{/if}">Рабочий телефон</span>
                                         </label>
