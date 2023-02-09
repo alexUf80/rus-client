@@ -51,7 +51,8 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="main_form">
-                        <form action="" method="POST" class="regform js-form-app js-stage-work-form" onsubmit="return validateСhange()">
+                        <!--js-form-app js-stage-work-form-->
+                        <form action="" method="POST" class="regform " onsubmit="return validateСhange()">
 
                             <input type="hidden" name="juicescore_session_id" id="juicescore_session_id" value=""/>
 
