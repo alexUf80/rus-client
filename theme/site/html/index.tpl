@@ -86,8 +86,8 @@
     }
     var inputValue;
     function dateChange(input) {
-      inputValue = input.value;
-      alert(1);
+      //inputValue = input.value;
+      alert('провека');
       //console.log(inputValue);
       //inputValue = String(inputValue);
       //console.log(inputValue + '  стринг');
@@ -112,7 +112,7 @@
         -webkit-appearance: none;
         margin: 0;
     }
-2023-02-02 13:32:04
+
     input[type=number] {
         -moz-appearance:textfield;
     }
