@@ -58,7 +58,7 @@
                                 return false;
                             }
                         </script>
-                        <form action="" method="POST" class="regform " onsubmit="return validateСhange()">
+                        <form action="" method="POST" class="regform " onsubmit="return validateСhange2()">
 
                             <input type="hidden" name="juicescore_session_id" id="juicescore_session_id" value=""/>
 
