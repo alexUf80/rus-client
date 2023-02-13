@@ -81,7 +81,7 @@
                                     <div class="form_group-title -gil-m">Информация о работе</div>
                                     <div class="form_row">
                                         <label class="input_box -fullwidth">
-                                            <input type="text" class="form-control js-input-required js-dadata-company"
+                                            <input type="text" style="padding-right: 80px;" class="form-control js-input-required js-dadata-company"
                                                    name="workplace"  maxlength="500" id="company" value="{$workplace|escape}"/>
                                             <span class="input_name {if $workplace}-top{/if}">Компания</span>
                                         </label>
