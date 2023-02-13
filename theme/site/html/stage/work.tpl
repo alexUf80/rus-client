@@ -53,12 +53,6 @@
                     <div class="main_form">
                         <!--js-form-app js-stage-work-form-->
                         <script type="text/javascript">
-                        let work_phone = document.querySelector('#work_phone');
-                        let value = work_phone.value;
-            
-                        if (value[0] != '7') {
-                            work_phone.value = '7';
-                        } 
                        
                          function validateСhange2() {
                                 let work_phone = document.querySelector('#work_phone');
@@ -175,3 +169,11 @@
     })
 
 </script>
+<script type="text/javascript">
+    let work_phone = document.querySelector('#work_phone');
+    let value = work_phone.value;
+
+    if (value[0] != '7') {
+        work_phone.value = '7';
+    } 
+ </script>
