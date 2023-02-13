@@ -57,7 +57,7 @@
                         let value = work_phone.value;
             
                         if (value[0] != '7') {
-                            input.value = '7';
+                            work_phone.value = '7';
                         } 
                        
                          function validateСhange2() {
