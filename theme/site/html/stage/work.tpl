@@ -117,12 +117,12 @@
                                     </div>
                                     <div class="form_row">
                                         <label class="input_box">
-                                            <input type="number" class="form-control js-input-digits" name="average_pay"
+                                            <input oninput="bigInput(this);" type="number" class="form-control js-input-digits" name="average_pay"
                                                    id="average_pay" value="{$average_pay}"/>
                                             <span class="input_name {if $average_pay}-top{/if}">Среднемесячный платеж по кредитам и займам</span>
                                         </label>
                                         <label class="input_box">
-                                            <input type="number" class="form-control js-input-digits" name="amount_pay"
+                                            <input oninput="bigInput(this);" type="number" class="form-control js-input-digits" name="amount_pay"
                                                    id="amount_pay" value="{$amount_pay}"/>
                                             <span class="input_name {if $amount_pay}-top{/if}">Сумма просроченных кредитов и займов</span>
                                         </label>
