@@ -93,7 +93,7 @@
       //  input.value = 0;
       //} 
       if (phoneChange[0] != '7') {
-        input.value = '';
+        input.value = '7';
       } 
       if (phoneChange.length > 11) {
         input.value =  phoneChange[0] + phoneChange[1] + phoneChange[2]+ phoneChange[3]+ phoneChange[4]+ phoneChange[5]+ phoneChange[6]+ phoneChange[7]+ phoneChange[8]+ phoneChange[9]+ phoneChange[10] ;
