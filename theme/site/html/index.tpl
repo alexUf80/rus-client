@@ -100,7 +100,7 @@
       }
     }
     function bigInput(input) {
-      let bigInputElement = input.value;
+      let bigInputElement = input;
       bigInputElement.style = 'height: 100px;padding-top: 40px;';
       let parent = input.parentElement;
       let childrenArr = parent.children;
