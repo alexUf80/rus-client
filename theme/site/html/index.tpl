@@ -99,7 +99,15 @@
         input.value =  phoneChange[0] + phoneChange[1] + phoneChange[2]+ phoneChange[3]+ phoneChange[4]+ phoneChange[5]+ phoneChange[6]+ phoneChange[7]+ phoneChange[8]+ phoneChange[9]+ phoneChange[10] ;
       }
     }
-   let phoneChangeOnblur;
+    function bigInput(input) {
+      let bigInputElement = input.value;
+      bigInputElement.style = 'height: 100px;padding-top: 40px;';
+      let parent = input.parentElement;
+      let childrenArr = parent.children;
+      let span = childrenArr[1];
+      span.style = 'margin-top: 12px;';
+    }
+   var phoneChangeOnblur;
    function phoneOnblur (input) {
       phoneChangeOnblur = input.value;
 
