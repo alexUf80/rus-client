@@ -147,7 +147,7 @@
                                         <input type="hidden" name="contract_id" value="{$order->contract->id}"/>
                                         <input type="hidden" name="prolongation" value="1"/>
                                         <input type="hidden" name="code" value=""/>
-                                        <h3 class="mb-0">Пролонгация</h3>
+                                        <h3 class="mb-0">Пролонгация 2</h3>
                                         <span class="text-muted">до: {$order->prolongation_date}</span>
                                         <div class="row">
                                             <div class="col-4">
