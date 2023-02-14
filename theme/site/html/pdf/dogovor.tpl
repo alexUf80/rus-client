@@ -369,7 +369,7 @@
             СМС – код  {$contract->accept_code}, являющийся аналогом собственноручной <br>
             подписи, отправленный<br>
             на номер {$contract->user_phone_mobile} введен верно<br>
-            в {$contract->issuance_date|date} {$contract_date|time}<br>
+            в {$contract->inssuance_date|date} {$contract->inssuance_date|time}<br>
         </td>
     </tr>
     
