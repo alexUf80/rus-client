@@ -78,7 +78,7 @@
             и порядок его изменения
         </td>
         <td width="50%">
-            По настоящему Договору потребительского займа (далее - Договор) Кредитор передает Заемщику денежные средства в размере {$return_amount|upper} ({$return_amount|price_string|upper}) (далее - Сумма займа, Займ).
+            По настоящему Договору потребительского займа (далее - Договор) Кредитор передает Заемщику денежные средства в размере {$amount|upper} ({$amount|price_string|upper}) (далее - Сумма займа, Займ).
         </td>
     </tr>
     <tr>
@@ -369,7 +369,7 @@
             СМС – код  {$contract->accept_code}, являющийся аналогом собственноручной <br>
             подписи, отправленный<br>
             на номер {$contract->user_phone_mobile} введен верно<br>
-            в {$contract->issuance_date|date} {$contract_date|time}<br>
+            в {$contract->inssuance_date|date} {$contract->inssuance_date|time}<br>
         </td>
     </tr>
     
