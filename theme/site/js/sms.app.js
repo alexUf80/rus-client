@@ -23,11 +23,17 @@
         _init_repeat_sms();
         _init_confirm_sms();
 
-        _send_sms(1);
+        if (app.options.button_name == 'Пролонгация договора'){
+            _send_sms(0);
+        } else {
+            _send_sms(1);
+        } 
     };
 
     var _send_sms = function(via_call = 0){
-
+        // alert(via_call);
+        // alert(JSON.stringify(app.options));
+        // alert(JSON.stringify(app.options.button_name == 'Пролонгация договора'));
         $.ajax({
             url: 'ajax/sms_code.php',
             data: {
@@ -161,7 +167,7 @@
             //_tpl += '<span class="phone_info -fs-14" id="enterCode">Введите код из СМС</span>';
             //_tpl += '<span class="phone_info -fs-14" id="enterCode">Введите 4 последние цифры номера</span>';
             _tpl += '<span class="phone_info -fs-14" id="enterCode">Введите код, который продиктует бот</span>';
-            _tpl += '<input type="text" name="" autocomplete="one-time-code" class="form-control -fs-18 -gil-m js-mask-sms js-sms-code" value="">';
+            _tpl += '<input type="number" min=0 max=9999  oninput="handleChange(this);" name="" autocomplete="one-time-code" class="form-control -fs-18 -gil-m js-mask-sms js-sms-code" value="">';
             _tpl += '<div class="error_text js-sms-error" style="display:none">Код не совпадает</div>';
             //_tpl += '<a href="javascript:void(0);" class="js-sms-repeat sms-repeat"><div id="sendAgain">Отправить еще раз</div> <span class="js-sms-timer"></span></a>';
             _tpl += '<a href="javascript:void(0);" class="js-sms-repeat sms-repeat"><div id="sendAgain">Получить код по СМС</div> <span class="js-sms-timer"></span></a>';

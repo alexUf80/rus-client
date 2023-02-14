@@ -297,7 +297,7 @@
                                             <div class="form-phone">
                                                 <label class="phone_info -fs-14" for="accept_code">Код активации из
                                                     СМС</label>
-                                                <input type="text" placeholder="" name="accept_code" id="accept_code"
+                                                <input type="number" oninput="handleChange(this);" placeholder="" name="accept_code" id="accept_code"
                                                        class="js-accept-code form-control" value=""/>
                                                 <a class="js-repeat-accept-code" href="javascript:void(0);">отправить
                                                     еще раз <span class="js-accept-timer"></span></a>

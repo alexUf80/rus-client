@@ -11,8 +11,10 @@ class Documents extends Core
         //'KID' => 'kid.tpl',
         'DOP_SOGLASHENIE' => 'prolongation.tpl',
         'POLIS_PROLONGATION' => 'polis_prolongation.tpl',
+        'ANKETA_FL' =>  'anketa_fl.tpl',
 
-        'ANKETA_FL' =>  'anketa_fl.tpl'
+        'REASON_FOR_REFUSAL' =>  'reason_for_refusal.tpl',
+        'INFORMATION_SERVICES_AGREEMENT' => 'information_services_agreement.tpl'
     );
 
 
@@ -26,7 +28,9 @@ class Documents extends Core
         'DOP_SOGLASHENIE' => 'Дополнительное соглашение о пролонгации',
         'POLIS_PROLONGATION' => 'Полис страхования при пролонгаци',
 
-        'ANKETA_FL' =>  'Сведения о физическом лице'
+        'ANKETA_FL' =>  'Сведения о физическом лице',
+        'REASON_FOR_REFUSAL' =>  'Причина отказа',
+        'INFORMATION_SERVICES_AGREEMENT' => 'Договор об оказании информационных услуг'
     );
 
     private $client_visible = array(
@@ -39,7 +43,9 @@ class Documents extends Core
         'DOP_SOGLASHENIE' => 1,
         'POLIS_PROLONGATION' => 1, 
 
-        'ANKETA_FL' => 1
+        'ANKETA_FL' => 1,
+        'REASON_FOR_REFUSAL' =>  1,
+        'INFORMATION_SERVICES_AGREEMENT' => 1
     );
 
 

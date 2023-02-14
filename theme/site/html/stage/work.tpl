@@ -51,7 +51,26 @@
                 </div>
                 <div class="col-lg-7">
                     <div class="main_form">
-                        <form action="" method="POST" class="regform js-form-app js-stage-work-form">
+                        <!--js-form-app js-stage-work-form-->
+                        <script type="text/javascript">
+                       
+                         function validateСhange2() {
+                                let work_phone = document.querySelector('#work_phone');
+                                
+                                let paren = work_phone.parentElement;
+
+                                work_phone = work_phone.value;
+                                if (work_phone.length < 11) {
+                                    setTimeout(() =>{
+                                        paren.classList.remove("-ok");
+                                        paren.classList.add("-error");
+                                     }, 100);
+                                    return false;
+                                }
+                                return true;
+                            }
+                        </script>
+                        <form action="" method="POST" class="regform js-form-app js-stage-work-form" onsubmit="return validateСhange2()">
 
                             <input type="hidden" name="juicescore_session_id" id="juicescore_session_id" value=""/>
 
@@ -62,44 +81,48 @@
                                     <div class="form_group-title -gil-m">Информация о работе</div>
                                     <div class="form_row">
                                         <label class="input_box -fullwidth">
-                                            <input type="text" class="form-control js-input-required js-dadata-company"
-                                                   name="workplace" id="company" value="{$workplace|escape}"/>
+                                            <input type="text" style="padding-right: 80px;" class="form-control js-input-required js-dadata-company"
+                                                   name="workplace"  maxlength="500" id="company" value="{$workplace|escape}"/>
                                             <span class="input_name {if $workplace}-top{/if}">Компания</span>
                                         </label>
                                     </div>
                                     <div class="form_row">
                                         <label class="input_box">
-                                            <input type="text" class="form-control js-input-required" name="profession"
+                                            <input maxlength="500" type="text" class="form-control js-input-required" name="profession"
                                                    id="post" value="{$profession|escape}"/>
                                             <span class="input_name {if $profession}-top{/if}">Должность</span>
                                         </label>
                                         <label class="input_box">
-                                            <input type="text"
+                                            <!--<input type="text"
                                                    class="form-control js-mask-phone js-input-required js-dadata-phone"
-                                                   name="workphone" id="work_phone" value="{$workphone}"/>
-                                            <span class="input_name {if $workphone}-top{/if}">Рабочий телефон</span>
-                                        </label>
+                                                   name="workphone" id="work_phone" value="{$workphone}"/>-->
+                                                   <input type="number" oninput="phoneInput(this);" onblur="phoneOnblur(this);" 
+                                                   class="form-control  js-input-required "
+                                                   name="workphone" id="work_phone" value="{$workphone}" placeholder="7(___)___-__-__"/>
+                                                    
+                                            <!--<span style="margin-top: -20px;" class="input_name {if $workphone}-top{/if}">Рабочий телефон</span>-->
+                                        </label>    
                                     </div>
                                     <div class="form_row">
                                         <label class="input_box">
-                                            <input type="text" class="ss form-control js-input-digits js-input-required"
+                                            <input type="number" class="ss form-control js-input-digits js-input-required"
                                                    name="income" id="income" value="{$income}"/>
                                             <span class="input_name {if $income}-top{/if}">Ежемесячный доход</span>
                                         </label>
                                         <label class="input_box">
-                                            <input type="text" class="form-control js-input-digits js-input-required"
+                                            <input type="number" class="form-control js-input-digits js-input-required"
                                                    name="expenses" id="expenses" value="{$expenses}"/>
                                             <span class="input_name {if $expenses}-top{/if}">Ежемесячные расходы</span>
                                         </label>
                                     </div>
                                     <div class="form_row">
                                         <label class="input_box">
-                                            <input type="text" class="form-control js-input-digits" name="average_pay"
+                                            <input onclick="bigInput(this);" type="number" class="form-control js-input-digits" name="average_pay"
                                                    id="average_pay" value="{$average_pay}"/>
                                             <span class="input_name {if $average_pay}-top{/if}">Среднемесячный платеж по кредитам и займам</span>
                                         </label>
                                         <label class="input_box">
-                                            <input type="text" class="form-control js-input-digits" name="amount_pay"
+                                            <input onclick="bigInput(this);" type="number" class="form-control js-input-digits" name="amount_pay"
                                                    id="amount_pay" value="{$amount_pay}"/>
                                             <span class="input_name {if $amount_pay}-top{/if}">Сумма просроченных кредитов и займов</span>
                                         </label>
@@ -146,3 +169,11 @@
     })
 
 </script>
+<script type="text/javascript">
+    let work_phone = document.querySelector('#work_phone');
+    let value = work_phone.value;
+
+    if (value[0] != '7') {
+        work_phone.value = '7';
+    } 
+ </script>
