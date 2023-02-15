@@ -56,6 +56,8 @@
                     Застрахованным в период страхования.
                     </td>
                     <td style="width: 50%;">{if !empty($insurance_sum)}{$insurance_sum}{else}{$insurance}{/if} рублей – <strong>страховая премия за дополнительные страховые риски</strong></td>
+                </tr>
+                <tr>
                     <td style="width: 100%;" colspan="2" align="center"><br>По дополнительным страховым рискам выгодоприобретателем
                         является <br> {$firstname|mb_substr:0:1}.{$patronymic|mb_substr:0:1}.{$lastname}
                     </td>
