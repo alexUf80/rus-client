@@ -69,7 +69,7 @@
     return true;*/
   }
   function regadressfullOnblur (input) {
-      let regadressfull = input.value;
+      let regadressfull = input;
 
       let value = regadressfull.value;
       let paren = regadressfull.parentElement;
