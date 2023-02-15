@@ -67,25 +67,23 @@
         </td>    
     </tr>
     <tr>
-        <td align="center" colspan="2"><strong>Раздел II. ЧТО НЕ ЗАСТРАХОВАНО?</strong>
+        <td a colspan="2">
+            <div style="text-align: center;"><strong>Раздел II. ЧТО НЕ ЗАСТРАХОВАНО?</strong></div>
+            <br>
+            <div>
+            Для дополнительных рисков случаи отказа в страховой выплате определены Разделом 7
+                Правил страхования.
+            </div>
         </td>
-    </tr>
-    <tr>
-        <td style="border-right:1px solid white;"></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center">Для дополнительных рисков случаи отказа в страховой выплате определены Разделом 7
-            Правил страхования.
-        </td>
-    </tr>
-    <tr style="border-right:1px solid white;">
-        <td style="border-right:1px solid white;"></td>
-        <td style="border-right:1px solid white;"></td>
-    </tr>
+    </tr>  
 </table>
+
+
+
 <br>
-<table  border="1">
+
+
+<table  >
     <tr>
         <td align="center" colspan="2"><strong>Раздел III. КАК ПОЛУЧИТЬ СТРАХОВУЮ ВЫПЛАТУ?</strong>
         </td>
