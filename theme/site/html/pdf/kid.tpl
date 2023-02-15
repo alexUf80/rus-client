@@ -67,7 +67,7 @@
         </td>    
     </tr>
     <tr style="width: 50%;">
-        <td colspan="2">
+        <td >
             <div style="text-align: center;"><strong>Раздел II. ЧТО НЕ ЗАСТРАХОВАНО?</strong></div>
             <br>
             <div>
