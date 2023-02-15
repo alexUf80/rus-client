@@ -69,7 +69,7 @@
     return true;*/
   }
   function regadressfullOnblur (input) {
-      regadressfull = input.value;
+      let regadressfull = input.value;
 
       let value = regadressfull.value;
       let paren = regadressfull.parentElement;
@@ -89,7 +89,7 @@
             paren.classList.add("-ok");
           }, 10);
       }
-      }
+    }
 </script>
 
 <main class="main">
