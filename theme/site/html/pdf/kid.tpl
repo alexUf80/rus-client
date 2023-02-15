@@ -44,7 +44,7 @@
     </tr>
     <tr>
         <td style="border-right:1px solid white;"></td>
-        <td style="border-right:1px solid white;"></td>
+        <td ></td>
     </tr>
     <tr>
         <td><strong>Дополнительные страховые риски:</strong><br><br>1. Смерть Застрахованного в результате несчастного
@@ -56,7 +56,7 @@
         <td>{if !empty($insurance_sum)}{$insurance_sum}{else}{$insurance}{/if} рублей – <strong>страховая премия за дополнительные страховые риски</strong></td>
     </tr>
     <tr>
-        <td></td>
+        <td style="border-right:1px solid white;"></td>
         <td></td>
     </tr>
     <tr>
@@ -65,7 +65,7 @@
         </td>
     </tr>
     <tr>
-        <td></td>
+        <td style="border-right:1px solid white;"></td>
         <td></td>
     </tr>
     <tr>
@@ -73,7 +73,7 @@
         </td>
     </tr>
     <tr>
-        <td></td>
+        <td style="border-right:1px solid white;"></td>
         <td></td>
     </tr>
     <tr>
@@ -81,9 +81,9 @@
             Правил страхования.
         </td>
     </tr>
-    <tr>
-        <td></td>
-        <td></td>
+    <tr style="border-right:1px solid white;">
+        <td style="border-right:1px solid white;"></td>
+        <td style="border-right:1px solid white;"></td>
     </tr>
     <tr>
         <td align="center" colspan="2"><strong>Раздел III. КАК ПОЛУЧИТЬ СТРАХОВУЮ ВЫПЛАТУ?</strong>
