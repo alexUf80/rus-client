@@ -43,14 +43,15 @@
 <script type="text/javascript">
   function validateСhange() {
     let regadressfull = document.querySelector('#Regadressfull');
-
     let value = regadressfull.value;
+    let paren = work_phone.parentElement;
 
     value = value.replace(/\s+/g, '');
 
     if ( value.length == 0 ) {
       regadressfull.value = '';
-       return false;
+      paren.classList.add("-error");
+      return false;
     }
 
     return true;
@@ -108,8 +109,8 @@
 
               <div class="step_box step3">
                 <div class="form_group -fs-18 js-dadata-address">
+                  <div class="form_group-title -gil-m">Адрес регистрации</div>
                   <label class="input_box">
-                    <div class="form_group-title -gil-m">Адрес регистрации</div>
                     <input class="form-control casing-upper-mask Regadress" name="Regadressfull"
                             style="width: 500px; margin-left: 25px" maxlength="500" type="text" id="Regadressfull"
                             {if !empty($Regaddressfull)}value="{$Regaddressfull->adressfull}"{/if}/>
