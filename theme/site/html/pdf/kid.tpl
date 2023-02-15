@@ -43,13 +43,10 @@
         <td align="center" colspan="2"><strong>Раздел I. ЧТО ЗАСТРАХОВАНО?</strong><br>
         </td>
     </tr>
-    <tr >
+    <tr style="width: 100%;">
         
-        <td >
+        <td style="width: 100%;">
             <table>
-                <tr>
-                    <td style="width: 100%;"></td>
-                </tr>
                 <tr>
                     <td style="width: 50%;">
                         <strong>Дополнительные страховые риски:</strong><br><br>1. Смерть Застрахованного в результате несчастного
@@ -68,19 +65,6 @@
             </table>
 
         </td>    
-    </tr>
-    <tr>
-        <td style="border-right:1px solid white;"></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center">По дополнительным страховым рискам выгодоприобретателем
-            является {$firstname|mb_substr:0:1}.{$patronymic|mb_substr:0:1}.{$lastname}
-        </td>
-    </tr>
-    <tr>
-        <td style="border-right:1px solid white;"></td>
-        <td></td>
     </tr>
     <tr>
         <td align="center" colspan="2"><strong>Раздел II. ЧТО НЕ ЗАСТРАХОВАНО?</strong>
