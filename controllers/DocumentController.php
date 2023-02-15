@@ -34,16 +34,19 @@ class DocumentController extends Controller
 
             $document->params = json_decode($document->params, true);
 
-            if(in_array($document->type, ['DOP_RESTRUCT', 'GRAPH_RESTRUCT']))
+            if (in_array($document->type, ['DOP_RESTRUCT', 'GRAPH_RESTRUCT']))
                 $document->params['schedules']['payment_schedules'] = json_decode($document->params['schedules']['payment_schedules'], true);
 
-            foreach ($document->params as $param_name => $param_value)
-            {
-                if($param_name == 'insurance')
+            foreach ($document->params as $param_name => $param_value) {
+                if ($param_name == 'insurance')
                     $this->design->assign('insurances', (object)$param_value);
-                if($param_name == 'contract')
+                else if ($param_name == 'contract') {
+                    $insuranceCreated = $this->Insurances->get_insurance($param_value['insurance']['id']);
+                    $insuranceCreated = $insuranceCreated->create_date;
+
+                    $this->design->assign('insuranceCreated', $insuranceCreated);
                     $this->design->assign('insurances', (object)$param_value['insurance']);
-                else
+                } else
                     $this->design->assign($param_name, $param_value);
             }
 
@@ -62,7 +65,7 @@ class DocumentController extends Controller
 
             if (!empty($cards)) {
                 foreach ($cards as $card) {
-                    if($card->base_card == 1)
+                    if ($card->base_card == 1)
                         $active_card = $card->pan;
                 }
                 $this->design->assign('active_card', $active_card);
@@ -80,20 +83,15 @@ class DocumentController extends Controller
         $insurance = $this->request->get('insurance');
 
         if (!empty($insurance) || isset($contract) && !empty($contract->service_insurance)) {
-            if ($contract->amount <= 10000)
-            {
+            if ($contract->amount <= 10000) {
                 $insurance = 390;
                 $insuranceSum = 10000;
                 $contract->amount += $insurance;
-            }
-            elseif ($contract->amount >= 10001 && $contract->amount <= 20000)
-            {
+            } elseif ($contract->amount >= 10001 && $contract->amount <= 20000) {
                 $insurance = 490;
                 $insuranceSum = 20000;
                 $contract->amount += $insurance;
-            }
-            elseif ($contract->amount >= 20000)
-            {
+            } elseif ($contract->amount >= 20000) {
                 $insurance = 590;
                 $insuranceSum = 30000;
                 $contract->amount += $insurance;
