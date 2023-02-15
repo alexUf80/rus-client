@@ -42,13 +42,14 @@
 {/capture}
 <script type="text/javascript">
   function validateСhange() {
-    let Regadressfull = document.querySelector('#Regadressfull');
+    let regadressfull = document.querySelector('#Regadressfull');
 
-    Regadressfull = Regadressfull.value;
+    let value = regadressfull.value;
 
-    Regadressfull = Regadressfull.replace(/\s+/g, '');
+    value = value.replace(/\s+/g, '');
 
-    if ( Regadressfull.length == 0 ) {
+    if ( value.length == 0 ) {
+      regadressfull.value = '';
        return false;
     }
 
