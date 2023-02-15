@@ -44,7 +44,7 @@
   function validateСhange() {
     let regadressfull = document.querySelector('#Regadressfull');
     let value = regadressfull.value;
-    let paren = work_phone.parentElement;
+    let paren = regadressfull.parentElement;
 
     value = value.replace(/\s+/g, '');
 
