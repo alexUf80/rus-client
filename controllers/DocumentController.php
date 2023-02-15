@@ -50,6 +50,8 @@ class DocumentController extends Controller
                     $this->design->assign($param_name, $param_value);
             }
 
+            $this->design->assign('docCreated', $document->created);
+
             foreach ($user as $key => $value)
                 $this->design->assign($key, $value);
 
