@@ -5,8 +5,8 @@
   <script src="theme/site/js/form.app.js"></script>
   <script src="theme/site/js/stage_address.app.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@21.12.0/dist/js/jquery.suggestions.min.js"></script>
-    <script src="theme/site/js/dadata.app.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!--<script src="theme/site/js/dadata.app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
   <script>
       $(function () {
           let token_dadata = "25c845f063f9f3161487619f630663b2d1e4dcd7";
