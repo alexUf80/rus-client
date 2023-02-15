@@ -13,6 +13,7 @@ function LkApp() {
     };
 
     $('.js-prolongation-form').submit(function (e) {
+        // alert('ворк');
 
         if ($(this).find('[name=code]').val() == '') {
             e.preventDefault();

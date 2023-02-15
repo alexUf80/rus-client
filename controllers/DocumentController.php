@@ -68,6 +68,11 @@ class DocumentController extends Controller
                 $this->design->assign('active_card', $active_card);
             }
 
+            $amount = OperationsORM::where('type', 'P2P')->where('order_id', $document->order_id)->first();
+            $amount = $amount->amount;
+
+            $this->design->assign('amount', $amount);
+
             $this->design->assign('contract', $contract);
 
         }

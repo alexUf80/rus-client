@@ -400,7 +400,7 @@ button:focus, a:focus, img:focus {outline:none;}
 		.form_info_progress_control.-step5:before{content:''; width: 100%; height: 6px;background-color: #00c4f1; position: absolute; top:0; left: 0; display: block;}
 .regform{max-width: 519px; margin-right: 0; margin-left: auto;}
 .form_group + .form_group {margin-top: 30px;}
-		.form-control{background-color: #fbfbfb; border: none;padding: 13px 27px; color: #404040; border-radius:7px; }
+		.form-control{background-color: #fbfbfb; border: none;padding: 13px 27px; color: #404040; border-radius:7px;padding-right: 45px; }
 		input.form-control{border: none;color: #000000; height: 62px; }
 		textarea.form-control{border: none;color: #000000; height: 120px;}
 		.form-control:focus{box-shadow: none!important; border: none;background-color: #fbfbfb;}

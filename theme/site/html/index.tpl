@@ -73,7 +73,101 @@
   <script type="text/javascript">
     window.dataLayer = window.dataLayer || [];
   </script>
+   <script type="text/javascript">
+    function handleChange(input) {
+      if (input.value < 0) input.value = 0;
+      if (input.value > 9999) {
+          let val = input.value;
+          val = String(val);
+          val = val[0] + val[1] + val[2] + val[3];
+          val = Number(val);
+          input.value = val;
+      } 
+    }
+    var phoneChange;
+    function phoneInput(input) {
+      phoneChange = input.value;
+      phoneChange = String(phoneChange);
+      //alert(phoneChange[0]);
+      //if (phoneChange[0] != '+') {
+      //  input.value = 0;
+      //} 
+      if (phoneChange[0] != '7') {
+        input.value = '7';
+      } 
+      if (phoneChange.length > 11) {
+        input.value =  phoneChange[0] + phoneChange[1] + phoneChange[2]+ phoneChange[3]+ phoneChange[4]+ phoneChange[5]+ phoneChange[6]+ phoneChange[7]+ phoneChange[8]+ phoneChange[9]+ phoneChange[10] ;
+      }
+    }
+    function bigInput(input) {
+      let bigInputElement = input;
+      bigInputElement.style = 'height: 100px;padding-top: 40px;';
+      let parent = input.parentElement;
+      let childrenArr = parent.children;
+      let span = childrenArr[1];
+      span.style = 'margin-top: 12px;';
+    }
+   var phoneChangeOnblur;
+   function phoneOnblur (input) {
+      phoneChangeOnblur = input.value;
+
+      let paren = input.parentElement;
+
+      if (phoneChangeOnblur.length < 11) {
+        setTimeout(() =>{
+          paren.classList.remove("-ok");
+          paren.classList.add("-error");
+        }, 100);
+        
+    }
+    function regadressfullOnblur (input) {
+      regadressfull = input.value;
+
+      let value = regadressfull.value;
+      let paren = regadressfull.parentElement;
+
+      value = value.replace(/\s+/g, '');
+
+      if ( value.length == 0 ) {
+        setTimeout(() =>{
+            if(paren.classList.contains("-ok"))
+            paren.classList.remove("-ok");
+            paren.classList.add("-error");
+          }, 10);
+      } else {
+         setTimeout(() =>{
+            if(paren.classList.contains("-error"))
+            paren.classList.remove("-error");
+            paren.classList.add("-ok");
+          }, 10);
+      }
+      /*paren.classList.remove("-error");
+      paren.classList.add("-ok");
+      return true;
+
+        if (phoneChangeOnblur.length < 11) {
+          setTimeout(() =>{
+            paren.classList.remove("-ok");
+            paren.classList.add("-error");
+          }, 100);
+          
+        }  */  
+    }
+
+  </script>
+
   <style type="text/css">
+
+    input[type=number]::-webkit-outer-spin-button,
+    input[type=number]::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance:textfield;
+    }
+
     @media screen and (min-width: 980px) {
       .t-records {
         opacity: 0;
@@ -123,9 +217,10 @@
 
   {if !$is_developer}
   {literal}
-  <script src="//code.jivo.ru/widget/OPARMHrIm4" async></script>
+  <script src="//code.jivo.ru/widget/OWL4njXCIc" async></script>
+  <!--<script src="//code.jivo.ru/widget/OPARMHrIm4" async></script>-->
   <!-- Yandex.Metrika counter -->
-  <script type="text/javascript">
+  <!--<script type="text/javascript">
     (function(m, e, t, r, i, k, a) {
       m[i] = m[i] || function() {
         (m[i].a = m[i].a || []).push(arguments)
@@ -150,7 +245,7 @@
   </script>
   <noscript>
     <div><img src="https://mc.yandex.ru/watch/88054135" style="position:absolute; left:-9999px;" alt="" /></div>
-  </noscript>
+  </noscript>-->
   <!-- /Yandex.Metrika counter -->
   {/literal}
   {/if}

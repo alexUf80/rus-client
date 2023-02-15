@@ -297,7 +297,7 @@
                                             <div class="form-phone">
                                                 <label class="phone_info -fs-14" for="accept_code">Код активации из
                                                     СМС</label>
-                                                <input type="text" placeholder="" name="accept_code" id="accept_code"
+                                                <input type="number" oninput="handleChange(this);" placeholder="" name="accept_code" id="accept_code"
                                                        class="js-accept-code form-control" value=""/>
                                                 <a class="js-repeat-accept-code" href="javascript:void(0);">отправить
                                                     еще раз <span class="js-accept-timer"></span></a>
@@ -498,7 +498,7 @@
                                             <input type="hidden" name="prolongation" value="1"/>
                                             <input type="hidden" name="code" value=""/>
                                             <input type="hidden" name="phone" value="{$user->phone_mobile}"/>
-                                            <h3 class="mb-0">Пролонгация</h3>
+                                            <h3 class="mb-0">Пролонгация 2</h3>
                                             <span class="text-muted">до: {$order->prolongation_date}</span>
                                             <div class="row">
                                                 <div class="col-md-4 col-12">
