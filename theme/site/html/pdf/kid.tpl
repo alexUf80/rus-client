@@ -45,7 +45,7 @@
     </tr>
     <tr style="width: 100%;">
         
-        <td >
+        <td style="width: 100%;">
             <table>
                 <tr>
                     <td style="width: 50%;">
