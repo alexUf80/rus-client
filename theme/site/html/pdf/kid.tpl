@@ -11,11 +11,11 @@
     <br><br><br><br>
 </div>
 <table>
-    <tr style="width: 90%">
+    <tr >
         <td style="width: 70%" align="center"><strong>Ключевой информационный документ<br>об условиях добровольного
                 страхования</strong>
         </td>
-        <td tyle="width: 20%;" border="1" rowspan="3"><img src="{$config->root_dir}/theme/site/html/pdf/i/kodkit.png"></td>
+        <td style="width: 20%;" border="1" rowspan="3"><img src="{$config->root_dir}/theme/site/html/pdf/i/kodkit.png"></td>
     </tr>
     <tr>
         <td></td>
