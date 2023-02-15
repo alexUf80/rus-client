@@ -89,6 +89,7 @@
             paren.classList.add("-ok");
           }, 10);
       }
+      }
 </script>
 
 <main class="main">
