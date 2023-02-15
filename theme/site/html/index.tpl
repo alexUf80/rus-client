@@ -120,38 +120,7 @@
         }, 100);
         
     }
-    function regadressfullOnblur (input) {
-      regadressfull = input.value;
-
-      let value = regadressfull.value;
-      let paren = regadressfull.parentElement;
-
-      value = value.replace(/\s+/g, '');
-
-      if ( value.length == 0 ) {
-        setTimeout(() =>{
-            if(paren.classList.contains("-ok"))
-            paren.classList.remove("-ok");
-            paren.classList.add("-error");
-          }, 10);
-      } else {
-         setTimeout(() =>{
-            if(paren.classList.contains("-error"))
-            paren.classList.remove("-error");
-            paren.classList.add("-ok");
-          }, 10);
-      }
-      /*paren.classList.remove("-error");
-      paren.classList.add("-ok");
-      return true;
-
-        if (phoneChangeOnblur.length < 11) {
-          setTimeout(() =>{
-            paren.classList.remove("-ok");
-            paren.classList.add("-error");
-          }, 100);
-          
-        }  */  
+     
     }
 
   </script>
