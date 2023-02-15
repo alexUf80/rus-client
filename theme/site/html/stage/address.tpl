@@ -5,8 +5,8 @@
   <script src="theme/site/js/form.app.js"></script>
   <script src="theme/site/js/stage_address.app.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@21.12.0/dist/js/jquery.suggestions.min.js"></script>
-    <script src="theme/site/js/dadata.app.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!--<script src="theme/site/js/dadata.app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
   <script>
       $(function () {
           let token_dadata = "25c845f063f9f3161487619f630663b2d1e4dcd7";
@@ -56,17 +56,7 @@
     paren.classList.remove("-error");
     paren.classList.add("-ok");
     return true;
-    //let paren = work_phone.parentElement;
 
-    /*work_phone = work_phone.value;
-    if (work_phone.length < 11) {
-        setTimeout(() =>{
-            paren.classList.remove("-ok");
-            paren.classList.add("-error");
-          }, 100);
-        return false;
-    }
-    return true;*/
   }
   function regadressfullOnblur (input) {
       let regadressfull = input;
@@ -135,7 +125,7 @@
                   <div class="form_group-title -gil-m">Адрес регистрации</div>
                   <label class="input_box">
                     <input class="form-control casing-upper-mask Regadress" name="Regadressfull" onblur="regadressfullOnblur(this);"
-                            style="width: 500px; margin-left: 25px" maxlength="500" type="text" id="Regadressfull"
+                            style="width: 500px; margin-left: 25px;padding-right: 70px;" maxlength="500" type="text" id="Regadressfull"
                             {if !empty($Regaddressfull)}value="{$Regaddressfull->adressfull}"{/if}/>
                     <input style="display: none" class="Registration" name="Regadress"/>
                   </label>

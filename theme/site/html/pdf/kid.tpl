@@ -10,12 +10,13 @@
 <div>
     <br><br><br><br>
 </div>
+
 <table>
-    <tr>
+    <tr >
         <td style="width: 70%" align="center"><strong>Ключевой информационный документ<br>об условиях добровольного
                 страхования</strong>
         </td>
-        <td rowspan="3"><img src="{$config->root_dir}/theme/site/html/pdf/i/kodkit.png"></td>
+        <td style="width: 20%;" border="1" rowspan="3"><img style="margin-top: 50px;" src="{$config->root_dir}/theme/site/html/pdf/i/kodkit.png"></td>
     </tr>
     <tr>
         <td></td>
@@ -37,54 +38,52 @@
 <div>
 
 </div>
-<table>
+<table border="1">
     <tr>
-        <td align="center" colspan="2"><strong>Раздел I. ЧТО ЗАСТРАХОВАНО?</strong>
+        <td align="center" colspan="2"><strong>Раздел I. ЧТО ЗАСТРАХОВАНО?</strong><br>
         </td>
     </tr>
-    <tr>
-        <td></td>
-        <td></td>
+    <tr style="width: 100%;">
+        
+        <td style="width: 100%;">
+            <table>
+                <tr>
+                    <td style="width: 50%;">
+                        <strong>Дополнительные страховые риски:</strong><br><br>1. Смерть Застрахованного в результате несчастного
+                    случая,
+                    происшедшего с Застрахованным в период страхования;<br>2. Установление Застрахованному инвалидности I или II
+                    группы в связи с причинением вреда здоровью Застрахованного вследствие несчастного случая, происшедшего с
+                    Застрахованным в период страхования.
+                    </td>
+                    <td style="width: 50%;">{if !empty($insurance_sum)}{$insurance_sum}{else}{$insurance}{/if} рублей – <strong>страховая премия за дополнительные страховые риски</strong></td>
+                </tr>
+                <tr>
+                    <td style="width: 100%;" colspan="2" align="center"><br>По дополнительным страховым рискам выгодоприобретателем
+                        является <br> {$firstname|mb_substr:0:1}.{$patronymic|mb_substr:0:1}.{$lastname}
+                    </td>
+                </tr>
+            </table>
+
+        </td>    
     </tr>
-    <tr>
-        <td><strong>Дополнительные страховые риски:</strong><br><br>1. Смерть Застрахованного в результате несчастного
-            случая,
-            происшедшего с Застрахованным в период страхования;<br>2. Установление Застрахованному инвалидности I или II
-            группы в связи с причинением вреда здоровью Застрахованного вследствие несчастного случая, происшедшего с
-            Застрахованным в период страхования.
+    <tr style="width: 50%;">
+        <td >
+            <div style="text-align: center;"><strong>Раздел II. ЧТО НЕ ЗАСТРАХОВАНО?</strong></div>
+            <br>
+            <div>
+                &nbsp;&nbsp;&nbsp;Для дополнительных рисков случаи отказа в страховой выплате определены Разделом 7
+                Правил страхования.
+            </div>
         </td>
-        <td>{if !empty($insurance_sum)}{$insurance_sum}{else}{$insurance}{/if} рублей – <strong>страховая премия за дополнительные страховые риски</strong></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center">По дополнительным страховым рискам выгодоприобретателем
-            является {$firstname|mb_substr:0:1}.{$patronymic|mb_substr:0:1}.{$lastname}
-        </td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td align="center" colspan="2"><strong>Раздел II. ЧТО НЕ ЗАСТРАХОВАНО?</strong>
-        </td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td colspan="2" align="center">Для дополнительных рисков случаи отказа в страховой выплате определены Разделом 7
-            Правил страхования.
-        </td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
+    </tr>  
+</table>
+
+
+
+<br>
+
+<br><br>
+<table  >
     <tr>
         <td align="center" colspan="2"><strong>Раздел III. КАК ПОЛУЧИТЬ СТРАХОВУЮ ВЫПЛАТУ?</strong>
         </td>
