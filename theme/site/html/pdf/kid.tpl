@@ -43,10 +43,13 @@
         <td align="center" colspan="2"><strong>Раздел I. ЧТО ЗАСТРАХОВАНО?</strong><br>
         </td>
     </tr>
-    <tr style="width: 100%;">
+    <tr >
         
-        <td style="width: 100%;">
+        <td >
             <table>
+                <tr>
+                    <td style="width: 100%;"></td>
+                </tr>
                 <tr>
                     <td style="width: 50%;">
                         <strong>Дополнительные страховые риски:</strong><br><br>1. Смерть Застрахованного в результате несчастного
