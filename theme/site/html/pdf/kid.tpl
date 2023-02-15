@@ -37,7 +37,7 @@
 <div>
 
 </div>
-<table>
+<table border="1">
     <tr>
         <td align="center" colspan="2"><strong>Раздел I. ЧТО ЗАСТРАХОВАНО?</strong>
         </td>
