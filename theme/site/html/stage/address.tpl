@@ -5,6 +5,8 @@
   <script src="theme/site/js/form.app.js"></script>
   <script src="theme/site/js/stage_address.app.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@21.12.0/dist/js/jquery.suggestions.min.js"></script>
+    <script src="theme/site/js/dadata.app.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <script>
       $(function () {
           let token_dadata = "25c845f063f9f3161487619f630663b2d1e4dcd7";
@@ -38,6 +40,32 @@
   <link rel="stylesheet" href="theme/site/libs/autocomplete/styles.css"/>
   <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@21.12.0/dist/css/suggestions.min.css" rel="stylesheet"/>
 {/capture}
+<script type="text/javascript">
+  function validateСhange() {
+    let Regadressfull = document.querySelector('#Regadressfull');
+
+    Regadressfull = Regadressfull.value;
+
+    Regadressfull = Regadressfull.replace(/\s+/g, '');
+
+    if ( Regadressfull.length == 0 ) {
+       return false;
+    }
+
+    return true;
+    //let paren = work_phone.parentElement;
+
+    /*work_phone = work_phone.value;
+    if (work_phone.length < 11) {
+        setTimeout(() =>{
+            paren.classList.remove("-ok");
+            paren.classList.add("-error");
+          }, 100);
+        return false;
+    }
+    return true;*/
+  }
+</script>
 
 <main class="main">
   <div class="section section_form">
@@ -75,13 +103,13 @@
         </div>
         <div class="col-lg-7">
           <div class="main_form">
-            <form action="" method="POST" class="regform js-form-app js-stage-address-form">
+            <form action="" method="POST" class="regform js-form-app js-stage-address-form" onsubmit="return validateСhange()">
 
               <div class="step_box step3">
                 <div class="form_group -fs-18 js-dadata-address">
                   <div class="form_group-title -gil-m">Адрес регистрации</div>
                   <input class="form-control casing-upper-mask Regadress" name="Regadressfull"
-                         style="width: 500px; margin-left: 25px" maxlength="500" type="text"
+                         style="width: 500px; margin-left: 25px" maxlength="500" type="text" id="Regadressfull"
                          {if !empty($Regaddressfull)}value="{$Regaddressfull->adressfull}"{/if}/>
                   <input style="display: none" class="Registration" name="Regadress"/>
                 </div>
