@@ -52,10 +52,10 @@
                     группы в связи с причинением вреда здоровью Застрахованного вследствие несчастного случая, происшедшего с
                     Застрахованным в период страхования.
                 </div>
-                    <div style="width: 50%;">{if !empty($insurance_sum)}{$insurance_sum}{else}{$insurance}{/if} рублей – <strong>страховая премия за дополнительные страховые риски</strong></td></div>
+                <div style="width: 50%;">{if !empty($insurance_sum)}{$insurance_sum}{else}{$insurance}{/if} рублей – <strong>страховая премия за дополнительные страховые риски</strong>
+                </div>
             </div>
-        </td>
-        
+        </td>    
     </tr>
     <tr>
         <td style="border-right:1px solid white;"></td>
