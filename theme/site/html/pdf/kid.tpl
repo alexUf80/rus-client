@@ -43,7 +43,7 @@
         </td>
     </tr>
     <tr>
-        <td>
+        <td style="width: 100%;">
             <div style="display: flex;">
                 <div style="width: 50%;">
                     <strong>Дополнительные страховые риски:</strong><br><br>1. Смерть Застрахованного в результате несчастного
