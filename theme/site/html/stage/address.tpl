@@ -108,11 +108,13 @@
 
               <div class="step_box step3">
                 <div class="form_group -fs-18 js-dadata-address">
-                  <div class="form_group-title -gil-m">Адрес регистрации</div>
-                  <input class="form-control casing-upper-mask Regadress" name="Regadressfull"
-                         style="width: 500px; margin-left: 25px" maxlength="500" type="text" id="Regadressfull"
-                         {if !empty($Regaddressfull)}value="{$Regaddressfull->adressfull}"{/if}/>
-                  <input style="display: none" class="Registration" name="Regadress"/>
+                  <label class="input_box">
+                    <div class="form_group-title -gil-m">Адрес регистрации</div>
+                    <input class="form-control casing-upper-mask Regadress" name="Regadressfull"
+                            style="width: 500px; margin-left: 25px" maxlength="500" type="text" id="Regadressfull"
+                            {if !empty($Regaddressfull)}value="{$Regaddressfull->adressfull}"{/if}/>
+                    <input style="display: none" class="Registration" name="Regadress"/>
+                  </label>
                 </div>
                 <div class="form_group -fs-18 js-dadata-address js-dadata-okato">
                   <div class="form_group-title -gil-m">Адрес места жительства</div>
