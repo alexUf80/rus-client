@@ -53,7 +53,8 @@
       paren.classList.add("-error");
       return false;
     }
-
+    paren.classList.remove("-error");
+    paren.classList.add("-ok");
     return true;
     //let paren = work_phone.parentElement;
 
