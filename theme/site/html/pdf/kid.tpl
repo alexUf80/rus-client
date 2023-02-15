@@ -39,21 +39,20 @@
 </div>
 <table border="1">
     <tr>
-        <td align="center" colspan="2"><strong>Раздел I. ЧТО ЗАСТРАХОВАНО?</strong>
+        <td align="center" colspan="2"><strong>Раздел I. ЧТО ЗАСТРАХОВАНО?</strong><br>
         </td>
     </tr>
     <tr>
-        <td style="border-right:1px solid white;"></td>
-        <td ></td>
-    </tr>
-    <tr>
-        <td><strong>Дополнительные страховые риски:</strong><br><br>1. Смерть Застрахованного в результате несчастного
-            случая,
-            происшедшего с Застрахованным в период страхования;<br>2. Установление Застрахованному инвалидности I или II
-            группы в связи с причинением вреда здоровью Застрахованного вследствие несчастного случая, происшедшего с
-            Застрахованным в период страхования.
-        </td>
-        <td>{if !empty($insurance_sum)}{$insurance_sum}{else}{$insurance}{/if} рублей – <strong>страховая премия за дополнительные страховые риски</strong></td>
+        <div style="display: flex;">
+            <div style="width: 50%;">
+                <strong>Дополнительные страховые риски:</strong><br><br>1. Смерть Застрахованного в результате несчастного
+                случая,
+                происшедшего с Застрахованным в период страхования;<br>2. Установление Застрахованному инвалидности I или II
+                группы в связи с причинением вреда здоровью Застрахованного вследствие несчастного случая, происшедшего с
+                Застрахованным в период страхования.
+                </div>
+            <div style="width: 50%;">{if !empty($insurance_sum)}{$insurance_sum}{else}{$insurance}{/if} рублей – <strong>страховая премия за дополнительные страховые риски</strong></td></div>
+        </div>
     </tr>
     <tr>
         <td style="border-right:1px solid white;"></td>
@@ -85,6 +84,9 @@
         <td style="border-right:1px solid white;"></td>
         <td style="border-right:1px solid white;"></td>
     </tr>
+</table>
+<br>
+<table  border="1">
     <tr>
         <td align="center" colspan="2"><strong>Раздел III. КАК ПОЛУЧИТЬ СТРАХОВУЮ ВЫПЛАТУ?</strong>
         </td>
