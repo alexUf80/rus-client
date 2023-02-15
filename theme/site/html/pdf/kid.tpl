@@ -66,8 +66,8 @@
 
         </td>    
     </tr>
-    <tr>
-        <td a colspan="2">
+    <tr style="width: 50%;">
+        <td colspan="2">
             <div style="text-align: center;"><strong>Раздел II. ЧТО НЕ ЗАСТРАХОВАНО?</strong></div>
             <br>
             <div>
@@ -82,7 +82,7 @@
 
 <br>
 
-
+<br><br>
 <table  >
     <tr>
         <td align="center" colspan="2"><strong>Раздел III. КАК ПОЛУЧИТЬ СТРАХОВУЮ ВЫПЛАТУ?</strong>
