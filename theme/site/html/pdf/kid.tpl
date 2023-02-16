@@ -83,7 +83,7 @@
 <br>
 
 <br><br>
-<table  >
+<table   border="1" >
     <tr>
         <td align="center" colspan="2"><strong>Раздел III. КАК ПОЛУЧИТЬ СТРАХОВУЮ ВЫПЛАТУ?</strong>
         </td>
