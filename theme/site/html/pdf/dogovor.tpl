@@ -12,7 +12,7 @@
 </div>
 <!--<table>
     <tr>
-        <td width="20%"><strong>{$contract->issuance_date|date}</strong></td>
+        <td width="20%"><strong>{$contract->inssuance_date|date}</strong></td>
         <td width="60%"></td>
         <td width="20%"><strong>Г. АРХАНГЕЛЬСК</strong></td>
     </tr>
@@ -58,12 +58,12 @@
 </div>
 
 <div align="center">
-<strong>РАЗДЕЛ 1. Индивидуальные условия договора потребительского займа № {$contract->number} от {$contract->issuance_date|date}г.</strong>
+<strong>РАЗДЕЛ 1. Индивидуальные условия договора потребительского займа № {$contract->number} от {$contract->inssuance_date|date}г.</strong>
 </div>
 <table border="1" cellpadding="5">
     <thead>
     <tr align="center">
-        <th width="100%"><strong>Индивидуальные условия договора потребительского займа № {$contract->number} от {$contract->issuance_date|date}г.</strong></th>
+        <th width="100%"><strong>Индивидуальные условия договора потребительского займа № {$contract->number} от {$contract->inssuance_date|date}г.</strong></th>
     </tr>
     <tr align="center">
         <th width="10%">П/П</th>

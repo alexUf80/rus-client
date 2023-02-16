@@ -1,7 +1,7 @@
 <table>
     <tr>
         <td style="width: 25%"></td>
-        <td style="width: 60%"><h3>СТРАХОВОЙ ПОЛИС № {$contract->insurance->number}</h3></td>
+        <td style="width: 60%"><h3>СТРАХОВОЙ ПОЛИС № {$insurances->number}</h3></td>
         <td style="width: 15%"></td>
     </tr>
 </table>
@@ -9,7 +9,13 @@
     <tr>
         <td style="width: 10%"></td>
         <td style="width: 60%"></td>
-        <td style="width: 30%">дата выдачи полиса {$contract->insurance->create_date|date}г.</td>
+        <td style="width: 30%">дата выдачи полиса
+            {if !empty($insurances->created_date)}
+            {$insurances->created_date|date}г.
+            {elseif isset($insuranceCreated)}
+            {$insuranceCreated|date}г.
+            {else}
+            {$insurances->create_date|date}{/if}г.</td>
     </tr>
 </table>
 <div>

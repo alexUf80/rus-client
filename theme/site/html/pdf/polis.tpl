@@ -12,7 +12,14 @@
                     <td align="center">
                         <strong>ПОЛИС – ОФЕРТА</strong><br/>
                         <strong>СТРАХОВАНИЕ ОТ НЕСЧАСТНЫХ СЛУЧАЕВ</strong><br/>
-                        <strong>№ {$insurances->number} от {if !empty($insurances->created_date)}{$insurances->created_date|date}{else}{$insurances->create_date|date}{/if}г.</strong><br/>
+                        <strong>№ {$insurances->number} от
+                            {if !empty($insurances->created_date)}
+                            {$insurances->created_date|date}г.
+                            {elseif isset($insuranceCreated)}
+                            {$insuranceCreated|date}г.
+                            {else}
+                            {$insurances->create_date|date}{/if}г.
+                        </strong><br/>
                     </td>
                     <td style="width: 20%"></td>
                 </tr>
@@ -127,7 +134,8 @@
                 </tr>
                 <tr>
                     <td colspan="2"><strong>Срок действия договора страхования: </strong></td>
-                    <td colspan="2">с 00 часов  {$insurances->start_date|date}г.  по 24 часов {$insurances->end_date|date}
+                    <td colspan="2">с 00 часов  {$insurances->start_date|date}г.  по 24
+                        часов {$insurances->end_date|date}
                         г.
                     </td>
                 </tr>

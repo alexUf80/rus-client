@@ -58,7 +58,7 @@
         <td width="40%">Срок действия договора, срок возврата кредита
             (займа)
         </td>
-        <td width="50%">с {$contract->issuance_date|date} г. по {$contract->return_date|date} г.
+        <td width="50%">с {$docCreated|date} г. по {$contract->return_date|date} г.
             Договор действует со дня предоставления заемщику суммы займа и до полного
             исполнения заемщиком своих обязательств по договору
         </td>
