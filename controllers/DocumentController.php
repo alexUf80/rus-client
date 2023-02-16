@@ -77,7 +77,6 @@ class DocumentController extends Controller
             $amount = $amount->amount;
 
             $this->design->assign('amount', $amount);
-
             $this->design->assign('contract', $contract);
 
         }
