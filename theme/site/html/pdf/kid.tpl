@@ -100,7 +100,7 @@
         </td>
     </tr>
 </table>
-<br><br><br> 
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 <table border="1">
     <tr>
         <td align="center" colspan="2"><strong>Раздел IV. КАК ВЕРНУТЬ СТРАХОВУЮ ПРЕМИЮ?</strong>
@@ -126,7 +126,7 @@
         </td>
     </tr>
      <tr>
-        <td  style="50%" align="justify"><br><br><br> Полное досрочное погашение кредита (займа), для договора заключенного с 01.04.2023 г
+        <td  style="50%" align="justify">Полное досрочное погашение кредита (займа), для договора заключенного с 01.04.2023 г
         </td>
      </tr>
 
