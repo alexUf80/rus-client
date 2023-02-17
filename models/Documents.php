@@ -14,7 +14,8 @@ class Documents extends Core
         'ANKETA_FL' =>  'anketa_fl.tpl',
 
         'REASON_FOR_REFUSAL' =>  'reason_for_refusal.tpl',
-        'INFORMATION_SERVICES_AGREEMENT' => 'information_services_agreement.tpl'
+        'INFORMATION_SERVICES_AGREEMENT' => 'information_services_agreement.tpl',
+        'FIND_REASON_FOR_REFUSAL' =>  'find_reason_for_refusal.tpl',
     );
 
 
@@ -30,7 +31,8 @@ class Documents extends Core
 
         'ANKETA_FL' =>  'Сведения о физическом лице',
         'REASON_FOR_REFUSAL' =>  'Причина отказа',
-        'INFORMATION_SERVICES_AGREEMENT' => 'Договор об оказании информационных услуг'
+        'INFORMATION_SERVICES_AGREEMENT' => 'Договор об оказании информационных услуг',
+        'FIND_REASON_FOR_REFUSAL' =>  'Причина отказа',
     );
 
     private $client_visible = array(
@@ -45,7 +47,8 @@ class Documents extends Core
 
         'ANKETA_FL' => 1,
         'REASON_FOR_REFUSAL' =>  1,
-        'INFORMATION_SERVICES_AGREEMENT' => 1
+        'INFORMATION_SERVICES_AGREEMENT' => 1,
+        'FIND_REASON_FOR_REFUSAL' =>  1,
     );
 
 
