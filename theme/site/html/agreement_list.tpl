@@ -56,7 +56,7 @@
                 <label for="service_reason" class="check_box -gil-m">
                  <span>
                     В случае отказа по заявке, я хочу получить информацию о <a style="color: RGB(189, 148, 87)"
-                                                                               href="theme/site/new/docs/prichina_otkaza.pdf"
+                                                                               href="theme/site/new/docs/find_reason_for_refusal.pdf"
                                                                                target="_blank">причине отказа</a>
                  </span>
                 </label>
