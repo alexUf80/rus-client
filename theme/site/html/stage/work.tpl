@@ -56,14 +56,34 @@
                        
                          function validateСhange2() {
                                 let work_phone = document.querySelector('#work_phone');
+                                let average_pay = document.querySelector('#average_pay');
+                                let amount_pay = document.querySelector('#amount_pay');
                                 
                                 let paren = work_phone.parentElement;
+                                let paren_average_pay = average_pay.parentElement;
+                                let paren_amount_pay = amount_pay.parentElement;
 
                                 work_phone = work_phone.value;
+                                average_pay = average_pay.value;
+                                amount_pay = amount_pay.value;
                                 if (work_phone.length < 11) {
                                     setTimeout(() =>{
                                         paren.classList.remove("-ok");
                                         paren.classList.add("-error");
+                                     }, 100);
+                                    return false;
+                                }
+                                if (average_pay.length == 0) {
+                                    setTimeout(() =>{
+                                        paren_average_pay.classList.remove("-ok");
+                                        paren_average_pay.classList.add("-error");
+                                     }, 100);
+                                    return false;
+                                }
+                                if (amount_pay.length == 0) {
+                                    setTimeout(() =>{
+                                        paren_amount_pay.classList.remove("-ok");
+                                        paren_amount_pay.classList.add("-error");
                                      }, 100);
                                     return false;
                                 }
@@ -117,12 +137,12 @@
                                     </div>
                                     <div class="form_row">
                                         <label class="input_box">
-                                            <input onclick="bigInput(this);" type="number" class="form-control js-input-digits" name="average_pay"
+                                            <input onclick="bigInput(this);" type="number" class="form-control js-input-digits" id="average_pay" name="average_pay"
                                                    id="average_pay" value="{$average_pay}"/>
                                             <span class="input_name {if $average_pay}-top{/if}">Среднемесячный платеж по кредитам и займам</span>
                                         </label>
                                         <label class="input_box">
-                                            <input onclick="bigInput(this);" type="number" class="form-control js-input-digits" name="amount_pay"
+                                            <input onclick="bigInput(this);" type="number" class="form-control js-input-digits" id="amount_pay" name="amount_pay"
                                                    id="amount_pay" value="{$amount_pay}"/>
                                             <span class="input_name {if $amount_pay}-top{/if}">Сумма просроченных кредитов и займов</span>
                                         </label>
