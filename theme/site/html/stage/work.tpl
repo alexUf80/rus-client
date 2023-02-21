@@ -131,12 +131,12 @@
                                     </div>
                                     <div class="form_row">
                                         <label class="input_box">
-                                            <input type="number" class="ss form-control js-input-digits js-input-required"
+                                            <input type="number" oninput="payInput(this);" class="ss form-control js-input-digits js-input-required"
                                                    name="income" id="income" value="{$income}"/>
                                             <span class="input_name {if $income}-top{/if}">Ежемесячный доход</span>
                                         </label>
                                         <label class="input_box">
-                                            <input type="number" class="form-control js-input-digits js-input-required"
+                                            <input type="number" oninput="payInput(this);" class="form-control js-input-digits js-input-required"
                                                    name="expenses" id="expenses" value="{$expenses}"/>
                                             <span class="input_name {if $expenses}-top{/if}">Ежемесячные расходы</span>
                                         </label>
