@@ -89,7 +89,10 @@
                                      }, 100);
                                     check = 1;
                                 }
-                                if (check) return false;
+                                if (check) {
+                                    check = 0;
+                                    return false;
+                                }
                                 return true;
                             }
                         </script>
