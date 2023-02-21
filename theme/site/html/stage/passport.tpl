@@ -76,7 +76,7 @@
                     </label>
                   </div>
                 </div>
-                <div class="form_group -fs-18">
+                <!--<div class="form_group -fs-18">
                   <div class="form_group-title -gil-m">СНИЛС</div>
                   <div class="form_row">
                     <label class="input_box -fullwidth">
@@ -84,7 +84,7 @@
                       <span class="input_name {if $snils}-top{/if}">СНИЛС</span>
                     </label>
                   </div>
-                </div>
+                </div>-->
                 <div class="step_box_btn">
                   <a href="/stage/passport?step=prev" class="btn btn_back btn-link -green -gil-m">Назад</a>
                   <button type="submit" class="btn btn_next btn-secondary">Далее</button>
