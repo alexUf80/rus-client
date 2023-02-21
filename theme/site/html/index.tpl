@@ -123,6 +123,19 @@
      
     }
 
+    function payInput(input) {
+      let pay = input;
+
+      let paren = pay.parentElement;
+
+      pay = pay.value;
+
+      if (pay.length > 0) {
+        paren.classList.remove("-error");
+        paren.classList.add("-ok");
+      }
+    }
+
   </script>
 
   <style type="text/css">
