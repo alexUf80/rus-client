@@ -84,7 +84,7 @@
                   <div class="form_row">
                     <label class="input_box {if in_array('bad_birth', (array)$errors)}-error{/if}">
                       <!--<input type="text" class="form-control js-mask-date js-input-required" oninput="dateChange(this);" name="birth" id="birth_date" value="{$birth}" />-->
-                      <input type="date"  class="form-control  js-input-required"  name="birth" id="birth_date" />
+                      <input type="date" style="padding-left: 20px;" class="form-control  js-input-required"  name="birth" id="birth_date" />
                       <!--<input type="text"  oninput="dateChange(this);"/>-->
                       <!--<span class="input_name {if $birth}-top{/if}">Дата рождения</span>-->
                       <span class="input_name {if $birth}-top{/if}"></span>
