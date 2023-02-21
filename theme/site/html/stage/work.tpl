@@ -131,24 +131,24 @@
                                     </div>
                                     <div class="form_row">
                                         <label class="input_box">
-                                            <input type="number" oninput="payInput(this);" class="ss form-control js-input-digits js-input-required"
+                                            <input type="number" class="ss form-control js-input-digits js-input-required"
                                                    name="income" id="income" value="{$income}"/>
                                             <span class="input_name {if $income}-top{/if}">Ежемесячный доход</span>
                                         </label>
                                         <label class="input_box">
-                                            <input type="number" oninput="payInput(this);" class="form-control js-input-digits js-input-required"
+                                            <input type="number" class="form-control js-input-digits js-input-required"
                                                    name="expenses" id="expenses" value="{$expenses}"/>
                                             <span class="input_name {if $expenses}-top{/if}">Ежемесячные расходы</span>
                                         </label>
                                     </div>
                                     <div class="form_row">
                                         <label class="input_box">
-                                            <input onclick="bigInput(this);" type="number" class="form-control js-input-digits" id="average_pay" name="average_pay"
+                                            <input onclick="bigInput(this);" oninput="phoneInput(this);" type="number" class="form-control js-input-digits" id="average_pay" name="average_pay"
                                                    id="average_pay" value="{$average_pay}"/>
                                             <span class="input_name {if $average_pay}-top{/if}">Среднемесячный платеж по кредитам и займам</span>
                                         </label>
                                         <label class="input_box">
-                                            <input onclick="bigInput(this);" type="number" class="form-control js-input-digits" id="amount_pay" name="amount_pay"
+                                            <input onclick="bigInput(this);" oninput="phoneInput(this);" type="number" class="form-control js-input-digits" id="amount_pay" name="amount_pay"
                                                    id="amount_pay" value="{$amount_pay}"/>
                                             <span class="input_name {if $amount_pay}-top{/if}">Сумма просроченных кредитов и займов</span>
                                         </label>
