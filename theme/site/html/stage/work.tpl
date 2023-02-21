@@ -55,6 +55,8 @@
                         <script type="text/javascript">
                        
                          function validateСhange2() {
+                                let check = 0;
+
                                 let work_phone = document.querySelector('#work_phone');
                                 let average_pay = document.querySelector('#average_pay');
                                 let amount_pay = document.querySelector('#amount_pay');
@@ -71,22 +73,23 @@
                                         paren.classList.remove("-ok");
                                         paren.classList.add("-error");
                                      }, 100);
-                                    return false;
+                                    check = 1;
                                 }
                                 if (average_pay.length == 0) {
                                     setTimeout(() =>{
                                         paren_average_pay.classList.remove("-ok");
                                         paren_average_pay.classList.add("-error");
                                      }, 100);
-                                    return false;
+                                    check = 1;
                                 }
                                 if (amount_pay.length == 0) {
                                     setTimeout(() =>{
                                         paren_amount_pay.classList.remove("-ok");
                                         paren_amount_pay.classList.add("-error");
                                      }, 100);
-                                    return false;
+                                    check = 1;
                                 }
+                                if (check) return false;
                                 return true;
                             }
                         </script>
