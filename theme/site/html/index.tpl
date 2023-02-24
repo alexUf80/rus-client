@@ -190,8 +190,8 @@
 
   <script src="theme/site/js/common.js"></script>
 
-  <script src="theme/site/js/sms.app.js?v=1.01"></script>
-  <script src="theme/site/js/prolongation_sms.app.js"></script>
+  <script src="theme/site/js/sms.app.js?v=1.02"></script>
+  <script src="theme/site/js/prolongation_sms.app.js?v=1.02"></script>
   <script src="theme/site/js/attach_card.app.js?v=1.01"></script>
 
   {$smarty.capture.page_scripts}
