@@ -164,11 +164,11 @@
             app.$modal.html('');
 
             //var _tpl = '<div>На Ваш номер телефона <div><strong>'+app.phone+'</strong></div> <div id="wasSent">было отправлено сообщение с кодом подтверждения</div></div>';
-            var _tpl = '<div>На Ваш номер телефона <div><strong>'+app.phone+'</strong></div> <div id="wasSent">сейчас поступит звонок</div></div>';
+            //var _tpl = '<div>На Ваш номер телефона <div><strong>'+app.phone+'</strong></div> <div id="wasSent">сейчас поступит звонок</div></div>';
             _tpl += '<div class="form-group form-phone js-sms-code-wrap">';
-            //_tpl += '<span class="phone_info -fs-14" id="enterCode">Введите код из СМС</span>';
+            _tpl += '<span class="phone_info -fs-14" id="enterCode">Введите код из СМС</span>';
             //_tpl += '<span class="phone_info -fs-14" id="enterCode">Введите 4 последние цифры номера</span>';
-            _tpl += '<span class="phone_info -fs-14" id="enterCode">Введите код, который продиктует бот</span>';
+            //_tpl += '<span class="phone_info -fs-14" id="enterCode">Введите код, который продиктует бот</span>';
             _tpl += '<input type="number" min=0 max=9999  oninput="handleChange(this);" name="" autocomplete="one-time-code" class="form-control -fs-18 -gil-m js-mask-sms js-sms-code" value="">';
             _tpl += '<div class="error_text js-sms-error" style="display:none">Код не совпадает</div>';
             //_tpl += '<a href="javascript:void(0);" class="js-sms-repeat sms-repeat"><div id="sendAgain">Отправить еще раз</div> <span class="js-sms-timer"></span></a>';
