@@ -163,7 +163,7 @@
             app.$modal = $('#sms_code_modal');
             app.$modal.html('');
 
-            //var _tpl = '<div>На Ваш номер телефона <div><strong>'+app.phone+'</strong></div> <div id="wasSent">было отправлено сообщение с кодом подтверждения</div></div>';
+            var _tpl = '<div>На Ваш номер телефона <div><strong>'+app.phone+'</strong></div> <div id="wasSent">было отправлено сообщение с кодом подтверждения</div></div>';
             //var _tpl = '<div>На Ваш номер телефона <div><strong>'+app.phone+'</strong></div> <div id="wasSent">сейчас поступит звонок</div></div>';
             _tpl += '<div class="form-group form-phone js-sms-code-wrap">';
             _tpl += '<span class="phone_info -fs-14" id="enterCode">Введите код из СМС</span>';
