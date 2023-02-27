@@ -486,7 +486,7 @@
             </div>
           </div>
         </a></div>
-      <div class="t850__col t-col t-col_4 t-align_left"> <a href="theme/site/new/docs/Базовый_стандарт_защиты_прав_и_интересов_физических_лиц.pdf" target="_blank" rel="noopener">
+      <div class="t850__col t-col t-col_4 t-align_left"> <a href="theme/site/new/docs/Base_standard_protection_rights and_interest_physical_faces.pdf" target="_blank" rel="noopener">
           <div class="t850__inner-col" style="background-color: rgb(255, 255, 255); border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 0px; height: 177px;">
             <div class="t850__wrap">
               <div class="t-name t-name_lg " style="color:#000000;font-size:18px;line-height:1;" field="li_title__1635787273126">Базовый стандарт защиты прав и интересов физических лиц от 22.06.2017</div>
