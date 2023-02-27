@@ -474,7 +474,7 @@
             </div>
           </div>
         </a></div>
-      <div class="t850__col t-col t-col_4 t-align_left"> <a href="https://docs.rus-zaym.ru/Informaciya_o_prave_potrebitelej_finansovyh_uslug_na_obrashchenie_k_finansovomu_upolnomochennomu.pdf" target="_blank" rel="noopener">
+      <div class="t850__col t-col t-col_4 t-align_left"> <a href="theme/site/new/docs/Информация_о_праве_потребителей_финансовых_услуг_на_обращение_к.pdf" target="_blank" rel="noopener">
           <div class="t850__inner-col" style="background-color: rgb(255, 255, 255); border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 0px; height: 177px;">
             <div class="t850__wrap">
               <div class="t-name t-name_lg " style="color:#000000;font-size:18px;line-height:1;" field="li_title__1635787213938">Информация о праве потребителей финансовых услуг на обращение к финансовому уполномоченному</div>
