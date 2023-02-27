@@ -390,7 +390,7 @@
             </div>
           </div>
         </a></div>
-      <div class="t850__col t-col t-col_4 t-align_left"> <a href="theme/site/new/docs/Policy_in_the_region_processing and_protection_personal.pdf" target="_blank" rel="noopener">
+      <div class="t850__col t-col t-col_4 t-align_left"> <a href="theme/site/new/docs/Policy_in_the_region_processing_and_protection_personal.pdf" target="_blank" rel="noopener">
           <div class="t850__inner-col" style="background-color: rgb(255, 255, 255); border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 0px; height: 141px;">
             <div class="t850__wrap">
               <div class="t-name t-name_lg " style="color:#000000;font-size:18px;line-height:1;" field="li_title__1635787096943">Политика в области обработки и защиты персональных данных</div>
