@@ -45,7 +45,7 @@ class Documents extends Core
         'DOP_SOGLASHENIE' => 1,
         'POLIS_PROLONGATION' => 1, 
 
-        'ANKETA_FL' => 1,
+        'ANKETA_FL' => 0,
         'REASON_FOR_REFUSAL' =>  1,
         'INFORMATION_SERVICES_AGREEMENT' => 1,
         'FIND_REASON_FOR_REFUSAL' =>  1,
