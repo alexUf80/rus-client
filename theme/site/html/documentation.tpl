@@ -306,7 +306,7 @@
             </div>
           </div>
         </a></div>
-      <div class="t850__col t-col t-col_4 t-align_left"> <a href="https://docs.rus-zaym.ru/Svidetelstvo_INN_7703.pdf" target="_blank" rel="noopener">
+      <div class="t850__col t-col t-col_4 t-align_left"> <a href="theme/site/new/docs/ATTESTATION_INN_OT_07_10_2021_VERIFIED.pdf" target="_blank" rel="noopener">
           <div class="t850__inner-col" style="background-color: rgb(255, 255, 255); border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 0px; height: 141px;">
             <div class="t850__wrap">
               <div class="t-name t-name_lg " style="color:#000000;font-size:18px;line-height:1;" field="li_title__1531225412783">Свидетельство ИНН<br></div>
@@ -320,7 +320,7 @@
         </a></div>
     </div>
     <div class="t850__row">
-      <div class="t850__col t-col t-col_4 t-align_left"> <a href="https://docs.rus-zaym.ru/Ustav.pdf" target="_blank" rel="noopener">
+      <div class="t850__col t-col t-col_4 t-align_left"> <a href="theme/site/new/docs/Charter(red._19.11.21).pdf" target="_blank" rel="noopener">
           <div class="t850__inner-col" style="background-color: rgb(255, 255, 255); border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 0px; height: 141px;">
             <div class="t850__wrap">
               <div class="t-name t-name_lg " style="color:#000000;font-size:18px;line-height:1;" field="li_title__1531225426944">Устав компании<br></div>
@@ -366,7 +366,7 @@
       </div>
     </div>
     <div class="t-container" "=""><div class=" t850__row">
-      <div class="t850__col t-col t-col_4 t-align_left"> <a href="https://docs.rus-zaym.ru/Obschie_usloviya_dogovora_potrebitelskogo_zaima.pdf" target="_blank" rel="noopener">
+      <div class="t850__col t-col t-col_4 t-align_left"> <a href="theme/site/new/docs/Obschie_usloviya_dogovora_potrebitelskogo_zaima.pdf" target="_blank" rel="noopener">
           <div class="t850__inner-col" style="background-color: rgb(255, 255, 255); border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 0px; height: 141px;">
             <div class="t850__wrap">
               <div class="t-name t-name_lg " style="color:#000000;font-size:18px;line-height:1;" field="li_title__1531225453311">Общие условия договора потребительского займа<br></div>
@@ -404,7 +404,7 @@
         </a></div>
     </div>
     <div class="t850__row">
-      <div class="t850__col t-col t-col_4 t-align_left"> <a href="https://docs.rus-zaym.ru/Pravila_predostavleniya_mikrozaimov.pdf" target="_blank" rel="noopener">
+      <div class="t850__col t-col t-col_4 t-align_left"> <a href="theme/site/new/docs/Pravila_predostavleniya_mikrozaimov.pdf" target="_blank" rel="noopener">
           <div class="t850__inner-col" style="background-color: rgb(255, 255, 255); border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 0px; height: 159px;">
             <div class="t850__wrap">
               <div class="t-name t-name_lg " style="color:#000000;font-size:18px;line-height:1;" field="li_title__1648224597324">Правила предоставления микрозаймов</div>
@@ -416,7 +416,7 @@
             </div>
           </div>
         </a></div>
-      <div class="t850__col t-col t-col_4 t-align_left"> <a href="https://docs.rus-zaym.ru/Informaciya_ob_usloviyah_predostavleniya_ ispolzovaniya_i_vozvrata_zaima.pdf" target="_blank" rel="noopener">
+      <div class="t850__col t-col t-col_4 t-align_left"> <a href="theme/site/new/docs/Informaciya_ob_usloviyah_predostavleniya_ispolzovaniya_i_vozvrata.pdf" target="_blank" rel="noopener">
           <div class="t850__inner-col" style="background-color: rgb(255, 255, 255); border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 0px; height: 159px;">
             <div class="t850__wrap">
               <div class="t-name t-name_lg " style="color:#000000;font-size:18px;line-height:1;" field="li_title__1648223485020">Информация об условиях предоставления, использования и возврата займа</div>
@@ -462,7 +462,7 @@
       </div>
     </div>
     <div class="t-container" "=""><div class=" t850__row">
-      <div class="t850__col t-col t-col_4 t-align_left"> <a href="https://docs.rus-zaym.ru/Rekomendacii_klientu_po_zashchite_informacii.pdf" target="_blank" rel="noopener">
+      <div class="t850__col t-col t-col_4 t-align_left"> <a href="theme/site/new/docs/Recommendations_for_the client_protection_information_of_reducing_codes.pdf" target="_blank" rel="noopener">
           <div class="t850__inner-col" style="background-color: rgb(255, 255, 255); border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 0px; height: 177px;">
             <div class="t850__wrap">
               <div class="t-name t-name_lg " style="color:#000000;font-size:18px;line-height:1;" field="li_title__1635787165433">Рекомендации клиенту по защите информации от воздействия вредоносных кодов</div>
@@ -512,7 +512,7 @@
             </div>
           </div>
         </a></div>
-      <div class="t850__col t-col t-col_4 t-align_left"> <a href="https://docs.rus-zaym.ru/Politika_bezopasnosti_platezhej.pdf" target="_blank" rel="noopener">
+      <div class="t850__col t-col t-col_4 t-align_left"> <a href="theme/site/new/docs/Payment_Security_policy_payments.pdf" target="_blank" rel="noopener">
           <div class="t850__inner-col" style="background-color: rgb(255, 255, 255); border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 0px; height: 159px;">
             <div class="t850__wrap">
               <div class="t-name t-name_lg " style="color:#000000;font-size:18px;line-height:1;" field="li_title__1635787509495">Политика безопасности платежей</div>
