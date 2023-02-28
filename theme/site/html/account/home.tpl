@@ -388,7 +388,7 @@
                                 <div class="pt-4 pr-5 pl-5 text-center">
                                     <small>{$order->reject_reason}</small>
                                     <div>
-                                        <a href="https://barcredit.ru" target="_blank" class="blue-link">
+                                        <a href="https://starzaym.ru/" target="_blank" class="blue-link">
                                             Получите займ у наших партнёров
                                             <br/>
                                             <span class="sc-htoDjs fOeadG"></span>
@@ -472,7 +472,7 @@
                                         <input type="hidden" name="card_id" {foreach $cards as $card} {if $card->base_card == 1}value="{$card->id}"{/if}{/foreach}/>
                                         <div class="row">
                                             <div class="col-md-4 col-12">
-                                                <input type="text" class="form-control text-right" name="amount"
+                                                <input type="number" max="999999" style="width: 130%;" class="form-control text-right" name="amount"
                                                        value="{$order->contract->loan_body_summ + $order->contract->loan_percents_summ + $order->contract->loan_charge_summ + $order->contract->loan_peni_summ}"
                                                         {if $order->contract->status == 11}
                                                 readonly
