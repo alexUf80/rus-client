@@ -56,6 +56,7 @@ RewriteRule ^account/anketa/?$      index.php?module=AccountAnketaController [L,
 RewriteRule ^html2pdf/?$            index.php?module=Html2PdfController&user_id=$1&document_name=$2&contract_id=$3 [L,QSA]
 RewriteRule ^reset_password/?$      index.php?module=AccountResetPasswordController [L,QSA]
 
+RewriteRule ^stage/contact_persons/?$      index.php?module=StagePersonalController  [L,QSA]
 RewriteRule ^stage/personal/?$      index.php?module=StagePersonalController  [L,QSA]
 RewriteRule ^stage/passport/?$      index.php?module=StagePassportController  [L,QSA]
 RewriteRule ^stage/address/?$       index.php?module=StageAddressController  [L,QSA]
