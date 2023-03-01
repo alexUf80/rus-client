@@ -47,8 +47,14 @@
                   <div class="form_row">
                     <label class="input_box ">
                       <input type="text" class="form-control js-input-cirylic js-input-required" name="fio" id="last_name" value="{$lastname|escape}" />
+                      <span class="input_name {if $lastname}-top{/if}">ФИО</span>
+                    </label>
+                    <label class="input_box ">
+                      <input type="text" class="form-control js-input-cirylic js-input-required" name="phone" id="last_name" value="{$lastname|escape}" />
                       <span class="input_name {if $lastname}-top{/if}">Номер телефона</span>
                     </label>
+                  </div>
+                  <div class="form_row">
                     <label class="input_box">
                       <!--<input type="text" class="form-control js-input-cirylic js-input-required" name="firstname" id="first_name" value="{$firstname|escape}" />-->
                         <select class="form-control" name="relation">
