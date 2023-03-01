@@ -95,8 +95,9 @@
             success: function(resp){
                 if (resp.success)
                 {
+                    alert('проверка2' . app.code);
                     $('.js-sms-error').html('').hide();
-                    app.success_callback(app.code);
+                    //app.success_callback(app.code);
                     $('.js-sms-code-wrap').removeClass('-error').addClass('-ok');
                 }
                 else
