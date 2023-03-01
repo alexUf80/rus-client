@@ -57,7 +57,8 @@
                   <div class="form_row">
                     <label class="input_box">
                       <!--<input type="text" class="form-control js-input-cirylic js-input-required" name="firstname" id="first_name" value="{$firstname|escape}" />-->
-                        <select class="form-control" name="relation">
+                        <span class="">Кем приходится:</span>
+                        <select class="form-control js-input-cirylic js-input-required" name="relation">
                                 <option value="none" selected="">Выберите из списка</option>
                                 <option value="мать/отец">мать/отец</option>
                                 <option value="муж/жена">муж/жена</option>
@@ -66,7 +67,7 @@
                                 <option value="друг/сосед">друг/сосед</option>
                                 <option value="иной родственник">иной родственник</option>
                         </select>
-                      <span class="input_name {if $firstname}-top{/if}">Кем приходится</span>
+                      <!--<span class="input_name {if $firstname}-top{/if}">Кем приходится</span>-->
                     </label>
                   </div>
 
