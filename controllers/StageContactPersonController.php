@@ -95,7 +95,7 @@ class StageContactPersonController extends Controller
     	
         $this->design->assign('errors', $errors);
         
-        return $this->design->fetch('stage/personal.tpl');
+        return $this->design->fetch('stage/contact_persons.tpl');
     }
     
 }
