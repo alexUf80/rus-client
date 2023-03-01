@@ -99,11 +99,19 @@ class StageContactPersonController extends Controller
                 $result =$this->Contactpersons->update_contactperson($id, $contact);
 
 
-                $this->json_output(array(
+                // $this->json_output(array(
+                //     'success' => 1,
+                //     'created' => date('d.m.Y H:i:s'),
+                //     // 'text' => (string) $document_id,
+                //     'text' => json_encode($result),
+                //     // 'official' => $official,
+                //     // 'manager_name' => $this->manager->name,
+                //   ));
+                  $this->json_output(array(
                     'success' => 1,
                     'created' => date('d.m.Y H:i:s'),
                     // 'text' => (string) $document_id,
-                    'text' => json_encode($result),
+                    'text' => $id,
                     // 'official' => $official,
                     // 'manager_name' => $this->manager->name,
                   ));
