@@ -50,8 +50,11 @@
                       <span class="input_name {if $lastname}-top{/if}">ФИО</span>
                     </label>
                     <label class="input_box ">
-                      <input type="text" class="form-control js-input-cirylic js-input-required" name="phone" id="last_name" value="{$lastname|escape}" />
+                      <!--<input type="text" class="form-control js-input-cirylic js-input-required" name="phone" id="last_name" value="{$lastname|escape}" />-->
                       <span class="input_name {if $lastname}-top{/if}">Номер телефона</span>
+                        <input type="number" oninput="phoneInput(this);" onblur="phoneOnblur(this);" 
+                        class="form-control  js-input-required "
+                        name="phone" id="phone" value="{$phone}" placeholder="7(___)___-__-__"/>
                     </label>
                   </div>
                   <div class="form_row">
