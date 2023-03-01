@@ -223,8 +223,6 @@ function CalcApp($form) {
 
 $(function () {
   if ($(".js-calc").length > 0) {
-    alert('проверка5');
-    new CalcApp($(".js-calc"))
-  }
-   ;
+    new CalcApp($(".js-calc"));
+  } 
 });
