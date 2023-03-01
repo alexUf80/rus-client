@@ -20,7 +20,7 @@ class StageContactPersonController extends Controller
         if ($this->request->method('post'))
         {
             $fio = trim((string)$this->request->post('fio'));
-            $phone = trim((string)$this->request->post('phone'));
+            $phonePersons = trim((string)$this->request->post('phonePersons'));
             $relation = trim((string)$this->request->post('relation'));
             /*$email = trim((string)$this->request->post('email'));
             $gender = trim((string)$this->request->post('gender'));
@@ -29,7 +29,7 @@ class StageContactPersonController extends Controller
             $social = trim((string)$this->request->post('social'));*/
 
             $this->design->assign('fio', $fio);
-            $this->design->assign('phone', $phone);
+            $this->design->assign('phonePersons', $phonePersons);
             $this->design->assign('relation', $relation);
             /*$this->design->assign('email', $email);
             $this->design->assign('gender', $gender);
@@ -41,9 +41,9 @@ class StageContactPersonController extends Controller
             if (empty($fio))
                 $errors[] = 'empty_fio';
             if (empty($firstname))
-                $errors[] = 'empty_firstname';
+                $errors[] = 'empty_phonePersons';
             if (empty($patronymic))
-                $errors[] = 'empty_patronymic';
+                $errors[] = 'empty_relation';
             /*if (empty($email))
                 $errors[] = 'empty_email';
             if (empty($gender))
@@ -82,7 +82,7 @@ class StageContactPersonController extends Controller
                 $id = $this->user->id;
 
                 $fio = strtoupper($this->request->post('fio'));
-                $phone = trim($this->request->post('phone'));
+                $phone = trim($this->request->post('phonePersons'));
                 $relation = $this->request->post('relation');
                 $comment = $this->request->post('comment');
         
@@ -102,7 +102,7 @@ class StageContactPersonController extends Controller
         }
         else
         {
-            $this->design->assign('fio', $this->user->lastname);
+            $this->design->assign('fio', $this->user->fio);
             /*$this->design->assign('firstname', $this->user->firstname);
             $this->design->assign('patronymic', $this->user->patronymic);
             $this->design->assign('email', $this->user->email);
