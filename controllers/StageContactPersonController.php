@@ -78,6 +78,8 @@ class StageContactPersonController extends Controller
             
                 header('Location: /stage/passport');
                 exit;*/
+                header('Location: /stage/personal');
+                exit;
             }            
         }
         else
