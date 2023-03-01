@@ -91,7 +91,7 @@
     </div>
   </div>
   <script type="text/javascript">
-    let work_phone = document.querySelector('#work_phone');
+    let work_phone = document.querySelector('#phone');
     let value = work_phone.value;
 
     if (value[0] != '7') {
