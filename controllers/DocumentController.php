@@ -84,24 +84,22 @@ class DocumentController extends Controller
         $insurance = $this->request->get('insurance');
 
         if (!empty($insurance) || isset($contract) && !empty($contract->service_insurance)) {
+
+            $insurance = $contract->amount * 0.1;
+
             if ($contract->amount <= 10000) {
-                $insurance = 390;
                 $insuranceSum = 10000;
                 $contract->amount += $insurance;
             } elseif ($contract->amount >= 10001 && $contract->amount <= 20000) {
-                $insurance = 490;
                 $insuranceSum = 20000;
                 $contract->amount += $insurance;
             } elseif ($contract->amount >= 20000) {
-                $insurance = 590;
                 $insuranceSum = 30000;
                 $contract->amount += $insurance;
             }
 
             $this->design->assign('insurance', $insurance);
             $this->design->assign('insuranceSum', $insuranceSum);
-
-
         }
 
         $tpl = $this->design->fetch('pdf/' . $document->template);
