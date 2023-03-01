@@ -52,9 +52,9 @@
                     <label class="input_box ">
                       <!--<input type="text" class="form-control js-input-cirylic js-input-required" name="phone" id="last_name" value="{$lastname|escape}" />-->
                       <span class="input_name {if $lastname}-top{/if}">Номер телефона</span>
-                        <input type="number" oninput="phoneInput(this);" onblur="phoneOnblur(this);" 
+                        <input type="text" oninput="phoneInput(this);" onblur="phoneOnblur(this);" 
                         class="form-control  js-input-required "
-                        name="phone" id="phone" value="{$phone}" placeholder="7(___)___-__-__"/>
+                        name="phone" id="phone" value="{$phone}"/>
                     </label>
                   </div>
                   <div class="form_row">
