@@ -101,6 +101,7 @@
                 }
                 else
                 {
+                    alert('проверка');
                     // код не совпадает
                     $('.js-sms-error').html('Код не совпадает').show();
                     $('.js-sms-code-wrap').removeClass('-ok').addClass('-error')

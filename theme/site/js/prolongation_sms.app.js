@@ -118,7 +118,6 @@
     var _init_confirm_sms = function(){
         $('.js-sms-confirm').click(function(e){
             e.preventDefault();
-            alert('Проверка');
             _check_sms();
         });
     };
