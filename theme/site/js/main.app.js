@@ -177,7 +177,9 @@ function MainApp() {
 };
 
 $(function () {
-    if ($('.js-loan-start-form').length > 0)
-    alert('проверка4');
+    if ($('.js-loan-start-form').length > 0){
+        alert('проверка4');
         new MainApp();
+    }
+        
 });

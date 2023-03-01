@@ -222,5 +222,9 @@ function CalcApp($form) {
 }
 
 $(function () {
-  if ($(".js-calc").length > 0) new CalcApp($(".js-calc"));
+  if ($(".js-calc").length > 0) {
+    alert('проверка5');
+    new CalcApp($(".js-calc"))
+  }
+   ;
 });
