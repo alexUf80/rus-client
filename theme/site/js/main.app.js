@@ -110,7 +110,7 @@ function MainApp() {
     };
 
     var _success_callback = function (code) {
-        alert('проверка3');
+        //alert('проверка3');
         console.info('_success_callback');
         $('.js-loan-code').val(code);
         $('.js-loan-start-form').submit();
