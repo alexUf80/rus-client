@@ -40,9 +40,9 @@ class StageContactPersonController extends Controller
             
             if (empty($fio))
                 $errors[] = 'empty_fio';
-            if (empty($firstname))
+            if (empty($phonePersons))
                 $errors[] = 'empty_phonePersons';
-            if (empty($patronymic))
+            if (empty($relation))
                 $errors[] = 'empty_relation';
             /*if (empty($email))
                 $errors[] = 'empty_email';
@@ -81,10 +81,12 @@ class StageContactPersonController extends Controller
 
                 $id = $this->user->id;
 
-                $fio = strtoupper($this->request->post('fio'));
-                $phone = trim($this->request->post('phonePersons'));
-                $relation = $this->request->post('relation');
-                $comment = $this->request->post('comment');
+                // $fio = strtoupper($this->request->post('fio'));
+                // $phone = trim($this->request->post('phonePersons'));
+                // $relation = $this->request->post('relation');
+                // $comment = $this->request->post('comment');
+                $phone = $phonePersons;
+                $comment = '';
         
                 $contact =
                     [
