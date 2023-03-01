@@ -69,4 +69,14 @@ class Controller extends Core
 	{
 		return false;
 	}
+
+	public function json_output()
+    {
+        header("Content-type: application/json; charset=UTF-8");
+        header("Cache-Control: must-revalidate");
+        header("Pragma: no-cache");
+        header("Expires: -1");	
+        
+        echo json_encode($this->response);
+    }
 }

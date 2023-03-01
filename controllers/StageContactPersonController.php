@@ -96,10 +96,20 @@ class StageContactPersonController extends Controller
                         'comment' => $comment
                     ];
         
-                $this->Contactpersons->update_contactperson($id, $contact);
+                $result =$this->Contactpersons->update_contactperson($id, $contact);
 
-                header('Location: /stage/personal');
-                exit;
+
+                $this->json_output(array(
+                    'success' => 1,
+                    'created' => date('d.m.Y H:i:s'),
+                    // 'text' => (string) $document_id,
+                    'text' => json_encode($result),
+                    // 'official' => $official,
+                    // 'manager_name' => $this->manager->name,
+                  ));
+
+                //header('Location: /stage/personal');
+                //exit;
             }            
         }
         else
