@@ -24,7 +24,7 @@
               <p>Вы выбрали сумму: <span class="sum">{$user->first_loan_amount} рублей</span></p>
               <p>На срок: <span class="days">{$user->first_loan_period} {$user->first_loan_period|plural:'день':'дней':'дня'}</span></p>
             </div>
-            <div class="form_info_progress">
+            <!--<div class="form_info_progress">
               <div class="form_info_progress_text -step1 active">До получения займа осталось: <span
                   class="step -green">4 этапа</span></div>
               <div class="form_info_progress_text -step2">До получения займа осталось: <span class="step -green">3
@@ -35,7 +35,7 @@
                   этап</span></div>
               <div class="form_info_progress_text -step5"><span class="step -green">Последний этап</span></div>
               <div class="form_info_progress_control -step"></div>
-            </div>
+            </div>-->
           </div>
         </div>
         <div class="col-lg-7">
@@ -43,10 +43,10 @@
             <form action="" method="POST" class="regform js-form-app js-stage-personal-form">
               <div class="step_box step1">
                 <div class="form_group -fs-18">
-                  <div class="form_group-title -gil-m">ФИО</div>
+                  <div class="form_group-title -gil-m">Введите данные онтактного лица:</div>
                   <div class="form_row">
                     <label class="input_box ">
-                      <input type="text" class="form-control js-input-cirylic js-input-required" name="fio" id="last_name" value="{$lastname|escape}" />
+                      <input type="text" class="form-control js-input-cirylic js-input-required" name="fio" id="last_name" value="{$fio|escape}" />
                       <span class="input_name {if $lastname}-top{/if}">ФИО</span>
                     </label>
                     <label class="input_box ">
@@ -90,4 +90,12 @@
 
     </div>
   </div>
+  <script type="text/javascript">
+    let work_phone = document.querySelector('#work_phone');
+    let value = work_phone.value;
+
+    if (value[0] != '7') {
+        work_phone.value = '7';
+    } 
+ </script>
 </main>

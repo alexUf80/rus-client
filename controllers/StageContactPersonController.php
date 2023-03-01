@@ -20,31 +20,31 @@ class StageContactPersonController extends Controller
         if ($this->request->method('post'))
         {
             $fio = trim((string)$this->request->post('fio'));
-            $firstname = trim((string)$this->request->post('firstname'));
-            $patronymic = trim((string)$this->request->post('patronymic'));
-            $email = trim((string)$this->request->post('email'));
+            $phone = trim((string)$this->request->post('phone'));
+            $relation = trim((string)$this->request->post('relation'));
+            /*$email = trim((string)$this->request->post('email'));
             $gender = trim((string)$this->request->post('gender'));
             $birth = trim((string)$this->request->post('birth'));
             $birth_place = trim((string)$this->request->post('birth_place'));
-            $social = trim((string)$this->request->post('social'));
+            $social = trim((string)$this->request->post('social'));*/
 
             $this->design->assign('fio', $fio);
-            $this->design->assign('firstname', $firstname);
-            $this->design->assign('patronymic', $patronymic);
-            $this->design->assign('email', $email);
+            $this->design->assign('phone', $phone);
+            $this->design->assign('relation', $relation);
+            /*$this->design->assign('email', $email);
             $this->design->assign('gender', $gender);
             $this->design->assign('birth', $birth);
             $this->design->assign('birth_place', $birth_place);
-            $this->design->assign('social', $social);
+            $this->design->assign('social', $social);*/
             
             
             if (empty($fio))
                 $errors[] = 'empty_fio';
-            /*if (empty($firstname))
+            if (empty($firstname))
                 $errors[] = 'empty_firstname';
             if (empty($patronymic))
                 $errors[] = 'empty_patronymic';
-            if (empty($email))
+            /*if (empty($email))
                 $errors[] = 'empty_email';
             if (empty($gender))
                 $errors[] = 'empty_gender';
@@ -78,6 +78,24 @@ class StageContactPersonController extends Controller
             
                 header('Location: /stage/passport');
                 exit;*/
+
+                $id = $this->user->id;
+
+                $fio = strtoupper($this->request->post('fio'));
+                $phone = trim($this->request->post('phone'));
+                $relation = $this->request->post('relation');
+                $comment = $this->request->post('comment');
+        
+                $contact =
+                    [
+                        'name' => $fio,
+                        'phone' => $phone,
+                        'relation' => $relation,
+                        'comment' => $comment
+                    ];
+        
+                $this->Contactpersons->update_contactperson($id, $contact);
+
                 header('Location: /stage/personal');
                 exit;
             }            
