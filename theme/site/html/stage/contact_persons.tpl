@@ -53,7 +53,7 @@
                       <!--<input type="text" class="form-control js-input-cirylic js-input-required" name="phone" id="last_name" value="{$lastname|escape}" />-->
                         <input type="text" oninput="phoneInput(this);" onblur="phoneOnblur(this);" 
                         class="form-control  js-input-required "
-                        name="phoneC" id="phoneC" value="{$phone}"/>
+                        name="phoneC" id="phonePersons" value="{$phone}"/>
                         <span class="input_name {if $lastname}-top{/if}">Номер телефона</span>
                     </label>
                   </div>
@@ -91,7 +91,7 @@
     </div>
   </div>
   <script type="text/javascript">
-    let work_phone = document.querySelector('#phoneC');
+    let work_phone = document.querySelector('#phonePersons');
     let value = work_phone.value;
 
     if (value[0] != '7') {
