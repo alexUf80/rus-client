@@ -16,6 +16,13 @@ class StagePersonalController extends Controller
             exit;
         }
         
+        if ($this->request->get('step') == 'prev')
+        {
+            $this->users->update_user($this->user->id, array('stage_personal'=>0));
+            header('Location: /stage/personal');
+            exit;
+        }
+        
         $errors = array();    
         if ($this->request->method('post'))
         {

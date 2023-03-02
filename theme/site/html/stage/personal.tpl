@@ -110,7 +110,8 @@
                 </div>
                 
                 <div class="step_box_btn">
-                  <a href="" class="btn btn_back btn-link -green -gil-m"></a>
+                  <!--<a href="" class="btn btn_back btn-link -green -gil-m"></a>-->
+                  <a href="/stage/passport?step=prev" class="btn btn_back btn-link -green -gil-m">Назад</a>
                   <button type="submit" class="btn btn_next btn-secondary">Далее</button>
                 </div>
               </div>

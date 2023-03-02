@@ -18,7 +18,7 @@ class StagePassportController extends Controller
         
         if (empty($this->user->stage_personal))
         {
-            //header('Location: /stage/personal');
+            header('Location: /stage/personal');
             exit;
         }
         
