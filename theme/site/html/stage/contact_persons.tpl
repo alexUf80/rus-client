@@ -57,10 +57,10 @@
                         <span style="margin-left: 15px;" class="input_name {if $lastname}-top{/if}">Номер телефона</span>
                     </label>
                   </div>
-                  <div class="form_row">
-                    <label class="input_box" >
+                  <div class="form_row" style="margin-top: 10px;">
+                    <label class="input_box" style="width: 100%;">
                       <!--<input type="text" class="form-control js-input-cirylic js-input-required" name="firstname" id="first_name" value="{$firstname|escape}" />-->
-                        <div style="display: flex;">
+                        <div style="display: flex;justify-content: space-between;">
                           <div><span style="margin-top: 6px;" class="">Кем приходится:</span></div>
                           <div>
                             <select class="form-control js-input-cirylic js-input-required" name="relation">
