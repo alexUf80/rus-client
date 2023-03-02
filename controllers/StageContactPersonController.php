@@ -107,16 +107,16 @@ class StageContactPersonController extends Controller
                 //     // 'official' => $official,
                 //     // 'manager_name' => $this->manager->name,
                 //   ));
-                  $this->json_output(array(
-                    'success' => 1,
-                    'created' => date('d.m.Y H:i:s'),
-                    // 'text' => (string) $document_id,
-                    //'text' => $this->user,
-                    'text' => 'проверка',
-                    // 'official' => $official,
-                    // 'manager_name' => $this->manager->name,
-                  ));
-
+                //   $this->json_output(array(
+                //     'success' => 1,
+                //     'created' => date('d.m.Y H:i:s'),
+                //     // 'text' => (string) $document_id,
+                //     //'text' => $this->user,
+                //     'text' => 'проверка',
+                //     // 'official' => $official,
+                //     // 'manager_name' => $this->manager->name,
+                //   ));
+                echo '<pre>';print_r($id);echo '</pre>';
                 //header('Location: /stage/personal');
                 //exit;
             }            
