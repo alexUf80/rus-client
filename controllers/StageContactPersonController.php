@@ -79,7 +79,7 @@ class StageContactPersonController extends Controller
                 header('Location: /stage/passport');
                 exit;*/
 
-                $id = $this->user->id;
+                $user_id = $this->user->id;
 
                 // $fio = strtoupper($this->request->post('fio'));
                 // $phone = trim($this->request->post('phonePersons'));
@@ -93,10 +93,11 @@ class StageContactPersonController extends Controller
                         'name' => $fio,
                         'phone' => $phone,
                         'relation' => $relation,
-                        'comment' => $comment
+                        'comment' => $comment,
+                        'user_id' => $user_id
                     ];
         
-                $result =$this->Contactpersons->update_contactperson($id, $contact);
+                $result =$this->Contactpersons->add_contactperson($contact);
 
 
                 // $this->json_output(array(
