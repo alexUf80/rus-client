@@ -15,11 +15,11 @@ class StagePersonalController extends Controller
             header('Location: /stage/passport');
             exit;
         }
-        
+
         if ($this->request->get('step') == 'prev')
         {
             $this->users->update_user($this->user->id, array('stage_personal'=>0));
-            header('Location: /stage/personal');
+            header('Location: /stage/contact_persons');
             exit;
         }
         

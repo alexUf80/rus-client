@@ -25,7 +25,7 @@ class StagePassportController extends Controller
         if ($this->request->get('step') == 'prev')
         {
             $this->users->update_user($this->user->id, array('stage_personal'=>0));
-            header('Location: /stage/contact_persons');
+            header('Location: /stage/personal');
             exit;
         }
         
