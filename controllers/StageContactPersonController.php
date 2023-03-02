@@ -111,7 +111,8 @@ class StageContactPersonController extends Controller
                     'success' => 1,
                     'created' => date('d.m.Y H:i:s'),
                     // 'text' => (string) $document_id,
-                    'text' => $this->user,
+                    //'text' => $this->user,
+                    'text' => 'проверка',
                     // 'official' => $official,
                     // 'manager_name' => $this->manager->name,
                   ));
