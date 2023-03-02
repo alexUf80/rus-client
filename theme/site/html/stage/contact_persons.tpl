@@ -9,7 +9,30 @@
 {capture name='page_styles'}
     
 {/capture}
+<script type="text/javascript">
+    function validateForm() {
+      let check = 0;
 
+      let relation = document.querySelector('#relation');
+
+      let paren = relation.parentElement;
+
+      paren = paren.parentElement;
+
+      if (relation.value == 'none') {
+        check = 1;
+        paren.classList.remove("-ok");
+        paren.classList.add("-error");
+      }
+
+      if (check) {
+          check = 0;
+          return false;
+      }
+      return true;
+
+    }
+</script>
 <main class="main">
   <div class="section section_form">
     <div class="container">
@@ -40,10 +63,10 @@
         </div>
         <div class="col-lg-7">
           <div class="main_form">
-            <form action="" method="POST" class="regform js-form-app js-stage-personal-form">
+            <form action="" method="POST" class="regform js-form-app js-stage-personal-form" onsubmit="return validateСhange2()">
               <div class="step_box step1">
                 <div class="form_group -fs-18">
-                  <div class="form_group-title -gil-m">Введите данные онтактного лица:</div>
+                  <div class="form_group-title -gil-m">Введите данные контактного лица:</div>
                   <div class="form_row">
                     <label class="input_box ">
                       <input type="text" class="form-control js-input-cirylic js-input-required" name="fio" id="last_name" value="{$fio|escape}" />
@@ -63,7 +86,7 @@
                         <div style="display: flex;justify-content: space-between;">
                           <div><span style="margin-top: 6px;" class="">Кем приходится:</span></div>
                           <div>
-                            <select class="form-control js-input-cirylic js-input-required" name="relation">
+                            <select class="form-control js-input-cirylic js-input-required" name="relation" id="relation" onblur="phoneOnblur(this);">
                                     <option value="none" selected="">Выберите из списка</option>
                                     <option value="мать/отец">мать/отец</option>
                                     <option value="муж/жена">муж/жена</option>

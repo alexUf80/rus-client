@@ -123,6 +123,21 @@
      
     }
 
+    function relationOnblur (input) {
+      let relationOnblurValue = input.value;
+
+      
+      let paren = input.parentElement;
+
+      paren = paren.parentElement;
+
+      if (relationOnblurValue == 'none') {
+        paren.classList.remove("-ok");
+        paren.classList.add("-error");
+      }
+     
+    }
+
     function payInput(input) {
       let pay = input;
 
