@@ -58,18 +58,23 @@
                     </label>
                   </div>
                   <div class="form_row">
-                    <label class="input_box" style="display: flex;">
+                    <label class="input_box" >
                       <!--<input type="text" class="form-control js-input-cirylic js-input-required" name="firstname" id="first_name" value="{$firstname|escape}" />-->
-                        <span style="margin-top: 6px;" class="">Кем приходится:</span>
-                        <select class="form-control js-input-cirylic js-input-required" name="relation">
-                                <option value="none" selected="">Выберите из списка</option>
-                                <option value="мать/отец">мать/отец</option>
-                                <option value="муж/жена">муж/жена</option>
-                                <option value="сын/дочь">сын/дочь</option>
-                                <option value="коллега">коллега</option>
-                                <option value="друг/сосед">друг/сосед</option>
-                                <option value="иной родственник">иной родственник</option>
-                        </select>
+                        <div style="display: flex;">
+                          <div><span style="margin-top: 6px;" class="">Кем приходится:</span></div>
+                          <div>
+                            <select class="form-control js-input-cirylic js-input-required" name="relation">
+                                    <option value="none" selected="">Выберите из списка</option>
+                                    <option value="мать/отец">мать/отец</option>
+                                    <option value="муж/жена">муж/жена</option>
+                                    <option value="сын/дочь">сын/дочь</option>
+                                    <option value="коллега">коллега</option>
+                                    <option value="друг/сосед">друг/сосед</option>
+                                    <option value="иной родственник">иной родственник</option>
+                            </select>
+                          </div>
+                        </div>
+                        
                       <!--<span class="input_name {if $firstname}-top{/if}">Кем приходится</span>-->
                     </label>
                   </div>
