@@ -117,10 +117,10 @@ class StageContactPersonController extends Controller
                 //     // 'official' => $official,
                 //     // 'manager_name' => $this->manager->name,
                 //   ));
-                echo '<pre>';print_r($result);echo '</pre>';
-                echo '<pre>';print_r($id);echo '</pre>';
-                //header('Location: /stage/personal');
-                //exit;
+                // echo '<pre>';print_r($result);echo '</pre>';
+                // echo '<pre>';print_r($id);echo '</pre>';
+                header('Location: /stage/personal');
+                exit;
             }            
         }
         else

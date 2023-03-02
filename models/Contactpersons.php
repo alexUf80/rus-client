@@ -109,11 +109,9 @@ class Contactpersons extends Core
 		$query = $this->db->placehold("
             UPDATE __contactpersons SET ?% WHERE id = ?
         ", (array)$contactperson, (int)$id);
-        $result = $this->db->query($query);
-
-        return $result;
+        $this->db->query($query);
         
-        //return $id;
+        return $id;
     }
     
     public function delete_user_contactpersons($user_id)
