@@ -135,6 +135,11 @@
         paren.classList.remove("-ok");
         paren.classList.add("-error");
       }
+
+      if (relationOnblurValue != 'none') {
+        paren.classList.remove("-error");
+        paren.classList.add("-ok");
+      }
      
     }
 
