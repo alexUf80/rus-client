@@ -14,16 +14,29 @@
       let check = 0;
 
       let relation = document.querySelector('#relation');
+      let phonePersons = document.querySelector('#phonePersons');
 
       let paren = relation.parentElement;
+      let paren_phonePersons = phonePersons.parentElement;
 
-      paren = paren.parentElement;
+      //paren = paren.parentElement;
+      //paren_phonePersons = paren.paren_phonePersons
+      phonePersons = phonePersons.value;
 
       if (relation.value == 'none') {
         check = 1;
-        paren.classList.remove("-ok");
-        paren.classList.add("-error");
+         setTimeout(() =>{
+            paren.classList.remove("-ok");
+            paren.classList.add("-error");
+         }, 100);
       }
+      if (phonePersons.length < 11) {
+        check = 1;
+         setTimeout(() =>{
+            paren_phonePersons.classList.remove("-ok");
+            paren_phonePersons.classList.add("-error");
+         }, 100);
+      } 
 
       if (check) {
           check = 0;
