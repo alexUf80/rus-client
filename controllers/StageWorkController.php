@@ -122,9 +122,9 @@ class StageWorkController extends Controller
                 $this->users->update_user($this->user->id, $update);
 
                 worksORM::create([
-                    'user_id' = $this->user->id,
-                    'name' = $name_director,
-                    'director_phone' = $workphone_director,
+                    'user_id' => $this->user->id,
+                    'name' => $name_director,
+                    'director_phone' => $workphone_director,
                 ]);
 
                 header('Location: /stage/files');
