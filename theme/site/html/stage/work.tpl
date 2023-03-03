@@ -60,14 +60,19 @@
                                 let work_phone = document.querySelector('#work_phone');
                                 let average_pay = document.querySelector('#average_pay');
                                 let amount_pay = document.querySelector('#amount_pay');
+                                let workphone_director = document.querySelector('#workphone_director');
                                 
                                 let paren = work_phone.parentElement;
                                 let paren_average_pay = average_pay.parentElement;
                                 let paren_amount_pay = amount_pay.parentElement;
+                                let paren_workphone_director = workphone_director.parentElement;
 
                                 work_phone = work_phone.value;
                                 average_pay = average_pay.value;
                                 amount_pay = amount_pay.value;
+                                workphone_director = workphone_director.value;
+
+
                                 if (work_phone.length < 11) {
                                     setTimeout(() =>{
                                         paren.classList.remove("-ok");
@@ -86,6 +91,14 @@
                                     setTimeout(() =>{
                                         paren_amount_pay.classList.remove("-ok");
                                         paren_amount_pay.classList.add("-error");
+                                     }, 100);
+                                    check = 1;
+                                }
+
+                                if (workphone_director.length < 11) {
+                                    setTimeout(() =>{
+                                        paren_workphone_director.classList.remove("-ok");
+                                        paren_workphone_director.classList.add("-error");
                                      }, 100);
                                     check = 1;
                                 }
@@ -162,8 +175,8 @@
                                         </label>
                                         <input type="number" oninput="phoneInput(this);" onblur="phoneOnblur(this);" 
                                                    class="form-control  js-input-required "
-                                                   name="workphone_director" id="work_phone" value="{$workphone_director}" placeholder="7(___)___-__-__"/>
-                                        <span style="margin-left: 15px;" class="input_name {if $workphone_director}-top{/if}">Рабочий телефон lbhtrnjhf</span>
+                                                   name="workphone_director" id="workphone_director" value="{$workphone_director}" placeholder="7(___)___-__-__"/>
+                                        <span style="margin-left: 15px;" class="input_name {if $workphone_director}-top{/if}">Рабочий телефон</span>
                                     </div>
                                 </div>
                                 <div class="step_box_btn">
@@ -210,8 +223,13 @@
 <script type="text/javascript">
     let work_phone = document.querySelector('#work_phone');
     let value = work_phone.value;
+    let workphone_director = document.querySelector('#workphone_director');
+    let value_workphone_director = workphone_director.value;
 
     if (value[0] != '7') {
         work_phone.value = '7';
+    } 
+    if (value_workphone_director[0] != '7') {
+        value_workphone_director.value = '7';
     } 
  </script>
