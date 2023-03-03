@@ -19,7 +19,7 @@
       let paren = relation.parentElement;
       let paren_phonePersons = phonePersons.parentElement;
 
-      //paren = paren.parentElement;
+      paren = paren.parentElement;
       //paren_phonePersons = paren.paren_phonePersons
       phonePersons = phonePersons.value;
 
