@@ -86,7 +86,7 @@
                         <div style="display: flex;justify-content: space-between;">
                           <div><span style="margin-top: 6px;" class="">Кем приходится:</span></div>
                           <div>
-                            <select class="form-control js-input-cirylic js-input-required" name="relation" id="relation" onblur="phoneOnblur(this);">
+                            <select class="form-control js-input-cirylic js-input-required" name="relation" id="relation" onblur="relationOnblur(this);">
                                     <option value="none" selected="">Выберите из списка</option>
                                     <option value="мать/отец">мать/отец</option>
                                     <option value="муж/жена">муж/жена</option>

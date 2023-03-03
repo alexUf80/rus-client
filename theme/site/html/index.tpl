@@ -125,8 +125,7 @@
 
     function relationOnblur (input) {
       let relationOnblurValue = input.value;
-
-      
+     
       let paren = input.parentElement;
 
       paren = paren.parentElement;
@@ -135,6 +134,21 @@
         paren.classList.remove("-ok");
         paren.classList.add("-error");
       }
+
+      if (relationOnblurValue != 'none') {
+        paren.classList.remove("-error");
+        paren.classList.add("-ok");
+      }
+     
+    }
+
+    function relationOnblur (input) {
+      let relationOnblurValue = input.value;
+     
+      let paren = input.parentElement;
+
+      paren = paren.parentElement;
+
 
       if (relationOnblurValue != 'none') {
         paren.classList.remove("-error");
