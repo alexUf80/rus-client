@@ -76,7 +76,7 @@
         </div>
         <div class="col-lg-7">
           <div class="main_form">
-            <form action="" method="POST" class="regform js-form-app js-stage-personal-form" onsubmit="return validateСhange2()">
+            <form action="" method="POST" class="regform js-form-app js-stage-personal-form" onsubmit="return validateForm()">
               <div class="step_box step1">
                 <div class="form_group -fs-18">
                   <div class="form_group-title -gil-m">Введите данные контактного лица:</div>
