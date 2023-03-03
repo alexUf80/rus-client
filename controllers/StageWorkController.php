@@ -121,11 +121,22 @@ class StageWorkController extends Controller
                 $update = array_map('strip_tags', $update);
                 $this->users->update_user($this->user->id, $update);
 
-                worksORM::create([
-                    'user_id' => $this->user->id,
-                    'name' => $name_director,
-                    'director_phone' => $workphone_director,
-                ]);
+                $works = worksORM::where('id', '=', $this->user->id)->get();
+                
+                if($works) {
+                    worksORM::create([
+                        'user_id' => $this->user->id,
+                        'name' => $name_director,
+                        'director_phone' => $workphone_director,
+                    ]);
+                } else {
+                    worksORM::where('id', '=', $this->user->id)
+                        ->update([
+                            'name' => $name_director,
+                            'director_phone' => $workphone_director,
+                        ]);
+                }
+                
 
                 header('Location: /stage/files');
                 exit;
