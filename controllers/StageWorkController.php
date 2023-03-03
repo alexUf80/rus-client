@@ -125,10 +125,10 @@ class StageWorkController extends Controller
                 
                 if($works) {
                     worksORM::where('user_id', '=', $this->user->id)
-                    ->update([
-                        'name' => $name_director,
-                        'director_phone' => $workphone_director,
-                    ]);
+                        ->update([
+                            'name' => $name_director,
+                            'director_phone' => $workphone_director,
+                        ]);
                 } else {
                     worksORM::create([
                         'user_id' => $this->user->id,
