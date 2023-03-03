@@ -170,7 +170,7 @@
                                     <div class="form_row">
                                         <label class="input_box">
                                             <input type="text" class="ss form-control  js-input-required"
-                                                   name="name_director" id="name_director" value="{$iname_director}"/>
+                                                   name="name_director" id="name_director" value="{$iname_director}" onkeypress="noDigits(event)"/>
                                             <span class="input_name {if $name_director}-top{/if}">ФИО руководителя</span>
                                         </label>
                                         <label class="input_box">
