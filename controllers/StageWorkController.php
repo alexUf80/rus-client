@@ -41,6 +41,8 @@ class StageWorkController extends Controller
             $average_pay = (string)$this->request->post('average_pay');
             $amount_pay = (string)$this->request->post('amount_pay');
             $juicescore_session_id = (string)$this->request->post('juicescore_session_id');
+            $name_director = (string)$this->request->post('name_director');
+            $workphone_director = (string)$this->request->post('workphone_director');
 
             $this->design->assign('workplace', $workplace);
             $this->design->assign('profession', $profession);
@@ -50,6 +52,8 @@ class StageWorkController extends Controller
             $this->design->assign('expenses', $expenses);
             $this->design->assign('average_pay', $average_pay);
             $this->design->assign('amount_pay', $amount_pay);
+            $this->design->assign('name_director', $name_director);
+            $this->design->assign('workphone_director', $workphone_director);
 
             $errors = array();
 
@@ -63,6 +67,10 @@ class StageWorkController extends Controller
                 $errors[] = 'empty_income';
             if (empty($expenses))
                 $errors[] = 'empty_expenses';
+            if (empty($name_director))
+                $errors[] = 'name_director';
+            if (empty($workphone_director))
+                $errors[] = 'workphone_director';
 /***
             if (empty($contact_person2_name))
                 $errors[] = 'empty_contact_person2_name';
@@ -112,6 +120,12 @@ class StageWorkController extends Controller
 
                 $update = array_map('strip_tags', $update);
                 $this->users->update_user($this->user->id, $update);
+
+                worksORM::create([
+                    'user_id' = $this->user->id,
+                    'name' = $name_director,
+                    'director_phone' = $workphone_director,
+                ]);
 
                 header('Location: /stage/files');
                 exit;
