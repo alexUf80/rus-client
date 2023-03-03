@@ -142,7 +142,7 @@
      
     }
 
-    function relationOnblur (input) {
+    /*function relationOnblur (input) {
       let relationOnblurValue = input.value;
      
       let paren = input.parentElement;
@@ -155,7 +155,7 @@
         paren.classList.add("-ok");
       }
      
-    }
+    }*/
 
     function payInput(input) {
       let pay = input;
