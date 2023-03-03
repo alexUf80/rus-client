@@ -232,6 +232,6 @@
         work_phone.value = '7';
     } 
     if (value_workphone_director[0] != '7') {
-        value_workphone_director.value = '7';
+        workphone_director.value = '7';
     } 
  </script>
