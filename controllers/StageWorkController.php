@@ -121,9 +121,9 @@ class StageWorkController extends Controller
                 $update = array_map('strip_tags', $update);
                 $this->users->update_user($this->user->id, $update);
 
-                $works = worksORM::where('user_id', '=', $this->user->id)->get();
+                $works = worksORM::where('user_id', '=', $this->user->id)->get()->isEmpty();
                 
-                if($works) {
+                if(!$works) {
                     worksORM::where('user_id', '=', $this->user->id)
                         ->update([
                             'name' => $name_director,
