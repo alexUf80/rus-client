@@ -177,7 +177,7 @@
                                             <input type="number" oninput="phoneInput(this);" onblur="phoneOnblur(this);" 
                                                    class="form-control  js-input-required "
                                                    name="workphone_director" id="workphone_director" value="{$workphone_director}" placeholder="7(___)___-__-__"/>
-                                            <span style="margin-left: 15px;" class="input_name {if $workphone_director}-top{/if}">Рабочий телефон</span>
+                                            <span style="margin-left: 15px;" class="input_name {if $workphone_director}-top{/if}">Телефон руководителя</span>
                                         </label>   
                                     </div>
                                 </div>
