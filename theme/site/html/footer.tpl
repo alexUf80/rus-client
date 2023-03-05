@@ -641,7 +641,7 @@
         <div class="tn-atom"> <img class="tn-atom__img t-img loaded" data-original="https://static.tildacdn.com/tild6233-3633-4935-a362-646365313531/_.png" imgfield="tn_img_1631705672425" src="https://thumb.tildacdn.com/tild6233-3633-4935-a362-646365313531/-/resize/680x/-/format/webp/_.png"> </div>
       </div>
       <div class="t396__elem tn-elem tn-elem__2759437241632474621262" data-elem-id="1632474621262" data-elem-type="text" data-field-top-value="145" data-field-top-res-960-value="135" data-field-top-res-640-value="365" data-field-top-res-480-value="344" data-field-top-res-320-value="503" data-field-left-value="796" data-field-left-res-960-value="609" data-field-left-res-640-value="179" data-field-left-res-480-value="99" data-field-left-res-320-value="18" data-field-width-value="283" data-field-axisy-value="top" data-field-axisx-value="left" data-field-container-value="grid" data-field-topunits-value="px" data-field-leftunits-value="px" data-field-heightunits-value="" data-field-widthunits-value="px" data-fields="top,left,width,container,axisx,axisy,widthunits,leftunits,topunits" style="top: 145px; left: 916px; width: 283px;">
-        <div class="tn-atom" field="tn_text_1632474621262"><strong>8 (800) 555-92-81 <br>info@rus-zaym.ru <br>Пн. – Вс.: 09:00 - 21:00 (МСК)</strong><br></div>
+        <div class="tn-atom" field="tn_text_1632474621262"><strong> <br>info@rus-zaym.ru <br>Пн. – Вс.: 09:00 - 21:00 (МСК)</strong><br></div>
       </div>
     </div>
   </div>

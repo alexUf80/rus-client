@@ -60,6 +60,7 @@
 <div align="center">
 <strong>РАЗДЕЛ 1. Индивидуальные условия договора потребительского займа № {$contract->number} от {$contract->inssuance_date|date}г.</strong>
 </div>
+<br>
 <table border="1" cellpadding="5">
     <thead>
     <tr align="center">
