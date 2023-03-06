@@ -268,7 +268,7 @@
     <tbody>
     <tr>
         <td style="width: 50%; text-align: center">Общая сумма потребительского займа с учетом выбранных дополнительных услуг:</td>
-        <td style="width: 50%; text-align: center">{$contract->amount} рублей.</td>
+        <td style="width: 50%; text-align: center">{$amount} рублей.</td>
     </tr>
     </tbody>
 </table>
