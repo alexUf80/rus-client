@@ -101,7 +101,7 @@
  * <li>Layers and object visibility;</li>
  * <li>PDF/A-1b support.</li>
  * </ul>
- * Tools to encode your unicode fonts are on fonts/utils directory.</p>
+ * tools to encode your unicode fonts are on fonts/utils directory.</p>
  * @package com.tecnick.tcpdf
  * @author Nicola Asuni
  * @version 6.3.2

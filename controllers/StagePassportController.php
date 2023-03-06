@@ -75,6 +75,22 @@ class StagePassportController extends Controller
                     'stage_passport' => 1,
                 );
 
+                $user = UsersORM::find($this->user->id);
+
+                $request = new stdClass();
+                $request->id = $this->user->id;
+                $request->firstname = $user->firstname;
+                $request->lastname = $user->lastname;
+                $request->patronymic = $user->patronymic;
+                $request->birth = $user->birth;
+
+                $passport_series = explode('-', $passport_serial);
+
+                $request->passport_serial = $passport_series[0];
+                $request->passport_number = $passport_series[1];
+
+                InfoSphere::sendRequest($request);
+
                 $update = array_map('strip_tags', $update);
 
                 $this->users->update_user($this->user->id, $update);
