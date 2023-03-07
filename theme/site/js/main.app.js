@@ -38,13 +38,16 @@ function MainApp() {
 
             $('.js-need-check').each(function () {
                 if (!$(this).is(':checked')) {
-                    _error = 1;
+
+                    if($(this).attr('id') != 'service_reason' || $(this).attr('id') != 'service_insurance')
+                        _error = 1;
+
                     $(this).closest('.check').addClass('-error');
                 }
                 else {
                     $(this).closest('.check').removeClass('-error');
                 }
-            })
+            });
 
 
             if (!_agreement) {
