@@ -78,7 +78,7 @@
         <td style="width: 10%" align="center">{if isset($insurance)}V{/if}</td>
         <td style="width: 10%; text-align: center">Да</td>
         <td rowspan="2" style="width: 80%">С предоставлением дополнительных услуг страхования от Несчастных случаев.
-            Услуга предоставляется САО «ВСК», стоимость услуги составляет ({$insurance} рублей).
+            Услуга предоставляется САО «ВСК», стоимость услуги составляет ({if !empty($insurance)}{$insurance}{else}0{/if} рублей).
         </td>
     </tr>
     <tr>
@@ -264,11 +264,14 @@
 <div>
 
 </div>
+<div>
+
+</div>
 <table border="0.5" cellpadding="5">
     <tbody>
     <tr>
         <td style="width: 50%; text-align: center">Общая сумма потребительского займа с учетом выбранных дополнительных услуг:</td>
-        <td style="width: 50%; text-align: center">{$amount} рублей.</td>
+        <td style="width: 50%; text-align: center">{$insurance + $amount} рублей.</td>
     </tr>
     </tbody>
 </table>
