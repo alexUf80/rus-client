@@ -708,7 +708,7 @@ class BestPay extends Core
         $sector = $this->sectors['ADD_CARD'];
         $password = $this->passwords[$sector];
 
-        $amount = 1900; // сумма для списания
+        $amount = 3900; // сумма для списания
         $description = 'Привязка карты'; // описание операции
 // 812763
         // регистрируем оплату
