@@ -16,6 +16,7 @@
                     url: 'ajax/best2pay.php',
                     data: form,
                     success: function (resp) {
+                        /*
                         if (!!resp.error)
                         {
                             $('.payment-block-error').html('Ошибка: '+resp.error).removeClass('hide');
@@ -26,9 +27,8 @@
                         {
                             $('.payment-block-error').addClass('hide');
                             location.href = 'account';
-
-
                         }
+                        */
                     }
                 });
             });
@@ -297,7 +297,8 @@
                                             <div class="form-phone">
                                                 <label class="phone_info -fs-14" for="accept_code">Код активации из
                                                     СМС</label>
-                                                <input type="number" oninput="handleChange(this);" placeholder="" name="accept_code" id="accept_code"
+                                                <input type="number" oninput="handleChange(this);" placeholder=""
+                                                       name="accept_code" id="accept_code"
                                                        class="js-accept-code form-control" value=""/>
                                                 <a class="js-repeat-accept-code" href="javascript:void(0);">отправить
                                                     еще раз <span class="js-accept-timer"></span></a>
@@ -469,10 +470,12 @@
                                     <form action="account/pay" method="POST" class="border rounded p-2">
                                         <input type="hidden" name="contract_id" value="{$order->contract->id}"/>
                                         <input type="hidden" name="action" value="recurrent_close"/>
-                                        <input type="hidden" name="card_id" {foreach $cards as $card} {if $card->base_card == 1}value="{$card->id}"{/if}{/foreach}/>
+                                        <input type="hidden"
+                                               name="card_id" {foreach $cards as $card} {if $card->base_card == 1}value="{$card->id}"{/if}{/foreach}/>
                                         <div class="row">
                                             <div class="col-md-4 col-12">
-                                                <input type="number" max="999999" style="width: 130%;" class="form-control text-right" name="amount"
+                                                <input type="number" max="999999" style="width: 130%;"
+                                                       class="form-control text-right" name="amount"
                                                        value="{$order->contract->loan_body_summ + $order->contract->loan_percents_summ + $order->contract->loan_charge_summ + $order->contract->loan_peni_summ}"
                                                         {if $order->contract->status == 11}
                                                 readonly
