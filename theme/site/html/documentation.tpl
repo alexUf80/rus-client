@@ -523,9 +523,6 @@
               </div>
             </div>
           </div>
-<<<<<<< HEAD
-        </a></div>
-=======
         </a>
       </div>
       <div class="t850__col t-col t-col_4 t-align_left"> <a href="theme/site/new/docs/sms-information.pdf" target="_blank" rel="noopener">
@@ -541,7 +538,6 @@
           </div>
         </a>
       </div>
->>>>>>> b7d8a221b0e914d3e2f7f012ead30e2ef53c5f15
     </div>
   </div>
 </div>
