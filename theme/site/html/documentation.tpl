@@ -523,7 +523,21 @@
               </div>
             </div>
           </div>
-        </a></div>
+        </a>
+      </div>
+      <div class="t850__col t-col t-col_4 t-align_left"> <a href="theme/site/new/docs/sms-information.pdf" target="_blank" rel="noopener">
+          <div class="t850__inner-col" style="background-color: rgb(255, 255, 255); border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 10px 0px; height: 159px;">
+            <div class="t850__wrap">
+              <div class="t-name t-name_lg " style="color:#000000;font-size:18px;line-height:1;" field="li_title__1635787509495">Услуга СМС-информирование</div>
+              <div class="t850__btn-container">
+                <div class="t850__btntext-wrapper">
+                  <div class="t850__btn-text t-btntext t-btntext_sm " style="color:#000000;">Открыть</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </div>
