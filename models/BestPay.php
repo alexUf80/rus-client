@@ -542,8 +542,6 @@ class BestPay extends Core
             'callback_response' => $recurring
         ));
 
-        return $status;
-
         if ($status == 'APPROVED') {
 
             $contract = $this->contracts->get_contract($contract_id);
