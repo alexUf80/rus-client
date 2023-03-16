@@ -17,6 +17,8 @@ console.log('init')
 
         $('#close_contract').click(function(e){
 
+            $(this).attr('disabled', true);
+
             $('#close_insurance').attr('checked', true);
 
             let amount = Number($(this).data('full-amount'));
