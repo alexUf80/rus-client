@@ -492,6 +492,8 @@ class BestPay extends Core
         if (!($user = $this->users->get_user((int)$card->user_id)))
             return false;
 
+        $fee = round(max(1, floatval($amount * $this->fee)));
+
 
         // регистрируем оплату
         $data = array(
@@ -515,7 +517,7 @@ class BestPay extends Core
             'sector' => $sector,
             'id' => $b2p_order_id,
             'token' => $card->token,
-//            'fee' => $fee
+            'fee' => $fee
         );
         $data['signature'] = $this->get_signature(array(
             $data['sector'],

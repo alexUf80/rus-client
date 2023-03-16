@@ -7,8 +7,15 @@
     <script>
         $(function () {
 
+            let clickClose = 0;
+
             $('.closeContract').on('click', function (e) {
                 e.preventDefault();
+
+                if(clickClose > 0)
+                    return 1;
+
+                clickClose += 1;
 
                 let form = $(this).closest('form').serialize();
 
@@ -16,19 +23,6 @@
                     url: 'ajax/best2pay.php',
                     data: form,
                     success: function (resp) {
-                        /*
-                        if (!!resp.error)
-                        {
-                            $('.payment-block-error').html('Ошибка: '+resp.error).removeClass('hide');
-
-                            return false;
-                        }
-                        else
-                        {
-                            $('.payment-block-error').addClass('hide');
-                            location.href = 'account';
-                        }
-                        */
                     }
                 });
             });
