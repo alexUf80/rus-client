@@ -1,7 +1,7 @@
 {$meta_title='Подтверждение платежа' scope=parent}
 
 {capture name='page_scripts'}
-    <script src="theme/site/js/payment.app.js?v=1.22"></script>
+    <script src="theme/site/js/payment.app.js?v=1.23"></script>
 {/capture}
 
 {capture name='page_styles'}
