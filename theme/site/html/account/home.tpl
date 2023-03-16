@@ -486,7 +486,8 @@
                                                     <button type="submit" class="btn btn-primary btn-block">Оплатить
                                                     </button>
                                                 {else}
-                                                    <div class="btn btn-primary btn-block closeContract">Закрыть</div>
+                                                    <button type="submit" class="btn btn-primary btn-block">Закрыть
+                                                    </button>
                                                 {/if}
                                             </div>
                                         </div>
