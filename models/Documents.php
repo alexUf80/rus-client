@@ -8,14 +8,13 @@ class Documents extends Core
         'SOGLASIE_OPD' => 'soglasie_opd.tpl',
         'POLIS' => 'polis.tpl',
         'KID' => 'kid.tpl',
-        //'KID' => 'kid.tpl',
         'DOP_SOGLASHENIE' => 'prolongation.tpl',
         'POLIS_PROLONGATION' => 'polis_prolongation.tpl',
         'ANKETA_FL' =>  'anketa_fl.tpl',
-
         'REASON_FOR_REFUSAL' =>  'reason_for_refusal.tpl',
         'INFORMATION_SERVICES_AGREEMENT' => 'information_services_agreement.tpl',
         'FIND_REASON_FOR_REFUSAL' =>  'find_reason_for_refusal.tpl',
+        'ZAYAVLENIE_PROLONGATION' => 'zayavlenie_prolongation.tpl'
     );
 
 
@@ -25,14 +24,13 @@ class Documents extends Core
         'SOGLASIE_OPD' => 'Согласие на обработку персональных данных заемщика',
         'POLIS' => 'Полис страхования',
         'KID' => 'Ключевой информационный документ об условиях добровольного страхования',
-        //'KID' => 'Ключевой информационный документ об условиях добровольного страхования',
         'DOP_SOGLASHENIE' => 'Дополнительное соглашение о пролонгации',
         'POLIS_PROLONGATION' => 'Полис страхования при пролонгаци',
-
         'ANKETA_FL' =>  'Сведения о физическом лице',
         'REASON_FOR_REFUSAL' =>  'Причина отказа',
         'INFORMATION_SERVICES_AGREEMENT' => 'Договор об оказании информационных услуг',
         'FIND_REASON_FOR_REFUSAL' =>  'Причина отказа',
+        'ZAYAVLENIE_PROLONGATION' => 'Заявление о изменении срока возврата потребительского займа'
     );
 
     private $client_visible = array(
@@ -40,15 +38,14 @@ class Documents extends Core
         'ANKETA_PEP' => 1,
         'SOGLASIE_OPD' => 1,
         'POLIS' => 1,
-        //'KID' => 1,
         'KID' => 1,
         'DOP_SOGLASHENIE' => 1,
-        'POLIS_PROLONGATION' => 1, 
-
+        'POLIS_PROLONGATION' => 1,
         'ANKETA_FL' => 0,
         'REASON_FOR_REFUSAL' =>  1,
         'INFORMATION_SERVICES_AGREEMENT' => 1,
         'FIND_REASON_FOR_REFUSAL' =>  1,
+        'ZAYAVLENIE_PROLONGATION' => 1
     );
 
 

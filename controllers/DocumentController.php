@@ -60,6 +60,11 @@ class DocumentController extends Controller
 
             $this->design->assign('regaddress_full', $regaddress_full);
 
+            $faktaddress = $this->Addresses->get_address($user->faktaddress_id);
+            $faktaddress_full = $faktaddress->adressfull;
+
+            $this->design->assign('faktaddress_full', $faktaddress_full);
+
             $contract = $this->contracts->get_contract($document->contract_id);
 
             $cards = $this->cards->get_cards(['user_id' => $contract->user_id]);
