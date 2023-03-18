@@ -252,6 +252,15 @@ class Best2PayCallback extends Controller
                                 'params' => json_encode($document_params)
                             ));
 
+                            // заявление на пролонгацию
+                            $this->documents->create_document(array(
+                                'user_id' => $contract->user_id,
+                                'order_id' => $contract->order_id,
+                                'contract_id' => $contract->id,
+                                'type' => 'ZAYAVLENIE_PROLONGATION',
+                                'params' => json_encode($document_params)
+                            ));
+
                             if ($docs == 2) {
                                 $document_params['insurance'] = $this->insurances->get_insurance($insurance_id);
                                 $this->documents->create_document(array(
