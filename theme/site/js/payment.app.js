@@ -70,7 +70,7 @@ console.log('init')
                 if(is_confirmed_prolongation == 0)
                 {
                     $('.payment-block-error').show();
-                    $('.payment-block-error').html('Нужно подтвердить согласие с документом о пролонгации займа');
+                    $('.payment-block-error').html('Необходимо подписать заявление на пролонгацию займа');
 
                     e.preventDefault();
                     return false;
