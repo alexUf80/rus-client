@@ -62,10 +62,26 @@ console.log('init')
         var code_sms = $('[name=code_sms]').val();
         
         if (amount > 0)
-        {            
+        {
+            if(prolongation == 1)
+            {
+                var is_confirmed_prolongation = $('input[id="service_prolongation"]').val();
+
+                if(is_confirmed_prolongation == 0)
+                {
+                    $('.payment-block-error').show();
+                    $('.payment-block-error').html('Нужно подтвердить согласие с документом о пролонгации займа');
+
+                    e.preventDefault();
+                    return false;
+                }
+            }
+
             if ($('[name=card_id]:checked').length > 0)
             {                
                 var card_id = $('[name=card_id]:checked').val();
+
+                $('.payment-block-error').hide();
                 
                 app.other_payment(contract_id, amount, e, prolongation, code_sms, card_id);
             }
@@ -196,9 +212,19 @@ console.log(resp)
             })
         }, 5000);
     }
+
+    var _init_toggle_services = function () {
+            $('#service_prolongation').change(function () {
+                if ($(this).is(':checked'))
+                    $('[name="service_prolongation"]').val(1);
+                else
+                    $('[name="service_prolongation"]').val(0);
+            });
+        }
     
     ;(function(){
         app.init();
+        _init_toggle_services();
     })();
 };
 $(function(){

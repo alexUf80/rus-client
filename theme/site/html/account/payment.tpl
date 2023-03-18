@@ -1,7 +1,7 @@
 {$meta_title='Подтверждение платежа' scope=parent}
 
 {capture name='page_scripts'}
-    <script src="theme/site/js/payment.app.js?v=1.23"></script>
+    <script src="theme/site/js/payment.app.js?v=1.28"></script>
 {/capture}
 
 {capture name='page_styles'}
@@ -120,17 +120,17 @@
                                 <div class="check">
                                     <input type="checkbox"
                                            class="custom-checkbox"
-                                           id="service_prolongation" checked="true"/>
+                                           id="service_prolongation" name="service_prolongation" checked="true" value="1"/>
                                     <label for="service_prolongation" class="check_box -gil-m">
-                                        <span>согласен заключить договор страхования в соответствии
+                                        <span>согласен с
                                             <a class="text-success"
                                                href="https://{$config->main_domain}/theme/site/new/docs/prolongation.pdf"
-                                               target="_blank">с правилами</a></span>
+                                               target="_blank">Заявлением о изменении срока возврата потребительского займа</a></span>
                                     </label>
                                 </div>
                                 <input type="hidden" name="prolongation" value="{$prolongation}">
                                 <div class="pt-4 text-center">
-                                    <a href="#" id="confirm_payment" class="btn btn-primary btn-block">Оплатить</a>
+                                    <a id="confirm_payment" class="btn btn-primary btn-block">Оплатить</a>
                                 </div>
                             {/if}
                         </div>
