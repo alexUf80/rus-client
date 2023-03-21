@@ -48,17 +48,39 @@
 
     value = value.replace(/\s+/g, '');
 
+    validateField (value, paren, regadressfull);
+
+
+    let cloneAddress = document.querySelector('#clone_address');
+
+    let faktadressfull = document.querySelector('#actual_address_toggle');
+    value = faktadressfull.value;
+    paren = faktadressfull.parentElement;
+
+    value = value.replace(/\s+/g, '');
+
+    if(cloneAddress.checked == false){  
+      validateField (value, paren, faktadressfull);
+    } 
+    else{
+      paren.classList.remove("-error");
+      paren.classList.add("-ok");
+    }
+  }
+
+  function validateField (value, paren, adressfull) {
     if ( value.length == 0 ) {
-      regadressfull.value = '';
+      adressfull.value = '';
       paren.classList.add("-error");
       return false;
     }
     paren.classList.remove("-error");
     paren.classList.add("-ok");
     return true;
-
   }
+
   function regadressfullOnblur (input) {
+
       let regadressfull = input;
 
       let value = regadressfull.value;
@@ -66,7 +88,22 @@
 
       value = value.replace(/\s+/g, '');
 
-      if ( value.length == 0 ) {
+      checkField (value, paren);
+    }
+
+  function faktadressfullOnblur (input) {
+      let faktadressfull = input;
+
+      let value = faktadressfull.value;
+      let paren = faktadressfull.parentElement;
+
+      value = value.replace(/\s+/g, '');
+
+      checkField (value, paren);
+    }
+
+  function checkField (value, paren) {
+    if ( value.length == 0 ) {
         setTimeout(() =>{
             if(paren.classList.contains("-ok"))
             paren.classList.remove("-ok");
@@ -79,7 +116,7 @@
             paren.classList.add("-ok");
           }, 10);
       }
-    }
+  }
 </script>
 
 <main class="main">
@@ -142,7 +179,7 @@
                     </div>
                   </div>
                   <div class="js-regaddress-block">
-                    <input class="form-control casing-upper-mask Faktaddress"
+                    <input class="form-control casing-upper-mask Faktaddress" onblur="faktadressfullOnblur(this);"
                            id="actual_address_toggle" maxlength="500"
                            style="width: 500px; margin-left: 25px;"
                            name="Faktadressfull"

@@ -313,7 +313,7 @@
                 <div id="phone_block">
                   <div class="form-group form-phone">
                     <span class="phone_info -fs-14">Ваш номер телефона</span>
-                    <input type="text" name="phone" id="phone" class="form-control -fs-18 -gil-m js-login-phone js-mask-phone" value="" />
+                    <input type="text" name="phone" id="phone" class="form-control -fs-18 -gil-m js-login-phone js-mask-phone" value="{$phone}" />
                     <input type="hidden" name="code" id="" class="js-mask-sms js-login-code" value="" />
                     <div class="error_text js-login-phone-error" style="display:none">Укажите номер телефона</div>
                   </div>

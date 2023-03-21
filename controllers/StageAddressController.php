@@ -87,6 +87,10 @@ class StageAddressController extends Controller
                 $errors[] = 'empty_regregion';
             }
 
+            if (empty($faktaddress['adressfull'])) {
+                $errors[] = 'empty_faktregion';
+            }
+
             $this->design->assign('errors', $errors);
 
             if (empty($errors)) {

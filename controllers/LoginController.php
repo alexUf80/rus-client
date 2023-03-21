@@ -24,6 +24,7 @@ class LoginController extends Controller
 
             $clean_phone = $this->sms->clear_phone($phone);
 
+            $this->design->assign('phone', $phone);
 
             if (!empty($code)) {
                 $db_code = $this->sms->get_code($clean_phone);
