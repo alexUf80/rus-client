@@ -389,7 +389,7 @@
                                 <div class="pt-4 pr-5 pl-5 text-center">
                                     <small>{$order->reject_reason}</small>
                                     <div>
-                                        <a href="https://starzaym.ru/" target="_blank" class="blue-link">
+                                        <a href="https://займ2023.рф" target="_blank" class="blue-link">
                                             Получите займ у наших партнёров
                                             <br/>
                                             <span class="sc-htoDjs fOeadG"></span>
