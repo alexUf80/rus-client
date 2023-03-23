@@ -21,6 +21,7 @@ class ContractAcceptController extends Controller
             $accept_code = $this->request->post('accept_code', 'integer');
             $service_insurance = $this->request->post('service_insurance', 'integer');
             $service_reason = $this->request->post('service_reason', 'integer');
+            // $service_sms = $this->request->post('service_sms', 'integer');
             
             if ($contract->status != 0)
             {
@@ -36,6 +37,7 @@ class ContractAcceptController extends Controller
                     'status' => 1,
                     'service_reason' => $service_reason,
                     'service_insurance' => $service_insurance,
+                    // 'service_sms' => $service_sms,
                     'accept_date' => date('Y-m-d H:i:s'),
                     'accept_ip' => $_SERVER['REMOTE_ADDR']
                 ));

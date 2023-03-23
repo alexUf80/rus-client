@@ -36,7 +36,7 @@
                   <span class="calculator__form-label">Выберите сумму в рублях:</span>
                   <div class="calculator__input-container">
                     <output id="sum-output" class="calculator__output" style="left: 76.9231%;">12 000</output>
-                    <input name="amount" id="sum" data-range-slider="" class="calculator__input" min="{$min_summ}" max="{$max_summ}" value="{$current_summ}" step="500" type="range">
+                    <input name="amount" id="sum" data-range-slider="" class="calculator__input" min="{$min_summ}" max="{$max_summ}" value="{$current_summ}" step="1000" type="range">
                     <div class="calculator__input-ranges">
                       <small>2 000</small>
                       <small>15 000</small>
