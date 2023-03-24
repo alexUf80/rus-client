@@ -83,7 +83,7 @@ class MainController extends Controller
                     'sms' => $code,
                     'service_reason' => $service_reason,
                     'service_insurance' => $service_insurance,
-                    'service_sms' => 1,
+                    'service_sms' => $service_sms,
                     'reg_ip' => $_SERVER['REMOTE_ADDR'],
                     'last_ip' => $_SERVER['REMOTE_ADDR'],
                     'enabled' => 1,

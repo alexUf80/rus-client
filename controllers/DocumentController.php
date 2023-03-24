@@ -86,7 +86,10 @@ class DocumentController extends Controller
 
         }
 
-        $insurance = $this->request->get('insurance');
+        $user_id = $this->request->get('user_id', 'integer');
+        $user = $client = $this->users->get_user($user_id);
+        $insurance = $user->service_insurance;
+        // $insurance = $this->request->get('insurance');
 
         if (!empty($insurance) || isset($contract) && !empty($contract->service_insurance)) {
 
