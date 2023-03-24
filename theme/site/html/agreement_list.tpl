@@ -63,7 +63,6 @@
             </div>
         </div>
     </div>
-    {*}
     <div class="">
         <div class="form_row">
             <div class="check">
@@ -81,7 +80,6 @@
             </div>
         </div>
     </div>
-     {*}
     <div class="">
         <div class="form_row">
             <div class="check">
