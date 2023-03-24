@@ -59,7 +59,7 @@ class MainController extends Controller
 
             $service_insurance = $this->request->post('service_insurance', 'integer');
             $service_reason = $this->request->post('service_reason', 'integer');
-            // $service_sms = $this->request->post('service_sms', 'integer');
+            $service_sms = $this->request->post('service_sms', 'integer');
 
             $phone = $this->sms->clear_phone($phone);
 
