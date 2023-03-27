@@ -35,7 +35,7 @@
             <form action="" method="" class="regform">
               
               <div class="step_box step5">
-                
+                <div class="form_group-title -gil-m -fs-28">Привяжите, пожалуйста, карту</div>
                 <div class="step_box_btn">
                   <a href="stage/card?step=prev" class="btn btn_back btn-link -green -gil-m">Назад</a>
                   <a href="{$card_link}" class="btn btn_next btn-secondary -fs-20 js-attach-card">Привязать карту</a>
