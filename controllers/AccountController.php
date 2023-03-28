@@ -92,7 +92,7 @@ class AccountController extends Controller
                 $this->users->update_user($this->user->id, array(
                     'service_insurance' => $service_insurance,
                     'service_reason' => $service_reason,
-                    'service_sms' => 1,
+                    'service_sms' => $service_sms,
                     'client_status' => $client_status
                 ));
 

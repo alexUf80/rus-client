@@ -59,6 +59,7 @@ class MainController extends Controller
 
             $service_insurance = $this->request->post('service_insurance', 'integer');
             $service_reason = $this->request->post('service_reason', 'integer');
+            $service_sms = $this->request->post('service_sms', 'integer');
 
             $phone = $this->sms->clear_phone($phone);
 
@@ -82,7 +83,7 @@ class MainController extends Controller
                     'sms' => $code,
                     'service_reason' => $service_reason,
                     'service_insurance' => $service_insurance,
-                    'service_sms' => 1,
+                    'service_sms' => $service_sms,
                     'reg_ip' => $_SERVER['REMOTE_ADDR'],
                     'last_ip' => $_SERVER['REMOTE_ADDR'],
                     'enabled' => 1,

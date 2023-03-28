@@ -51,7 +51,7 @@
             <div class="check">
                 <input type="hidden" class="custom-checkbox " name="service_reason" value="1"/>
                 <input type="checkbox"
-                       class="custom-checkbox js-need-check"
+                       class="custom-checkbox"
                        id="service_reason" value="1" checked/>
                 <label for="service_reason" class="check_box -gil-m">
                  <span>
@@ -66,9 +66,26 @@
     <div class="">
         <div class="form_row">
             <div class="check">
+                <input type="hidden" class="custom-checkbox " name="service_sms" value="1"/>
+                <input type="checkbox"
+                       class="custom-checkbox"
+                       id="service_sms" value="1" checked/>
+                <label for="service_sms" class="check_box -gil-m">
+                 <span>
+                    Услуга <a style="color: RGB(189, 148, 87)"
+                                                                               href="theme/site/new/docs/sms-information.pdf"
+                                                                               target="_blank">СМС-информирование</a>
+                 </span>
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="">
+        <div class="form_row">
+            <div class="check">
                 <input type="hidden" class="custom-checkbox" name="service_insurance" value="1"/>
                 <input type="checkbox"
-                       class="custom-checkbox js-need-check"
+                       class="custom-checkbox"
                        id="service_insurance" value="1" checked/>
                 <label for="service_insurance" class="check_box -gil-m">
                  <span>

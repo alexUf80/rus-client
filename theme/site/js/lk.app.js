@@ -143,17 +143,43 @@ function LkApp() {
     };
 
     var _init_agreement_list = function () {
-            $('.js-toggle-agreement-list').click(function (e) {
-                e.preventDefault();
+        $('.js-toggle-agreement-list').click(function (e) {
+            e.preventDefault();
 
-                $('#agreement_list').slideToggle()
-            })
-        }
+            $('#agreement_list').slideToggle()
+        })
+    }
 
+    var _init_toggle_services = function () {
+        $('.js-loan-phone').blur(function () {
+
+            console.log($(this).val()) //'79171018924', '79179400617'
+
+        });
+
+        $('#service_reason').change(function () {
+            if ($(this).is(':checked'))
+                $('[name="service_reason"]').val(1);
+            else
+                $('[name="service_reason"]').val(0);
+        });
+        $('#service_insurance').change(function () {
+            if ($(this).is(':checked'))
+                $('[name="service_insurance"]').val(1);
+            else
+                $('[name="service_insurance"]').val(0);
+        });
+        $('#service_sms').change(function () {
+            if ($(this).is(':checked'))
+                $('[name="service_sms"]').val(1);
+            else
+                $('[name="service_sms"]').val(0);
+        });
+    }
 
     ;(function () {
         _init();
-
+        _init_toggle_services();
         _init_repeat_order();
         _init_agreement_list();
         _redirect_to_partner();

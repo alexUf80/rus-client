@@ -86,7 +86,16 @@ class DocumentController extends Controller
 
         }
 
-        $insurance = $this->request->get('insurance');
+        $order = $this->orders->get_order($document->order_id);
+        $contract = $this->contracts->get_contract($order->contract_id);
+        $insurance = $contract->service_insurance;
+        // $insurance = $this->request->get('insurance');
+
+        $sms = 0;
+        $transactions = $this->transactions->get_transactions(array('user_id' => $order->user_id));
+        if($contract->service_sms){
+            $sms = $transactions[0]->amount / 100;
+        }
 
         if (!empty($insurance) || isset($contract) && !empty($contract->service_insurance)) {
 
@@ -115,6 +124,8 @@ class DocumentController extends Controller
             $order = $this->orders->get_order($document->order_id);
             $amount = $order->amount;
         }
+
+        $this->design->assign('sms', $sms);
 
         $this->design->assign('amount', $amount);
 
