@@ -35,6 +35,8 @@
     
             if ($(this).hasClass('js-cirylic-plus'))
                 var _replace = this.value.replace(/[^а-яё0-9\.\, ]/ig,'');
+            else if ($(this).hasClass('js-cirylic-dash'))
+                var _replace = this.value.replace(/[^а-яё0-9-\, ]/ig,'');
             else
                 var _replace = this.value.replace(/[^а-яё ]/ig,'');
             
