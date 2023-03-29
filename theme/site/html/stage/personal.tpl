@@ -57,7 +57,7 @@
                 <div class="form_group -fs-18">
                   <div class="form_group-title -gil-m">ФИО как в паспорте:</div>
                   <div class="form_row">
-                    <label class="input_box ">
+                    <label class="input_box "> 
                       <input type="text" class="form-control js-input-cirylic js-cirylic-dash js-input-required" name="lastname" id="last_name" value="{$lastname|escape}" />
                       <span class="input_name {if $lastname}-top{/if}">Фамилия</span>
                     </label>
