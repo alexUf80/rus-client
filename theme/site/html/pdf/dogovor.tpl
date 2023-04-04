@@ -32,7 +32,7 @@
         </td>
         <td style="width: 36%;" align="center">
             <div><h2>ПОЛНАЯ СТОИМОСТЬ ЗАЙМА:
-                {$return_amount_percents} РУБЛЕЙ 
+                {$return_amount_percents} РУБЛЕЙ
                 {$return_amount_percents|price_string|upper}</h2>
             </div>
         </td>
