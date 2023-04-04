@@ -16,7 +16,7 @@
                         в государственном реестре МФО: 2003045009509 от 31.01.2020<br><br>Контактный номер телефона: 8
                         (800)
                         555-92-81<br><br>Правила предоставления микрозаймов:
-                        <a href="https://docs.rus-zaym.ru/Pravila_predostavleniya_zajmov_i_obshchie_usloviya.pdf">https://docs.rus-zaym.ru/Pravila_predostavleniya_zajmov_i_obshchie_usloviya.pdf</a><br><br>Официальный
+                        <a href="https://rus-zaym.ru/theme/site/new/docs/Pravila_predostavleniya_mikrozaimov.pdf">https://rus-zaym.ru/theme/site/new/docs/Pravila_predostavleniya_mikrozaimov.pdf</a><br><br>Официальный
                         сайт МФО: <a href="https://rus-zaym.ru">https://rus-zaym.ru</a><br><br>Сайт СРО, членом которой
                         является МФО: <a href="https://npmir.ru">https://npmir.ru<a><br><br>Ссылка
                                 на форму для обращений на сайте СРО: <a href="https://npmir.ru/feedback/users/">https://npmir.ru/feedback/users</a><br><br>Сайт
@@ -24,7 +24,7 @@
                                 <a href="https://cbr.ru">https://cbr.ru</a><br><br>Интернет-приемная Банка России: <a
                                         href="https://cbr.ru/Reception">https://cbr.ru/Reception</a><br><br>Личный
                                 кабинет
-                                получателя финансовой услуги: <a href="https://rus-zaym.ru/main/?forceLogin=true">https://rus-zaym.ru/main/?forceLogin=true</a><br><br>Ссылка
+                                получателя финансовой услуги: <a href="https://rus-zaym.ru/lk">https://rus-zaym.ru/lk</a><br><br>Ссылка
                                 на
                                 форму
                                 для
