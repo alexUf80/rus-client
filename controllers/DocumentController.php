@@ -55,6 +55,11 @@ class DocumentController extends Controller
             foreach ($user as $key => $value)
                 $this->design->assign($key, $value);
 
+            $faktaddress = $this->Addresses->get_address($user->faktaddress_id);
+            $faktaddress_full = $faktaddress->adressfull;
+
+            $this->design->assign('faktaddress_full', $faktaddress_full);
+
             $regaddress = $this->Addresses->get_address($user->regaddress_id);
             $regaddress_full = $regaddress->adressfull;
 
@@ -88,8 +93,12 @@ class DocumentController extends Controller
 
         $order = $this->orders->get_order($document->order_id);
         $contract = $this->contracts->get_contract($order->contract_id);
-        $insurance = $contract->service_insurance;
+        $service_insurance = $contract->service_insurance;
+        $this->design->assign('service_insurance', $service_insurance);
         // $insurance = $this->request->get('insurance');
+
+        $service_sms = $contract->service_sms;
+        $this->design->assign('service_sms', $service_sms);
 
         $sms = 0;
         $transactions = $this->transactions->get_transactions(array('user_id' => $order->user_id));
