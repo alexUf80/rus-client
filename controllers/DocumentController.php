@@ -113,19 +113,10 @@ class DocumentController extends Controller
 
         if (!empty($insurance) || isset($contract) && !empty($contract->service_insurance)) {
 
-
-            $order = $this->orders->get_order($document->order_id);
-            $operations = $this->operations->get_operations(['contract_id' => $order->contract_id, 'type' => 'INSURANCE']);
-
-            foreach ($operations as $operation) {
-                if($operation->type == 'INSURANCE'){
-                    $insurance = (float)$operation->amount;
-                    break;
-                }
-            }
-
-
-            if(empty($insurance)) {
+            $operation = OperationsORM::where('type', 'INSURANCE')->where('order_id', $document->order_id)->first();
+            $insurance = (float)$operation->amount;
+            
+            if (empty($insurance)) {
                 if (empty($contract)) {
                     $order = $this->orders->get_order($document->order_id);
                     $amount = $order->amount;
@@ -152,6 +143,9 @@ class DocumentController extends Controller
             $order = $this->orders->get_order($document->order_id);
             $amount = $order->amount;
         }
+
+        $amount = OperationsORM::where('type', 'P2P')->where('order_id', $document->order_id)->first();
+        $amount = $amount->amount;
 
         $this->design->assign('sms', $sms);
 
