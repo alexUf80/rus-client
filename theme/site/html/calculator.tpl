@@ -74,21 +74,20 @@
                     </span>
                   </span>
                 </div>
-                <div class="form-group form-phone ">
+                <div class="form-phone" style="margin: 16px 0;">
                   <span class="phone_info -fs-14">Ваш номер телефона</span>
                   <input type="text" name="phone" id="phone" class="form-control -fs-18 -gil-m js-mask-phone js-loan-phone" value="">
                   <input type="hidden" name="code" id="" class="js-mask-sms js-loan-code" value="">
                   <div class="error_text js-loan-phone-error" style="display:none">Укажите номер телефона</div>
                 </div>
-                <div class="form-group">
-                  <div class="form_row">
-                    <div class="check mb-0 js-loan-agreement-block">
-                      <input type="checkbox" class="custom-checkbox js-loan-agreement" id="check_agreement" name="agreement" value="1" />
-                      <label for="check_agreement" class="check_box -gil-m">
-                        <span>Я ознакомлен со <a href="#agreement_list" class="green-link js-toggle-agreement-list">следующим</a></span>
-                      </label>
-                    </div>
+                <div class="form_row" style="margin: 16px 0;">
+                  <div class="check mb-0 js-loan-agreement-block">
+                    <input type="checkbox" class="custom-checkbox js-loan-agreement" id="check_agreement" name="agreement" value="1" />
+                    <label for="check_agreement" class="check_box -gil-m">
+                      <span>Я ознакомлен со <a href="#agreement_list" class="green-link js-toggle-agreement-list">следующим</a></span>
+                    </label>
                   </div>
+
                 </div>
 
                 {include file='agreement_list.tpl'}
@@ -104,7 +103,7 @@
                 </div>
 
                 <div id="promo_code" style="display:none">
-                  <div id="promo_input" class="form-group form-phone">
+                  <div id="promo_input" class="form-phone" style="margin: 16px 0;">
                     <span class="phone_info -fs-14">Промокод</span>
                     <input id="promoCode" type="text" class="form-control -fs-18 -gil-m">
                   </div>
@@ -120,7 +119,7 @@
                     <p>Промокод не применен</p>
                   </div>
 
-                  <div class="form-group form-btn">
+                  <div class="form-btn" style="margin: 16px 0;">
                     <button id="check_promo_code" href="javascript:void(0);" class="calculator__button  js-promo-code-ckeck">Применить</button>
                   </div>
                 </div>
