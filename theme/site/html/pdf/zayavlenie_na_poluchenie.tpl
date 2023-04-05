@@ -70,7 +70,7 @@
     Подписывая настоящее заявление, даю согласие на заключение договора страхования.
     
 </div>
-<div>
+<div style="display:flex; justify-content: center; align-items: center;">
     <table border="0.5" cellpadding="5">
         <tbody>
         <tr>
@@ -90,7 +90,7 @@
     Я предварительно изучил(а) и согласен(а) с правилами предоставления услуги «СМС-информирование».
     <br>
 </div>
-<div>
+<div style="display:flex; justify-content: center; align-items: center;">
     <table border="0.5" cellpadding="5">
         <tbody>
         <tr>
