@@ -100,6 +100,11 @@ class DocumentController extends Controller
         $service_sms = $contract->service_sms;
         $this->design->assign('service_sms', $service_sms);
 
+        $income = $user->income;
+        $this->design->assign('income', $income);
+        $expenses = $user->expenses;
+        $this->design->assign('expenses', $expenses);
+
         $sms = 0;
         $transactions = $this->transactions->get_transactions(array('user_id' => $order->user_id));
         if($contract->service_sms){
