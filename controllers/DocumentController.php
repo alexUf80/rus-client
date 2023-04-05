@@ -113,14 +113,28 @@ class DocumentController extends Controller
 
         if (!empty($insurance) || isset($contract) && !empty($contract->service_insurance)) {
 
-            if (empty($contract)) {
-                $order = $this->orders->get_order($document->order_id);
-                $amount = $order->amount;
-                $insurance = $order->amount * 0.1;
+
+            $order = $this->orders->get_order($document->order_id);
+            $operations = $this->operations->get_operations(['contract_id' => $order->contract_id, 'type' => 'INSURANCE']);
+
+            foreach ($operations as $operation) {
+                if($operation->type == 'INSURANCE'){
+                    $insurance = (float)$operation->amount;
+                    break;
+                }
             }
-            else{
-                $amount = $contract->amount;
-                $insurance = $contract->amount * 0.1;
+
+
+            if(empty($insurance)) {
+                if (empty($contract)) {
+                    $order = $this->orders->get_order($document->order_id);
+                    $amount = $order->amount;
+                    $insurance = $order->amount * 0.1;
+                }
+                else{
+                    $amount = $contract->amount;
+                    $insurance = $contract->amount * 0.1;
+                }
             }
 
             if ($amount <= 10000)
