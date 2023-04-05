@@ -73,19 +73,18 @@
   <script type="text/javascript">
     window.dataLayer = window.dataLayer || [];
   </script>
-  <script type="text/javascript">
+   <script type="text/javascript">
     function handleChange(input) {
       if (input.value < 0) input.value = 0;
       if (input.value > 9999) {
-        let val = input.value;
-        val = String(val);
-        val = val[0] + val[1] + val[2] + val[3];
-        val = Number(val);
-        input.value = val;
-      }
+          let val = input.value;
+          val = String(val);
+          val = val[0] + val[1] + val[2] + val[3];
+          val = Number(val);
+          input.value = val;
+      } 
     }
     var phoneChange;
-
     function phoneInput(input) {
       phoneChange = input.value;
       phoneChange = String(phoneChange);
@@ -95,12 +94,11 @@
       //} 
       if (phoneChange[0] != '7') {
         input.value = '7';
-      }
+      } 
       if (phoneChange.length > 11) {
-        input.value = phoneChange[0] + phoneChange[1] + phoneChange[2] + phoneChange[3] + phoneChange[4] + phoneChange[5] + phoneChange[6] + phoneChange[7] + phoneChange[8] + phoneChange[9] + phoneChange[10];
+        input.value =  phoneChange[0] + phoneChange[1] + phoneChange[2]+ phoneChange[3]+ phoneChange[4]+ phoneChange[5]+ phoneChange[6]+ phoneChange[7]+ phoneChange[8]+ phoneChange[9]+ phoneChange[10] ;
       }
     }
-
     function bigInput(input) {
       let bigInputElement = input;
       bigInputElement.style = 'height: 100px;padding-top: 40px;';
@@ -109,26 +107,25 @@
       let span = childrenArr[1];
       span.style = 'margin-top: 12px;';
     }
-    var phoneChangeOnblur;
-
-    function phoneOnblur(input) {
+   var phoneChangeOnblur;
+   function phoneOnblur (input) {
       phoneChangeOnblur = input.value;
 
       let paren = input.parentElement;
 
       if (phoneChangeOnblur.length < 11) {
-        setTimeout(() => {
+        setTimeout(() =>{
           paren.classList.remove("-ok");
           paren.classList.add("-error");
         }, 100);
-
-      }
-
+        
+    }
+     
     }
 
-    function relationOnblur(input) {
+    function relationOnblur (input) {
       let relationOnblurValue = input.value;
-
+     
       let paren = input.parentElement;
 
       paren = paren.parentElement;
@@ -142,7 +139,7 @@
         paren.classList.remove("-error");
         paren.classList.add("-ok");
       }
-
+     
     }
 
     /*function relationOnblur (input) {
@@ -177,17 +174,19 @@
       if ("1234567890".indexOf(event.key) != -1)
         event.preventDefault();
     }
+
   </script>
 
   <style type="text/css">
+
     input[type=number]::-webkit-outer-spin-button,
     input[type=number]::-webkit-inner-spin-button {
-      -webkit-appearance: none;
-      margin: 0;
+        -webkit-appearance: none;
+        margin: 0;
     }
 
     input[type=number] {
-      -moz-appearance: textfield;
+        -moz-appearance:textfield;
     }
 
     @media screen and (min-width: 980px) {
@@ -369,35 +368,26 @@
   *}
   <!-- <div id="allrecords" class="t-records"> -->
   <div>
-    <nav>
-      <div class="navbar" id="main-menu">
-        <div class="container nav-container">
-          <script>
-            function toggleMenu() {
-              document.getElementById("main-menu").classList.toggle("navbar_open");
-            }
-          </script>
-
-          <div class="hamburger-lines" id="main-menu-open-button" onclick="toggleMenu()">
-            <span class="line line1"></span>
-            <span class="line line2"></span>
-            <span class="line line3"></span>
+    <div id="nav274169790" class="t228 t228__hidden t228__positionstatic " style="background-color: rgba(255,255,255,1); height:120px; " data-bgcolor-hex="#ffffff" data-bgcolor-rgba="rgba(255,255,255,1)" data-navmarker="nav274169790marker" data-appearoffset="" data-bgopacity-two="" data-menushadow="" data-bgopacity="1" data-menu-items-align="right" data-menu="yes">
+      <div class="t228__maincontainer " style="height:120px;">
+        <div class="t228__padding40px"></div>
+        <div class="t228__leftside">
+          <div class="t228__leftcontainer"> <a href="{$config->root_url}" style="color:#ffffff;"><img src="https://static.tildacdn.com/tild6466-6539-4930-b537-343865373534/_.svg" class="t228__imglogo t228__imglogomobile" imgfield="img" style="max-width: 250px; width: 250px; min-width: 250px; height: auto; display: block;" alt=""></a> </div>
+        </div>
+        <div class="t228__centerside t228__menualign_right">
+          <div class="t228__centercontainer">
+            <ul class="t228__list ">
+              <li class="t228__list_item" style="padding:0 15px 0 0;"><a class="t-menu__link-item" href="#howitworks" data-menu-submenu-hook="" style="color:#000000;font-size:15px;font-weight:500;font-family:'Roboto';" data-menu-item-number="1">Как это работает?</a> </li>
+              <li class="t228__list_item" style="padding:0 15px;"><a class="t-menu__link-item" href="#aboutus" data-menu-submenu-hook="" style="color:#000000;font-size:15px;font-weight:500;font-family:'Roboto';" data-menu-item-number="2">О нас</a> </li>
+              <li class="t228__list_item" style="padding:0 15px;"><a class="t-menu__link-item" href="#howtoget" data-menu-submenu-hook="" style="color:#000000;font-size:15px;font-weight:500;font-family:'Roboto';" data-menu-item-number="3">Как получить?</a> </li>
+              <li class="t228__list_item" style="padding:0 15px;"><a class="t-menu__link-item" href="#howtopay" data-menu-submenu-hook="" style="color:#000000;font-size:15px;font-weight:500;font-family:'Roboto';" data-menu-item-number="4">Как погасить?</a> </li>
+              <li class="t228__list_item" style="padding:0 0 0 15px;"><a class="t-menu__link-item" href="#FAQ" data-menu-submenu-hook="" style="color:#000000;font-size:15px;font-weight:500;font-family:'Roboto';" data-menu-item-number="5">Вопросы и ответы</a> </li>
+            </ul>
           </div>
-
-          <div style="margin-left: auto;">
-            <a href="{$config->root_url}" style="color:#ffffff;">
-              <img src="https://static.tildacdn.com/tild6466-6539-4930-b537-343865373534/_.svg" class="logo" imgfield="img" alt="">
-            </a>
-          </div>
-
-          <div class="menu-items">
-            <li class="t228__list_item"><a onclick="toggleMenu()" class="t-menu__link-item" href="#howitworks" data-menu-submenu-hook="" style="color:#000000;font-size:15px;font-weight:500;font-family:'Roboto';" data-menu-item-number="1">Как это работает?</a> </li>
-            <li class="t228__list_item"><a onclick="toggleMenu()" class="t-menu__link-item" href="#aboutus" data-menu-submenu-hook="" style="color:#000000;font-size:15px;font-weight:500;font-family:'Roboto';" data-menu-item-number="2">О нас</a> </li>
-            <li class="t228__list_item"><a onclick="toggleMenu()" class="t-menu__link-item" href="#howtoget" data-menu-submenu-hook="" style="color:#000000;font-size:15px;font-weight:500;font-family:'Roboto';" data-menu-item-number="3">Как получить?</a> </li>
-            <li class="t228__list_item"><a onclick="toggleMenu()" class="t-menu__link-item" href="#howtopay" data-menu-submenu-hook="" style="color:#000000;font-size:15px;font-weight:500;font-family:'Roboto';" data-menu-item-number="4">Как погасить?</a> </li>
-            <li class="t228__list_item"><a onclick="toggleMenu()" class="t-menu__link-item" href="#FAQ" data-menu-submenu-hook="" style="color:#000000;font-size:15px;font-weight:500;font-family:'Roboto';" data-menu-item-number="5">Вопросы и ответы</a> </li>
-
-            <div class="t228">
+        </div>
+        <div class="t228__rightside">
+          <div class="t228__rightcontainer">
+            <div class="t228__right_buttons">
               <div class="t228__right_buttons_wrap">
                 <div class="t228__right_buttons_but"><a href="lk" target="" class="t-btn " style="color:#ffffff;background-color:#bd9457;border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;">
                     <table style="width:100%; height:100%;">
@@ -407,52 +397,14 @@
                         </tr>
                       </tbody>
                     </table>
-                  </a>
-                </div>
+                  </a></div>
               </div>
             </div>
           </div>
         </div>
+        <div class="t228__padding40px"></div>
       </div>
-
-      <div id="nav274169790" class="t228 t228__hidden t228__positionstatic " style="background-color: rgba(255,255,255,1); height:120px; " data-bgcolor-hex="#ffffff" data-bgcolor-rgba="rgba(255,255,255,1)" data-navmarker="nav274169790marker" data-appearoffset="" data-bgopacity-two="" data-menushadow="" data-bgopacity="1" data-menu-items-align="right" data-menu="yes">
-        <div class="t228__maincontainer " style="height:120px;">
-          <div class="t228__padding40px"></div>
-          <div class="t228__leftside">
-            <div class="t228__leftcontainer"> <a href="{$config->root_url}" style="color:#ffffff;"><img src="https://static.tildacdn.com/tild6466-6539-4930-b537-343865373534/_.svg" class="t228__imglogo t228__imglogomobile" imgfield="img" style="max-width: 250px; width: 250px; min-width: 250px; height: auto; display: block;" alt=""></a> </div>
-          </div>
-          <div class="t228__centerside t228__menualign_right">
-            <div class="t228__centercontainer">
-              <ul class="t228__list ">
-                <li class="t228__list_item" style="padding:0 15px 0 0;"><a class="t-menu__link-item" href="#howitworks" data-menu-submenu-hook="" style="color:#000000;font-size:15px;font-weight:500;font-family:'Roboto';" data-menu-item-number="1">Как это работает?</a> </li>
-                <li class="t228__list_item" style="padding:0 15px;"><a class="t-menu__link-item" href="#aboutus" data-menu-submenu-hook="" style="color:#000000;font-size:15px;font-weight:500;font-family:'Roboto';" data-menu-item-number="2">О нас</a> </li>
-                <li class="t228__list_item" style="padding:0 15px;"><a class="t-menu__link-item" href="#howtoget" data-menu-submenu-hook="" style="color:#000000;font-size:15px;font-weight:500;font-family:'Roboto';" data-menu-item-number="3">Как получить?</a> </li>
-                <li class="t228__list_item" style="padding:0 15px;"><a class="t-menu__link-item" href="#howtopay" data-menu-submenu-hook="" style="color:#000000;font-size:15px;font-weight:500;font-family:'Roboto';" data-menu-item-number="4">Как погасить?</a> </li>
-                <li class="t228__list_item" style="padding:0 0 0 15px;"><a class="t-menu__link-item" href="#FAQ" data-menu-submenu-hook="" style="color:#000000;font-size:15px;font-weight:500;font-family:'Roboto';" data-menu-item-number="5">Вопросы и ответы</a> </li>
-              </ul>
-            </div>
-          </div>
-          <div class="t228__rightside">
-            <div class="t228__rightcontainer">
-              <div class="t228__right_buttons">
-                <div class="t228__right_buttons_wrap">
-                  <div class="t228__right_buttons_but"><a href="lk" target="" class="t-btn " style="color:#ffffff;background-color:#bd9457;border-radius:5px; -moz-border-radius:5px; -webkit-border-radius:5px;">
-                      <table style="width:100%; height:100%;">
-                        <tbody>
-                          <tr>
-                            <td>Личный кабинет</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </a></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="t228__padding40px"></div>
-        </div>
-      </div>
-    </nav>
+    </div>
 
     {$content}
 

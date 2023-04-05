@@ -694,6 +694,7 @@ select + .input_name.-top {
 	.main_form_top{display: flex; margin-left: -15px; margin-right: -15px; font-size: 18px; text-align: center;color: #ffffff;background-color: #00c4f1;height: 47px; align-items: center; justify-content: center; margin-top: 30px;}
 	.form_radio_btn label{width: 100%; height: 60px;}
 	.form_radio_btn{width: 49%;}
+	.form_group-title{display: none;}
 	.section_lk_navbar_toggle{color: #00c4f1;font-size: 15px; padding-top: 16px; padding-bottom: 16px; display: flex; align-items: center; justify-content: space-between; position: relative;}
 //	.lk_menu {display: none;}
 	.section_lk_navbar_toggle:after{content:''; background: url(../i/arrow-down.svg) no-repeat center; width: 12px; height: 12px; display: block; position: absolute; top:50%; right: 0; background-size:contain;     transform: translateY(-50%);}
