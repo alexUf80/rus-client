@@ -34,6 +34,7 @@ class StagePersonalController extends Controller
             $birth = trim((string)$this->request->post('birth'));
             $birth_place = trim((string)$this->request->post('birth_place'));
             $social = trim((string)$this->request->post('social'));
+            $cansel_patronymic = trim((integer)$this->request->post('cansel_patronymic'));
 
             $this->design->assign('lastname', $lastname);
             $this->design->assign('firstname', $firstname);
@@ -49,8 +50,10 @@ class StagePersonalController extends Controller
                 $errors[] = 'empty_lastname';
             if (empty($firstname))
                 $errors[] = 'empty_firstname';
-            if (empty($patronymic))
-                $errors[] = 'empty_patronymic';
+            if (empty($patronymic)){
+                if ($cansel_patronymic == 0)
+                    $errors[] = 'empty_patronymic';
+            }
             if (empty($email))
                 $errors[] = 'empty_email';
             if (empty($gender))

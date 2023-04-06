@@ -4,6 +4,18 @@
 
   <script src="theme/site/js/form.app.js"></script>
 
+  <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", () => {
+    $('#cansel_patronymic').click(function (e) {
+      if ($('#cansel_patronymic').is(':checked')){
+        $('#patronym').removeClass('js-input-required');
+      } else {
+        $('#patronym').addClass('js-input-required');
+      }
+    })
+  });
+  </script>
+
 {/capture}
 
 {capture name='page_styles'}
@@ -45,18 +57,18 @@
                 <div class="form_group -fs-18">
                   <div class="form_group-title -gil-m">ФИО как в паспорте:</div>
                   <div class="form_row">
-                    <label class="input_box ">
-                      <input type="text" class="form-control js-input-cirylic js-input-required" name="lastname" id="last_name" value="{$lastname|escape}" />
+                    <label class="input_box "> 
+                      <input type="text" class="form-control js-input-cirylic js-cirylic-dash js-input-required" name="lastname" id="last_name" value="{$lastname|escape}" />
                       <span class="input_name {if $lastname}-top{/if}">Фамилия</span>
                     </label>
                     <label class="input_box">
-                      <input type="text" class="form-control js-input-cirylic js-input-required" name="firstname" id="first_name" value="{$firstname|escape}" />
+                      <input type="text" class="form-control js-input-cirylic js-cirylic-dash js-input-required" name="firstname" id="first_name" value="{$firstname|escape}" />
                       <span class="input_name {if $firstname}-top{/if}">Имя</span>
                     </label>
                   </div>
                   <div class="form_row">
                     <label class="input_box ">
-                      <input type="text" class="form-control js-input-cirylic js-input-required" name="patronymic" id="patronym" value="{$patronymic|escape}" />
+                      <input type="text" class="form-control js-input-cirylic js-cirylic-dash js-input-required" name="patronymic" id="patronym" value="{$patronymic|escape}" />
                       <span class="input_name {if $patronymic}-top{/if}">Отчество</span>
                     </label>
                     <label class="input_box ">
@@ -64,6 +76,14 @@
                       <span class="input_name {if $email}-top{/if}">Емайл</span>
 <!--div class="error_text">Не верный формат</div-->
                     </label>
+                  </div>
+                  <div class="form_row">
+                    <div class="check">
+                      <input type="checkbox" class="custom-checkbox" id="cansel_patronymic"
+                             name="cansel_patronymic" value="1" />
+                      <label for="cansel_patronymic" class="check_box check_box_black -gil-m">
+                        Нет отчества
+                      </label>
                   </div>
                 </div>
                 <div class="form_group -fs-18 js-radio-required" data-msg="Укажите Ваш пол">

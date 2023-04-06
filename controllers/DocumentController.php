@@ -55,6 +55,11 @@ class DocumentController extends Controller
             foreach ($user as $key => $value)
                 $this->design->assign($key, $value);
 
+            $faktaddress = $this->Addresses->get_address($user->faktaddress_id);
+            $faktaddress_full = $faktaddress->adressfull;
+
+            $this->design->assign('faktaddress_full', $faktaddress_full);
+
             $regaddress = $this->Addresses->get_address($user->regaddress_id);
             $regaddress_full = $regaddress->adressfull;
 
@@ -88,8 +93,17 @@ class DocumentController extends Controller
 
         $order = $this->orders->get_order($document->order_id);
         $contract = $this->contracts->get_contract($order->contract_id);
-        $insurance = $contract->service_insurance;
+        $service_insurance = $contract->service_insurance;
+        $this->design->assign('service_insurance', $service_insurance);
         // $insurance = $this->request->get('insurance');
+
+        $service_sms = $contract->service_sms;
+        $this->design->assign('service_sms', $service_sms);
+
+        $income = $user->income;
+        $this->design->assign('income', $income);
+        $expenses = $user->expenses;
+        $this->design->assign('expenses', $expenses);
 
         $sms = 0;
         $transactions = $this->transactions->get_transactions(array('user_id' => $order->user_id));
@@ -99,14 +113,19 @@ class DocumentController extends Controller
 
         if (!empty($insurance) || isset($contract) && !empty($contract->service_insurance)) {
 
-            if (empty($contract)) {
-                $order = $this->orders->get_order($document->order_id);
-                $amount = $order->amount;
-                $insurance = $order->amount * 0.1;
-            }
-            else{
-                $amount = $contract->amount;
-                $insurance = $contract->amount * 0.1;
+            $operation = OperationsORM::where('type', 'INSURANCE')->where('order_id', $document->order_id)->first();
+            $insurance = (float)$operation->amount;
+            
+            if (empty($insurance)) {
+                if (empty($contract)) {
+                    $order = $this->orders->get_order($document->order_id);
+                    $amount = $order->amount;
+                    $insurance = $order->amount * 0.1;
+                }
+                else{
+                    $amount = $contract->amount;
+                    $insurance = $contract->amount * 0.1;
+                }
             }
 
             if ($amount <= 10000)
@@ -124,6 +143,9 @@ class DocumentController extends Controller
             $order = $this->orders->get_order($document->order_id);
             $amount = $order->amount;
         }
+
+        $amount = OperationsORM::where('type', 'P2P')->where('order_id', $document->order_id)->first();
+        $amount = $amount->amount;
 
         $this->design->assign('sms', $sms);
 

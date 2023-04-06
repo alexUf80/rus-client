@@ -68,7 +68,7 @@
             <div class="check">
                 <input type="hidden" class="custom-checkbox " name="service_sms" value="1"/>
                 <input type="checkbox"
-                       class="custom-checkbox"
+                       class="custom-checkbox js-need-check"
                        id="service_sms" value="1" checked/>
                 <label for="service_sms" class="check_box -gil-m">
                  <span>
@@ -85,12 +85,12 @@
             <div class="check">
                 <input type="hidden" class="custom-checkbox" name="service_insurance" value="1"/>
                 <input type="checkbox"
-                       class="custom-checkbox"
+                       class="custom-checkbox js-need-check"
                        id="service_insurance" value="1" checked/>
                 <label for="service_insurance" class="check_box -gil-m">
                  <span>
                     согласен заключить договор страхования в соответствии
-                    <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/Pravila_predostavleniya_mikrozaimov.pdf" target="_blank">с правилами</a>
+                    <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/страхование_кард.pdf" target="_blank">с правилами</a>
                  </span>
                 </label>
             </div>
@@ -128,6 +128,7 @@
             </div>
         </div>
     </div>
+    {*}
     <div class="">
         <div class="form_row">
             <div class="check">
@@ -144,6 +145,7 @@
             </div>
         </div>
     </div>
+    {*}
     {if $order->contract}
         <div class="">
             <div class="form_row">
