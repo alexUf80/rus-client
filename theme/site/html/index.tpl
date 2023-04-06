@@ -77,11 +77,19 @@
     function handleChange(input) {
       if (input.value < 0) input.value = 0;
       if (input.value > 9999) {
+<<<<<<< HEAD
+          let val = input.value;
+          val = String(val);
+          val = val[0] + val[1] + val[2] + val[3];
+          val = Number(val);
+          input.value = val;
+=======
         let val = input.value;
         val = String(val);
         val = val[0] + val[1] + val[2] + val[3];
         val = Number(val);
         input.value = val;
+>>>>>>> 94d4fb0fa9588134d76c1e52258f5e7dacaf8c5f
       }
     }
     var phoneChange;
@@ -92,7 +100,7 @@
       //alert(phoneChange[0]);
       //if (phoneChange[0] != '+') {
       //  input.value = 0;
-      //} 
+      //}
       if (phoneChange[0] != '7') {
         input.value = '7';
       }
@@ -122,7 +130,11 @@
           paren.classList.add("-error");
         }, 100);
 
+<<<<<<< HEAD
+    }
+=======
       }
+>>>>>>> 94d4fb0fa9588134d76c1e52258f5e7dacaf8c5f
 
     }
 
@@ -147,7 +159,7 @@
 
     /*function relationOnblur (input) {
       let relationOnblurValue = input.value;
-     
+
       let paren = input.parentElement;
 
       paren = paren.parentElement;
@@ -157,7 +169,7 @@
         paren.classList.remove("-error");
         paren.classList.add("-ok");
       }
-     
+
     }*/
 
     function payInput(input) {
@@ -242,33 +254,22 @@
   <script src="//code.jivo.ru/widget/OWL4njXCIc" async></script>
   <!--<script src="//code.jivo.ru/widget/OPARMHrIm4" async></script>-->
   <!-- Yandex.Metrika counter -->
-  <!--<script type="text/javascript">
-    (function(m, e, t, r, i, k, a) {
-      m[i] = m[i] || function() {
-        (m[i].a = m[i].a || []).push(arguments)
-      };
-      m[i].l = 1 * new Date();
-      for (var j = 0; j < document.scripts.length; j++) {
-        if (document.scripts[j].src === r) {
-          return;
-        }
-      }
-      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-    })
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+      <script type="text/javascript" >
+          (function(m,e,t,r,i,k,a){m[i]=m[i]function(){(m[i].a=m[i].a[]).push(arguments)};
+              m[i].l=1*new Date();
+              for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+              k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+          (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-    ym(88054135, "init", {
-      clickmap: true,
-      trackLinks: true,
-      accurateTrackBounce: true,
-      webvisor: true,
-      ecommerce: "dataLayer"
-    });
-  </script>
-  <noscript>
-    <div><img src="https://mc.yandex.ru/watch/88054135" style="position:absolute; left:-9999px;" alt="" /></div>
-  </noscript>-->
-  <!-- /Yandex.Metrika counter -->
+          ym(93030689, "init", {
+              clickmap:true,
+              trackLinks:true,
+              accurateTrackBounce:true,
+              webvisor:true
+          });
+      </script>
+      <noscript><div><img src="https://mc.yandex.ru/watch/93030689" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+      <!-- /Yandex.Metrika counter -->
   {/literal}
   {/if}
 
