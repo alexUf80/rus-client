@@ -1,1 +1,1 @@
-/usr/lib64/php5.6/bin/php-cgi
+/usr/lib64/php5.2/bin/php-cgi

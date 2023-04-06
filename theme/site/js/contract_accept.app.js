@@ -19,7 +19,23 @@ function ContractAcceptApp() {
 
             var agreement = app.$form.find('.js-loan-agreement').is(':checked');
 
-            if (!agreement) {
+            var checked_nreeded = true;
+            $('.js-need-check').each(function () {
+                if (!$(this).is(':checked')) {
+
+                    if($(this).attr('id') != 'service_reason' || $(this).attr('id') != 'service_insurance')
+                        _error = 1;
+
+                    $(this).closest('.check').addClass('-error');
+
+                    checked_nreeded = false;
+                }
+                else {
+                    $(this).closest('.check').removeClass('-error');
+                }
+            });
+
+            if (!agreement || !checked_nreeded) {
                 app.$form.find('.js-loan-agreement-block').addClass('-error');
             }
             else {
