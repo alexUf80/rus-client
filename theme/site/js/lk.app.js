@@ -122,6 +122,20 @@ function LkApp() {
 
             var agreement = $('.js-loan-repeat-form .js-loan-agreement').is(':checked')
 
+            $('.js-need-check').each(function () {
+                if (!$(this).is(':checked')) {
+
+                    if($(this).attr('id') != 'service_reason' || $(this).attr('id') != 'service_insurance')
+                        _error = 1;
+                        agreement = false;
+
+                    $(this).closest('.check').addClass('-error');
+                }
+                else {
+                    $(this).closest('.check').removeClass('-error');
+                }
+            });
+
             if (!agreement) {
                 $('.js-loan-repeat-form .js-loan-agreement-block').addClass('-error');
             }

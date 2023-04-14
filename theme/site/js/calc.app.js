@@ -123,7 +123,7 @@ function CalcApp($form) {
       min: app.min_summ,
       max: app.max_summ,
       from: app.current_summ,
-      step: 1,
+      step: 1000,
       grid_num: 9,
       //            grid_snap: true,
       onStart: function (data) {

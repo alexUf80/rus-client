@@ -93,8 +93,8 @@ class Users extends Core
             $personal[] = 'lastname';
         if (empty($user->firstname))
             $personal[] = 'firstname';
-        if (empty($user->patronymic))
-            $personal[] = 'patronymic';    
+        // if (empty($user->patronymic))
+        //     $personal[] = 'patronymic';    
         if (empty($user->gender))
             $personal[] = 'gender';
         if (empty($user->birth))
