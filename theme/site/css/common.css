@@ -341,6 +341,7 @@ button:focus, a:focus, img:focus {outline:none;}
 
 .section_lk_navbar{background-color: #fcfcfc;}
 .lk_menu{margin-left: -27px; margin-right: -27px;}
+.navbar.lk_menu{display: block; position: relative;}
 .section_lk_navbar .nav-link{padding: 18px 27px;}
 .content_wrap{background-color: #f6f6f6; padding-top: 58px; padding-bottom: 47px;}
 
