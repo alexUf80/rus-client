@@ -28,9 +28,9 @@ class AccountDocsController extends Controller
         $this->design->assign('other_cards', $other_cards);
         $this->design->assign('other_files', $other_files);
 
-        // if ($last_order = $this->orders->get_last_order($this->user->id))
-        //     $documents = $this->documents->get_documents(array('order_id' => $last_order->id, 'client_visible'=>1));
-        // else
+        if ($last_order = $this->orders->get_last_order($this->user->id))
+            $documents = $this->documents->get_documents(array('order_id' => $last_order->id, 'client_visible'=>1));
+        else
             $documents = $this->documents->get_documents(array('user_id' => $this->user->id, 'client_visible'=>1));
         
 //echo __FILE__.' '.__LINE__.'<br /><pre>';var_dump($last_order);echo '</pre><hr />';        
