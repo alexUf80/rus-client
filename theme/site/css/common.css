@@ -411,7 +411,7 @@ button:focus, a:focus, img:focus {outline:none;}
 		.form_group-title{margin-bottom: 18px;}
 			.input_name{color: #8c8c8c; position: absolute; top:50%; left:26px; font-size:18px; transform: translateY(-50%);}
 			.form-control:focus+.input_name{display: block; color: #a8a8a8; top:13px; left:26px;font-size: 14px }
-			.input_name.-top{display: block; color: #a8a8a8; top:13px; left:26px; font-size: 14px}
+			.input_name.-top{display: block; color: #a8a8a8; top:13px; left:26px; font-size: 14px; line-height: 0.9;}
 .-error .form-control { background: url(../i/error.svg) #fae8e8 no-repeat 90%;}
 .-ok .form-control { background: url(../i/ok.svg) #fbfbfb no-repeat 90%; }
 .error_text{color: #e15050;font-size: 14px; font-family: "Gilroy-Medium";}

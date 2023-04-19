@@ -63,9 +63,9 @@ class StageWorkController extends Controller
                 $errors[] = 'empty_profession';
             if (empty($workphone))
                 $errors[] = 'empty_workphone';
-            if (empty($income))
+            if (empty($income) && $income != '0')
                 $errors[] = 'empty_income';
-            if (empty($expenses))
+            if (empty($expenses) && $expenses != '0')
                 $errors[] = 'empty_expenses';
             if (empty($name_director))
                 $errors[] = 'name_director';
