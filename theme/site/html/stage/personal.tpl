@@ -107,7 +107,7 @@
                       <input type="date" style="padding-left: 20px;" class="form-control  js-input-required"  name="birth" id="birth_date" />
                       <!--<input type="text"  oninput="dateChange(this);"/>-->
                       <!--<span class="input_name {if $birth}-top{/if}">Дата рождения</span>-->
-                      <span class="input_name {if $birth}-top{/if}"></span>
+                      <span class="input_name -top">Дата рождения</span>
                       {if in_array('bad_birth', $errors)}
                       <div class="error_text">Кредиты выдаются лицам старше 16 лет</div>
                       {/if}
