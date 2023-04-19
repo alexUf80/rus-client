@@ -164,6 +164,7 @@
                     <input class="form-control casing-upper-mask Regadress" name="Regadressfull" onblur="regadressfullOnblur(this);"
                             style="width: 500px;padding-right: 70px;" maxlength="500" type="text" id="Regadressfull"
                             {if !empty($Regaddressfull)}value="{$Regaddressfull->adressfull}"{/if}/>
+                    <span class="input_name -top">Адрес регистрации</span>
                     <input style="display: none" class="Registration" name="Regadress"/>
                   </label>
                 </div>
@@ -179,12 +180,15 @@
                     </div>
                   </div>
                   <div class="js-regaddress-block">
-                    <input class="form-control casing-upper-mask Faktaddress" onblur="faktadressfullOnblur(this);"
-                           id="actual_address_toggle" maxlength="500"
+                    <label class="input_box">
+                      <input class="form-control casing-upper-mask Faktaddress" onblur="faktadressfullOnblur(this);"
+                           id="actual_address_toggle" maxlength="500" name="Faktaddressfull"
                            style="width: 500px;"
                            name="Faktadressfull"
                            {if !empty($Faktaddressfull)}value="{$Faktaddressfull->adressfull}"{/if}
                            type="text"/>
+                      <span class="input_name -top">Адрес места жительства</span>
+                    </label>
                     <input style="display: none" class="Fakt_adress" name="Fakt_adress"/>
                   </div>
                 </div>
