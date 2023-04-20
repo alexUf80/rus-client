@@ -77,19 +77,11 @@
     function handleChange(input) {
       if (input.value < 0) input.value = 0;
       if (input.value > 9999) {
-<<<<<<< HEAD
-          let val = input.value;
-          val = String(val);
-          val = val[0] + val[1] + val[2] + val[3];
-          val = Number(val);
-          input.value = val;
-=======
         let val = input.value;
         val = String(val);
         val = val[0] + val[1] + val[2] + val[3];
         val = Number(val);
         input.value = val;
->>>>>>> 94d4fb0fa9588134d76c1e52258f5e7dacaf8c5f
       }
     }
     var phoneChange;
@@ -130,11 +122,7 @@
           paren.classList.add("-error");
         }, 100);
 
-<<<<<<< HEAD
-    }
-=======
       }
->>>>>>> 94d4fb0fa9588134d76c1e52258f5e7dacaf8c5f
 
     }
 
