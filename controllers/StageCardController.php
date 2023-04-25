@@ -47,57 +47,75 @@ class StageCardController extends Controller
                 $this->cards->update_card($card->id, array('base_card' => 1));
             }
 
-            $order = array(
-                'card_id' => $card->id,
-                'user_id' => $this->user->id,
-                'ip' => $_SERVER['REMOTE_ADDR'],
-                'amount' => $this->user->first_loan_amount,
-                'period' => $this->user->first_loan_period,
-                'first_loan' => 1,
-                'date' => date('Y-m-d H:i:s'),
-                'local_time' => $this->user->last_local_time,
-                'juicescore_session_id' => $this->user->juicescore_session_id,
-                'accept_sms' => $this->user->sms,
-                'client_status' => 'nk',
-                'autoretry' => 1,
-            );
+            if($this->user->lead_partner_id > 0){
+                $order = array(
+                    'card_id' => $card->id,
+                    'user_id' => $this->user->id,
+                    'ip' => $_SERVER['REMOTE_ADDR'],
+                    'amount' => $this->user->first_loan_amount,
+                    'period' => $this->user->first_loan_period,
+                    'first_loan' => 1,
+                    'date' => date('Y-m-d H:i:s'),
+                    'local_time' => $this->user->last_local_time,
+                    'juicescore_session_id' => $this->user->juicescore_session_id,
+                    'accept_sms' => $this->user->sms,
+                    'client_status' => 'nk',
+                    'autoretry' => 1,
+                );
 
-            if(isset($_COOKIE['promo_code']))
-            {
-                $promocode = $this->PromoCodes->get_code_by_code($_COOKIE['promo_code']);
-
-                if(!empty($promocode))
-                    $order['promocode_id'] = $promocode->id;
-            }
-
-            $order['utm_source'] = $_COOKIE['utm_source'];
-            $order['webmaster_id'] = $_COOKIE["wm_id"];
-            $order['click_hash'] = $_COOKIE["clickid"];
-
-
-            $order_id = $this->orders->add_order($order);
-//            70093bcc-3a3f-11eb-9983-00155d2d0507
-            $uid = 'a0'.$order_id.'-'.date('Y').'-'.date('md').'-'.date('Hi').'-01771ca07de7';
-            $this->users->update_user($this->user->id, array(
-                'stage_card' => 1,
-                'UID' => $uid,
-            ));
-
-            // добавляем задание для проведения активных скорингов
-            $scoring_types = $this->scorings->get_types();
-            foreach ($scoring_types as $scoring_type)
-            {
-                if ($scoring_type->active && empty($scoring_type->is_paid))
+                if(isset($_COOKIE['promo_code']))
                 {
-                    $add_scoring = array(
-                        'user_id' => $this->user->id,
-                        'order_id' => $order_id,
-                        'type' => $scoring_type->name,
-                        'status' => 'new',
-                        'created' => date('Y-m-d H:i:s')
-                    );
-                    $this->scorings->add_scoring($add_scoring);
+                    $promocode = $this->PromoCodes->get_code_by_code($_COOKIE['promo_code']);
+
+                    if(!empty($promocode))
+                        $order['promocode_id'] = $promocode->id;
                 }
+
+                $order['utm_source'] = $_COOKIE['utm_source'];
+                $order['webmaster_id'] = $_COOKIE["wm_id"];
+                $order['click_hash'] = $_COOKIE["clickid"];
+
+
+                $order_id = $this->orders->add_order($order);
+    //            70093bcc-3a3f-11eb-9983-00155d2d0507
+                $uid = 'a0'.$order_id.'-'.date('Y').'-'.date('md').'-'.date('Hi').'-01771ca07de7';
+                $this->users->update_user($this->user->id, array(
+                    'stage_card' => 1,
+                    'UID' => $uid,
+                ));
+
+                // добавляем задание для проведения активных скорингов
+                $scoring_types = $this->scorings->get_types();
+                foreach ($scoring_types as $scoring_type)
+                {
+                    if ($scoring_type->active && empty($scoring_type->is_paid))
+                    {
+                        $add_scoring = array(
+                            'user_id' => $this->user->id,
+                            'order_id' => $order_id,
+                            'type' => $scoring_type->name,
+                            'status' => 'new',
+                            'created' => date('Y-m-d H:i:s')
+                        );
+                        $this->scorings->add_scoring($add_scoring);
+                    }
+                }
+            }
+            else{
+                if(isset($_COOKIE['promo_code']))
+                {
+                    $promocode = $this->PromoCodes->get_code_by_code($_COOKIE['promo_code']);
+
+                    if(!empty($promocode))
+                        $order['promocode_id'] = $promocode->id;
+                }
+
+                $order['utm_source'] = $_COOKIE['utm_source'];
+                $order['webmaster_id'] = $_COOKIE["wm_id"];
+                $order['click_hash'] = $_COOKIE["clickid"];
+
+
+                $order_id = $this->orders->update_order($order);
             }
 
             /** ******** создаем доки ********* **/
