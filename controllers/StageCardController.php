@@ -47,7 +47,7 @@ class StageCardController extends Controller
                 $this->cards->update_card($card->id, array('base_card' => 1));
             }
 
-            if($this->user->lead_partner_id > 0){
+            if($this->user->lead_partner_id == 0){
                 $order = array(
                     'card_id' => $card->id,
                     'user_id' => $this->user->id,
@@ -102,20 +102,9 @@ class StageCardController extends Controller
                 }
             }
             else{
-                if(isset($_COOKIE['promo_code']))
-                {
-                    $promocode = $this->PromoCodes->get_code_by_code($_COOKIE['promo_code']);
-
-                    if(!empty($promocode))
-                        $order['promocode_id'] = $promocode->id;
-                }
-
-                $order['utm_source'] = $_COOKIE['utm_source'];
-                $order['webmaster_id'] = $_COOKIE["wm_id"];
-                $order['click_hash'] = $_COOKIE["clickid"];
-
-
-                $order_id = $this->orders->update_order($order);
+                $this->users->update_user($this->user->id, array(
+                    'stage_card' => 1,
+                ));
             }
 
             /** ******** создаем доки ********* **/
