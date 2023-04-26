@@ -96,7 +96,11 @@ class StageContactPersonController extends Controller
                         'comment' => $comment,
                         'user_id' => $user_id
                     ];
-        
+
+                $this->users->update_user($this->user->id, array(
+                    'stage_contact' => 1,
+                ));
+
                 $result =$this->Contactpersons->add_contactperson($contact);
 
 
