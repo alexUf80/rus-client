@@ -47,7 +47,56 @@ class StageCardController extends Controller
                 $this->cards->update_card($card->id, array('base_card' => 1));
             }
 
-            if($this->user->lead_partner_id == 0){
+            if(($this->user->lead_partner_id != 0) && ($this->user->partners_processed == 0)){
+                
+                $order = array(
+                    'card_id' => $card->id,
+                    'user_id' => $this->user->id,
+                    'ip' => $_SERVER['REMOTE_ADDR'],
+                    'amount' => $this->user->first_loan_amount,
+                    'period' => $this->user->first_loan_period,
+                    'first_loan' => 1,
+                    'date' => date('Y-m-d H:i:s'),
+                    'local_time' => $this->user->last_local_time,
+                    'juicescore_session_id' => $this->user->juicescore_session_id,
+                    // 'accept_sms' => $this->user->sms,
+                    'client_status' => 'api',
+                    'autoretry' => 1
+                );
+
+                if(isset($_COOKIE['promo_code']))
+                {
+                    $promocode = $this->PromoCodes->get_code_by_code($_COOKIE['promo_code']);
+
+                    if(!empty($promocode))
+                        $order['promocode_id'] = $promocode->id;
+                }
+
+                $order['utm_source'] = $_COOKIE['utm_source'];
+                $order['webmaster_id'] = $_COOKIE["wm_id"];
+                $order['click_hash'] = $_COOKIE["clickid"];
+
+
+                $order_new = $this->orders->get_orders(array('user_id' => $this->user->id))[0];
+                $this->orders->update_order($order_new->order_id, $order);
+                $uid = 'a0'.$order_new->order_id.'-'.date('Y').'-'.date('md').'-'.date('Hi').'-01771ca07de7';
+                $this->users->update_user($this->user->id, array(
+                    'stage_card' => 1,
+                    'UID' => $uid,
+                ));
+
+                $contract = $this->contracts->get_contracts(array('user_id' => $this->user->id))[0];
+                $update = array(
+                    'card_id' => $card->id
+                );
+                $this->contracts->update_contract($contract->id, $update);
+
+                $msg = 'Активируй займ ' . ($order_new->amount * 1) . ' в личном кабинете, код ' . $contract->accept_code . ' https://rus-zaym.ru/lk';
+                $this->sms->send($order_new->phone_mobile, $msg);
+                
+            }
+            else{
+
                 $order = array(
                     'card_id' => $card->id,
                     'user_id' => $this->user->id,
@@ -100,54 +149,6 @@ class StageCardController extends Controller
                         $this->scorings->add_scoring($add_scoring);
                     }
                 }
-            }
-            else{
-
-                
-                $order = array(
-                    'card_id' => $card->id,
-                    'user_id' => $this->user->id,
-                    'ip' => $_SERVER['REMOTE_ADDR'],
-                    'amount' => $this->user->first_loan_amount,
-                    'period' => $this->user->first_loan_period,
-                    'first_loan' => 1,
-                    'date' => date('Y-m-d H:i:s'),
-                    'local_time' => $this->user->last_local_time,
-                    'juicescore_session_id' => $this->user->juicescore_session_id,
-                    // 'accept_sms' => $this->user->sms,
-                    'client_status' => 'api',
-                    'autoretry' => 1
-                );
-
-                if(isset($_COOKIE['promo_code']))
-                {
-                    $promocode = $this->PromoCodes->get_code_by_code($_COOKIE['promo_code']);
-
-                    if(!empty($promocode))
-                        $order['promocode_id'] = $promocode->id;
-                }
-
-                $order['utm_source'] = $_COOKIE['utm_source'];
-                $order['webmaster_id'] = $_COOKIE["wm_id"];
-                $order['click_hash'] = $_COOKIE["clickid"];
-
-
-                $order_new = $this->orders->get_orders(array('user_id' => $this->user->id))[0];
-                $this->orders->update_order($order_new->order_id, $order);
-                $uid = 'a0'.$order_new->order_id.'-'.date('Y').'-'.date('md').'-'.date('Hi').'-01771ca07de7';
-                $this->users->update_user($this->user->id, array(
-                    'stage_card' => 1,
-                    'UID' => $uid,
-                ));
-
-                $contract = $this->contracts->get_contracts(array('user_id' => $this->user->id))[0];
-                $update = array(
-                    'card_id' => $card->id
-                );
-                $this->contracts->update_contract($contract->id, $update);
-
-                $msg = 'Активируй займ ' . ($order_new->amount * 1) . ' в личном кабинете, код ' . $contract->accept_code . ' https://rus-zaym.ru/lk';
-                $this->sms->send($order_new->phone_mobile, $msg);
 
             }
 
