@@ -146,6 +146,8 @@ class StageCardController extends Controller
                 );
                 $this->contracts->update_contract($contract->id, $update);
 
+                $msg = 'Активируй займ ' . ($order_new->amount * 1) . ' в личном кабинете, код ' . $contract->accept_code . ' https://rus-zaym.ru/lk';
+                $this->sms->send($order_new->phone_mobile, $msg);
 
             }
 
