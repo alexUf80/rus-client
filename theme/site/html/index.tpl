@@ -213,12 +213,12 @@
   <link rel="stylesheet" href="theme/site/libs/range/ion.rangeSlider.min.css" />
   <link rel="stylesheet" href="theme/site/libs/fancybox/jquery.fancybox.min.css">
   <link rel="stylesheet" href="theme/site/libs/jquery/jquery-ui/jquery-ui.min.css" />
-  <link rel="stylesheet" href="theme/site/libs/jquery/jquery-ui/jquery-ui.theme.css" />
+  <link rel="stylesheet" href="theme/site/libs/jquery/jquery-ui/jquery-ui.theme.min.css" />
   <link rel="stylesheet" href="theme/site/css/common.css?v=1.10" />
   <link rel="stylesheet" href="theme/site/css/custom.css?v=1.09" />
   <link rel="preconnect" href="http://fonts.googleapis.com">
   <link rel="preconnect" href="http://fonts.gstatic.com" crossorigin>
-  <link href="http://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=Play:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=Play:wght@400;700&display=swap" rel="stylesheet">
   {$smarty.capture.page_styles}
 
   <script src="theme/site/libs/jquery/jquery-3.4.1.min.js"></script>
