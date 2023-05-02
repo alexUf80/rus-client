@@ -60,7 +60,7 @@ class StageCardController extends Controller
                     'local_time' => $this->user->last_local_time,
                     'juicescore_session_id' => $this->user->juicescore_session_id,
                     // 'accept_sms' => $this->user->sms,
-                    'client_status' => 'api',
+                    'client_status' => 'nk',
                     'autoretry' => 1
                 );
 

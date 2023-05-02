@@ -98,7 +98,7 @@ function LkApp() {
                 if(status == 3 || status == 8)
                 {
                     setTimeout(function () {
-                        window.location.href = "https://займ2023.рф";
+                        window.location.href = "https://luchshie-zaymi.ru";
                     }, 40000);
                 }
             }
