@@ -79,6 +79,8 @@ class StageCardController extends Controller
 
                 $order_new = $this->orders->get_orders(array('user_id' => $this->user->id))[0];
                 $this->orders->update_order($order_new->order_id, $order);
+                $order_id = $order_new->order_id;
+                
                 $uid = 'a0'.$order_new->order_id.'-'.date('Y').'-'.date('md').'-'.date('Hi').'-01771ca07de7';
                 $this->users->update_user($this->user->id, array(
                     'stage_card' => 1,
