@@ -199,6 +199,9 @@
              {$subdivision_code}
         </td>
     </tr>
+</table>
+<br><br><br><br><br><br>
+<table border="0.5" cellpadding="5">
      <tr>
         <td style="width: 40%">
            Адрес регистрации

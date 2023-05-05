@@ -496,6 +496,44 @@
           </div>
         </div>
       </div>
+
+      <div class="t-col t-col_12 ">
+        <div class="t585__accordion" data-accordion="false" data-scroll-to-expanded="false">
+          <div class="t585__wrapper">
+            <div class="t585__header " style=" border-top: 1px solid #eee;">
+              <div class="t585__title t-name t-name_xl" field="li_title__1646826000796" style="font-size:18px;">О кредитных каникулах для участников специальной военной операции</div>
+              <div class="t585__icon">
+                <div class="t585__lines"> <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g stroke="none" stroke-width="2px" fill="none" fill-rule="evenodd" stroke-linecap="square">
+                      <g transform="translate(1.000000, 1.000000)" stroke="#bd9457">
+                        <path d="M0,11 L22,11"></path>
+                        <path d="M11,0 L11,22"></path>
+                      </g>
+                    </g>
+                  </svg> </div>
+                <div class="t585__circle" style="background-color: #ffffff"></div>
+              </div>
+              <div class="t585__icon t585__icon-hover">
+                <div class="t585__lines"> <svg width="24px" height="24px" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g stroke="none" stroke-width="2px" fill="none" fill-rule="evenodd" stroke-linecap="square">
+                      <g transform="translate(1.000000, 1.000000)" stroke="#ffffff">
+                        <path d="M0,11 L22,11"></path>
+                        <path d="M11,0 L11,22"></path>
+                      </g>
+                    </g>
+                  </svg> </div>
+                <div class="t585__circle" style="background-color: #ffffff"></div>
+              </div>
+            </div>
+            <div class="t585__content">
+              <div class="t585__textwrapper">
+                <div class="t585__text t-descr t-descr_xs" field="li_descr__1646826000796" style="">Информацию о кредитных каникулах для участников специальной военной операции можно прочитать в <a href="theme/site/new/docs/Kreditnye_knikuly_SVO.pdf" target="_blank" rel="noopener" style="text-decoration: underline">брошюре</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      {*}
       <div class="t-col t-col_12 ">
         <div class="t585__accordion" data-accordion="false" data-scroll-to-expanded="false">
           <div class="t585__wrapper">
@@ -604,6 +642,7 @@
           </div>
         </div>
       </div>
+      {*}
       <div class="t-col t-col_12 ">
         <div class="t585__accordion" data-accordion="false" data-scroll-to-expanded="false">
           <div class="t585__wrapper">
