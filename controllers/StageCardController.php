@@ -254,7 +254,20 @@ class StageCardController extends Controller
 
             if(!empty($order['utm_source']) && $order['utm_source'] == 'leadstech')
                 $this->PostBackCron->add(['order_id' => $order_id, 'status' => 0, 'goal_id' => 3]);
-
+            
+            if (!empty($order['utm_source']))
+            {
+                $this->leadgens->add_postback([
+                    'order_id' => $order_id,
+                    'created' => date('Y-m-d H:i:s'),
+                    'lead_name' => $order['utm_source'],
+                    'webmaster' => $order['webmaster_id'],
+                    'click_hash' => $order['click_hash'],
+                    'offer_id' => 0,
+                    'type' => 'pending',
+                ]);
+            }
+            
             header('Location: /account');
             exit;
         }

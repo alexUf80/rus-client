@@ -34,10 +34,13 @@ class IndexController extends Controller
         $this->design->assign('content', $content);
         $this->design->assign('module', $module);
 
-        $utm_source = $this->request->get('utm_source');
         $cookie_inspiration = 60 * 60 * 24 * 30;
-        $webmaster_id = $this->request->get('wmid');
-        $click_hash   = $this->request->get('clickid');
+        if (!($utm_source = $this->request->get('utm_source')))
+            $utm_source = $this->request->get('utm_source');
+        if (!($webmaster_id = $this->request->get('wmid')))
+            $webmaster_id = $this->request->get('user_id');
+        if (!($click_hash = $this->request->get('clickid')))
+            $click_hash = $this->request->get('click_id');
 
         if (!isset($_COOKIE['wm_id']))
             setcookie("wm_id", $webmaster_id, time() + $cookie_inspiration, '/', $this->config->main_domain);
