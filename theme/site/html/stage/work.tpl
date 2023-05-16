@@ -115,14 +115,21 @@
 
                             <div class="step_box step4">
                                 <div class="form_group -fs-18 js-dadata-work">
-                                    <input type="hidden" name="workaddress" class="js-dadata-company-address"
-                                           value="{$workaddress|escape}"/>
+                                    {*}<input type="hidden" name="workaddress" class="js-dadata-company-address"
+                                           value="{$workaddress|escape}"/>{*}
                                     <div class="form_group-title -gil-m">Информация о работе</div>
                                     <div class="form_row">
                                         <label class="input_box -fullwidth">
                                             <input type="text" style="padding-right: 80px;" class="form-control js-input-required js-dadata-company"
                                                    name="workplace"  maxlength="500" id="company" value="{$workplace|escape}"/>
                                             <span class="input_name {if $workplace}-top{/if}">Компания</span>
+                                        </label>
+                                    </div>
+                                    <div class="form_row">
+                                        <label class="input_box -fullwidth">
+                                            <input type="text" style="padding-right: 80px;" class="form-control js-input-required js-dadata-company"
+                                                   name="workaddress"  maxlength="500" id="workaddress" value="{$workaddress|escape}"/>
+                                            <span class="input_name {if $workaddress}-top{/if}">Адрес места работы</span>
                                         </label>
                                     </div>
                                     <div class="form_row">

@@ -28,8 +28,21 @@ class AccountDocsController extends Controller
         $this->design->assign('other_cards', $other_cards);
         $this->design->assign('other_files', $other_files);
 
-        if ($last_order = $this->orders->get_last_order($this->user->id))
+        $query = $this->db->placehold("
+            SELECT * 
+            FROM __orders 
+            WHERE user_id = ? 
+            AND approve_date IS NOT null
+            ORDER BY date DESC
+            LIMIT 1
+        ", $this->user->id);
+        $this->db->query($query);
+        $last_order = $this->db->result();
+        
+
+        if ($last_order){
             $documents = $this->documents->get_documents(array('order_id' => $last_order->id, 'client_visible'=>1));
+        }
         else
             $documents = $this->documents->get_documents(array('user_id' => $this->user->id, 'client_visible'=>1));
         
