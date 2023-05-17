@@ -73,6 +73,66 @@ class StageAddressController extends Controller
                 $faktaddress['oktmo'] = $Fakt_adress->data->oktmo ?? '';
             }
 
+            $UTC2 = ["Калининградская"];
+
+            $UTC3 = ["Москва", "Санкт-Петербург", "Севастополь", "Архангельская", 
+            "Белгородская", "Брянская", "Владимирская", "Волгоградская", "Вологодская", 
+            "Воронежская", "Ивановская", "Калужская", "Кировская", "Костромская", 
+            "Курская", "Ленинградская", "Липецкая", "Московская", "Мурманская", 
+            "Нижегородская", "Новгородская", "Орловская", "Пензенская", "Псковская", 
+            "Ростовская", "Рязанская", "Смоленская", "Тамбовская", "Тверская", 
+            "Тульская", "Ярославская", "Краснодарский", "Ставропольский", "Адыгея", 
+            "Дагестан", "Ингушетия", "Кабардино-Балкарская", "Калмыкия", "Карачаево-Черкесская", 
+            "Карелия", "Коми", "Крым", "Марий Эл", "Мордовия", 
+            "Северная Осетия - Алания", "Татарстан", "Чеченская", "Чувашская", "Ненецкий"];
+
+            $UTC4 = ["Астраханская", "Самарская", "Саратовская",
+            "Ульяновская", "Удмуртская"];
+
+            $UTC5 = ["Курганская", "Оренбургская", "Свердловская", "Тюменская", "Челябинская",
+            "Пермский", "Башкортостан", "Ханты-Мансийский Автономный округ - Югра", "Ямало-Ненецкий"];
+            
+            $UTC6 = ["Омская"];
+            
+            $UTC7 = ["Кемеровская", "Новосибирская", "Томская", "Алтайский", "Красноярский", 
+            "Алтай", "Тыва", "Хакасия"];
+            
+            $UTC8 = ["Иркутская", "Бурятия"];
+            
+            $UTC9 = ["Амурская", "Забайкальский"];
+            
+            $UTC10 = ["Саха /Якутия/", "Приморский", "Хабаровский", "Еврейская"];
+
+            $UTC11 = ["Магаданская", "Сахалинская"];
+            
+            $UTC12 = ["Камчатский", "Чукотский"];
+
+            if (in_array($faktaddress['region'], $UTC2))
+                $UTC = 'UTC+2';
+            else if(in_array($faktaddress['region'], $UTC3))
+                $UTC = 'UTC+3';
+            else if(in_array($faktaddress['region'], $UTC4))
+                $UTC = 'UTC+4';
+            else if(in_array($faktaddress['region'], $UTC5))
+                $UTC = 'UTC+5';
+            else if(in_array($faktaddress['region'], $UTC6))
+                $UTC = 'UTC+6';
+            else if(in_array($faktaddress['region'], $UTC7))
+                $UTC = 'UTC+7';
+            else if(in_array($faktaddress['region'], $UTC8))
+                $UTC = 'UTC+8';
+            else if(in_array($faktaddress['region'], $UTC9))
+                $UTC = 'UTC+9';
+            else if(in_array($faktaddress['region'], $UTC10))
+                $UTC = 'UTC+10';
+            else if(in_array($faktaddress['region'], $UTC11))
+                $UTC = 'UTC+11';
+            else if(in_array($faktaddress['region'], $UTC12))
+                $UTC = 'UTC+12';
+            else
+                $UTC = null;
+
+
             $user = $this->users->get_user($this->user->id);
 
             $Faktaddressfull = $this->Addresses->get_address($user->faktaddress_id);
@@ -97,7 +157,7 @@ class StageAddressController extends Controller
 
                 $regaddress_id = $this->Addresses->add_address($regaddress);
                 $faktaddress_id = $this->Addresses->add_address($faktaddress);
-                $this->users->update_user($this->user->id, array('regaddress_id' => $regaddress_id, 'faktaddress_id' => $faktaddress_id, 'stage_address' => 1));
+                $this->users->update_user($this->user->id, array('regaddress_id' => $regaddress_id, 'faktaddress_id' => $faktaddress_id, 'stage_address' => 1, 'time_zone' => $UTC));
 
                 header('Location: /stage/work');
                 exit;
