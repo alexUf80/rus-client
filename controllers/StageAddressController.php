@@ -54,7 +54,7 @@ class StageAddressController extends Controller
                 $Fakt_adress = json_decode($this->request->post('Fakt_adress'));
 
                 $faktaddress = [];
-                $faktaddress['adressfull'] = $this->request->post('Faktadressfull');
+                $faktaddress['adressfull'] = $this->request->post('Faktaddressfull');
                 $faktaddress['zip'] = $Fakt_adress->data->postal_code ?? '';
                 $faktaddress['region'] = $Fakt_adress->data->region ?? '';
                 $faktaddress['region_type'] = $Fakt_adress->data->region_type ?? '';
@@ -84,7 +84,7 @@ class StageAddressController extends Controller
             "Тульская", "Ярославская", "Краснодарский", "Ставропольский", "Адыгея", 
             "Дагестан", "Ингушетия", "Кабардино-Балкарская", "Калмыкия", "Карачаево-Черкесская", 
             "Карелия", "Коми", "Крым", "Марий Эл", "Мордовия", 
-            "Северная Осетия - Алания", "Татарстан", "Чеченская", "Чувашская", "Ненецкий"];
+            "Северная Осетия - Алания", "Татарстан", "Чеченская", "Чувашская республика", "Ненецкий"];
 
             $UTC4 = ["Астраханская", "Самарская", "Саратовская",
             "Ульяновская", "Удмуртская"];
@@ -106,6 +106,12 @@ class StageAddressController extends Controller
             $UTC11 = ["Магаданская", "Сахалинская"];
             
             $UTC12 = ["Камчатский", "Чукотский"];
+
+            if(!$faktaddress['region']){
+                $adressfull = $faktaddress['adressfull'];
+                $Fakt_adress = json_decode($this->dadata->get_all($adressfull))->suggestions[0];
+                $faktaddress['region'] = $Fakt_adress->data->region;
+            }
 
             if (in_array($faktaddress['region'], $UTC2))
                 $UTC = 'UTC+2';
