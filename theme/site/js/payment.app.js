@@ -66,11 +66,22 @@ console.log('init')
             if(prolongation == 1)
             {
                 var is_confirmed_prolongation = $('input[id="service_prolongation"]').val();
+                var is_confirmed_insurance = $('input[id="service_insurance"]').val();
+                var html = '';
+
+                if(is_confirmed_insurance == 0)
+                {
+                    html += 'Необходимо подписать договор страхования';
+                }
 
                 if(is_confirmed_prolongation == 0)
                 {
+                    html += '<br>Необходимо подписать заявление на пролонгацию займа';
+                }
+                
+                if(html != ''){
                     $('.payment-block-error').show();
-                    $('.payment-block-error').html('Необходимо подписать заявление на пролонгацию займа');
+                    $('.payment-block-error').html(html);
 
                     e.preventDefault();
                     return false;
@@ -219,6 +230,12 @@ console.log(resp)
                     $('[name="service_prolongation"]').val(1);
                 else
                     $('[name="service_prolongation"]').val(0);
+            });
+            $('#service_insurance').change(function () {
+                if ($(this).is(':checked'))
+                    $('[id="service_insurance"]').val(1);
+                else
+                    $('[id="service_insurance"]').val(0);
             });
         }
     

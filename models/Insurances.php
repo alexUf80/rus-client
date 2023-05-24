@@ -20,10 +20,11 @@ class Insurances extends Core
      */
     public function create_number($id)
     {
+        // страховка при пролонгации - другой код продукта
         $number = '';
         $number .= date('y'); // год выпуска полиса
         $number .= '0H3'; // код подразделения выпустившего полис (не меняется)
-        $number .= 'NSI'; // код продукта (не меняется)
+        $number .= 'FIM'; // код продукта (не меняется)
         $number .= '496'; // код партнера (не меняется)
 
         $polis_number = str_pad($id, 7, '0', STR_PAD_LEFT);
