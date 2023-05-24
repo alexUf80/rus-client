@@ -106,6 +106,9 @@
                 $input_box.addClass('-error').removeClass('-ok').find('.error_text').remove(), $input_box.append('<div class="error_text">'+_msg+'</div>');
             else
                 $input_box.removeClass('-error').addClass('-ok').find('.error_text').remove();            
+
+            if($input.attr("name") == 'birth' && $input.val() < '1900-01-01')
+                $input_box.addClass('-error').removeClass('-ok').find('.error_text').remove(), $input_box.append('<div class="error_text">Введите верную дату</div>');            
         }
         
         // отчество
