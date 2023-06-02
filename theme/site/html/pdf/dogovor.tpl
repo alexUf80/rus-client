@@ -32,8 +32,8 @@
         </td>
         <td style="width: 36%;" align="center">
             <div><h2>ПОЛНАЯ СТОИМОСТЬ ЗАЙМА:
-                {$return_amount_percents} РУБЛЕЙ
-                {$return_amount_percents|price_string|upper}</h2>
+                {$return_amount_percents+$amount} РУБЛЕЙ
+                {($return_amount_percents+$amount)|price_string|upper}</h2>
             </div>
         </td>
     </tr>
@@ -76,7 +76,7 @@
             и порядок его изменения
         </td>
         <td width="50%">
-            По настоящему Договору потребительского займа (далее - Договор) Кредитор передает Заемщику денежные средства в размере {$amount+$insurance|upper} ({($amount+$insurance)|price_string|upper}) (далее - Сумма займа, Займ).
+            По настоящему Договору потребительского займа (далее - Договор) Кредитор передает Заемщику денежные средства в размере {$amount|upper} ({($amount)|price_string|upper}) (далее - Сумма займа, Займ).
         </td>
     </tr>
     <tr>
@@ -118,7 +118,7 @@
         <td width="40%">Количество, размер и периодичность (сроки) платежей заемщика по договору или порядок определения этих платежей
         </td>
         <td width="50%">
-            Количество платежей по договору –1: {$contract->return_date|date}– {$return_amount_percents} РУБЛЕЙ {$return_amount_percents|price_string|upper}. Данное условие является графиком платежей по данному договору.
+            Количество платежей по договору –1: {$contract->return_date|date}– {$return_amount_percents+$amount} РУБЛЕЙ {($return_amount_percents+$amount)|price_string|upper}. Данное условие является графиком платежей по данному договору.
             Возврат всей суммы займа и процентов за пользование им производится Заемщиком не позднее срока возврата займа, указанного в строке 2 настоящих Индивидуальных условий. С графиком платежа согласен(а):
             ДА
         </td>
