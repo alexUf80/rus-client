@@ -30,6 +30,10 @@ class DocumentController extends Controller
         if (!($user = $this->users->get_user($document->user_id)))
             return false;
 
+
+        $order = $this->orders->get_order($document->order_id);
+        $contract = $this->contracts->get_contract($order->contract_id);
+
         if (!empty($document->params)) {
 
             $document->params = json_decode($document->params, true);
@@ -46,8 +50,14 @@ class DocumentController extends Controller
 
                     $this->design->assign('insuranceCreated', $insuranceCreated);
                     $this->design->assign('insurances', (object)$param_value['insurance']);
+                }
+                else if ($param_name == 'return_amount_percents'){
+                    // $this->design->assign('return_amount_percents', round($contract->amount * $contract->base_percent * $contract->period / 100, 2),);
+                    // $this->design->assign('return_amount_percents', 0);
                 } else
                     $this->design->assign($param_name, $param_value);
+
+                    $this->design->assign('return_amount_percents', round($contract->amount * $contract->base_percent * $contract->period / 100, 2),);
             }
 
             $this->design->assign('docCreated', $document->created);
