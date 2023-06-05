@@ -8,6 +8,8 @@ class C2oPaymentController extends Controller
         if (!($code = $this->request->get('code')))
             return false;
 
+            // $file = 'c:\OSPanel\people.txt';
+            // file_put_contents($file, $code);
         if (!($id = $this->helpers->c2o_decode($code)))
             return false;
 
