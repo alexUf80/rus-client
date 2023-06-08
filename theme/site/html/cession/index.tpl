@@ -65,10 +65,7 @@
         <div class="header_row row">
           <div class="col-sm-6 col-md-4 col-lg-3 header-col-logo">
             <div class="header_logo">
-              {*}
-              <a href="/" class="logo"><img src="theme/site/i/logo.png" alt=""></a>
-              {*}
-              <a href="account" style=";padding-top:10px;display:block;font-size:42px;font-family: 'Gilroy-Bold';">ЮК</a>
+              <a href="https://rus-client" style="color:#ffffff;"><img src="https://static.tildacdn.com/tild6466-6539-4930-b537-343865373534/_.svg" class="t228__imglogo t228__imglogomobile" imgfield="img" style="max-width: 250px; width: 250px; min-width: 250px; height: auto; display: block;" alt=""></a>
             </div>
           </div>
           <div class="col-lg-4 header-col-nav">
@@ -228,7 +225,8 @@
           </div>
         </div>
         <div class="footer_row">
-          <div class="copyright -fs-15">ЮК. Все права защищены</div>
+        
+          <div class="copyright -fs-15">МКК «Русзаймсервис». Все права защищены</div>
         </div>
       </div>
     
@@ -239,7 +237,7 @@
             <span class="error-message js-error-message"></span>
         </div>
       </div>
-        Error 440 - Login time-out. Пожалуйста обратитесь к разработчикам
+        {*}Error 440 - Login time-out. Пожалуйста обратитесь к разработчикам{*}
       
     </footer>
   </div>
