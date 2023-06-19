@@ -341,7 +341,7 @@
         <td width="50%">наб. Пресненская, д. 12, этаж 29, помещение 2, комната А28</td>
     </tr>
     <tr>
-        <td width="50%">Сайт: ____________ </td>
+        <td width="50%">Сайт: https://rus-zaym.ru/ </td>
     </tr>
     <tr>
         <td width="50%">E-mail: info@rus-zaym.ru  </td>
@@ -355,12 +355,15 @@
     <tr>
         <td width="50%"></td>
         <td width="50%">
-            электронный документ создан с использованием системы<br>
+            электронный документ создан с использованием системы
             сайта https://rus-zaym.ru/<br>
+            {$phone_mobile}_{$sms_sent_date|date}-{$sms_sent_date|time}_{$contract->accept_code}_{$contract->inssuance_date|date}-{$contract->inssuance_date|time}
+            {*}
             СМС – код  {$contract->accept_code}, являющийся аналогом собственноручной <br>
             подписи, отправленный<br>
-            на номер {$contract->user_phone_mobile} введен верно<br>
+            на номер {$phone_mobile} введен верно<br>
             в {$contract->inssuance_date|date} {$contract->inssuance_date|time}<br>
+            {*}
         </td>
     </tr>
     
