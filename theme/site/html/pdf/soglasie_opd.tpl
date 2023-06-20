@@ -75,9 +75,12 @@
     <tr style="width: 100%">
         <td style="width: 25%"></td>
         <td style="width: 25%"></td>
-        <td style="width: 50%">электронный документ создан с использованием системы <br>сайта https://rus-zaym.ru/
+        <td style="width: 50%">электронный документ создан с использованием системы сайта https://rus-zaym.ru/ <br>
+            {$phone_mobile} {$docCreated|date} {$docCreated|time} {$accept_sms} {$docCreated|date} {$docCreated|time}
+            {*}
             <br>СМС – код {$accept_code}, являющийся аналогом собственноручной <br>подписи, отправленный<br>на номер {$phone_mobile} введен
             верно<br>в {$created}
+            {*}
         </td>
     </tr>
 </table>

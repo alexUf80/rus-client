@@ -98,25 +98,22 @@ class DocumentController extends Controller
 
             $this->design->assign('amount', $amount);
             $this->design->assign('contract', $contract);
+            $this->design->assign('accept_sms', $order->accept_sms);
 
         }
 
-        if (in_array($document->type, ['IND_USLOVIYA_NL'])){
-        // if ($document->type == 'IND_USLOVIYA_NL') {
-            $query = $this->db->placehold("
-            SELECT * 
-            FROM __sms_messages
-            WHERE phone=?
-            AND message like '%$contract->accept_code%';  
-            ",$document->params['phone']);
 
-            $this->db->query($query);
-            $sms_sent_date = $this->db->results();
-            // $sms_sent_date = $query;
-            $this->design->assign('sms_sent_date', $sms_sent_date[0]->created);
-        }
-        // $sms_sent_date = '$document->type';
-        //     $this->design->assign('sms_sent_date', $sms_sent_date);
+        $query = $this->db->placehold("
+        SELECT * 
+        FROM __sms_messages
+        WHERE phone=?
+        AND message like '%$contract->accept_code%';  
+        ",$document->params['phone']);
+
+        $this->db->query($query);
+        $sms_sent_date = $this->db->results();
+        $this->design->assign('sms_sent_date', $sms_sent_date[0]->created);
+
 
         $order = $this->orders->get_order($document->order_id);
         $contract = $this->contracts->get_contract($order->contract_id);

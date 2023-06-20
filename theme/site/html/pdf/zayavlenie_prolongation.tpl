@@ -74,10 +74,13 @@
 <table>
     <tr>
         <td width="50%"></td>
-        <td width="50%">электронный документ создан с использованием системы<br>сайта https://rus-zaym.ru/<br>СМС –
+        <td width="50%">электронный документ создан с использованием системы сайта https://rus-zaym.ru/<br>
+            {$phone_mobile} {$docCreated|date} {$docCreated|time} {$accept_sms} {$docCreated|date} {$docCreated|time}
+            {*}
             код {$contract->accept_code}, являющийся аналогом собственноручной <br>подписи, отправленный<br>на
             номер {$contract->user_phone_mobile} введен
             верно<br>в {$contract->inssuance_date|date} {$contract->inssuance_date|time}<br>
+            {*}
         </td>
     </tr>
 </table>

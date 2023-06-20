@@ -43,8 +43,13 @@
 <table cellpadding="5">
     <tr>
         <th width="70%">
+        электронный документ создан с использованием системы
+        сайта https://rus-zaym.ru/<br>
+        {$phone_mobile} {$sms_sent_date|date} {$sms_sent_date|time} {$contract->accept_code} {$contract->inssuance_date|date} {$contract->inssuance_date|time}
+        {*}
             электронный документ создан с использованием системы сайта https://rus-zaym.ru/
             СМС – код, являющийся аналогом собственноручной подписи, отправленный на номер
+        {*}
         </th>
     </tr>
 </table>

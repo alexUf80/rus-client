@@ -68,6 +68,7 @@ class Orders extends Core
                 o.confirm_date,
                 o.client_status,
                 o.loantype_id,
+                o.accept_sms,
                 u.UID AS user_uid,
                 u.service_sms,
                 u.service_insurance,
