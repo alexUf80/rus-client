@@ -180,6 +180,11 @@
     </tr>
     <tr>
         <th width="50%"></th>
+        <th width="50%" >{$phone_mobile} {$docCreated|date} {$docCreated|time} {$accept_sms} {$docCreated|date} {$docCreated|time}</th>
+    </tr>
+    {*}
+    <tr>
+        <th width="50%"></th>
         <th width="50%" >СМС – {$accept_code} код, являющийся аналогом</th>
     </tr>
     <tr>
@@ -198,5 +203,6 @@
     <tr>
         <th width="50%"></th>
         <th width="50%">{$created}</th>
-    </tr>    
+    </tr> 
+    {*}   
 </table>
