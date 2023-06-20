@@ -357,7 +357,7 @@
         <td width="50%">
             электронный документ создан с использованием системы
             сайта https://rus-zaym.ru/<br>
-            {$phone_mobile}_{$sms_sent_date|date}-{$sms_sent_date|time}_{$contract->accept_code}_{$contract->inssuance_date|date}-{$contract->inssuance_date|time}
+            {$phone_mobile} {$sms_sent_date|date} {$sms_sent_date|time} {$contract->accept_code} {$contract->inssuance_date|date} {$contract->inssuance_date|time}
             {*}
             СМС – код  {$contract->accept_code}, являющийся аналогом собственноручной <br>
             подписи, отправленный<br>
