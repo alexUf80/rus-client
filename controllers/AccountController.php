@@ -260,6 +260,17 @@ class AccountController extends Controller
             $diff = $date2->diff($date1);
             $order->contract->delay = $diff->days;
 
+            $operations = $this->operations->get_operations(['contract_id' => $order->contract_id]);
+            $percents_sum = 0;
+            $percents_count = 0;
+            $percents = 0;
+            foreach ($operations as $operation) {
+                if ($operation->type == 'PERCENTS') {
+                    $percents_sum += $operation->amount;
+                    $percents_count += 1;
+                    $percents = $operation->amount;
+                }
+            }
 
             $prolongation_amount = 0;
             if (empty($order->contract->stop_profit)) {
@@ -268,7 +279,9 @@ class AccountController extends Controller
                     {
                         if ($order->contract->prolongation < 5 || ($order->contract->prolongation >= 5 && $order->contract->sold)) {
                             if ($order->contract->loan_percents_summ > 0) {
-                                $prolongation_amount = $order->contract->loan_percents_summ + $this->settings->prolongation_amount;
+                                if ($percents_sum < $order->contract->amount * 1.5) {
+                                    $prolongation_amount = $order->contract->loan_percents_summ + $this->settings->prolongation_amount;
+                                }
                             }
                         }
                     }
