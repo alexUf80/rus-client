@@ -80,6 +80,11 @@
                             <div class="-fs-32 -gil-b -green text-center pb-3">
                                 У Вас есть активный займ от {$user_balance1c->loan_date|date}г.
                             </div>
+                            {if $order->contract->status == 4}
+                                <div class="-fs-32 -gil-b -red text-center pb-3">
+                                    Ваш займ просрочен!
+                                </div>
+                            {/if}
                         </div>
                         <div class="col-md-6 pt-4">
                             <dl class="row pb-2 border-bottom">
@@ -413,6 +418,11 @@
                                 <div class="-fs-32 -gil-b -green text-center pb-3">
                                     У Вас есть активный займ от {$order->contract->create_date|date}г.
                                 </div>
+                                {if $order->contract->status == 4}
+                                    <div class="-fs-32 -gil-b -red text-center pb-3">
+                                        Ваш займ просрочен!
+                                    </div>
+                                {/if}
                             </div>
                             <div class="col-md-6 pt-4">
                                 <dl class="row pb-2 border-bottom">
