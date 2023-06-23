@@ -44,6 +44,13 @@ class LoginController extends Controller
                 if ($user_id = $this->users->get_phone_user($clean_phone)) {
                     $_SESSION['user_id'] = $user_id;
 
+                    $this->authorizations->add_authorization(array(
+                        'user_id' => $user_id,
+                        'ip' => $_SERVER['REMOTE_ADDR'],
+                        'created' => date('Y-m-d H:i:s'),
+                        'user_agent' => $_SERVER['HTTP_USER_AGENT']
+                    ));
+                    
                     header('Location: /account');
                     exit;
                 } else {
