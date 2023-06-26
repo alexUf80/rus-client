@@ -12,6 +12,22 @@
                 e.preventDefault();
             
                 $(this).hide();
+                $('.js-open-proloform').hide();
+                $('h3.text-center.-red').hide();
+                $('.pay-text').text('Оплатить займ');
+                $('.pay-sum').val({$total_summ});
+                
+                $('.js-payform-wrapper').fadeIn();
+            })
+            
+            $(document).on('click', '.js-open-proloform', function(e){
+                e.preventDefault();
+            
+                $(this).hide();
+                $('.js-open-payform').hide();
+                $('h3.text-center.-red').hide();
+                $('.pay-text').text('Сделать пролонгацию');
+                $('.pay-sum').val({$prolongation_amount});
                 
                 $('.js-payform-wrapper').fadeIn();
             })
@@ -78,6 +94,13 @@
             </h3>
           <div class="text-center">
             <a href="{url}/pay" class="btn btn-primary js-open-payform">Погасить задолженность</a>
+            {if $prolongation_amount && $contract->type == 'base' && $show_prolongation}
+                <br><br>
+                <h3 class="text-center -red">
+                    Можно сделать пролонгацию займа.<br /> Сумма пролонгации {$prolongation_amount}
+                </h3>
+                <a href="{url}/pay" class="btn btn-primary js-open-proloform">Сделать пролонгацию</a>
+            {/if}
             <div style="display:none" class="js-payform-wrapper">
                 <div class="row">
                     <div class="col-lg-4 offset-lg-4">
@@ -91,7 +114,7 @@
                                 <input type="hidden" name="code_sms" value="" />
 
                                 <div class="form-group form-phone">
-                                    <div class="form-group-title -fs-22 -gil-m text-center" for="amount-one">
+                                    <div class="pay-text form-group-title -fs-22 -gil-m text-center" for="amount-one">
                                         Оплатить займ
                                     </div>
                                 </div>
@@ -99,7 +122,7 @@
                                 <div id="">
                                     <div class="form-group form-phone">
                                         <span class="phone_info -fs-14">Сумма</span>
-                                        <input type="text" name="amount" id="amount" class="form-control -fs-18 -gil-m" value="{$total_summ}">
+                                        <input type="text" name="amount" id="amount" class="pay-sum form-control -fs-18 -gil-m" value="{$total_summ}">
                                     </div>
                                     <div class="form-group form-btn">
                                         <a href="#" class="btn btn-secondary -fs-20 -fullwidth js-start-payform">Оплатить</a>
