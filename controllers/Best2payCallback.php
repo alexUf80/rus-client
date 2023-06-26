@@ -203,6 +203,25 @@ class Best2PayCallback extends Controller
                             }
                         }
 
+                        if (!empty($contract->collection_status)) {
+
+                            $collection_order = array(
+                                'transaction_id' => $transaction->id,
+                                'manager_id' => $contract->collection_manager_id,
+                                'contract_id' => $contract->id,
+                                'created' => date('Y-m-d H:i:s'),
+                                'body_summ' => empty($transaction_loan_body_summ) ? 0 : $transaction_loan_body_summ,
+                                'percents_summ' => empty($transaction_loan_percents_summ) ? 0 : $transaction_loan_percents_summ,
+                                'charge_summ' => empty($transaction_loan_charge_summ) ? 0 : $transaction_loan_charge_summ,
+                                'peni_summ' => empty($transaction_loan_peni_summ) ? 0 : $transaction_loan_peni_summ,
+                                'commision_summ' => $transaction->commision_summ,
+                                'closed' => 0,
+                                'prolongation' => 0,
+                                'collection_status' => $contract->collection_status,
+                                'expired_days' => $contract->expired_days,
+                            );
+                        }
+
                         if (empty($transaction->prolongation) && $rest_amount != 0 && $contract_loan_body_summ == 0 && $contract_loan_percents_summ == 0)
                         {
                             // списываем пени
@@ -235,6 +254,11 @@ class Best2PayCallback extends Controller
 
 
                         if (!empty($transaction->prolongation) && $payment_amount >= $contract->loan_percents_summ) {
+                            if (!empty($collection_order))
+                                    $collection_order['prolongation'] = 1;
+
+                            $this->contracts->update_contract($contract->id, ['collection_status' => 0, 'collection_manager_id' => 0]);
+
                             $return_amount = round($contract_loan_body_summ + $contract_loan_body_summ * $contract->base_percent * $this->settings->prolongation_period / 100, 2);
                             $return_amount_percents = round($contract_loan_body_summ * $contract->base_percent * $this->settings->prolongation_period / 100, 2);
 
@@ -290,7 +314,12 @@ class Best2PayCallback extends Controller
                             $this->orders->update_order($contract->order_id, array(
                                 'status' => 7
                             ));
+                            if (!empty($collection_order))
+                                    $collection_order['closed'] = 1;
                         }
+
+                        if (!empty($collection_order))
+                                $this->collections->add_collection($collection_order);
 
                         $this->operations->add_operation(array(
                             'contract_id' => $contract->id,
