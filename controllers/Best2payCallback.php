@@ -205,6 +205,12 @@ class Best2PayCallback extends Controller
 
                         if (!empty($contract->collection_status)) {
 
+                            $date1 = new DateTime(date('Y-m-d', strtotime($contract->return_date)));
+                            $date2 = new DateTime(date('Y-m-d'));
+
+                            $diff = $date2->diff($date1);
+                            $contract->expired_days = $diff->days;
+
                             $collection_order = array(
                                 'transaction_id' => $transaction->id,
                                 'manager_id' => $contract->collection_manager_id,
