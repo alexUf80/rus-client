@@ -63,6 +63,12 @@ class C2oPaymentController extends Controller
             $show_prolongation = false;
         }
 
+        $max_loan_value = 1.3;
+        $diff_to_new_max  = intval((strtotime(date('Y-m-d', strtotime($contract->inssuance_date))) - strtotime(date('Y-m-d', strtotime('2023-07-01')))) / 86400);
+        if ($diff_to_new_max < 0) {
+            $max_loan_value = 1.5;
+        }
+
         $prolongation_amount = 0;
         if (empty($contract->stop_profit)) {
             if (empty($contract->hide_prolongation)) {
@@ -70,7 +76,7 @@ class C2oPaymentController extends Controller
                 {
                     if ($contract->prolongation < 5 || ($contract->prolongation >= 5 && $contract->sold)) {
                         if ($contract->loan_percents_summ > 0) {
-                            if ($percents_sum < $contract->amount * 1.5) {
+                            if ($percents_sum < $contract->amount * $max_loan_value) {
                                 $prolongation_amount = $contract->loan_percents_summ + $this->settings->prolongation_amount;
                             }
                         }
@@ -78,6 +84,7 @@ class C2oPaymentController extends Controller
                 }
             }
         }
+        $this->design->assign('sas', $diff_to_new_max);
 
         if (date_diff($date2, $date3)->days <= 3 || $date2 > $date3)
             $this->design->assign('prolongation_amount', $prolongation_amount);

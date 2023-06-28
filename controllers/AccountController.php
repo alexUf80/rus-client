@@ -272,6 +272,12 @@ class AccountController extends Controller
                 }
             }
 
+            $max_loan_value = 1.3;
+            $diff_to_new_max  = intval((strtotime(date('Y-m-d', strtotime($order->contract->inssuance_date))) - strtotime(date('Y-m-d', strtotime('2023-07-01')))) / 86400);
+            if ($diff_to_new_max < 0) {
+                $max_loan_value = 1.5;
+            }
+
             $prolongation_amount = 0;
             if (empty($order->contract->stop_profit)) {
                 if (empty($order->contract->hide_prolongation)) {
@@ -279,7 +285,7 @@ class AccountController extends Controller
                     {
                         if ($order->contract->prolongation < 5 || ($order->contract->prolongation >= 5 && $order->contract->sold)) {
                             if ($order->contract->loan_percents_summ > 0) {
-                                if ($percents_sum < $order->contract->amount * 1.5) {
+                                if ($percents_sum < $order->contract->amount * $max_loan_value) {
                                     $prolongation_amount = $order->contract->loan_percents_summ + $this->settings->prolongation_amount;
                                 }
                             }
