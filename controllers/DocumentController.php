@@ -38,6 +38,9 @@ class DocumentController extends Controller
 
             $document->params = json_decode($document->params, true);
 
+            if (in_array($document->type, ['DOP_SOGLASHENIE']))
+                $this->design->assign('inssuance_date', $contract->inssuance_date);
+
             if (in_array($document->type, ['DOP_RESTRUCT', 'GRAPH_RESTRUCT']))
                 $document->params['schedules']['payment_schedules'] = json_decode($document->params['schedules']['payment_schedules'], true);
 
