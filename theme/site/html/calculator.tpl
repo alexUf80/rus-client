@@ -479,7 +479,7 @@
 
 
             function calculateReturnSum(sum, days) {
-              const percent = 0.01;
+              const percent = 0.008;
               return sum + sum * days * percent;
             }
 
