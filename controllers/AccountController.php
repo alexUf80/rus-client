@@ -187,7 +187,7 @@ class AccountController extends Controller
                 $loantype = $this->Loantypes->get_loantype($order->loantype_id);
                 $stdPercent = $loantype->percent/100;
             }else
-                $stdPercent = 0.01;
+                $stdPercent = 0.008;
 
 
             $order->return_amount = ($order->amount * $stdPercent * $order->period) + $order->amount;
