@@ -72,7 +72,9 @@ class StageCardController extends Controller
                         $order['promocode_id'] = $promocode->id;
                 }
 
-                $order['utm_source'] = $_COOKIE['utm_source'];
+                if (isset($_COOKIE['utm_source'])) {
+                    $order['utm_source'] = $_COOKIE['utm_source'];
+                }
                 $order['webmaster_id'] = $_COOKIE["wm_id"];
                 $order['click_hash'] = $_COOKIE["clickid"];
 
@@ -122,7 +124,9 @@ class StageCardController extends Controller
                         $order['promocode_id'] = $promocode->id;
                 }
 
-                $order['utm_source'] = $_COOKIE['utm_source'];
+                if (isset($_COOKIE['utm_source'])) {
+                    $order['utm_source'] = $_COOKIE['utm_source'];
+                }
                 $order['webmaster_id'] = $_COOKIE["wm_id"];
                 $order['click_hash'] = $_COOKIE["clickid"];
 
