@@ -244,6 +244,9 @@ class Best2PayCallback extends Controller
                                     $rest_amount = 0;
                                 }
                             }
+
+                            $collection_order['peni_summ'] = empty($transaction_loan_peni_summ) ? 0 : $transaction_loan_peni_summ;
+                            
                         }
 
                         $this->contracts->update_contract($contract->id, array(
