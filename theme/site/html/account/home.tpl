@@ -134,7 +134,7 @@
                                             </div>
                                         </div>
                                         <div class="col-6 pt-1">
-                                            <button type="submit" class="btn btn-primary btn-block">Закрыть</button>
+                                            <button type="submit" class="btn btn-primary btn-block">Погасить</button>
                                         </div>
                                     </div>
                                 </form>
@@ -161,7 +161,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-6 pt-1">
-                                                <button type="submit" class="btn btn-primary btn-block">Оплатить</button>
+                                                <button type="submit" class="btn btn-primary btn-block">Продлить</button>
                                             </div>
                                         </div>
                                     </form>
@@ -487,10 +487,10 @@
                                             </div>
                                             <div class="col-md-7 pt-1">
                                                 {if $order->contract->status == 11}
-                                                    <button type="submit" class="btn btn-primary btn-block">Оплатить
+                                                    <button type="submit" class="btn btn-primary btn-block">Продлить
                                                     </button>
                                                 {else}
-                                                    <button type="submit" class="btn btn-primary btn-block">Закрыть
+                                                    <button type="submit" class="btn btn-primary btn-block">Погасить
                                                     </button>
                                                 {/if}
                                             </div>
@@ -517,7 +517,7 @@
                                                 </div>
                                                 <div class="col-md-7 col-12 pt-1">
                                                     <button type="submit" class="btn btn-primary btn-block">
-                                                        Оплатить
+                                                        Продлить
                                                     </button>
                                                 </div>
                                             </div>
