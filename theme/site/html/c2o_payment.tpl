@@ -16,6 +16,7 @@
                 $('h3.text-center.-red').hide();
                 $('.pay-text').text('Оплатить займ');
                 $('.pay-sum').val({$total_summ});
+                $('[name="prolongation"]').val(0);
                 
                 $('.js-payform-wrapper').fadeIn();
             })
@@ -28,6 +29,7 @@
                 $('h3.text-center.-red').hide();
                 $('.pay-text').text('Сделать пролонгацию');
                 $('.pay-sum').val({$prolongation_amount});
+                $('[name="prolongation"]').val(1);
                 
                 $('.js-payform-wrapper').fadeIn();
             })
