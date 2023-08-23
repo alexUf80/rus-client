@@ -62,7 +62,7 @@
             <br>
             {$lastname|upper} {$firstname|upper} {$patronymic|upper}
             <br>
-            Подписано с использованием ПЭП: {$accept_code}
+            Подписано с использованием ПЭП: {$accept_sms}
         </th>
     </tr>
 </table>
