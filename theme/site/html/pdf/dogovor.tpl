@@ -117,13 +117,13 @@
         <td align="center" width="10%">5.</td>
         <td width="40%">Порядок определения курса иностранной валюты при переводе денежных средств кредитором третьему лицу, указанному заемщиком
         </td>
-        <td width="50%">Отсутствует</td>
+        <td width="50%">Не применимо.</td>
     </tr>
     <tr>
         <td align="center" width="10%">5.1</td>
         <td width="40%">Указание на изменение суммы расходов Заемщика при увеличении используемой в Договоре переменной процентной ставки займа на один процентный пункт начиная со второго очередного платежа на ближайшую дату после предполагаемой даты заключения договора
         </td>
-        <td width="50%">Отсутствует</td>
+        <td width="50%">Не применимо.</td>
     </tr>
     <tr>
         <td align="center" width="10%">6.</td>
@@ -362,10 +362,22 @@
         <td width="50%">Телефон 8 (977) 277-23-23</td>
     </tr>
     <tr>
-        <td width="50%">М.П.</td>
+        <td width="50%">
+            <table >
+                <tr>
+                    <td>Подпись</td><td><img src="{$config->root_dir}/theme/site/html/pdf/i/sign.png" style="width:30px; height: 30px;"></td><td> Дата {$contract->inssuance_date|date}</td>
+                </tr>
+            </table>
+        </td>
     </tr>
     <tr>
-        <td width="50%"></td>
+        <td width="50%">
+            <table>
+                <tr>
+                    <td width="20%">М.П.</td><td><img src="{$config->root_dir}/theme/site/html/pdf/i/stamp.png" style="width:100px; height: 100px;"></td>
+                </tr>
+            </table>
+        </td>
         <td width="50%">
             электронный документ создан с использованием системы
             сайта https://rus-zaym.ru/<br>
