@@ -450,9 +450,6 @@
                           <tr>
                             <td>Личный кабинет</td>
                           </tr>
-                          <tr>
-        <td width="50%" style="display: flex;"><table><tr><td><div>Подпись</div></td><td><div>Подпись11</div><img src="/theme/site/html/pdf/i/sign.png"></td></tr><table></td>
-    </tr>
                         </tbody>
                       </table>
                     </a></div>
