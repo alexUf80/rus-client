@@ -286,7 +286,7 @@ class AccountController extends Controller
                         if ($order->contract->prolongation < 5 || ($order->contract->prolongation >= 5 && $order->contract->sold)) {
                             if ($order->contract->loan_percents_summ > 0) {
                                 if ($percents_sum < $order->contract->amount * $max_loan_value) {
-                                    $prolongation_amount = $order->contract->loan_percents_summ + $this->settings->prolongation_amount + $order->contract->loan_peni_summ;
+                                    $prolongation_amount = $order->contract->loan_percents_summ + $order->contract->loan_peni_summ + $this->settings->prolongation_amount;
                                 }
                             }
                         }
