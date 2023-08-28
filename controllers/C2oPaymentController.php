@@ -75,7 +75,7 @@ class C2oPaymentController extends Controller
                     if ($contract->prolongation < 5 || ($contract->prolongation >= 5 && $contract->sold)) {
                         if ($contract->loan_percents_summ > 0) {
                             if ($percents_sum < $contract->amount * $max_loan_value) {
-                                $prolongation_amount = $contract->loan_percents_summ + $this->settings->prolongation_amount;
+                                $prolongation_amount = $contract->loan_percents_summ + $contract->loan_peni_summ + $this->settings->prolongation_amount;
                             }
                         }
                     }
