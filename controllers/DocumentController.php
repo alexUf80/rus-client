@@ -52,7 +52,6 @@ class DocumentController extends Controller
                 ->where('order_id', '=', $order->order_id)
                 ->whereIn('type', ['PAY', 'RECURRENT'])
                 ->get();
-
                 foreach ($operations as $operation) {
                     $transaction = $this->transactions->get_transaction($operation->transaction_id);
                     $operation->tr_loan_body_summ = $transaction->loan_body_summ;
@@ -63,12 +62,35 @@ class DocumentController extends Controller
                     $pay_percents_summ += $transaction->loan_percents_summ;
                     $pay_peni_summ += $transaction->loan_peni_summ;
                 }
-
                 $this->design->assign('operations', $operations);
                 $this->design->assign('pay_body_summ', $pay_body_summ);
                 $this->design->assign('pay_percents_summ', $pay_percents_summ);
                 $this->design->assign('pay_peni_summ', $pay_peni_summ);
 
+                $peni_sum = 0;
+                $percents_sum = 0;
+                $operations = OperationsORM::query()
+                ->where('order_id', '=', $order->order_id)
+                ->whereIn('type', ['PENI', 'PERCENTS'])
+                ->get();
+                foreach ($operations as $operation) {
+                    if ($operation->type == 'PENI') {
+                        $peni_sum = $operation->amount;
+                    }
+                    else{
+                        $percents_sum = $operation->amount;
+                    }
+                }
+                $this->design->assign('peni_sum', $peni_sum);
+                $this->design->assign('percents_sum', $percents_sum);
+                
+                $date1 = new DateTime(date('Y-m-d', strtotime($contract->inssuance_date)));
+                $date2 = new DateTime(date('Y-m-d'));
+                
+                $diff = $date2->diff($date1);
+                $inssuance_delay = $diff->days;
+                
+                $this->design->assign('inssuance_delay', $inssuance_delay);
                 
             }
 
