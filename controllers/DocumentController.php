@@ -44,6 +44,34 @@ class DocumentController extends Controller
             if (in_array($document->type, ['DOP_RESTRUCT', 'GRAPH_RESTRUCT']))
                 $document->params['schedules']['payment_schedules'] = json_decode($document->params['schedules']['payment_schedules'], true);
 
+            $pay_body_summ = 0;
+            $pay_percents_summ = 0;
+            $pay_peni_summ = 0;
+            if (in_array($document->type, ['PRIL_1'])){
+                $operations = OperationsORM::query()
+                ->where('order_id', '=', $order->order_id)
+                ->whereIn('type', ['PAY', 'RECURRENT'])
+                ->get();
+
+                foreach ($operations as $operation) {
+                    $transaction = $this->transactions->get_transaction($operation->transaction_id);
+                    $operation->tr_loan_body_summ = $transaction->loan_body_summ;
+                    $operation->tr_loan_percents_summ = $transaction->loan_percents_summ;
+                    $operation->tr_loan_peni_summ = $transaction->loan_peni_summ;
+
+                    $pay_body_summ += $transaction->loan_body_summ;
+                    $pay_percents_summ += $transaction->loan_percents_summ;
+                    $pay_peni_summ += $transaction->loan_peni_summ;
+                }
+
+                $this->design->assign('operations', $operations);
+                $this->design->assign('pay_body_summ', $pay_body_summ);
+                $this->design->assign('pay_percents_summ', $pay_percents_summ);
+                $this->design->assign('pay_peni_summ', $pay_peni_summ);
+
+                
+            }
+
             foreach ($document->params as $param_name => $param_value) {
                 if ($param_name == 'insurance')
                     $this->design->assign('insurances', (object)$param_value);
