@@ -363,18 +363,9 @@
     </tr>
     <tr>
         <td width="50%">
-            <table >
-                <tr>
-                    <td>Подпись</td><td><img src="{$config->root_dir}/theme/site/html/pdf/i/sign.png" style="width:30px; height: 30px;"></td><td> Дата {$contract->inssuance_date|date}</td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-    <tr>
-        <td width="50%">
             <table>
                 <tr>
-                    <td width="20%">М.П.</td><td><img src="{$config->root_dir}/theme/site/html/pdf/i/stamp.png" style="width:100px; height: 100px;"></td>
+                    <td style="position:relative">Подпись</td><td style="width:30px"><img src="{$config->root_dir}/theme/site/html/pdf/i/sign.png" style="width:30px; height: 30px;"></td><td style="width:100px"><img style="position:absolute; left:0" src="{$config->root_dir}/theme/site/html/pdf/i/stamp.png" style="width:100px; height: 100px;"></td><td> Дата {$contract->inssuance_date|date}</td>
                 </tr>
             </table>
         </td>
@@ -388,6 +379,15 @@
             на номер {$phone_mobile} введен верно<br>
             в {$contract->inssuance_date|date} {$contract->inssuance_date|time}<br>
             {*}
+        </td>
+    </tr>
+    <tr>
+        <td width="50%">
+            <table>
+                <tr>
+                    <td width="20%">М.П.</td>
+                </tr>
+            </table>
         </td>
     </tr>
     
