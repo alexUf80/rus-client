@@ -256,6 +256,16 @@ class StageCardController extends Controller
                 'params' => json_encode($params),
             ));
 
+            //Причина отказа если не убрал галочку
+            if (isset($this->user->service_reason) && $this->user->service_reason == 1) {
+                $this->documents->create_document(array(
+                    'user_id' => $this->user->id,
+                    'order_id' => $order_id,
+                    'type' => 'REASON_FOR_REFUSAL',
+                    'params' => json_encode($params),
+                ));
+            }
+
             if(!empty($order['utm_source']) && $order['utm_source'] == 'leadstech')
                 $this->PostBackCron->add(['order_id' => $order_id, 'status' => 0, 'goal_id' => 3]);
             

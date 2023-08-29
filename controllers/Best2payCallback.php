@@ -119,7 +119,7 @@ class Best2PayCallback extends Controller
 
                                 $docs = 1;
 
-                                if ($payment_amount >= $contract->loan_percents_summ + $this->settings->prolongation_amount) {
+                                if ($payment_amount >= $contract->loan_percents_summ + $this->settings->prolongation_amount + $contract->loan_peni_summ) {
                                     $operation_id = $this->operations->add_operation(array(
                                         'contract_id' => $contract->id,
                                         'user_id' => $contract->user_id,
