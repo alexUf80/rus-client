@@ -90,29 +90,29 @@
         <td width="33.33%" colspan="6" align="center">Остаток задолженности</td>
     </tr>
     <tr>
-        <td align="center">1</td>
-        <td align="center">2</td>
-        <td align="center">3</td>
-        <td align="center">4</td>
-        <td align="center">5</td>
-        <td align="center">6</td>
-        <td align="center">7</td>
-        <td align="center">1</td>
-        <td align="center">2</td>
-        <td align="center">3</td>
-        <td align="center">4</td>
-        <td align="center">5</td>
-        <td align="center">6</td>
-        <td align="center">1</td>
-        <td align="center">2</td>
-        <td align="center">3</td>
-        <td align="center">4</td>
-        <td align="center">5</td>
-        <td align="center">6</td>
+        <td align="center">Дата расчета</td>
+        <td align="center">Количество дней с даты получения займа</td>
+        <td align="center">Процентная ставка в день, %</td>
+        <td align="center">Сумма начисленных процентов в день, руб.</td>
+        <td align="center">Сумма процентов накопительным итогом, руб.</td>
+        <td align="center">Сумма штрафов в день, руб.</td>
+        <td align="center">Сумма иных платежей в день, руб. (с указанием назначения платежа)</td>
+        <td align="center">Всего</td>
+        <td align="center">В счет основного долга</td>
+        <td align="center">В счет процентов</td>
+        <td align="center">В счет пени</td>
+        <td align="center">В счет штрафов</td>
+        <td align="center">В счет иных платежей (с указанием назначения платежа)</td>
+        <td align="center">Всего</td>
+        <td align="center">Основной долг</td>
+        <td align="center">Проценты</td>
+        <td align="center">Пени</td>
+        <td align="center">Штрафы</td>
+        <td align="center">Иные платежи (с указанием назначения платежа)</td>
     </tr>
     {foreach $operations_by_date as $val}
         <tr>
-            <td align="center" style="font-size:8">{$val['date']|date}</td>
+            <td align="center" style="font-size:8">{$val['date']|date_format:"%d.%m.%y"}</td>
             <td align="center" style="font-size:8">{$val['days_from_create_date']}</td>
             <td align="center" style="font-size:8">{$val['percent_per_day']|number_format:2:".":""}</td>
             <td align="center" style="font-size:8">
