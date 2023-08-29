@@ -82,6 +82,7 @@
 
 <br><br>
 
+
 <table border="1">
     <tr>
         <td width="33.33%" colspan="7" align="center">Начислено</td>
@@ -109,29 +110,34 @@
         <td align="center">5</td>
         <td align="center">6</td>
     </tr>
-    <tr>
-        <td align="center">{$date|date}</td>
-        <td align="center">{$inssuance_delay}</td>
-        <td align="center">{$contract->base_percent}</td>
-        <td align="center">{$peni_sum}</td>
-        <td align="center">{$pay_percents_summ}</td>
-        <td align="center">{$percents_sum}</td>
-        <td align="center">0</td>
-        {*}{*}
-        <td align="center">{$pay_body_summ+$pay_percents_summ+$pay_peni_summ}</td>
-        <td align="center">{$pay_body_summ}</td>
-        <td align="center">{$pay_percents_summ}</td>
-        <td align="center">{$pay_peni_summ}</td>
-        <td align="center">0</td>
-        <td align="center">0</td>
-        {*}{*}
-        <td align="center">{$contract->loan_body_summ+$contract->loan_percents_summ+$contract->loan_peni_summ}</td>
-        <td align="center">{$contract->loan_body_summ}</td>
-        <td align="center">{$contract->loan_percents_summ}</td>
-        <td align="center">{$contract->loan_peni_summ}</td>
-        <td align="center">0</td>
-        <td align="center">0</td>
-    </tr>
+    {foreach $operations_by_date as $val}
+    {*}
+    {var_dump($val['date'])}
+    {*}
+        <tr>
+            <td align="center" style="font-size:6">{$val['date']|date}</td>
+            <td align="center" style="font-size:6">{$val['days_from_create_date']}</td>
+            <td align="center" style="font-size:6">{$val['percent_per_day']|number_format:2:".":""}</td>
+            <td align="center" style="font-size:6">{$val['sum_percents_per_day']|number_format:2:".":""}</td>
+            <td align="center" style="font-size:6">{$val['sum_percents_all_time']|number_format:2:".":""}</td>
+            <td align="center" style="font-size:6">{$val['sum_peni_per_day']|number_format:2:".":""}</td>
+            <td align="center" style="font-size:6">{$val['sum_other_payments_per_day']|number_format:2:".":""}</td>
+            {*}{*}
+            <td align="center" style="font-size:6">{$val['sum_pay_all']|number_format:2:".":""}</td>
+            <td align="center" style="font-size:6">{$val['sum_pay_od']|number_format:2:".":""}</td>
+            <td align="center" style="font-size:6">{$val['sum_pay_percents']|number_format:2:".":""}</td>
+            <td align="center" style="font-size:6">{$val['sum_pay_peni']|number_format:2:".":""}</td>
+            <td align="center" style="font-size:6">{$val['sum_pay_penalty']|number_format:2:".":""}</td>
+            <td align="center" style="font-size:6">{$val['sum_pay_other']|number_format:2:".":""}</td>
+            {*}{*}
+            <td align="center" style="font-size:6">{$val['sum_debt_all']|number_format:2:".":""}</td>
+            <td align="center" style="font-size:6">{$val['sum_debt_od']|number_format:2:".":""}</td>
+            <td align="center" style="font-size:6">{$val['sum_debt_percents']|number_format:2:".":""}</td>
+            <td align="center" style="font-size:6">{$val['sum_debt_peni']|number_format:2:".":""}</td>
+            <td align="center" style="font-size:6">{$val['sum_debt_penalty']|number_format:2:".":""}</td>
+            <td align="center" style="font-size:6">{$val['sum_debt_other']|number_format:2:".":""}</td>
+        </tr>
+    {/foreach}
 </table>
 
 <div>
