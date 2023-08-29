@@ -111,31 +111,92 @@
         <td align="center">6</td>
     </tr>
     {foreach $operations_by_date as $val}
-    {*}
-    {var_dump($val['date'])}
-    {*}
         <tr>
-            <td align="center" style="font-size:6">{$val['date']|date}</td>
-            <td align="center" style="font-size:6">{$val['days_from_create_date']}</td>
-            <td align="center" style="font-size:6">{$val['percent_per_day']|number_format:2:".":""}</td>
-            <td align="center" style="font-size:6">{$val['sum_percents_per_day']|number_format:2:".":""}</td>
-            <td align="center" style="font-size:6">{$val['sum_percents_all_time']|number_format:2:".":""}</td>
-            <td align="center" style="font-size:6">{$val['sum_peni_per_day']|number_format:2:".":""}</td>
-            <td align="center" style="font-size:6">{$val['sum_other_payments_per_day']|number_format:2:".":""}</td>
+            <td align="center" style="font-size:8">{$val['date']|date}</td>
+            <td align="center" style="font-size:8">{$val['days_from_create_date']}</td>
+            <td align="center" style="font-size:8">{$val['percent_per_day']|number_format:2:".":""}</td>
+            <td align="center" style="font-size:8">
+                {if $val['sum_percents_per_day']}
+                    {$val['sum_percents_per_day']|number_format:2:".":""}
+                {/if}
+            </td>
+            <td align="center" style="font-size:8">
+                {if $val['sum_percents_all_time']}
+                    {$val['sum_percents_all_time']|number_format:2:".":""}
+                {/if}
+            </td>
+            <td align="center" style="font-size:8">
+                {if $val['sum_peni_per_day']}
+                    {$val['sum_peni_per_day']|number_format:2:".":""}
+                {/if}
+            </td>
+            <td align="center" style="font-size:8">
+                {if $val['sum_other_payments_per_day']}
+                    {$val['sum_other_payments_per_day']|number_format:2:".":""}
+                {/if}
+            </td>
             {*}{*}
-            <td align="center" style="font-size:6">{$val['sum_pay_all']|number_format:2:".":""}</td>
-            <td align="center" style="font-size:6">{$val['sum_pay_od']|number_format:2:".":""}</td>
-            <td align="center" style="font-size:6">{$val['sum_pay_percents']|number_format:2:".":""}</td>
-            <td align="center" style="font-size:6">{$val['sum_pay_peni']|number_format:2:".":""}</td>
-            <td align="center" style="font-size:6">{$val['sum_pay_penalty']|number_format:2:".":""}</td>
-            <td align="center" style="font-size:6">{$val['sum_pay_other']|number_format:2:".":""}</td>
+            <td align="center" style="font-size:8">
+                {if $val['sum_pay_all']}
+                    {$val['sum_pay_all']|number_format:2:".":""}
+                {/if}
+            </td>
+            <td align="center" style="font-size:8">
+                {if $val['sum_pay_od']}
+                    {$val['sum_pay_od']|number_format:2:".":""}
+                {/if}
+            </td>
+            <td align="center" style="font-size:8">
+                {if $val['sum_pay_percents']}
+                    {$val['sum_pay_percents']|number_format:2:".":""}
+                {/if}
+            </td>
+            <td align="center" style="font-size:8">
+                {if $val['sum_pay_peni']}
+                    {$val['sum_pay_peni']|number_format:2:".":""}
+                {/if}
+            </td>
+            <td align="center" style="font-size:8">
+                {if $val['sum_pay_penalty']}
+                    {$val['sum_pay_penalty']|number_format:2:".":""}
+                {/if}
+            </td>
+            <td align="center" style="font-size:8">
+                {if $val['sum_pay_other']}
+                    {$val['sum_pay_other']|number_format:2:".":""}
+                {/if}
+            </td>
             {*}{*}
-            <td align="center" style="font-size:6">{$val['sum_debt_all']|number_format:2:".":""}</td>
-            <td align="center" style="font-size:6">{$val['sum_debt_od']|number_format:2:".":""}</td>
-            <td align="center" style="font-size:6">{$val['sum_debt_percents']|number_format:2:".":""}</td>
-            <td align="center" style="font-size:6">{$val['sum_debt_peni']|number_format:2:".":""}</td>
-            <td align="center" style="font-size:6">{$val['sum_debt_penalty']|number_format:2:".":""}</td>
-            <td align="center" style="font-size:6">{$val['sum_debt_other']|number_format:2:".":""}</td>
+            <td align="center" style="font-size:8">
+                {if $val['sum_debt_all']}
+                    {$val['sum_debt_all']|number_format:2:".":""}
+                {/if}
+            </td>
+            <td align="center" style="font-size:8">
+                {if $val['sum_debt_od']}
+                    {$val['sum_debt_od']|number_format:2:".":""}
+                {/if}
+            </td>
+            <td align="center" style="font-size:8">
+                {if $val['sum_debt_percents']}
+                    {$val['sum_debt_percents']|number_format:2:".":""}
+                {/if}
+            </td>
+            <td align="center" style="font-size:8">
+                {if $val['sum_debt_peni']}
+                    {$val['sum_debt_peni']|number_format:2:".":""}
+                {/if}
+            </td>
+            <td align="center" style="font-size:8">
+                {if $val['sum_debt_penalty']}
+                    {$val['sum_debt_penalty']|number_format:2:".":""}
+                {/if}
+            </td>
+            <td align="center" style="font-size:8">
+                {if $val['sum_debt_other']}
+                    {$val['sum_debt_other']|number_format:2:".":""}
+                {/if}
+            </td>
         </tr>
     {/foreach}
 </table>
