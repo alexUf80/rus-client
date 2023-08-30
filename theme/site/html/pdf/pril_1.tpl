@@ -24,15 +24,15 @@
     </tr>
     <tr>
         <td width="50%" align="left"><strong>Первоначальная сумма займа: 
-                {$amount|upper} руб.</strong></td>
+                {$amount|number_format:2:".":""} руб.</strong></td>
         <td width="50%" align="right"><strong>Оплачено всего:
-        {$pay_body_summ+$pay_percents_summ+$pay_peni_summ} руб.</strong></td>
+        {($pay_body_summ+$pay_percents_summ+$pay_peni_summ)|number_format:2:".":""} руб.</strong></td>
     </tr>
     <tr>
         <td width="50%" align="left"><strong>Дата выдачи займа: 
                 {$contract->inssuance_date|date}</strong></td>
         <td width="50%" align="right"><strong>Из них
-        </strong> в погашение процентов {$pay_percents_summ} руб.</td>
+        </strong> в погашение процентов {$pay_percents_summ|number_format:2:".":""} руб.</td>
     </tr>
     <tr>
         <td width="50%" align="left"><strong>Срок займа (в днях):  
@@ -42,38 +42,43 @@
     <tr>
         <td width="50%" align="left"><strong>Процентная ставка (% в день) 
                 {$contract->base_percent}</strong></td>
-        <td width="50%" align="right">в погашение пени {$pay_peni_summ} руб.</td>
+        <td width="50%" align="right">в погашение пени {$pay_peni_summ|number_format:2:".":""} руб.</td>
     </tr>
     <tr>
         <td width="50%" align="left"><strong>Процентная ставка (% годовых)  
                 {$contract->base_percent * 365}</strong></td>
-        <td width="50%" align="right">в погашение штрафов 0 руб.</td>
+        <td width="50%" align="right">в погашение штрафов 0.00 руб.</td>
     </tr>
     <tr>
-        <td width="100%" align="right">в погашение иных платежей 0 руб.</td>
+        <td width="100%" align="right">в погашение иных платежей 0.00 руб.</td>
     </tr>
     <tr>
         <td><br></td>
     </tr>
     <tr>
         <td width="50%" align="left"><strong>Дата погашения займа: 
-                {$contract->return_date|date}</strong></td>
-        <td width="50%" align="right"><strong>Общая сумма задолженности: {$contract->loan_body_summ+$contract->loan_percents_summ+$contract->loan_peni_summ} руб.</strong></td>
+            {if $contract->close_date}
+                {$contract->close_date|date}
+            {else}
+                {$contract->return_date|date}
+            {/if}
+        </strong></td>
+        <td width="50%" align="right"><strong>Общая сумма задолженности: {($contract->loan_body_summ+$contract->loan_percents_summ+$contract->loan_peni_summ)|number_format:2:".":""} руб.</strong></td>
     </tr>
     <tr>
-        <td width="100%" align="right"><strong>В том числе</strong> по основному долгу {$contract->loan_body_summ} руб.</td>
+        <td width="100%" align="right"><strong>В том числе</strong> по основному долгу {$contract->loan_body_summ|number_format:2:".":""} руб.</td>
     </tr>
     <tr>
-        <td width="100%" align="right">по процентам {$contract->loan_percents_summ} руб.</td>
+        <td width="100%" align="right">по процентам {$contract->loan_percents_summ|number_format:2:".":""} руб.</td>
     </tr>
     <tr>
-        <td width="100%" align="right">по пени {$contract->loan_peni_summ} руб.</td>
+        <td width="100%" align="right">по пени {$contract->loan_peni_summ|number_format:2:".":""} руб.</td>
     </tr>
     <tr>
-        <td width="100%" align="right">по штрафам 0 руб.</td>
+        <td width="100%" align="right">по штрафам 0.00 руб.</td>
     </tr>
     <tr>
-        <td width="100%" align="right">по иным платежам 0 руб.</td>
+        <td width="100%" align="right">по иным платежам 0.00 руб.</td>
     </tr>
     <tr>
         <br>
@@ -116,84 +121,84 @@
             <td align="center" style="font-size:8">{$val['days_from_create_date']}</td>
             <td align="center" style="font-size:8">{$val['percent_per_day']|number_format:2:".":""}</td>
             <td align="center" style="font-size:8">
-                {if $val['sum_percents_per_day']}
+                {if round($val['sum_percents_per_day'], 3)}
                     {$val['sum_percents_per_day']|number_format:2:".":""}
                 {/if}
             </td>
             <td align="center" style="font-size:8">
-                {if $val['sum_percents_all_time']}
+                {if round($val['sum_percents_all_time'], 3)}
                     {$val['sum_percents_all_time']|number_format:2:".":""}
                 {/if}
             </td>
             <td align="center" style="font-size:8">
-                {if $val['sum_peni_per_day']}
+                {if round($val['sum_peni_per_day'], 3)}
                     {$val['sum_peni_per_day']|number_format:2:".":""}
                 {/if}
             </td>
             <td align="center" style="font-size:8">
-                {if $val['sum_other_payments_per_day']}
+                {if round($val['sum_other_payments_per_day'], 3)}
                     {$val['sum_other_payments_per_day']|number_format:2:".":""}
                 {/if}
             </td>
             {*}{*}
             <td align="center" style="font-size:8">
-                {if $val['sum_pay_all']}
+                {if round($val['sum_pay_all'], 3)}
                     {$val['sum_pay_all']|number_format:2:".":""}
                 {/if}
             </td>
             <td align="center" style="font-size:8">
-                {if $val['sum_pay_od']}
+                {if round($val['sum_pay_od'], 3)}
                     {$val['sum_pay_od']|number_format:2:".":""}
                 {/if}
             </td>
             <td align="center" style="font-size:8">
-                {if $val['sum_pay_percents']}
+                {if round($val['sum_pay_percents'], 3)}
                     {$val['sum_pay_percents']|number_format:2:".":""}
                 {/if}
             </td>
             <td align="center" style="font-size:8">
-                {if $val['sum_pay_peni']}
+                {if round($val['sum_pay_peni'], 3)}
                     {$val['sum_pay_peni']|number_format:2:".":""}
                 {/if}
             </td>
             <td align="center" style="font-size:8">
-                {if $val['sum_pay_penalty']}
+                {if round($val['sum_pay_penalty'], 3)}
                     {$val['sum_pay_penalty']|number_format:2:".":""}
                 {/if}
             </td>
             <td align="center" style="font-size:8">
-                {if $val['sum_pay_other']}
+                {if round($val['sum_pay_other'], 3)}
                     {$val['sum_pay_other']|number_format:2:".":""}
                 {/if}
             </td>
             {*}{*}
             <td align="center" style="font-size:8">
-                {if $val['sum_debt_all']}
+                {if round($val['sum_debt_all'], 3)}
                     {$val['sum_debt_all']|number_format:2:".":""}
                 {/if}
             </td>
             <td align="center" style="font-size:8">
-                {if $val['sum_debt_od']}
+                {if round($val['sum_debt_od'], 3)}
                     {$val['sum_debt_od']|number_format:2:".":""}
                 {/if}
             </td>
             <td align="center" style="font-size:8">
-                {if $val['sum_debt_percents']}
+                {if round($val['sum_debt_percents'], 3)}
                     {$val['sum_debt_percents']|number_format:2:".":""}
                 {/if}
             </td>
             <td align="center" style="font-size:8">
-                {if $val['sum_debt_peni']}
+                {if round($val['sum_debt_peni'], 3)}
                     {$val['sum_debt_peni']|number_format:2:".":""}
                 {/if}
             </td>
             <td align="center" style="font-size:8">
-                {if $val['sum_debt_penalty']}
+                {if round($val['sum_debt_penalty'], 3)}
                     {$val['sum_debt_penalty']|number_format:2:".":""}
                 {/if}
             </td>
             <td align="center" style="font-size:8">
-                {if $val['sum_debt_other']}
+                {if round($val['sum_debt_other'], 3)}
                     {$val['sum_debt_other']|number_format:2:".":""}
                 {/if}
             </td>

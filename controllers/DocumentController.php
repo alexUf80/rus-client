@@ -44,17 +44,6 @@ class DocumentController extends Controller
             if (in_array($document->type, ['DOP_RESTRUCT', 'GRAPH_RESTRUCT']))
                 $document->params['schedules']['payment_schedules'] = json_decode($document->params['schedules']['payment_schedules'], true);
 
-            // $sum_percents_per_day = 0;
-            // $sum_percents_all_time = 0;
-            // $sum_peni_per_day = 0;
-            // $sum_pay_all = 0;
-            // $sum_pay_od = 0;
-            // $sum_pay_percents = 0;
-            // $sum_pay_peni = 0;
-            // $sum_debt_all = 0;
-            // $sum_debt_od = 0;
-            // $sum_debt_percents = 0;
-            // $sum_debt_peni = 0;
             if (in_array($document->type, ['PRIL_1'])){
 
                 $operations = OperationsORM::query()
@@ -62,6 +51,9 @@ class DocumentController extends Controller
                 ->orderByRaw('created', 'asc')
                 ->get();
 
+                $pay_body_summ = 0;
+                $pay_percents_summ = 0;
+                $pay_peni_summ = 0;
                 foreach ($operations as $operation) {
 
                     $date = date('Y-m-d', strtotime($operation->created));
@@ -70,6 +62,16 @@ class DocumentController extends Controller
                     $date_operation->setDate( (int)date('Y', strtotime($operation->created)),  date('m', strtotime($operation->created)),  date('d', strtotime($operation->created)));
 
                     $inssuance_date = new DateTime(date('Y-m-d', strtotime($contract->inssuance_date)));
+
+                    if (!array_key_exists($date, $operations_by_date)) {
+                        $operations_by_date[$date]['date'] = $date;
+                        $operations_by_date[$date]['days_from_create_date'] = $date_operation->diff($inssuance_date)->days;
+                        $sum_pay_all = 0;
+                        $sum_pay_od = 0;
+                        $sum_pay_percents = 0;
+                        $sum_pay_peni = 0;
+                    }
+
                     if ($operation->type == 'P2P') {
                         $sum_debt_all += $operation->amount;
                         $sum_debt_od += $operation->amount;
@@ -90,8 +92,8 @@ class DocumentController extends Controller
                     else if ($operation->type == 'PAY' || $operation->type == 'RECURRENT') {
                         $transaction = $this->transactions->get_transaction($operation->transaction_id);
                         
-                        $sum_pay_all = $operation->amount;
-                        $sum_pay_od = $transaction->loan_body_summ;
+                        $sum_pay_all += $operation->amount;
+                        $sum_pay_od += $transaction->loan_body_summ;
                         $sum_pay_percents += $transaction->loan_percents_summ;
                         $sum_pay_peni += $transaction->loan_peni_summ;
                         
@@ -99,6 +101,10 @@ class DocumentController extends Controller
                         $sum_debt_od -= $transaction->loan_body_summ;
                         $sum_debt_percents -= $transaction->loan_percents_summ;
                         $sum_debt_peni -= $transaction->loan_peni_summ;
+
+                        $pay_body_summ += $transaction->loan_body_summ;
+                        $pay_percents_summ += $transaction->loan_percents_summ;
+                        $pay_peni_summ += $transaction->loan_peni_summ;
                     }
 
                     if (!array_key_exists($date, $operations_by_date)) {
@@ -127,51 +133,10 @@ class DocumentController extends Controller
                 }
 
                 $this->design->assign('operations_by_date', $operations_by_date);
+                $this->design->assign('pay_body_summ', $pay_body_summ);
+                $this->design->assign('pay_percents_summ', $pay_percents_summ);
+                $this->design->assign('pay_peni_summ', $pay_peni_summ);
 
-                // $operations = OperationsORM::query()
-                // ->where('order_id', '=', $order->order_id)
-                // ->whereIn('type', ['PAY', 'RECURRENT'])
-                // ->get();
-                // foreach ($operations as $operation) {
-                //     $transaction = $this->transactions->get_transaction($operation->transaction_id);
-                //     $operation->tr_loan_body_summ = $transaction->loan_body_summ;
-                //     $operation->tr_loan_percents_summ = $transaction->loan_percents_summ;
-                //     $operation->tr_loan_peni_summ = $transaction->loan_peni_summ;
-
-                //     $pay_body_summ += $transaction->loan_body_summ;
-                //     $pay_percents_summ += $transaction->loan_percents_summ;
-                //     $pay_peni_summ += $transaction->loan_peni_summ;
-                // }
-                // $this->design->assign('operations', $operations);
-                // $this->design->assign('pay_body_summ', $pay_body_summ);
-                // $this->design->assign('pay_percents_summ', $pay_percents_summ);
-                // $this->design->assign('pay_peni_summ', $pay_peni_summ);
-
-                // $peni_sum = 0;
-                // $percents_sum = 0;
-                // $operations = OperationsORM::query()
-                // ->where('order_id', '=', $order->order_id)
-                // ->whereIn('type', ['PENI', 'PERCENTS'])
-                // ->get();
-                // foreach ($operations as $operation) {
-                //     if ($operation->type == 'PENI') {
-                //         $peni_sum = $operation->amount;
-                //     }
-                //     else{
-                //         $percents_sum = $operation->amount;
-                //     }
-                // }
-                // $this->design->assign('peni_sum', $peni_sum);
-                // $this->design->assign('percents_sum', $percents_sum);
-                
-                // $date1 = new DateTime(date('Y-m-d', strtotime($contract->inssuance_date)));
-                // $date2 = new DateTime(date('Y-m-d'));
-                
-                // $diff = $date2->diff($date1);
-                // $inssuance_delay = $diff->days;
-                
-                // $this->design->assign('inssuance_delay', $inssuance_delay);
-                
             }
 
             foreach ($document->params as $param_name => $param_value) {
