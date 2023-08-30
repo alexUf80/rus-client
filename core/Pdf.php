@@ -20,6 +20,9 @@ class Pdf extends Core
         $this->tcpdf->SetKeywords('');
         $this->tcpdf->setFooterMargin(0);
         $this->tcpdf->SetAutoPageBreak(TRUE, 0);
+        if ($name == 'Приложение 1') {
+            $this->tcpdf->setPageOrientation('L');
+        }
         
         // set font
         $this->tcpdf->SetFont('dejavuserif', '', 9);
