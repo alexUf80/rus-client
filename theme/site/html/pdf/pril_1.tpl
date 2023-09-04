@@ -72,7 +72,7 @@
         <td width="100%" align="right">по процентам {$contract->loan_percents_summ|number_format:2:".":""} руб.</td>
     </tr>
     <tr>
-        <td width="100%" align="right">по пени {$contract->loan_peni_summ|number_format:2:".":""} руб.</td>
+        <td width="100%" align="right">по неустойке {$contract->loan_peni_summ|number_format:2:".":""} руб.</td>
     </tr>
     <tr>
         <td width="100%" align="right">по штрафам 0.00 руб.</td>
@@ -105,13 +105,13 @@
         <td align="center">Всего</td>
         <td align="center">В счет основного долга</td>
         <td align="center">В счет процентов</td>
-        <td align="center">В счет пени</td>
+        <td align="center">В счет неустойки</td>
         <td align="center">В счет штрафов</td>
         <td align="center">В счет иных платежей (с указанием назначения платежа)</td>
         <td align="center">Всего</td>
         <td align="center">Основной долг</td>
         <td align="center">Проценты</td>
-        <td align="center">Пени</td>
+        <td align="center">Неустойка</td>
         <td align="center">Штрафы</td>
         <td align="center">Иные платежи (с указанием назначения платежа)</td>
     </tr>
