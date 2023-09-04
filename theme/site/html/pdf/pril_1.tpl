@@ -42,7 +42,7 @@
     <tr>
         <td width="50%" align="left"><strong>Процентная ставка (% в день) 
                 {$contract->base_percent}</strong></td>
-        <td width="50%" align="right">в погашение пени {$pay_peni_summ|number_format:2:".":""} руб.</td>
+        <td width="50%" align="right">в погашение неустройки {$pay_peni_summ|number_format:2:".":""} руб.</td>
     </tr>
     <tr>
         <td width="50%" align="left"><strong>Процентная ставка (% годовых)  

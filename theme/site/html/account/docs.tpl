@@ -49,6 +49,9 @@
                             <div class="col-md-6">
                                 <ul class="docs_list">
                                     {foreach $documents as $document}
+                                            {if $document->name|escape == 'Приложение 1'}
+                                                {continue}
+                                            {/if}
                                             <li class="docs_list_item">
                                                 <a href="{$config->root_url}/document/{$user->id}/{$document->id}"
                                                    class="docs_list_link" target="_blank">
