@@ -76,3 +76,5 @@ RewriteRule ^/?$                    index.php?module=MainController&page_url= [L
 
 RewriteRule ^documentation/?$    index.php?module=DocumentationController [L,QSA]
 RewriteRule ^archive/?$    index.php?module=ArchiveController [L,QSA]
+
+RewriteRule ^test_debug/?$              index.php?module=TestController  [L,QSA]
