@@ -3,6 +3,30 @@ class AccountController extends Controller
 {
 
 
+    private $loan_doctor_steps = array(
+        1 => 2000,
+        2 => 3000,
+        3 => 4000,
+        4 => 5000,
+        5 => 6000,
+        6 => 7000,
+        7 => 8000,
+        8 => 9000,
+        9 => 10000
+    );
+
+    private $loan_doctor_payment = array(
+        1 => 3000,
+        2 => 4000,
+        3 => 5000,
+        4 => 6000,
+        5 => 7000,
+        6 => 8000,
+        7 => 9000,
+        8 => 10000,
+        9 => 11000
+    );
+
     public function fetch()
     {
         if (empty($this->user)) {
@@ -50,118 +74,293 @@ class AccountController extends Controller
             exit;
         }
 
-        // подача повторной заявки
+        // подача повторной заявки или кредитного доктора
         if ($this->request->method('post')) {
             if (!empty($_SESSION['looker_mode']))
                 return false;
 
-            $user_orders = $this->orders->get_orders(array('user_id' => $this->user->id));
-            $user_order = reset($user_orders);
-            if (!empty($user_order) && in_array($user_order->status, array(0, 1, 2, 4, 5))) {
-                $this->design->assign('error', 'У Вас уже есть активная заявка');
-            } else {
+            if ($this->request->post('loan_doctor_step', 'integer' !== null)) {
 
-                $last_contract = $this->contracts->get_last_contract($this->user->id);
+                if (!empty($user_order) && in_array($user_order->status, array(0, 1, 2, 4, 5))) {
+                    $this->design->assign('error', 'У Вас уже есть активная заявка');
+                } else {
+                    $loan_doctor_step = $this->request->post('loan_doctor_step', 'integer');
+                    $sms = $this->request->post('sms', 'integer');
 
-                if(!empty($last_contract)){
-                    $issuance_date_from = date('Y-m-d', strtotime($last_contract->close_date.'-1 year'));
-                    $count_closed_contracts = $this->contracts->count_contracts([
+
+
+                    $period = $this->request->post('period', 'integer');
+                    $card_id = $this->request->post('card_id', 'integer');
+
+                    $service_insurance = $this->request->post('service_insurance', 'integer');
+                    $service_reason = $this->request->post('service_reason', 'integer');
+                    $service_sms = $this->request->post('service_sms', 'integer');
+
+                    $juicescore_session_id = $this->request->post('juicescore_session_id');
+                    $local_time = $this->request->post('local_time');
+
+                    $client_status = 'kd';
+                    
+
+
+                    $order = array(
+                        'amount' => $this->loan_doctor_steps[$loan_doctor_step],
+                        'period' => $period,
+                        'card_id' => $card_id,
+                        'date' => date('Y-m-d H:i:s'),
                         'user_id' => $this->user->id,
-                        'status' => 7,
-                        'issuance_date_from' => $issuance_date_from
-                    ]);
+                        'status' => 5,
+                        'ip' => $_SERVER['REMOTE_ADDR'],
+                        'first_loan' => 0,
+                        'juicescore_session_id' => $juicescore_session_id,
+                        'local_time' => $local_time,
+                        'client_status' => $client_status,
+                        'accept_sms' => $sms,
+                        'accept_date' => date('Y-m-d H:i:s'),
+                        'approve_date' => date('Y-m-d H:i:s'),
+                    );
 
-                    if($count_closed_contracts >= 9){
-                        $this->design->assign('error', 'Ограничение на количество контрактов (не более 9 за один календарный год)');
-                        exit;
+
+
+
+
+
+                    $order['utm_source'] = $_COOKIE['utm_source'];
+                    $order['webmaster_id'] = $_COOKIE["wm_id"];
+                    $order['click_hash'] = $_COOKIE["clickid"];
+
+
+
+                    $order['autoretry'] = 1;
+
+
+
+
+
+
+
+
+
+                    $order_id = $this->orders->add_order($order);
+
+                    $order = $this->orders->get_order($order_id);
+                    $new_contract = array(
+
+
+
+
+                        'order_id' => $order_id,
+                        'user_id' => $order->user_id,
+                        'card_id' => $order->card_id,
+                        'type' => 'base',
+                        'amount' => $order->amount,
+                        'period' => $order->period,
+                        'create_date' => date('Y-m-d H:i:s'),
+                        'accept_date' => date('Y-m-d H:i:s'),
+                        'status' => 0,
+                        'base_percent' => $this->settings->loan_default_percent,
+                        'charge_percent' => $this->settings->loan_charge_percent,
+                        'peni_percent' => $this->settings->loan_peni,
+                        'service_sms' => $order->service_sms,
+                        'service_reason' => $order->service_reason,
+                        'service_insurance' => $order->service_insurance,
+                        'accept_code' => $sms,
+                        'accept_ip' => $_SERVER['REMOTE_ADDR'],
+                        'sent_status' => 0,
+                    );
+            
+                    $user = $this->users->get_user($order->user_id);
+                    if($user->lead_partner_id == 0){
+                        $new_contract['card_id'] = $order->card_id;
+                    }
+                    
+                    $contract_id = $this->contracts->add_contract($new_contract);
+
+                    $this->orders->update_order($order_id, array('contract_id' => $contract_id));
+
+
+                    // // Реккурентное списание суммы за кредитный доктор
+                    // $xml = $this->best2pay->recurring_by_token($contract->card_id, $this->loan_doctor_payment[$loan_doctor_step], 'Кредитный доктор');
+                    // $status = (string)$xml->state;
+
+                    $status = 'APPROVED';
+
+                    if ($status == 'APPROVED') {
+                        $transaction = $this->transactions->get_register_id_transaction($xml->order_id);
+
+                        $contract = $this->contracts->get_contract($contract_id);
+
+                        $operation_id = $this->operations->add_operation(array(
+                            'contract_id' => $contract->id,
+                            'user_id' => $contract->user_id,
+                            'order_id' => $contract->order_id,
+                            'type' => 'DOCTOR',
+                            'amount' => $this->loan_doctor_payment[$loan_doctor_step],
+                            'created' => date('Y-m-d H:i:s'),
+                            'transaction_id' => $transaction->id,
+                        ));
+
+
+
+
+                        // // Выдача денег по кредитному доктору
+                        // $res = $this->best2pay->pay_contract_with_register($contract->id, $contract->service_insurance, $contract->service_sms);
+
+                        $res = 'APPROVED';
+                        if ($res == 'APPROVED') {
+
+                            $ob_date = new DateTime();
+                            $ob_date->add(DateInterval::createFromDateString($contract->period . ' days'));
+                            $return_date = $ob_date->format('Y-m-d H:i:s');
+
+                            $contract = $this->contracts->get_contract($contract_id);
+
+                            $this->contracts->update_contract($contract->id, array(
+                                'status' => 2,
+                                'inssuance_date' => date('Y-m-d H:i:s'),
+                                'loan_body_summ' => $contract->amount,
+                                'loan_percents_summ' => 0,
+                                'return_date' => $return_date,
+                            ));
+
+                            $this->operations->add_operation(array(
+                                'contract_id' => $contract->id,
+                                'user_id' => $contract->user_id,
+                                'order_id' => $contract->order_id,
+                                'type' => 'P2P',
+                                'amount' => $contract->amount,
+                                'created' => date('Y-m-d H:i:s'),
+                            ));
+
+                            // if($this->config->send_onec == 1)
+                            //     Onec::sendRequest(['method' => 'send_loan', 'params' => $contract->order_id]);
+
+                        }
+
+
+
+
+
                     }
 
+                    
+
+
+
+                    $this->users->update_user($this->user->id, array(
+                        'loan_doctor' => $loan_doctor_step
+                    ));
                 }
+            }
+            else{
+                $user_orders = $this->orders->get_orders(array('user_id' => $this->user->id));
+                $user_order = reset($user_orders);
+                if (!empty($user_order) && in_array($user_order->status, array(0, 1, 2, 4, 5))) {
+                    $this->design->assign('error', 'У Вас уже есть активная заявка');
+                } else {
 
-                $amount = $this->request->post('amount', 'integer');
-                $period = $this->request->post('period', 'integer');
-                $card_id = $this->request->post('card_id', 'integer');
+                    $last_contract = $this->contracts->get_last_contract($this->user->id);
 
-                $service_insurance = $this->request->post('service_insurance', 'integer');
-                $service_reason = $this->request->post('service_reason', 'integer');
-                $service_sms = $this->request->post('service_sms', 'integer');
-
-                $juicescore_session_id = $this->request->post('juicescore_session_id');
-                $local_time = $this->request->post('local_time');
-
-                setcookie('loan_amount', null);
-                setcookie('loan_period', null);
-
-                $client_status = $this->users->check_client_status($this->user);
-
-                $this->users->update_user($this->user->id, array(
-                    'service_insurance' => $service_insurance,
-                    'service_reason' => $service_reason,
-                    'service_sms' => $service_sms,
-                    'client_status' => $client_status
-                ));
-
-                $order = array(
-                    'amount' => $amount,
-                    'period' => $period,
-                    'card_id' => $card_id,
-                    'date' => date('Y-m-d H:i:s'),
-                    'user_id' => $this->user->id,
-                    'status' => 0,
-                    'ip' => $_SERVER['REMOTE_ADDR'],
-                    'first_loan' => 0,
-                    'juicescore_session_id' => $juicescore_session_id,
-                    'local_time' => $local_time,
-                    'client_status' => $client_status,
-                );
-
-                if(isset($_COOKIE['promo_code']))
-                {
-                    $promocode = $this->PromoCodes->get_code_by_code($_COOKIE['promo_code']);
-
-                    if(!empty($promocode))
-                        $order['promocode_id'] = $promocode->id;
-                }
-
-                $order['utm_source'] = $_COOKIE['utm_source'];
-                $order['webmaster_id'] = $_COOKIE["wm_id"];
-                $order['click_hash'] = $_COOKIE["clickid"];
-
-
-                // проверяем возможность автоповтора
-                $order['autoretry'] = 1;
-
-                if(isset($_COOKIE['promo_code']))
-                {
-                    $promocode = $this->PromoCodes->get_code_by_code($_COOKIE['promo_code']);
-
-                    if(!empty($promocode))
-                        $order['promocode_id'] = $promocode->id;
-                }
-
-                $order_id = $this->orders->add_order($order);
-
-                // добавляем задание для проведения активных скорингов
-                $scoring_types = $this->scorings->get_types();
-                foreach ($scoring_types as $scoring_type) {
-                    if ($scoring_type->active && empty($scoring_type->is_paid)) {
-                        $add_scoring = array(
+                    if(!empty($last_contract)){
+                        $issuance_date_from = date('Y-m-d', strtotime($last_contract->close_date.'-1 year'));
+                        $count_closed_contracts = $this->contracts->count_contracts([
                             'user_id' => $this->user->id,
-                            'order_id' => $order_id,
-                            'type' => $scoring_type->name,
-                            'status' => 'new',
-                            'created' => date('Y-m-d H:i:s')
-                        );
-                        $this->scorings->add_scoring($add_scoring);
+                            'status' => 7,
+                            'issuance_date_from' => $issuance_date_from
+                        ]);
+
+                        if($count_closed_contracts >= 9){
+                            $this->design->assign('error', 'Ограничение на количество контрактов (не более 9 за один календарный год)');
+                            exit;
+                        }
+
                     }
+
+                    $amount = $this->request->post('amount', 'integer');
+                    $period = $this->request->post('period', 'integer');
+                    $card_id = $this->request->post('card_id', 'integer');
+
+                    $service_insurance = $this->request->post('service_insurance', 'integer');
+                    $service_reason = $this->request->post('service_reason', 'integer');
+                    $service_sms = $this->request->post('service_sms', 'integer');
+
+                    $juicescore_session_id = $this->request->post('juicescore_session_id');
+                    $local_time = $this->request->post('local_time');
+
+                    setcookie('loan_amount', null);
+                    setcookie('loan_period', null);
+
+                    $client_status = $this->users->check_client_status($this->user);
+
+                    $this->users->update_user($this->user->id, array(
+                        'service_insurance' => $service_insurance,
+                        'service_reason' => $service_reason,
+                        'service_sms' => $service_sms,
+                        'client_status' => $client_status
+                    ));
+
+                    $order = array(
+                        'amount' => $amount,
+                        'period' => $period,
+                        'card_id' => $card_id,
+                        'date' => date('Y-m-d H:i:s'),
+                        'user_id' => $this->user->id,
+                        'status' => 0,
+                        'ip' => $_SERVER['REMOTE_ADDR'],
+                        'first_loan' => 0,
+                        'juicescore_session_id' => $juicescore_session_id,
+                        'local_time' => $local_time,
+                        'client_status' => $client_status,
+                    );
+
+                    if(isset($_COOKIE['promo_code']))
+                    {
+                        $promocode = $this->PromoCodes->get_code_by_code($_COOKIE['promo_code']);
+
+                        if(!empty($promocode))
+                            $order['promocode_id'] = $promocode->id;
+                    }
+
+                    $order['utm_source'] = $_COOKIE['utm_source'];
+                    $order['webmaster_id'] = $_COOKIE["wm_id"];
+                    $order['click_hash'] = $_COOKIE["clickid"];
+
+
+                    // проверяем возможность автоповтора
+                    $order['autoretry'] = 1;
+
+                    if(isset($_COOKIE['promo_code']))
+                    {
+                        $promocode = $this->PromoCodes->get_code_by_code($_COOKIE['promo_code']);
+
+                        if(!empty($promocode))
+                            $order['promocode_id'] = $promocode->id;
+                    }
+
+                    $order_id = $this->orders->add_order($order);
+
+                    // добавляем задание для проведения активных скорингов
+                    $scoring_types = $this->scorings->get_types();
+                    foreach ($scoring_types as $scoring_type) {
+                        if ($scoring_type->active && empty($scoring_type->is_paid)) {
+                            $add_scoring = array(
+                                'user_id' => $this->user->id,
+                                'order_id' => $order_id,
+                                'type' => $scoring_type->name,
+                                'status' => 'new',
+                                'created' => date('Y-m-d H:i:s')
+                            );
+                            $this->scorings->add_scoring($add_scoring);
+                        }
+                    }
+
+                    if(!empty($order['utm_source']) && $order['utm_source'] == 'leadstech')
+                        $this->PostBackCron->add(['order_id' => $order_id, 'status' => 0, 'goal_id' => 3]);
+
+
+                    header('Location: /account');
+                    exit;
                 }
-
-                if(!empty($order['utm_source']) && $order['utm_source'] == 'leadstech')
-                    $this->PostBackCron->add(['order_id' => $order_id, 'status' => 0, 'goal_id' => 3]);
-
-
-                header('Location: /account');
-                exit;
             }
 
         }
@@ -286,6 +485,7 @@ class AccountController extends Controller
                         if ($order->contract->prolongation < 5 || ($order->contract->prolongation >= 5 && $order->contract->sold)) {
                             if ($order->contract->loan_percents_summ > 0) {
                                 if ($percents_sum < $order->contract->amount * $max_loan_value) {
+                                    // $prolongation_amount = $order->contract->loan_percents_summ + $this->settings->prolongation_amount;
                                     $prolongation_amount = $order->contract->loan_percents_summ + $order->contract->loan_peni_summ + $this->settings->prolongation_amount;
                                 }
                             }
@@ -374,6 +574,8 @@ class AccountController extends Controller
             }
 
             $this->design->assign('warning_card', $warning_card);
+            $this->design->assign('loan_doctor_steps', $this->loan_doctor_steps);
+            $this->design->assign('loan_doctor_steps_count', count($this->loan_doctor_steps));
             return $this->design->fetch('account/home.tpl');
         }
     }
