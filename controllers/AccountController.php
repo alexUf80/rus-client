@@ -180,10 +180,10 @@ class AccountController extends Controller
 
 
                     // // Реккурентное списание суммы за кредитный доктор
-                    // $xml = $this->best2pay->recurring_by_token($contract->card_id, $this->loan_doctor_payment[$loan_doctor_step], 'Кредитный доктор');
-                    // $status = (string)$xml->state;
+                    $xml = $this->best2pay->recurring_by_token($contract->card_id, $this->loan_doctor_payment[$loan_doctor_step], 'Кредитный доктор');
+                    $status = (string)$xml->state;
 
-                    $status = 'APPROVED';
+                    // $status = 'APPROVED';
 
                     if ($status == 'APPROVED') {
                         $transaction = $this->transactions->get_register_id_transaction($xml->order_id);
@@ -204,9 +204,9 @@ class AccountController extends Controller
 
 
                         // // Выдача денег по кредитному доктору
-                        // $res = $this->best2pay->pay_contract_with_register($contract->id, $contract->service_insurance, $contract->service_sms);
+                        $res = $this->best2pay->pay_contract_with_register($contract->id, $contract->service_insurance, $contract->service_sms);
 
-                        $res = 'APPROVED';
+                        // $res = 'APPROVED';
                         if ($res == 'APPROVED') {
 
                             $ob_date = new DateTime();
