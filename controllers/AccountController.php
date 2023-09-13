@@ -4,6 +4,18 @@ class AccountController extends Controller
 
 
     private $loan_doctor_steps = array(
+        1 => 1000,
+        2 => 2000,
+        3 => 3000,
+        4 => 4000,
+        5 => 5000,
+        6 => 6000,
+        7 => 7000,
+        8 => 8000,
+        9 => 9000,
+    );
+
+    private $loan_doctor_payment = array(
         1 => 2000,
         2 => 3000,
         3 => 4000,
@@ -12,19 +24,7 @@ class AccountController extends Controller
         6 => 7000,
         7 => 8000,
         8 => 9000,
-        9 => 10000
-    );
-
-    private $loan_doctor_payment = array(
-        1 => 3000,
-        2 => 4000,
-        3 => 5000,
-        4 => 6000,
-        5 => 7000,
-        6 => 8000,
-        7 => 9000,
-        8 => 10000,
-        9 => 11000
+        9 => 10000,
     );
 
     public function fetch()
@@ -120,34 +120,17 @@ class AccountController extends Controller
                         'approve_date' => date('Y-m-d H:i:s'),
                     );
 
-
-
-
-
-
                     $order['utm_source'] = $_COOKIE['utm_source'];
                     $order['webmaster_id'] = $_COOKIE["wm_id"];
                     $order['click_hash'] = $_COOKIE["clickid"];
 
-
-
                     $order['autoretry'] = 1;
-
-
-
-
-
-
-
 
 
                     $order_id = $this->orders->add_order($order);
 
                     $order = $this->orders->get_order($order_id);
                     $new_contract = array(
-
-
-
 
                         'order_id' => $order_id,
                         'user_id' => $order->user_id,
@@ -157,7 +140,7 @@ class AccountController extends Controller
                         'period' => $order->period,
                         'create_date' => date('Y-m-d H:i:s'),
                         'accept_date' => date('Y-m-d H:i:s'),
-                        'status' => 0,
+                        'status' => 1,
                         'base_percent' => $this->settings->loan_default_percent,
                         'charge_percent' => $this->settings->loan_charge_percent,
                         'peni_percent' => $this->settings->loan_peni,
@@ -175,14 +158,14 @@ class AccountController extends Controller
                     }
                     
                     $contract_id = $this->contracts->add_contract($new_contract);
+                    $contract = $this->contracts->get_contract($contract_id);
 
-                    $this->orders->update_order($order_id, array('contract_id' => $contract_id));
+                    $this->orders->update_order($order_id, array('contract_id' => $contract_id));                    
 
-
-                    // // Реккурентное списание суммы за кредитный доктор
-                    $xml = $this->best2pay->recurring_by_token($contract->card_id, $this->loan_doctor_payment[$loan_doctor_step], 'Кредитный доктор');
+                   // // Реккурентное списание суммы за кредитный доктор
+                    $xml = $this->BestPay->recurring_by_token($contract->card_id, $this->loan_doctor_payment[$loan_doctor_step], 'Кредитный доктор');
                     $status = (string)$xml->state;
-
+                    
                     // $status = 'APPROVED';
 
                     if ($status == 'APPROVED') {
@@ -200,11 +183,8 @@ class AccountController extends Controller
                             'transaction_id' => $transaction->id,
                         ));
 
-
-
-
                         // // Выдача денег по кредитному доктору
-                        $res = $this->best2pay->pay_contract_with_register($contract->id, $contract->service_insurance, $contract->service_sms);
+                        $res = $this->BestPay->pay_contract_with_register($contract->id, $contract->service_insurance, $contract->service_sms);
 
                         // $res = 'APPROVED';
                         if ($res == 'APPROVED') {
@@ -212,8 +192,6 @@ class AccountController extends Controller
                             $ob_date = new DateTime();
                             $ob_date->add(DateInterval::createFromDateString($contract->period . ' days'));
                             $return_date = $ob_date->format('Y-m-d H:i:s');
-
-                            $contract = $this->contracts->get_contract($contract_id);
 
                             $this->contracts->update_contract($contract->id, array(
                                 'status' => 2,
@@ -232,20 +210,79 @@ class AccountController extends Controller
                                 'created' => date('Y-m-d H:i:s'),
                             ));
 
-                            // if($this->config->send_onec == 1)
-                            //     Onec::sendRequest(['method' => 'send_loan', 'params' => $contract->order_id]);
+                            // Снимаем страховку если есть
+                            if (!empty($contract->service_insurance)) 
+                            {
+                                $insurance_cost = $this->insurances->get_insurance_cost($contract->amount);
+
+                                if ($insurance_cost > 0)
+                                {
+                                    $insurance_amount = $insurance_cost * 100;
+            
+                                    $description = 'Страховой полис';
+            
+                                    $xml = $this->BestPay->recurring_by_token($contract->card_id, $insurance_amount, $description);
+                                    $status = (string)$xml->state;
+            
+                                    if ($status == 'APPROVED') {
+                                        $transaction = $this->transactions->get_register_id_transaction($xml->order_id);
+                                        file_put_contents($this->config->root_dir.'files/sas.txt',$transaction->id);
+                                        
+                                        // $max_service_value = $this->operations->max_service_number();
+                                        
+                                        file_get_contents($this->config->root_dir.'files/sas.txt');
+                                        file_put_contents($this->config->root_dir.'files/sas.txt',' --- '.$max_service_value);
+
+                                        $operation_id = $this->operations->add_operation(array(
+                                            'contract_id' => $contract->id,
+                                            'user_id' => $contract->user_id,
+                                            'order_id' => $contract->order_id,
+                                            'type' => 'INSURANCE',
+                                            'amount' => $insurance_cost,
+                                            'created' => date('Y-m-d H:i:s'),
+                                            'transaction_id' => $transaction->id,
+                                            'service_number' => $max_service_value,
+                                        ));
+            
+                                        $dt = new DateTime();
+                                        $dt->add(new DateInterval('P1M'));
+                                        $end_date = $dt->format('Y-m-d 23:59:59');
+
+                                        try{
+                                            $contract->insurance = new InsurancesORM();
+                                            $contract->insurance->amount = $insurance_cost;
+                                            $contract->insurance->user_id = $contract->user_id;
+                                            $contract->insurance->order_id = $contract->order_id;
+                                            $contract->insurance->start_date = date('Y-m-d 00:00:00', time() + (1 * 86400));
+                                            $contract->insurance->end_date = $end_date;
+                                            $contract->insurance->operation_id = $operation_id;
+                                            $contract->insurance->save();
+
+                                            $contract->insurance->number = InsurancesORM::create_number($contract->insurance->id);
+
+                                            InsurancesORM::where('id', $contract->insurance->id)->update(['number' => $contract->insurance->number]);
+                                        }catch (Exception $e)
+                                        {
+
+                                        }
+
+                                            $this->contracts->update_contract($contract->id, array(
+                                            'insurance_id' => $contract->insurance_id,
+                                            // 'loan_body_summ' => $contract->amount + $insurance_cost
+                                            // 'loan_body_summ' => $contract->amount
+                                        ));
+
+                                        //создаем документы для страховки
+                                        // $this->create_document('POLIS', $contract);
+                                        // $this->create_document('KID', $contract);
+                                        
+                                    }
+                                }
+                            }
 
                         }
 
-
-
-
-
                     }
-
-                    
-
-
 
                     $this->users->update_user($this->user->id, array(
                         'loan_doctor' => $loan_doctor_step
