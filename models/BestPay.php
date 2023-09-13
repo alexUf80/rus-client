@@ -947,7 +947,7 @@ class BestPay extends Core
 
     public function pay_contract_with_register($contract_id, $insurance = false, $sms = false)
     {
-        echo 'START ' . __METHOD__ . '<br />';
+        // echo 'START ' . __METHOD__ . '<br />';
         $sector = $this->sectors['PAY_CREDIT'];
         $password = $this->passwords[$sector];
 

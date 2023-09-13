@@ -210,6 +210,106 @@ class AccountController extends Controller
                                 'created' => date('Y-m-d H:i:s'),
                             ));
 
+                            // Создаем документы для КД
+                                
+                            $this->user = $this->users->get_user($contract->user_id);
+    
+                            $passport = str_replace([' ','-'], '', $this->user->passport_serial);
+                            $passport_serial = substr($passport, 0, 4);
+                            $passport_number = substr($passport, 4, 6);
+    
+                            $params = array(
+                                'lastname' => $this->user->lastname,
+                                'firstname' => $this->user->firstname,
+                                'patronymic' => $this->user->patronymic,
+                                'gender' => $this->user->gender,
+                                'phone' => $this->user->phone_mobile,
+                                'birth' => $this->user->birth,
+                                'birth_place' => $this->user->birth_place,
+                                'inn' => $this->user->inn,
+                                'snils' => $this->user->snils,
+                                'email' => $this->user->email,
+                                'created' => $this->user->created,
+                
+                                'passport_serial' => $passport_serial,
+                                'passport_number' => $passport_number,
+                                'passport_date' => $this->user->passport_date,
+                                'passport_code' => $this->user->subdivision_code,
+                                'passport_issued' => $this->user->passport_issued,
+                
+                                // 'regindex' => $this->user->Regindex,
+                                // 'regregion' => $this->user->Regregion,
+                                // 'regcity' => $this->user->Regcity,
+                                // 'regstreet' => $this->user->Regstreet,
+                                // 'reghousing' => $this->user->Reghousing,
+                                // 'regbuilding' => $this->user->Regbuilding,
+                                // 'regroom' => $this->user->Regroom,
+                                // 'faktindex' => $this->user->Faktindex,
+                                // 'faktregion' => $this->user->Faktregion,
+                                // 'faktcity' => $this->user->Faktcity,
+                                // 'faktstreet' => $this->user->Faktstreet,
+                                // 'fakthousing' => $this->user->Fakthousing,
+                                // 'faktbuilding' => $this->user->Faktbuilding,
+                                // 'faktroom' => $this->user->Faktroom,
+                
+                                'profession' => $this->user->profession,
+                                'workplace' => $this->user->workplace,
+                                'workphone' => $this->user->workphone,
+                                // 'chief_name' => $this->user->chief_name,
+                                // 'chief_position' => $this->user->chief_position,
+                                // 'chief_phone' => $this->user->chief_phone,
+                                'income' => $this->user->income,
+                                'expenses' => $this->user->expenses,
+                
+                                'first_loan_amount' => $this->user->first_loan_amount,
+                                'first_loan_period' => $this->user->first_loan_period,
+                
+                                'number' => $contract->order_id,
+                                'create_date' => date('Y-m-d'),
+                                'asp' => $this->user->sms,
+                                'accept_code' => $contract->accept_code,
+                            );
+                            if (!empty($this->user->contact_person_name))
+                            {
+                                $params['contactperson_phone'] = $this->user->contact_person_phone;
+                
+                                $contact_person_name = explode(' ', $this->user->contact_person_name);
+                                $params['contactperson_name'] = $this->user->contact_person_name;
+                                $params['contactperson_lastname'] = isset($contact_person_name[0]) ? $contact_person_name[0] : '';
+                                $params['contactperson_firstname'] = isset($contact_person_name[1]) ? $contact_person_name[1] : '';
+                                $params['contactperson_patronymic'] = isset($contact_person_name[2]) ? $contact_person_name[2] : '';
+                            }
+                            if (!empty($this->user->contact_person2_name))
+                            {
+                                $params['contactperson2_phone'] = $this->user->contact_person_phone;
+                
+                                $contact_person2_name = explode(' ', $this->user->contact_person2_name);
+                                $params['contactperson2_name'] = $this->user->contact_person2_name;
+                                $params['contactperson2_lastname'] = isset($contact_person2_name[0]) ? $contact_person2_name[0] : '';
+                                $params['contactperson2_firstname'] = isset($contact_person2_name[1]) ? $contact_person2_name[1] : '';
+                                $params['contactperson2_patronymic'] = isset($contact_person2_name[2]) ? $contact_person2_name[2] : '';
+                            }
+    
+                            // Согласие на ОПД
+                            $this->documents->create_document(array(
+                                'user_id' => $this->user->id,
+                                'order_id' => $contract->order_id,
+                                'contract_id' => $contract->id,
+                                'type' => 'SOGLASIE_OPD',
+                                'params' => json_encode($params),
+                            ));
+                            
+                            // Заявление на получение займа
+                            $this->documents->create_document(array(
+                                'user_id' => $this->user->id,
+                                'order_id' => $contract->order_id,
+                                'contract_id' => $contract->id,
+                                'type' => 'ANKETA_PEP',
+                                'params' => json_encode($params),
+                            ));
+
+
+
                             // Снимаем страховку если есть
                             if (!empty($contract->service_insurance)) 
                             {
@@ -229,7 +329,7 @@ class AccountController extends Controller
                                         file_put_contents($this->config->root_dir.'files/sas.txt',$transaction->id);
                                         
                                         // $max_service_value = $this->operations->max_service_number();
-                                        
+
                                         file_get_contents($this->config->root_dir.'files/sas.txt');
                                         file_put_contents($this->config->root_dir.'files/sas.txt',' --- '.$max_service_value);
 
@@ -273,8 +373,8 @@ class AccountController extends Controller
                                         ));
 
                                         //создаем документы для страховки
-                                        // $this->create_document('POLIS', $contract);
-                                        // $this->create_document('KID', $contract);
+                                        $this->create_document('POLIS', $contract);
+                                        $this->create_document('KID', $contract);
                                         
                                     }
                                 }
@@ -615,6 +715,66 @@ class AccountController extends Controller
             $this->design->assign('loan_doctor_steps_count', count($this->loan_doctor_steps));
             return $this->design->fetch('account/home.tpl');
         }
+    }
+
+    public function create_document($document_type, $contract)
+    {
+        $ob_date = new DateTime();
+        $ob_date->add(DateInterval::createFromDateString($contract->period . ' days'));
+        $return_date = $ob_date->format('Y-m-d H:i:s');
+
+        $return_amount = round($contract->amount + $contract->amount * $contract->base_percent * $contract->period / 100, 2);
+        $return_amount_rouble = (int)$return_amount;
+        $return_amount_kop = ($return_amount - $return_amount_rouble) * 100;
+
+        $contract_order = $this->orders->get_order((int)$contract->order_id);
+
+        $insurance_cost = $this->insurances->get_insurance_cost($contract_order);
+
+        $params = array(
+            'lastname' => $contract_order->lastname,
+            'firstname' => $contract_order->firstname,
+            'patronymic' => $contract_order->patronymic,
+            'phone' => $contract_order->phone_mobile,
+            'birth' => $contract_order->birth,
+            'number' => $contract->number,
+            'contract_date' => date('Y-m-d H:i:s'),
+            'created' => date('Y-m-d H:i:s'),
+            'return_date' => $return_date,
+            'return_date_day' => date('d', strtotime($return_date)),
+            'return_date_month' => date('m', strtotime($return_date)),
+            'return_date_year' => date('Y', strtotime($return_date)),
+            'return_amount' => $return_amount,
+            'return_amount_rouble' => $return_amount_rouble,
+            'return_amount_kop' => $return_amount_kop,
+            'base_percent' => $contract->base_percent,
+            'amount' => $contract->amount,
+            'period' => $contract->period,
+            'return_amount_percents' => round($contract->amount * $contract->base_percent * $contract->period / 100, 2),
+            'passport_serial' => $contract_order->passport_serial,
+            'passport_date' => $contract_order->passport_date,
+            'subdivision_code' => $contract_order->subdivision_code,
+            'passport_issued' => $contract_order->passport_issued,
+            'passport_series' => substr(str_replace(array(' ', '-'), '', $contract_order->passport_serial), 0, 4),
+            'passport_number' => substr(str_replace(array(' ', '-'), '', $contract_order->passport_serial), 4, 6),
+            'asp' => $contract->accept_code,
+            'insurance_summ' => $insurance_cost,
+        );
+
+        $params['user'] = $this->users->get_user($contract->user_id);
+        $params['order'] = $this->orders->get_order($contract->order_id);
+        $params['contract'] = $contract;
+
+        $params['pan'] = $this->cards->get_card($contract->card_id)->pan;
+
+        $this->documents->create_document(array(
+            'user_id' => $contract->user_id,
+            'order_id' => $contract->order_id,
+            'contract_id' => $contract->id,
+            'type' => $document_type,
+            'params' => json_encode($params),
+        ));
+
     }
 
 }
