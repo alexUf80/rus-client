@@ -69,15 +69,15 @@ console.log('init')
                 var is_confirmed_insurance = $('input[id="service_insurance"]').val();
                 var html = '';
 
-                if(is_confirmed_insurance == 0)
-                {
-                    html += 'Необходимо подписать договор страхования';
-                }
+                // if(is_confirmed_insurance == 0)
+                // {
+                //     html += 'Необходимо подписать договор страхования';
+                // }
 
-                if(is_confirmed_prolongation == 0)
-                {
-                    html += '<br>Необходимо подписать заявление на пролонгацию займа';
-                }
+                // if(is_confirmed_prolongation == 0)
+                // {
+                //     html += '<br>Необходимо подписать заявление на пролонгацию займа';
+                // }
                 
                 if(html != ''){
                     $('.payment-block-error').show();

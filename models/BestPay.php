@@ -883,4 +883,165 @@ class BestPay extends Core
         $this->db->query($query);
     }
 
+    public function recurring_by_token($card_id, $amount, $description)
+    {
+        $amount = round($amount, 0);
+        $sector = $this->sectors['RECURRENT'];
+        $password = $this->passwords[$sector];
+        if (!($card = $this->cards->get_card($card_id)))
+            return false;
+        if (!($user = $this->users->get_user((int)$card->user_id)))
+            return false;
+
+        // регистрируем оплату
+        $data = array(
+            'sector' => $sector,
+            'amount' => $amount,
+            'currency' => $this->currency_code,
+            'reference' => $user->id,
+            'description' => $description,
+            'phone' => $user->phone_mobile,
+            'email' => $user->email,
+            'first_name' => $user->firstname,
+            'last_name' => $user->lastname,
+            'patronymic' => $user->patronymic,
+        );
+        $data['signature'] = $this->get_signature(array($data['sector'], $data['amount'], $data['currency'], $password));
+        $b2p_order = $this->send('Register', $data);
+        $xml = simplexml_load_string($b2p_order);
+        $b2p_order_id = (string)$xml->id;
+        $data = array(
+            'sector' => $sector,
+            'id' => $b2p_order_id,
+            'token' => $card->token,
+        );
+        $data['signature'] = $this->get_signature(array(
+            $data['sector'],
+            $data['id'],
+            $data['token'],
+            $password
+        ));
+
+        $recurring = $this->send('RecurringByToken', $data);
+        $xml = simplexml_load_string($recurring);
+        $status = (string)$xml->state;
+        $operation = (string)$xml->id;
+        $reason_code = (string)$xml->reason_code;
+
+
+        $transaction_id = $this->transactions->add_transaction(array(
+            'user_id' => $user->id,
+            'amount' => $amount,
+            'sector' => $sector,
+            'body' => json_encode($data),
+            'register_id' => $b2p_order_id,
+            'operation' => $operation,
+            'reason_code' => $reason_code,
+            'reference' => $user->id,
+            'description' => $description,
+            'created' => date('Y-m-d H:i:s'),
+            'callback_response' => $recurring
+        ));
+        return $xml;
+    }
+
+    public function pay_contract_with_register($contract_id, $insurance = false, $sms = false)
+    {
+        // echo 'START ' . __METHOD__ . '<br />';
+        $sector = $this->sectors['PAY_CREDIT'];
+        $password = $this->passwords[$sector];
+
+
+        if (!($contract = $this->contracts->get_contract($contract_id)))
+            return false;
+
+        if ($contract->status != 1)
+            return false;
+
+        $this->contracts->update_contract($contract->id, array('status' => 9));
+
+        if (!($user = $this->users->get_user((int)$contract->user_id)))
+            return false;
+
+
+        if (!($card = $this->cards->get_card((int)$contract->card_id)))
+            return false;
+
+        if (!empty($insurance)) {
+            $insurance_cost = $this->insurances->get_insurance_cost($contract->amount);
+            // $contract->amount += $insurance_cost;
+        }
+        
+        if (!empty($sms)) {
+            // $contract->amount += 149;
+        }
+
+        $fio = $user->lastname . ' ' . $user->firstname . ' ' . $user->patronymic;
+        $description = 'Выдача займа по договору ' . $contract->number . ' ' . $fio;
+
+        $data = array(
+            'sector' => $sector,
+            'amount' => $contract->amount * 100,
+            'currency' => $this->currency_code,
+            'description' => $description,
+            'reference' => $contract->id,
+        );
+        $data['signature'] = $this->get_signature(array(
+            $data['sector'],
+            $data['amount'],
+            $data['currency'],
+            $password
+        ));
+
+        $b2p_order = $this->send('Register', $data);
+        $xml = simplexml_load_string($b2p_order);
+        $b2p_order_id = (string)$xml->id;
+        //echo __FILE__.' '.__LINE__.'<br /><pre>';echo htmlspecialchars($b2p_order);echo '</pre><hr />';
+        if (empty($b2p_order))
+            return 'ORDER UNREGISTERED';
+
+        $data = array(
+            'sector' => $sector,
+            'amount' => $contract->amount * 100,
+            'currency' => $this->currency_code,
+            'reference' => $contract->id,
+            'token' => $card->token,
+            'id' => $b2p_order_id,
+        );
+        $data['signature'] = $this->get_signature(array(
+            $data['sector'],
+            $data['id'],
+            $data['amount'],
+            $data['currency'],
+            $data['token'],
+            $password
+        ));
+
+        $p2pcredit = array(
+            'sector' => $sector,
+            'contract_id' => $contract->id,
+            'user_id' => $contract->user_id,
+            'date' => date('Y-m-d H:i:s'),
+            'body' => $data,
+            'register_id' => $b2p_order_id,
+        );
+
+        if ($p2pcredit_id = $this->add_p2pcredit($p2pcredit)) {
+            $response = $this->send('P2PCredit', $data, 'gateweb');
+            //echo __FILE__.' '.__LINE__.'<br /><pre>';echo(htmlspecialchars($response));echo '</pre><hr />';
+            $xml = simplexml_load_string($response);
+            $status = (string)$xml->state;
+
+            $this->update_p2pcredit($p2pcredit_id, array(
+                'response' => $response,
+                'status' => $status,
+                'operation_id' => (string)$xml->id,
+                'complete_date' => date('Y-m-d H:i:s'),
+            ));
+
+            return $status;
+        }
+
+
+    }
 }
