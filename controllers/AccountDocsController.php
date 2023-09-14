@@ -49,6 +49,9 @@ class AccountDocsController extends Controller
 //echo __FILE__.' '.__LINE__.'<br /><pre>';var_dump($last_order);echo '</pre><hr />';        
         $this->design->assign('documents', $documents);
 
+        $pril_1_docs = $this->documents->get_documents(array('user_id' => $this->user->id, 'client_visible'=>1, 'type'=>'PRIL_1'));
+        $this->design->assign('pril_1_docs', $pril_1_docs);
+
         $receipts = $this->Receipts->get_receipts($this->user->id);
 
         if(!empty($receipts)){
