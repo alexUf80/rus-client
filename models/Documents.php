@@ -104,6 +104,7 @@ class Documents extends Core
 		$order_id_filter = '';
 		$contract_id_filter = '';
 		$client_visible_filter = '';
+		$type_filter = '';
         $keyword_filter = '';
         $limit = 1000;
 		$page = 1;
@@ -122,6 +123,9 @@ class Documents extends Core
 
         if (isset($filter['client_visible']))
             $client_visible_filter = $this->db->placehold("AND client_visible = ?", (int)$filter['client_visible']);
+
+        if (isset($filter['type']))
+            $type_filter = $this->db->placehold("AND type = ?", $filter['type']);
 
 		if(isset($filter['keyword']))
 		{
@@ -147,6 +151,7 @@ class Documents extends Core
         		$order_id_filter
         		$contract_id_filter
                 $client_visible_filter
+                $type_filter
  	            $keyword_filter
             ORDER BY id ASC
             $sql_limit

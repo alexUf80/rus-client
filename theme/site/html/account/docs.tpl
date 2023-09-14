@@ -63,6 +63,17 @@
                                                 </a>
                                             </li>
                                     {/foreach}
+
+                                    <hr>
+                                    {foreach $pril_1_docs as $pril_1_doc}
+                                        <li class="docs_list_item">
+                                            <a href="{$config->root_url}/document/{$user->id}/{$pril_1_doc->id}"
+                                                class="docs_list_link" target="_blank">
+                                                {$pril_1_doc->name|escape}
+                                            </a>
+                                        </li>
+                                    {/foreach}
+                                    
                                     {if $recovers == 1}
                                         <li class="docs_list_item">
                                             <a href="theme/site/new/docs/Уведомление_о_привлечении_2_лица_для_взыскания_задолженности.pdf"
