@@ -16,6 +16,7 @@ class Documents extends Core
         'FIND_REASON_FOR_REFUSAL' =>  'find_reason_for_refusal.tpl',
         'ZAYAVLENIE_PROLONGATION' => 'zayavlenie_prolongation.tpl',
         'PRIL_1' => 'pril_1.tpl',
+        'DOP_DOCTOR' => 'dop_doctor.tpl',
     );
 
 
@@ -33,6 +34,7 @@ class Documents extends Core
         'FIND_REASON_FOR_REFUSAL' =>  'Причина отказа',
         'ZAYAVLENIE_PROLONGATION' => 'Заявление о изменении срока возврата потребительского займа',
         'PRIL_1' => 'Приложение 1',
+        'DOP_DOCTOR' => 'Дополнительное соглашение по Кредитному доктору',
     );
 
     private $client_visible = array(
@@ -49,6 +51,7 @@ class Documents extends Core
         'FIND_REASON_FOR_REFUSAL' =>  1,
         'ZAYAVLENIE_PROLONGATION' => 1,
         'PRIL_1' => 1,
+        'DOP_DOCTOR' => 1,
     );
 
 
