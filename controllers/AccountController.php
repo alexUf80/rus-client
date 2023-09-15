@@ -79,6 +79,7 @@ class AccountController extends Controller
             if (!empty($_SESSION['looker_mode']))
                 return false;
 
+            // КРЕДИТНЫЙ ДОКТОР
             if ($this->request->post('loan_doctor_step', 'integer' !== null)) {
 
                 if (!empty($user_order) && in_array($user_order->status, array(0, 1, 2, 4, 5))) {
@@ -376,6 +377,11 @@ class AccountController extends Controller
                                         $this->create_document('POLIS', $contract);
                                         $this->create_document('KID', $contract);
                                         
+                                        $this->create_document('IND_USLOVIYA_NL', $contract);
+                                        $this->create_document('PRIL_1', $contract);
+
+                                        $this->create_document('DOP_DOCTOR', $contract);
+                                        
                                     }
                                 }
                             }
@@ -389,6 +395,7 @@ class AccountController extends Controller
                     ));
                 }
             }
+            // ПОВТОРНАЯ ЗАЯВКА
             else{
                 $user_orders = $this->orders->get_orders(array('user_id' => $this->user->id));
                 $user_order = reset($user_orders);
@@ -510,8 +517,15 @@ class AccountController extends Controller
         } else {
             $orders = $this->orders->get_orders(array('user_id' => $this->user->id, 'sort' => 'date_desc'));
 
-            $order = reset($orders);
-
+            foreach ($orders as $o) {
+                if($o->client_status == 'kd'){
+                    continue;
+                }
+                $order = $o;
+                break;
+            }
+            
+            
         }
 
         if (!empty($order)) {
