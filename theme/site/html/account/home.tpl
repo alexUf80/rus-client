@@ -361,6 +361,7 @@
                 {* кредитный доктор *}
                 {*}
                 {*}
+                {*}
                 {if $order->status == 3 || $order->status == 8}
                     {if !$cards}
                         <div class="-fs-24 -gil-b -red text-center pb-3">
@@ -793,8 +794,10 @@
                 {/if}
                 {*}
                 {*}
+                {*}
 
                 {* отказ *}
+                {*}
                 {*}
                 {if ($order->status == 3 || $order->status == 8)}
                     <div class="new_order_box " data-status="3" data-order="{$order->order_id}">
@@ -846,6 +849,7 @@
                         </div>
                     </div>
                 {/if}
+                {*}
                 {*}
 
                 {* Займ выдан *}
