@@ -376,8 +376,11 @@ class AccountController extends Controller
                                         //создаем документы для страховки
                                         $this->create_document('POLIS', $contract);
                                         $this->create_document('KID', $contract);
-
+                                        
+                                        $this->create_document('IND_USLOVIYA_NL', $contract);
                                         $this->create_document('PRIL_1', $contract);
+
+                                        $this->create_document('DOP_DOCTOR', $contract);
                                         
                                     }
                                 }
