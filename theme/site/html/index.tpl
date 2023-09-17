@@ -215,7 +215,7 @@
   <link rel="stylesheet" href="theme/site/libs/jquery/jquery-ui/jquery-ui.min.css" />
   <link rel="stylesheet" href="theme/site/libs/jquery/jquery-ui/jquery-ui.theme.min.css" />
   <link rel="stylesheet" href="theme/site/css/common.css?v=1.10" />
-  <link rel="stylesheet" href="theme/site/css/custom.css?v=1.09" />
+  <link rel="stylesheet" href="theme/site/css/custom.css?v=1.10" />
   <link rel="preconnect" href="http://fonts.googleapis.com">
   <link rel="preconnect" href="http://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&family=Play:wght@400;700&display=swap" rel="stylesheet">
