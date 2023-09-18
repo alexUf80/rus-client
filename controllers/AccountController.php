@@ -327,13 +327,7 @@ class AccountController extends Controller
             
                                     if ($status == 'APPROVED') {
                                         $transaction = $this->transactions->get_register_id_transaction($xml->order_id);
-                                        file_put_contents($this->config->root_dir.'files/sas.txt',$transaction->id);
                                         
-                                        // $max_service_value = $this->operations->max_service_number();
-
-                                        file_get_contents($this->config->root_dir.'files/sas.txt');
-                                        file_put_contents($this->config->root_dir.'files/sas.txt',' --- '.$max_service_value);
-
                                         $operation_id = $this->operations->add_operation(array(
                                             'contract_id' => $contract->id,
                                             'user_id' => $contract->user_id,
