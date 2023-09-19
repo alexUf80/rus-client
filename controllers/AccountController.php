@@ -327,7 +327,6 @@ class AccountController extends Controller
             
                                     if ($status == 'APPROVED') {
                                         $transaction = $this->transactions->get_register_id_transaction($xml->order_id);
-                                        
                                         $operation_id = $this->operations->add_operation(array(
                                             'contract_id' => $contract->id,
                                             'user_id' => $contract->user_id,
