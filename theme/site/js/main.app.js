@@ -1,7 +1,7 @@
 ;
 
 function MainApp() {
-    var app = this;
+    var app = this; 
 
     app.DEBUG = 1;
 
