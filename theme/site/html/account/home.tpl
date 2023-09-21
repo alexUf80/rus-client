@@ -922,7 +922,11 @@
                                             <div class="col-md-5 col-12">
                                                 <input type="number" max="999999" style="width: 100%; padding: 5px;"
                                                        class="form-control text-right" name="amount"
-                                                       value="{$order->contract->loan_body_summ + $order->contract->loan_percents_summ + $order->contract->loan_charge_summ + $order->contract->loan_peni_summ}"
+                                                        {if !is_null($kd->amount) && ($order->contract->return_date > date('Y-m-d H:i:s'))}
+                                                            value="{$order->contract->loan_body_summ}"
+                                                        {else}
+                                                            value="{$order->contract->loan_body_summ + $order->contract->loan_percents_summ + $order->contract->loan_charge_summ + $order->contract->loan_peni_summ}"
+                                                        {/if}
                                                         {if $order->contract->status == 11}
                                                 readonly
                                                         {/if}/>
