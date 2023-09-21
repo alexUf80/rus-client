@@ -305,7 +305,7 @@ class AccountController extends Controller
                                 'user_id' => $this->user->id,
                                 'order_id' => $contract->order_id,
                                 'contract_id' => $contract->id,
-                                'type' => 'ANKETA_PEP',
+                                'type' => 'ANKETA_PEP_KD',
                                 'params' => json_encode($params),
                             ));
 
@@ -717,6 +717,12 @@ class AccountController extends Controller
                 }
 
             }
+
+            $kd = OperationsORM::query()
+                ->where('order_id', '=', $order->order_id)
+                ->where('type', '=', 'DOCTOR')
+                ->first();
+            $this->design->assign('kd', $kd);
 
             $this->design->assign('warning_card', $warning_card);
             $this->design->assign('loan_doctor_steps', $this->loan_doctor_steps);

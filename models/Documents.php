@@ -17,6 +17,7 @@ class Documents extends Core
         'ZAYAVLENIE_PROLONGATION' => 'zayavlenie_prolongation.tpl',
         'PRIL_1' => 'pril_1.tpl',
         'DOP_DOCTOR' => 'dop_doctor.tpl',
+        'ANKETA_PEP_KD' => 'zayavlenie_na_poluchenie_kd.tpl',
     );
 
 
@@ -35,6 +36,7 @@ class Documents extends Core
         'ZAYAVLENIE_PROLONGATION' => 'Заявление о изменении срока возврата потребительского займа',
         'PRIL_1' => 'Приложение 1',
         'DOP_DOCTOR' => 'Дополнительное соглашение по Кредитному доктору',
+        'ANKETA_PEP_KD' => 'Заявление-анкета на получение займа по услуге Кредитный доктор',
     );
 
     private $client_visible = array(
@@ -52,6 +54,7 @@ class Documents extends Core
         'ZAYAVLENIE_PROLONGATION' => 1,
         'PRIL_1' => 1,
         'DOP_DOCTOR' => 1,
+        'ANKETA_PEP_KD' => 1,
     );
 
 

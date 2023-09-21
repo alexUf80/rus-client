@@ -43,6 +43,14 @@ class DocumentController extends Controller
 
             if (in_array($document->type, ['DOP_RESTRUCT', 'GRAPH_RESTRUCT']))
                 $document->params['schedules']['payment_schedules'] = json_decode($document->params['schedules']['payment_schedules'], true);
+            
+            if (in_array($document->type, ['ANKETA_PEP_KD'])){
+                $kd = OperationsORM::query()
+                ->where('order_id', '=', $order->order_id)
+                ->where('type', '=', 'DOCTOR')
+                ->first();
+                $this->design->assign('kd_amount', $kd->amount);
+            }
 
             if (in_array($document->type, ['PRIL_1'])){
 
