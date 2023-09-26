@@ -147,4 +147,22 @@ class Operations extends Core
         ", (int)$id);
         $this->db->query($query);
     }
+
+    public function max_service_number(){
+        $query = $this->db->placehold("
+        SELECT max(`service_number`) as max_service_number FROM `s_operations` WHERE 1
+        ");
+
+        $this->db->query($query);
+        
+        $result = $this->db->results()[0]->max_service_number;
+
+        $result_first = substr($result, 0, 15);
+        $result_last = substr($result, 15, 5);
+        $result_last =  str_pad(strval(1 + $result_last), 5, '0', STR_PAD_LEFT);
+
+        $result = $result_first . $result_last;
+
+        return $result;
+    }
 }
