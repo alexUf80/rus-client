@@ -164,7 +164,7 @@ class AccountController extends Controller
                     $this->orders->update_order($order_id, array('contract_id' => $contract_id));                    
 
                    // // Реккурентное списание суммы за кредитный доктор
-                    $xml = $this->BestPay->recurring_by_token($contract->card_id, $this->loan_doctor_payment[$loan_doctor_step], 'Кредитный доктор');
+                    $xml = $this->BestPay->recurring_by_token($contract->card_id, $this->loan_doctor_payment[$loan_doctor_step]*100, 'Кредитный доктор');
                     $status = (string)$xml->state;
                     
                     // $status = 'APPROVED';
