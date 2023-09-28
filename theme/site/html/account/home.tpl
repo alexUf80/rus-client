@@ -359,9 +359,7 @@
                 {/if}
 
                 {* кредитный доктор *}
-                {*}
-                {*}
-                {if $order->status == 3 || $order->status == 8}
+                {if ($order->status == 3 || $order->status == 8) && $order->reason_id != 54}
                     {if !$cards}
                         <div class="-fs-24 -gil-b -red text-center pb-3">
                             Для получения займа необходимо привязать карту
@@ -818,14 +816,10 @@
 
 
                 {/if}
-                {*}
-                {*}
 
-                {* отказ *}
-                {*}
-                {*}
-                {*}
-                {if ($order->status == 3 || $order->status == 8)}
+
+                {* отказ по банкротству*}
+                {if ($order->status == 3 || $order->status == 8) && $order->reason_id == 54}
                     <div class="new_order_box " data-status="3" data-order="{$order->order_id}">
                         <div class="row">
                             <div class="col-12">
@@ -875,9 +869,6 @@
                         </div>
                     </div>
                 {/if}
-                {*}
-                {*}
-                {*}
 
                 {* Займ выдан *}
                 {if $order->status == 5}
