@@ -791,7 +791,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            {include file='agreement_list.tpl'}
+                                            {include file='agreement_list_kd.tpl'}
                                             <div class="form-group form-btn">
                                                 <a href="#" class="btn btn-secondary -fs-20 -fullwidth js-loan-repeat">Получить
                                                     займ</a>

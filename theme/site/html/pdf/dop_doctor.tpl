@@ -8,16 +8,14 @@
             <img src="{$config->root_dir}/theme/site/html/pdf/i/contract_qr2.png" width="250">
         </td>
         <td style="width: 36%" align="center">
-            <div><h2>ПОЛНАЯ СТОИМОСТЬ ПОТРЕБИТЕЛЬСКОГО КРЕДИТА (ЗАЙМА) СОСТАВЛЯЕТ:
+            <h2>ПОЛНАЯ СТОИМОСТЬ ПОТРЕБИТЕЛЬСКОГО КРЕДИТА (ЗАЙМА) СОСТАВЛЯЕТ:
                 {$base_percent*365}%
                 ({($base_percent*365)|percent_string|upper}) ПРОЦЕНТОВ ГОДОВЫХ</h2>
-            </div>
         </td>
         <td style="width: 36%;" align="center">
-            <div><h2>ПОЛНАЯ СТОИМОСТЬ ПОТРЕБИТЕЛЬСКОГО КРЕДИТА (ЗАЙМА) СОСТАВЛЯЕТ:
+            <h2>ПОЛНАЯ СТОИМОСТЬ ПОТРЕБИТЕЛЬСКОГО КРЕДИТА (ЗАЙМА) СОСТАВЛЯЕТ:
                 {$return_amount_percents} РУБЛЕЙ
                 {($return_amount_percents)|price_string|upper}</h2>
-            </div>
         </td>
     </tr>
 </table>
@@ -44,10 +42,6 @@
 
 </div>
 
-
-<div>
-
-</div>
 <table align="center">
     <tr>
         <td width="20%"></td>
