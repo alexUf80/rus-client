@@ -148,7 +148,10 @@
         </div>
     </div>
     {*}
+
+    {*}
     {if $order->contract}
+    {*}
         <div class="">
             <div class="form_row">
                 <div class="check">
@@ -156,7 +159,7 @@
                     <input type="checkbox" class="custom-checkbox js-need-check" id="ind_usloviya" value="1" checked/>
                     <label for="ind_usloviya" class="check_box -gil-m">
                         <a style="color: RGB(189, 148, 87)"
-                           href="{$config->root_url}/preview/ind_usloviya_nl?contract_id={$order->contract->id}"
+                           href="{$config->root_url}/preview/ind_usloviya_nl?user_id={$order->user_id}"
                            target="_blank">
                             <span>Индивидуальные условия</span>
                         </a>
@@ -164,24 +167,39 @@
                 </div>
             </div>
         </div>
-        {foreach $documents as $document}
-            {if $document->type == 'ANKETA_PEP'}
-                <div class="">
-                    <div class="form_row">
-                        <div class="check">
-                            <input type="hidden" class="custom-checkbox" name="pep" value="1"/>
-                            <input type="checkbox" class="custom-checkbox" id="pep" value="1" checked/>
-                            <label for="pep" class="check_box -gil-m">
-                                <a class="pep" style="color: RGB(189, 148, 87)"
-                                   href="/document/{$order->user_id}/{$document->id}?insurance=1"
-                                   target="_blank">
-                                    <span>Заявление на получение займа</span>
-                                </a>
-                            </label>
-                        </div>
-                    </div>
+
+        <div class="">
+            <div class="form_row">
+                <div class="check">
+                    <input type="hidden" class="custom-checkbox" name="pep" value="1"/>
+                    <input type="checkbox" class="custom-checkbox" id="pep" value="1" checked/>
+                    <label for="pep" class="check_box -gil-m">
+                        <a class="pep" style="color: RGB(189, 148, 87)"
+                            href="{$config->root_url}/preview/anketa_pep_kd?user_id={$order->user_id}"
+                            target="_blank">
+                            <span>Заявление на получение займа</span>
+                        </a>
+                    </label>
                 </div>
-            {/if}
-        {/foreach}
+            </div>
+        </div>
+
+        <div class="">
+            <div class="form_row">
+                <div class="check">
+                    <input type="hidden" class="custom-checkbox" name="pep" value="1"/>
+                    <input type="checkbox" class="custom-checkbox" id="pep" value="1" checked/>
+                    <label for="pep" class="check_box -gil-m">
+                        <a class="pep" style="color: RGB(189, 148, 87)"
+                            href="{$config->root_url}/preview/dop_doctor?user_id={$order->user_id}"
+                            target="_blank">
+                            <span>Дополнительное соглашение к заявлению на получение займа</span>
+                        </a>
+                    </label>
+                </div>
+            </div>
+        </div>
+    {*}
     {/if}
+    {*}
 </div>

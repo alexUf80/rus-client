@@ -208,13 +208,13 @@
             Серия (при наличии) и номер документа, удостоверяющего личность
         </td>
         <td style="width: 20%">
-            {$passport_serial} № {$passport_number}
+            {$passport_serial}
         </td>
         <td style="width: 20%">
             Дата выдачи
         </td>
         <td style="width: 20%">
-             {$passport_date}
+             {$passport_date|date}
         </td>
     </tr>
     <tr>
