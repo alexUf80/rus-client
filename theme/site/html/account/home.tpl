@@ -362,6 +362,7 @@
                 {*}
                 {*}
                 {*}
+                {*}
                 {if ($order->status == 3 || $order->status == 8) && $order->reason_id != 54}
                     {if !$cards}
                         <div class="-fs-24 -gil-b -red text-center pb-3">
@@ -819,6 +820,7 @@
 
 
                 {/if}
+                {*}
                 {*}
                 {*}
                 {*}
