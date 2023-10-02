@@ -359,32 +359,59 @@ class DocumentController extends Controller
         if (!($template_name = $this->documents->get_template_name($type)))
             return false;
 
-        if (!($contract_id = $this->request->get('contract_id', 'integer')))
+        if (!($contract_id = $this->request->get('contract_id', 'integer'))
+        && !($user_id = $this->request->get('user_id', 'integer')))
             return false;
 
-        if (!($contract = $this->contracts->get_contract($contract_id)))
-            return false;
+        if ($contract_id){
+            if (!($contract = $this->contracts->get_contract($contract_id)))
+                return false;
 
 
-        $ob_date = new DateTime();
-        $ob_date->add(DateInterval::createFromDateString($contract->period . ' days'));
-        $return_date = $ob_date->format('Y-m-d H:i:s');
+            $ob_date = new DateTime();
+            $ob_date->add(DateInterval::createFromDateString($contract->period . ' days'));
+            $return_date = $ob_date->format('Y-m-d H:i:s');
 
-        $return_amount = round($contract->amount + $contract->amount * $contract->base_percent * $contract->period / 100, 2);
-        $return_amount_rouble = (int)$return_amount;
-        $return_amount_kop = ($return_amount - $return_amount_rouble) * 100;
+            $return_amount = round($contract->amount + $contract->amount * $contract->base_percent * $contract->period / 100, 2);
+            $return_amount_rouble = (int)$return_amount;
+            $return_amount_kop = ($return_amount - $return_amount_rouble) * 100;
 
-        $contract_order = $this->orders->get_order((int)$contract->order_id);
+            $contract_order = $this->orders->get_order((int)$contract->order_id);
 
-        $insurance_cost = $this->insurances->get_insurance_cost($contract->amount);
+            $insurance_cost = $this->insurances->get_insurance_cost($contract->amount);
+
+            $user = $this->users->get_user($contract_order->user_id);
+
+        }
+        else{
+
+            $base_percent = 0.8;
+            $period = 14;
+            if (!($user = $this->users->get_user($user_id)))
+                return false;
+
+            $ob_date = new DateTime();
+            $ob_date->add(DateInterval::createFromDateString('14 days'));
+            $return_date = $ob_date->format('Y-m-d H:i:s');
+
+            $loan_doctor = $user->loan_doctor;
+            $loan_doctor_amount =  ($user->loan_doctor + 1) * 1000;
+            $return_amount = round($loan_doctor_amount + $loan_doctor_amount * $base_percent * $period / 100, 2);
+            $return_amount_rouble = (int)$return_amount;
+            $return_amount_kop = ($return_amount - $return_amount_rouble) * 100;
+
+            $contract_order = $this->orders->get_order((int)$contract->order_id);
+
+            $insurance_cost = $this->insurances->get_insurance_cost($loan_doctor_amount);
+        }
 
         $params = array(
-            'lastname' => $contract_order->lastname,
-            'firstname' => $contract_order->firstname,
-            'patronymic' => $contract_order->patronymic,
-            'phone' => $contract_order->phone_mobile,
-            'birth' => $contract_order->birth,
-            'number' => $contract->number,
+            'lastname' => $user->lastname,
+            'firstname' => $user->firstname,
+            'patronymic' => $user->patronymic,
+            'phone' => $user->phone_mobile,
+            'birth' => $user->birth,
+            'number' => '',
             'contract_date' => date('Y-m-d H:i:s'),
             'created' => date('Y-m-d H:i:s'),
             'return_date' => $return_date,
@@ -394,24 +421,34 @@ class DocumentController extends Controller
             'return_amount' => $return_amount,
             'return_amount_rouble' => $return_amount_rouble,
             'return_amount_kop' => $return_amount_kop,
-            'base_percent' => $contract->base_percent,
-            'amount' => $contract->amount,
-            'period' => $contract->period,
-            'return_amount_percents' => round($contract->amount * $contract->base_percent * $contract->period / 100, 2),
-            'passport_serial' => $contract_order->passport_serial,
-            'passport_date' => $contract_order->passport_date,
-            'subdivision_code' => $contract_order->subdivision_code,
-            'passport_issued' => $contract_order->passport_issued,
-            'passport_series' => substr(str_replace(array(' ', '-'), '', $contract_order->passport_serial), 0, 4),
-            'passport_number' => substr(str_replace(array(' ', '-'), '', $contract_order->passport_serial), 4, 6),
+            'base_percent' => $base_percent,
+            'amount' => $loan_doctor_amount,
+            'period' => $period,
+            'return_amount_percents' => round($loan_doctor_amount * $base_percent * $period / 100, 2),
+            'passport_serial' => $user->passport_serial,
+            'passport_date' => $user->passport_date,
+            'subdivision_code' => $user->subdivision_code,
+            'passport_issued' => $user->passport_issued,
+            'passport_series' => substr(str_replace(array(' ', '-'), '', $user->passport_serial), 0, 4),
+            'passport_number' => substr(str_replace(array(' ', '-'), '', $user->passport_serial), 4, 6),
+            'passport_date' => $user->passport_date,
+            'gender' => ( $user->gender == 'male' ? 'Мужской' : 'Женский'),
+            'birth_place' => $user->birth_place,
+            'phone_mobile' => $user->phone_mobile,
+            'email' => $user->email,
+            'workplace' => $user->workplace,
+            'snils' => $user->snils,
         );
 
-        $user = $this->users->get_user($contract_order->user_id);
-
         $regaddress = $this->Addresses->get_address($user->regaddress_id);
-        $regaddress_full = $regaddress->adressfull;
+            $regaddress_full = $regaddress->adressfull;
 
         $params['regaddress_full'] = $regaddress_full;
+
+        $faktaddress = $this->Addresses->get_address($user->faktaddress_id);
+            $faktaddress_full = $faktaddress->adressfull;
+
+        $params['faktaddress_full'] = $faktaddress_full;
 
 
         if ($type == 'POLIS') {
@@ -427,6 +464,8 @@ class DocumentController extends Controller
 
         foreach ($params as $param_name => $param_value)
             $this->design->assign($param_name, $param_value);
+
+        $this->design->assign('type', $type);
 
         $tpl = $this->design->fetch('pdf/' . $template);
 
