@@ -276,6 +276,9 @@ class DocumentController extends Controller
 
         $amount = OperationsORM::where('type', 'P2P')->where('order_id', $document->order_id)->first();
         $amount = $amount->amount;
+        if (is_null($amount) && in_array($document->type, ['ANKETA_PEP'])){
+            $amount = $order->amount;
+        }
 
         $this->design->assign('sms', $sms);
 
