@@ -829,7 +829,9 @@
                 {*}
                 {*}
                 {*}
+                {*}
                 {if ($order->status == 3 || $order->status == 8) && $order->reason_id == 54}
+                {*}
                 {*}
                 {*}
                 {*}
@@ -837,9 +839,7 @@
                 {*}
                 {*}
                 {*}
-                {*}
                 {if ($order->status == 3 || $order->status == 8)}
-                {*}
                 {*}
                 {*}
                 {*}
