@@ -73,6 +73,17 @@
                 {/if}
             </div>
 
+            {if count($err) > 0}
+                <div style="padding: 20px; background: #ffdcdc;">
+                    
+                    {foreach $err as $e}
+                        <div style="margin: 15px 50px; color: #ff0009;">
+                            {$e}
+                        </div>
+                    {/foreach}
+                </div>
+            {/if}
+
             {if $user_balance1c}
                 <div class="new_order_box " data-status="{$order->status}" data-order="{$order->order_id}">
                     <div class="row">
@@ -359,7 +370,7 @@
                 {/if}
 
                 {* кредитный доктор *}
-                {*}
+
                 {*}
                 {*}
                 {*}
@@ -820,7 +831,7 @@
 
 
                 {/if}
-                {*}
+
                 {*}
                 {*}
                 {*}
@@ -831,9 +842,9 @@
                 {*}
                 {*}
                 {*}
-                {*}
+
                 {if ($order->status == 3 || $order->status == 8) && $order->reason_id == 54}
-                {*}
+
                 {*}
                 {*}
                 {*}
@@ -841,7 +852,9 @@
                 {*}
                 {*}
                 {*}
+                {*}
                 {if ($order->status == 3 || $order->status == 8)}
+                {*}
                 {*}
                 {*}
                 {*}
