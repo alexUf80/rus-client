@@ -103,74 +103,74 @@ class AccountController extends Controller
                     $client_status = 'kd';
                     
 
-
-                    $order = array(
-                        'amount' => $this->loan_doctor_steps[$loan_doctor_step],
-                        'period' => $period,
-                        'card_id' => $card_id,
-                        'date' => date('Y-m-d H:i:s'),
-                        'user_id' => $this->user->id,
-                        'status' => 5,
-                        'ip' => $_SERVER['REMOTE_ADDR'],
-                        'first_loan' => 0,
-                        'juicescore_session_id' => $juicescore_session_id,
-                        'local_time' => $local_time,
-                        'client_status' => $client_status,
-                        'accept_sms' => $sms,
-                        'accept_date' => date('Y-m-d H:i:s'),
-                        'approve_date' => date('Y-m-d H:i:s'),
-                    );
-
-                    $order['utm_source'] = $_COOKIE['utm_source'];
-                    $order['webmaster_id'] = $_COOKIE["wm_id"];
-                    $order['click_hash'] = $_COOKIE["clickid"];
-
-                    $order['autoretry'] = 1;
-
-
-                    $order_id = $this->orders->add_order($order);
-
-                    $order = $this->orders->get_order($order_id);
-                    $new_contract = array(
-
-                        'order_id' => $order_id,
-                        'user_id' => $order->user_id,
-                        'card_id' => $order->card_id,
-                        'type' => 'base',
-                        'amount' => $order->amount,
-                        'period' => $order->period,
-                        'create_date' => date('Y-m-d H:i:s'),
-                        'accept_date' => date('Y-m-d H:i:s'),
-                        'status' => 1,
-                        'base_percent' => $this->settings->loan_default_percent,
-                        'charge_percent' => $this->settings->loan_charge_percent,
-                        'peni_percent' => $this->settings->loan_peni,
-                        'service_sms' => $order->service_sms,
-                        'service_reason' => $order->service_reason,
-                        'service_insurance' => $order->service_insurance,
-                        'accept_code' => $sms,
-                        'accept_ip' => $_SERVER['REMOTE_ADDR'],
-                        'sent_status' => 0,
-                    );
-            
-                    $user = $this->users->get_user($order->user_id);
-                    if($user->lead_partner_id == 0){
-                        $new_contract['card_id'] = $order->card_id;
-                    }
-                    
-                    $contract_id = $this->contracts->add_contract($new_contract);
-                    $contract = $this->contracts->get_contract($contract_id);
-
-                    $this->orders->update_order($order_id, array('contract_id' => $contract_id));                    
-
                    // // Реккурентное списание суммы за кредитный доктор
-                    $xml = $this->BestPay->recurring_by_token($contract->card_id, $this->loan_doctor_payment[$loan_doctor_step]*100, 'Кредитный доктор');
+                    $xml = $this->BestPay->recurring_by_token($card_id, $this->loan_doctor_payment[$loan_doctor_step]*100, 'Кредитный доктор');
                     $status = (string)$xml->state;
                     
+                    $err = [];
                     // $status = 'APPROVED';
 
                     if ($status == 'APPROVED') {
                         $transaction = $this->transactions->get_register_id_transaction($xml->order_id);
+
+                        $order = array(
+                            'amount' => $this->loan_doctor_steps[$loan_doctor_step],
+                            'period' => $period,
+                            'card_id' => $card_id,
+                            'date' => date('Y-m-d H:i:s'),
+                            'user_id' => $this->user->id,
+                            'status' => 2,
+                            'ip' => $_SERVER['REMOTE_ADDR'],
+                            'first_loan' => 0,
+                            'juicescore_session_id' => $juicescore_session_id,
+                            'local_time' => $local_time,
+                            'client_status' => $client_status,
+                            'accept_sms' => $sms,
+                            'accept_date' => date('Y-m-d H:i:s'),
+                            'approve_date' => date('Y-m-d H:i:s'),
+                        );
+    
+                        $order['utm_source'] = $_COOKIE['utm_source'];
+                        $order['webmaster_id'] = $_COOKIE["wm_id"];
+                        $order['click_hash'] = $_COOKIE["clickid"];
+    
+                        $order['autoretry'] = 1;
+    
+    
+                        $order_id = $this->orders->add_order($order);
+    
+                        $order = $this->orders->get_order($order_id);
+                        $new_contract = array(
+    
+                            'order_id' => $order_id,
+                            'user_id' => $order->user_id,
+                            'card_id' => $order->card_id,
+                            'type' => 'base',
+                            'amount' => $order->amount,
+                            'period' => $order->period,
+                            'create_date' => date('Y-m-d H:i:s'),
+                            'accept_date' => date('Y-m-d H:i:s'),
+                            'status' => 1,
+                            'base_percent' => $this->settings->loan_default_percent,
+                            'charge_percent' => $this->settings->loan_charge_percent,
+                            'peni_percent' => $this->settings->loan_peni,
+                            'service_sms' => $order->service_sms,
+                            'service_reason' => $order->service_reason,
+                            'service_insurance' => $order->service_insurance,
+                            'accept_code' => $sms,
+                            'accept_ip' => $_SERVER['REMOTE_ADDR'],
+                            'sent_status' => 0,
+                        );
+                
+                        $user = $this->users->get_user($order->user_id);
+                        if($user->lead_partner_id == 0){
+                            $new_contract['card_id'] = $order->card_id;
+                        }
+                        
+                        $contract_id = $this->contracts->add_contract($new_contract);
+                        $contract = $this->contracts->get_contract($contract_id);
+    
+                        $this->orders->update_order($order_id, array('contract_id' => $contract_id));                    
 
                         $contract = $this->contracts->get_contract($contract_id);
 
@@ -210,6 +210,8 @@ class AccountController extends Controller
                                 'amount' => $contract->amount,
                                 'created' => date('Y-m-d H:i:s'),
                             ));
+
+                            $this->orders->update_order($contract->order_id, array('status' => 5));
 
                             // Создаем документы для КД
                                 
@@ -309,7 +311,15 @@ class AccountController extends Controller
                                 'params' => json_encode($params),
                             ));
 
+                            $this->create_document('IND_USLOVIYA_NL', $contract);
+                            $this->create_document('PRIL_1', $contract);
 
+                            $this->create_document('DOP_DOCTOR', $contract);
+
+                            $this->users->update_user($this->user->id, array(
+                                'loan_doctor' => $loan_doctor_step
+                            ));
+                            
 
                             // Снимаем страховку если есть
                             if (!empty($contract->service_insurance)) 
@@ -370,23 +380,25 @@ class AccountController extends Controller
                                         $this->create_document('POLIS', $contract);
                                         $this->create_document('KID', $contract);
                                         
-                                        $this->create_document('IND_USLOVIYA_NL', $contract);
-                                        $this->create_document('PRIL_1', $contract);
-
-                                        $this->create_document('DOP_DOCTOR', $contract);
-                                        
                                     }
                                 }
                             }
 
                         }
+                        else{
+                            $this->contracts->update_contract($contract->id, array('status' => 6));
+                            $this->orders->update_order($contract->order_id, array('status' => 6));
+                            
+                            $err[] = 'Ошибка! Не удалось выдать займ по Кредитному доктору';
+                        }
 
                     }
+                    else{
+                        $err[] = 'Ошибка! Не выдан займ по Кредитному доктору';
+                    }
 
-                    $this->users->update_user($this->user->id, array(
-                        'loan_doctor' => $loan_doctor_step
-                    ));
                 }
+                $this->design->assign('err', $err);
             }
             // ПОВТОРНАЯ ЗАЯВКА
             else{
