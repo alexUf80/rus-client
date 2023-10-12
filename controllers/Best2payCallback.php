@@ -437,7 +437,7 @@ class Best2PayCallback extends Controller
                             'loan_body_summ' => $contract_loan_body_summ,
                             'loan_percents_summ' => $contract_loan_percents_summ,
                             'loan_charge_summ' => 0,
-                            'loan_peni_summ' => 0
+                            'loan_peni_summ' => isset($contract_loan_peni_summ) ? $contract_loan_peni_summ : $contract->loan_peni_summ
                         ));
                         $this->design->assign('success', 'Оплата прошла успешно.');
                     } else {
