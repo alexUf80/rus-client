@@ -6,6 +6,8 @@ function LkApp() {
     app.order_updater;
     app.code;
     app.phone;
+    app.user_id;
+    app.amount;
 
     var _init = function () {
 
@@ -253,6 +255,8 @@ function LkApp() {
                 $('.js-loan-doctor-form .js-loan-agreement-block').removeClass('-error');
 
                 app.phone = $('#phone').val();
+                app.user_id = $('#user_id').val();
+                app.amount = $('#amount-one').val();
 
                 _create_modal(app.phone);
                 // return;
@@ -382,7 +386,42 @@ function LkApp() {
         //alert('проверка3');
         console.info('_success_callback');
         $('.js-loan-code').val(code);
-        $('.js-loan-doctor-form').submit();
+        
+
+        $.ajax({
+            url: 'ajax/best2pay.php',
+            async: false,
+            data: {
+                action: 'get_payment_link_to_kd',
+                amount: app.amount,
+                user_id: app.user_id,
+            },
+            success: function(resp){
+
+                console.log(resp);
+                if (!!resp.error)
+                {
+                    $('.payment-block').removeClass('loading').addClass('error');
+                    $('.payment-block-error p').html('Ошибка: '+resp.error);
+                    e.preventDefault();
+                    return false;                
+                }
+                else
+                {
+                    // app.payment_id = resp.PaymentId;
+                    // app.check_state(app.payment_id);
+                    // document.cookie = "go_payment=1; path=/;";
+                    // $btn.attr('href', resp.link);
+                    // $('#close_contract').attr('href', resp.link);
+                    location.href=resp.link;
+                    
+                }
+
+            }
+        })
+
+
+        // $('.js-loan-doctor-form').submit();
     };
 
     ;(function () {

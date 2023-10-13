@@ -29,6 +29,10 @@ class BestPayAjax extends Ajax
             case 'recurrent_close':
                 $this->recurrent_close();
                 break;
+
+            case 'get_payment_link_to_kd':
+                $this->get_payment_link_to_kd();
+                break;
             
             default:
                 $this->response['error'] = 'UNDEFINED_ACTION';
@@ -126,6 +130,27 @@ class BestPayAjax extends Ajax
         {
             $amount = $amount * 100;
             $this->response['link'] = $this->BestPay->get_payment_link($amount, $contract_id, $prolongation, $card_id, $sms);
+        }
+    }
+
+    private function get_payment_link_to_kd()
+    {
+        if (!empty($_SESSION['looker_mode']))
+            return false;
+        
+        $amount = (float)str_replace(',', '.', $this->request->get('amount'));
+        $user_id = $this->request->get('user_id', 'integer');
+        
+        if (empty($amount))
+        {
+            $this->response['error'] = 'EMPTY_AMOUNT';
+        }
+        else
+        {
+            $amount = $amount * 100;
+            $this->response['amount'] = $amount;
+            $this->response['user_id'] = $user_id;
+            $this->response['link'] = $this->BestPay->get_payment_link_to_kd($amount, $user_id);
         }
     }
     
