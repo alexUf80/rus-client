@@ -2,6 +2,30 @@
 
 class Best2PayCallback extends Controller
 {
+    private $loan_doctor_steps = array(
+        1 => 1000,
+        2 => 2000,
+        3 => 3000,
+        4 => 4000,
+        5 => 5000,
+        6 => 6000,
+        7 => 7000,
+        8 => 8000,
+        9 => 9000,
+    );
+
+    private $loan_doctor_payment = array(
+        1 => 2000,
+        2 => 3000,
+        3 => 4000,
+        4 => 5000,
+        5 => 6000,
+        6 => 7000,
+        7 => 8000,
+        8 => 9000,
+        9 => 10000,
+    );
+
     public function fetch()
     {
         switch ($this->request->get('action', 'string')):
@@ -22,6 +46,9 @@ class Best2PayCallback extends Controller
                 $this->paymentRestruct();
                 break;
 
+            case 'paymentKD':
+                $this->paymentKD_action();
+                break;
 
             default:
                 $meta_title = 'Ошибка';
@@ -445,6 +472,344 @@ class Best2PayCallback extends Controller
                         $this->design->assign('reason_code_description', $reason_code_description);
 
                         $this->design->assign('error', 'При оплате произошла ошибка.');
+                    }
+                    $this->transactions->update_transaction($transaction->id, array(
+                        'operation' => $operation,
+                        'callback_response' => $register_info,
+                        'reason_code' => $reason_code
+                    ));
+
+
+                }
+            }
+        } else {
+            $this->design->assign('error', 'Ошибка: Транзакция не найдена');
+        }
+
+
+    }
+
+    public function paymentKD_action()
+    {
+        $register_id = $this->request->get('id', 'integer');
+        $operation = $this->request->get('operation', 'integer');
+        $error = $this->request->get('error', 'integer');
+        $code = $this->request->get('code', 'integer');
+
+        if (!empty($register_id)) {
+            if ($transaction = $this->transactions->get_register_id_transaction($register_id)) {
+                if ($transaction_operation = $this->operations->get_transaction_operation($transaction->id)) {
+                    $this->design->assign('error', 'Оплата уже принята.');
+                } else {
+
+                    if (empty($operation)) {
+                        $register_info = $this->BestPay->get_register_info($transaction->sector, $register_id);
+                        $xml = simplexml_load_string($register_info);
+
+                        foreach ($xml->operations as $xml_operation)
+                            if ($xml_operation->operation->state == 'APPROVED')
+                                $operation = (string)$xml_operation->operation->id;
+                    }
+
+
+                    if (!empty($operation)) {
+
+                        $period = 14;
+                        $client_status = 'kd';
+                        $user = $this->users->get_user($transaction->user_id);
+                        $user_cards = $this->cards->get_cards(array('user_id' => $user->id));
+                        
+                        $card_id = 0;
+                        foreach ($user_cards as $user_card) {
+                            $card_id = $user_card->id;
+                            if ($user_card->base_card = 1)
+                                break;
+                        }
+
+                        $order = array(
+                            'amount' => $this->loan_doctor_steps[($user->loan_doctor + 1)],
+                            'period' => $period,
+                            'card_id' => $card_id,
+                            'date' => date('Y-m-d H:i:s'),
+                            'user_id' => $user->id,
+                            'status' => 2,
+                            'ip' => $_SERVER['REMOTE_ADDR'],
+                            'first_loan' => 0,
+                            // 'juicescore_session_id' => $juicescore_session_id,
+                            // 'local_time' => $local_time,
+                            'client_status' => $client_status,
+                            // 'accept_sms' => $sms,
+                            'accept_date' => date('Y-m-d H:i:s'),
+                            'approve_date' => date('Y-m-d H:i:s'),
+                        );
+    
+                        $order['utm_source'] = $_COOKIE['utm_source'];
+                        $order['webmaster_id'] = $_COOKIE["wm_id"];
+                        $order['click_hash'] = $_COOKIE["clickid"];
+    
+                        $order['autoretry'] = 1;
+    
+    
+                        $order_id = $this->orders->add_order($order);
+    
+                        $order = $this->orders->get_order($order_id);
+                        $new_contract = array(
+    
+                            'order_id' => $order_id,
+                            'user_id' => $order->user_id,
+                            'card_id' => $order->card_id,
+                            'type' => 'base',
+                            'amount' => $order->amount,
+                            'period' => $order->period,
+                            'create_date' => date('Y-m-d H:i:s'),
+                            'accept_date' => date('Y-m-d H:i:s'),
+                            'status' => 1,
+                            'base_percent' => $this->settings->loan_default_percent,
+                            'charge_percent' => $this->settings->loan_charge_percent,
+                            'peni_percent' => $this->settings->loan_peni,
+                            'service_sms' => $order->service_sms,
+                            'service_reason' => $order->service_reason,
+                            'service_insurance' => $order->service_insurance,
+                            // 'accept_code' => $sms,
+                            'accept_ip' => $_SERVER['REMOTE_ADDR'],
+                            'sent_status' => 0,
+                        );
+                
+                        // $user = $this->users->get_user($order->user_id);
+                        if($user->lead_partner_id == 0){
+                            $new_contract['card_id'] = $order->card_id;
+                        }
+                        
+                        $contract_id = $this->contracts->add_contract($new_contract);
+                        $contract = $this->contracts->get_contract($contract_id);
+    
+                        $this->orders->update_order($order_id, array('contract_id' => $contract_id));                    
+
+                        $operation_id = $this->operations->add_operation(array(
+                            'contract_id' => $contract->id,
+                            'user_id' => $contract->user_id,
+                            'order_id' => $contract->order_id,
+                            'type' => 'DOCTOR',
+                            'amount' => $this->loan_doctor_payment[($user->loan_doctor + 1)],
+                            'created' => date('Y-m-d H:i:s'),
+                            'transaction_id' => $transaction->id,
+                        ));
+
+                        // // Выдача денег по кредитному доктору
+                        $res = $this->BestPay->pay_contract_with_register($contract->id, $contract->service_insurance, $contract->service_sms);
+
+                        // $res = 'APPROVED';
+                        if ($res == 'APPROVED') {
+
+                            $ob_date = new DateTime();
+                            $ob_date->add(DateInterval::createFromDateString($contract->period . ' days'));
+                            $return_date = $ob_date->format('Y-m-d H:i:s');
+
+                            $this->contracts->update_contract($contract->id, array(
+                                'status' => 2,
+                                'inssuance_date' => date('Y-m-d H:i:s'),
+                                'loan_body_summ' => $contract->amount,
+                                'loan_percents_summ' => 0,
+                                'return_date' => $return_date,
+                            ));
+
+                            $this->operations->add_operation(array(
+                                'contract_id' => $contract->id,
+                                'user_id' => $contract->user_id,
+                                'order_id' => $contract->order_id,
+                                'type' => 'P2P',
+                                'amount' => $contract->amount,
+                                'created' => date('Y-m-d H:i:s'),
+                            ));
+
+                            $this->orders->update_order($contract->order_id, array('status' => 5));
+
+                            // Создаем документы для КД
+                                
+                            // $this->user = $this->users->get_user($contract->user_id);
+    
+                            $passport = str_replace([' ','-'], '', $user->passport_serial);
+                            $passport_serial = substr($passport, 0, 4);
+                            $passport_number = substr($passport, 4, 6);
+    
+                            $params = array(
+                                'lastname' => $user->lastname,
+                                'firstname' => $user->firstname,
+                                'patronymic' => $user->patronymic,
+                                'gender' => $user->gender,
+                                'phone' => $user->phone_mobile,
+                                'birth' => $user->birth,
+                                'birth_place' => $user->birth_place,
+                                'inn' => $user->inn,
+                                'snils' => $user->snils,
+                                'email' => $user->email,
+                                'created' => $user->created,
+                
+                                'passport_serial' => $passport_serial,
+                                'passport_number' => $passport_number,
+                                'passport_date' => $user->passport_date,
+                                'passport_code' => $user->subdivision_code,
+                                'passport_issued' => $user->passport_issued,
+                
+                                // 'regindex' => $user->Regindex,
+                                // 'regregion' => $user->Regregion,
+                                // 'regcity' => $user->Regcity,
+                                // 'regstreet' => $user->Regstreet,
+                                // 'reghousing' => $user->Reghousing,
+                                // 'regbuilding' => $user->Regbuilding,
+                                // 'regroom' => $user->Regroom,
+                                // 'faktindex' => $user->Faktindex,
+                                // 'faktregion' => $user->Faktregion,
+                                // 'faktcity' => $user->Faktcity,
+                                // 'faktstreet' => $user->Faktstreet,
+                                // 'fakthousing' => $user->Fakthousing,
+                                // 'faktbuilding' => $user->Faktbuilding,
+                                // 'faktroom' => $user->Faktroom,
+                
+                                'profession' => $user->profession,
+                                'workplace' => $user->workplace,
+                                'workphone' => $user->workphone,
+                                // 'chief_name' => $>user->chief_name,
+                                // 'chief_position' => $user->chief_position,
+                                // 'chief_phone' => $>user->chief_phone,
+                                'income' => $user->income,
+                                'expenses' => $user->expenses,
+                
+                                'first_loan_amount' => $user->first_loan_amount,
+                                'first_loan_period' => $user->first_loan_period,
+                
+                                'number' => $contract->order_id,
+                                'create_date' => date('Y-m-d'),
+                                'asp' => $user->sms,
+                                'accept_code' => $contract->accept_code,
+                            );
+                            if (!empty($tuser->contact_person_name))
+                            {
+                                $params['contactperson_phone'] = $user->contact_person_phone;
+                
+                                $contact_person_name = explode(' ', $user->contact_person_name);
+                                $params['contactperson_name'] = $user->contact_person_name;
+                                $params['contactperson_lastname'] = isset($contact_person_name[0]) ? $contact_person_name[0] : '';
+                                $params['contactperson_firstname'] = isset($contact_person_name[1]) ? $contact_person_name[1] : '';
+                                $params['contactperson_patronymic'] = isset($contact_person_name[2]) ? $contact_person_name[2] : '';
+                            }
+                            if (!empty($user->contact_person2_name))
+                            {
+                                $params['contactperson2_phone'] = $user->contact_person_phone;
+                
+                                $contact_person2_name = explode(' ', $user->contact_person2_name);
+                                $params['contactperson2_name'] = $user->contact_person2_name;
+                                $params['contactperson2_lastname'] = isset($contact_person2_name[0]) ? $contact_person2_name[0] : '';
+                                $params['contactperson2_firstname'] = isset($contact_person2_name[1]) ? $contact_person2_name[1] : '';
+                                $params['contactperson2_patronymic'] = isset($contact_person2_name[2]) ? $contact_person2_name[2] : '';
+                            }
+    
+                            // Согласие на ОПД
+                            $this->documents->create_document(array(
+                                'user_id' => $user->id,
+                                'order_id' => $contract->order_id,
+                                'contract_id' => $contract->id,
+                                'type' => 'SOGLASIE_OPD',
+                                'params' => json_encode($params),
+                            ));
+                            
+                            // Заявление на получение займа
+                            $this->documents->create_document(array(
+                                'user_id' => $user->id,
+                                'order_id' => $contract->order_id,
+                                'contract_id' => $contract->id,
+                                'type' => 'ANKETA_PEP_KD',
+                                'params' => json_encode($params),
+                            ));
+
+                            $this->create_document('IND_USLOVIYA_NL', $contract);
+                            $this->create_document('PRIL_1', $contract);
+
+                            $this->create_document('DOP_DOCTOR', $contract);
+
+                            $this->users->update_user($user->id, array(
+                                'loan_doctor' => ($user->loan_doctor + 1)
+                            ));
+                            
+
+                            // Снимаем страховку если есть
+                            if (!empty($contract->service_insurance)) 
+                            {
+                                $insurance_cost = $this->insurances->get_insurance_cost($contract->amount);
+
+                                if ($insurance_cost > 0)
+                                {
+                                    $insurance_amount = $insurance_cost * 100;
+            
+                                    $description = 'Страховой полис';
+            
+                                    $xml = $this->BestPay->recurring_by_token($contract->card_id, $insurance_amount, $description);
+                                    $status = (string)$xml->state;
+            
+                                    if ($status == 'APPROVED') {
+                                        $transaction = $this->transactions->get_register_id_transaction($xml->order_id);
+
+                                        $operation_id = $this->operations->add_operation(array(
+                                            'contract_id' => $contract->id,
+                                            'user_id' => $contract->user_id,
+                                            'order_id' => $contract->order_id,
+                                            'type' => 'INSURANCE',
+                                            'amount' => $insurance_cost,
+                                            'created' => date('Y-m-d H:i:s'),
+                                            'transaction_id' => $transaction->id,
+                                            'service_number' => $max_service_value,
+                                        ));
+            
+                                        $dt = new DateTime();
+                                        $dt->add(new DateInterval('P1M'));
+                                        $end_date = $dt->format('Y-m-d 23:59:59');
+
+                                        try{
+                                            $contract->insurance = new InsurancesORM();
+                                            $contract->insurance->amount = $insurance_cost;
+                                            $contract->insurance->user_id = $contract->user_id;
+                                            $contract->insurance->order_id = $contract->order_id;
+                                            $contract->insurance->start_date = date('Y-m-d 00:00:00', time() + (1 * 86400));
+                                            $contract->insurance->end_date = $end_date;
+                                            $contract->insurance->operation_id = $operation_id;
+                                            $contract->insurance->save();
+
+                                            $contract->insurance->number = InsurancesORM::create_number($contract->insurance->id);
+
+                                            InsurancesORM::where('id', $contract->insurance->id)->update(['number' => $contract->insurance->number]);
+                                        }catch (Exception $e)
+                                        {
+
+                                        }
+
+                                            $this->contracts->update_contract($contract->id, array(
+                                            'insurance_id' => $contract->insurance_id,
+                                            // 'loan_body_summ' => $contract->amount + $insurance_cost
+                                            // 'loan_body_summ' => $contract->amount
+                                        ));
+
+                                        //создаем документы для страховки
+                                        $this->create_document('POLIS', $contract);
+                                        $this->create_document('KID', $contract);
+                                        
+                                    }
+                                }
+                            }
+                            $this->design->assign('success', 'Оплата за услугу Кредитный доктор и выдача займа прошла успешно');
+
+                        }
+                        else{
+                            $this->contracts->update_contract($contract->id, array('status' => 6));
+                            $this->orders->update_order($contract->order_id, array('status' => 6));
+                            
+                            $this->design->assign('error', 'Привыдаче займа услуги Кредитный доктор произошла ошибка');
+                        }
+
+                    } else {
+                        $reason_code_description = $this->BestPay->get_reason_code_description($code);
+                        $this->design->assign('reason_code_description', $reason_code_description);
+
+                        $this->design->assign('error', 'При оформлении услуги Кредитный доктор произошла ошибка');
                     }
                     $this->transactions->update_transaction($transaction->id, array(
                         'operation' => $operation,

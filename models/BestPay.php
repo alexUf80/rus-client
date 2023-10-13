@@ -154,6 +154,104 @@ class BestPay extends Core
         return $link;
     }
 
+    public function get_payment_link_to_kd($amount, $user_id)
+    {
+        $fee = round(max(1, floatval($amount * $this->fee)));
+
+        // if (!($contract = $this->contracts->get_contract($contract_id)))
+        //     return false;
+
+        if (!($user = $this->users->get_user($user_id)))
+            return false;
+
+        /*
+
+        if ($prolongation == 1) {
+            $multipaymentData =
+                [
+                    'amount' => $this->settings->prolongation_amount,
+                    'fee' => 0,
+                    'currency' => $this->currency_code,
+                    'reference' => $contract->id,
+                    'description' => 'Страхование от несчастного случая'
+                ];
+        }
+
+        */
+
+        $sector = $this->sectors['PAYMENT'];
+        $password = $this->passwords[$sector];
+
+        $description = 'Оплата по услуге Кредитный доктор';
+
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!
+        $url = $this->config->front_url . '/best2pay_callback/paymentKD';
+
+        // регистрируем оплату
+        $data = array(
+            'sector' => $sector,
+            'amount' => $amount,
+            'currency' => $this->currency_code,
+            // 'reference' => $contract->id,
+            'description' => $description,
+            'mode' => 1,
+            'fee' => $fee,
+            'url' => $url,
+            'phone' => $user->phone_mobile,
+            'fio' => $user->lastname . ' ' . $user->firstname . ' ' . $user->patronymic,
+            // 'contract' => $contract->number,
+        //            'get_token' => 1,
+        );
+
+        if (isset($multipaymentData))
+            $data['multipaymentData'] = json_encode($multipaymentData);
+
+        $data['signature'] = $this->get_signature(array(
+            $data['sector'],
+            $data['amount'],
+        //            $data['fee'],
+            $data['currency'],
+            $password
+        ));
+
+        $b2p_order_id = $this->send('Register', $data);
+        //echo __FILE__.' '.__LINE__.'<br /><pre>';var_dump($b2p_order_id);echo '</pre><hr />';
+
+
+        $transaction_id = $this->transactions->add_transaction(array(
+            // !!!!!!!!!!!!!
+            'user_id' => $user->id,
+            'amount' => $amount,
+            'sector' => $sector,
+            'register_id' => $b2p_order_id,
+            // 'reference' => $contract->id,
+            'description' => $description,
+            'created' => date('Y-m-d H:i:s'),
+            // 'prolongation' => $prolongation,
+            'commision_summ' => $fee / 100,
+            // 'sms' => $sms,
+            'body' => serialize($data),
+        ));
+        // получаем длинную ссылку на оплату
+        $data = array(
+            'sector' => $sector,
+            'id' => $b2p_order_id,
+
+        );
+        // if (!empty($card_id)) {
+        //     $card = $this->cards->get_card((int)$card_id);
+        //     $data['token'] = $card->token;
+        // //            $data['pan_token'] = $card->pan;
+        //     $data['action'] = 'pay';
+        // }
+        //echo __FILE__ . ' ' . __LINE__ . '<br /><pre>';var_dump($data, $card);echo '</pre><hr />';
+        $data['signature'] = $this->get_signature(array($sector, $b2p_order_id, $password));
+
+        $link = $this->url . 'webapi/Purchase?' . http_build_query($data);
+
+        return $link;
+    }
+
     /**
      * Best2pay::add_card()
      *
