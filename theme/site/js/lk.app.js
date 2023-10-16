@@ -256,7 +256,7 @@ function LkApp() {
 
                 app.phone = $('#phone').val();
                 app.user_id = $('#user_id').val();
-                app.amount = $('#amount-one').val();
+                app.amount = $('#amount').val();
 
                 _create_modal(app.phone);
                 // return;

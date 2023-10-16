@@ -737,6 +737,7 @@ class AccountController extends Controller
 
             $this->design->assign('warning_card', $warning_card);
             $this->design->assign('loan_doctor_steps', $this->loan_doctor_steps);
+            $this->design->assign('loan_doctor_payment', $this->loan_doctor_payment);
             $this->design->assign('loan_doctor_steps_count', count($this->loan_doctor_steps));
             return $this->design->fetch('account/home.tpl');
         }
