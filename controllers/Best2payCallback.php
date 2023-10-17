@@ -802,14 +802,14 @@ class Best2PayCallback extends Controller
                             $this->contracts->update_contract($contract->id, array('status' => 6));
                             $this->orders->update_order($contract->order_id, array('status' => 6));
                             
-                            $this->design->assign('error', 'При выдаче займа услуги Кредитный доктор произошла ошибка');
+                            $this->design->assign('error', 'При выдаче займа по услуге Кредитный доктор возникла ошибка');
                         }
 
                     } else {
                         $reason_code_description = $this->BestPay->get_reason_code_description($code);
                         $this->design->assign('reason_code_description', $reason_code_description);
 
-                        $this->design->assign('error', 'При оформлении услуги Кредитный доктор произошла ошибка');
+                        $this->design->assign('error', 'При оформлении услуги Кредитный доктор возникла ошибка');
                     }
                     $this->transactions->update_transaction($transaction->id, array(
                         'operation' => $operation,

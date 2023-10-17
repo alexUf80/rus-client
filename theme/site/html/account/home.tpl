@@ -370,7 +370,7 @@
                 {/if}
 
                 {* кредитный доктор *}
-
+                {*}
                 {*}
                 {*}
                 {*}
@@ -743,7 +743,7 @@
                                     <input type="hidden" name="loan_doctor_step" id="loan_doctor_step" value="{$user->loan_doctor + 1}"/>
                                     <input type="hidden" name="phone" id="phone" value="{$user->phone_mobile}"/>
                                     <input type="hidden" name="user_id" id="user_id" value="{$user->id}"/>
-                                    <input type="hidden" name="amount" id="amount" value="{$user->id}"/>
+                                    <input type="hidden" name="amount" id="amount" value="{$loan_doctor_payment[$user->loan_doctor+1]}"/>
                                     <input type="hidden" name="sms" class="js-loan-code" value=""/>
 
                                     <div class="row">
@@ -833,7 +833,7 @@
 
 
                 {/if}
-
+                {*}
                 {*}
                 {*}
                 {*}
@@ -844,19 +844,17 @@
                 {*}
                 {*}
                 {*}
-
+                {*}
                 {if ($order->status == 3 || $order->status == 8) && $order->reason_id == 54}
                 {*}
                 {*}
                 {*}
-
-
                 {*}
+
                 {*}
                 {*}
                 {*}
                 {if ($order->status == 3 || $order->status == 8)}
-                {*}
                 {*}
                 {*}
                 {*}
