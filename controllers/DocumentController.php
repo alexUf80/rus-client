@@ -50,6 +50,21 @@ class DocumentController extends Controller
                 ->where('type', '=', 'DOCTOR')
                 ->first();
                 $this->design->assign('kd_amount', $kd->amount);
+
+                $insurance = OperationsORM::query()
+                ->where('order_id', '=', $order->order_id)
+                ->where('type', '=', 'INSURANCE')
+                ->first();
+                $this->design->assign('kd_insurance', $insurance->amount);
+            }
+
+            if (in_array($document->type, ['ZAYAVLENIE_PROLONGATION'])){
+                $insurance = OperationsORM::query()
+                ->where('order_id', '=', $order->order_id)
+                ->where('type', '=', 'INSURANCE_BC')
+                ->where('created', '>=', $document->created)
+                ->first();
+                $this->design->assign('prolo_insurance', $insurance->amount);
             }
 
             if (in_array($document->type, ['PRIL_1'])){
