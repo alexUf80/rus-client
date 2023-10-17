@@ -579,6 +579,12 @@ class Best2PayCallback extends Controller
                         if($user->lead_partner_id == 0){
                             $new_contract['card_id'] = $order->card_id;
                         }
+
+                        $this->transactions->update_transaction($transaction->id, array(
+                            'operation' => $operation,
+                            'callback_response' => $register_info,
+                            'reason_code' => $reason_code
+                        ));
                         
                         $contract_id = $this->contracts->add_contract($new_contract);
                         $contract = $this->contracts->get_contract($contract_id);
@@ -811,11 +817,11 @@ class Best2PayCallback extends Controller
 
                         $this->design->assign('error', 'При оформлении услуги Кредитный доктор возникла ошибка');
                     }
-                    $this->transactions->update_transaction($transaction->id, array(
-                        'operation' => $operation,
-                        'callback_response' => $register_info,
-                        'reason_code' => $reason_code
-                    ));
+                    // $this->transactions->update_transaction($transaction->id, array(
+                    //     'operation' => $operation,
+                    //     'callback_response' => $register_info,
+                    //     'reason_code' => $reason_code
+                    // ));
 
 
                 }
