@@ -370,7 +370,7 @@
                 {/if}
 
                 {* кредитный доктор *}
-                {if ($order->status == 3 || $order->status == 8) && $order->reason_id != 54 && $order->reason_id != 53 && $user_age_year >= 18}
+                {if ($order->status == 3 || $order->status == 8) && $order->reason_id != 54 && $order->reason_id != 53 && $user_age_year >= 18 && $reject_block}
                     {if !$cards}
                         <div class="-fs-24 -gil-b -red text-center pb-3">
                             Для получения займа необходимо привязать карту
@@ -1054,7 +1054,7 @@
                 </div>
               </div>
             </div>
-            {*}
+            {*} 
 
             {if (!$reject_block && !$user_balance1c && (!$order || $order->status > 5 || $order->status == 3))}
                 <div class="new_order_box js-new-order-proposition" data-status="{$order->status}"
