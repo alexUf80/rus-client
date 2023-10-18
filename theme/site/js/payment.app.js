@@ -18,6 +18,7 @@ console.log('init')
         $('#close_contract').click(function(e){
 
             $(this).attr('disabled', true);
+            $(this).css({'pointerEvents' : 'none'});
 
             $('#close_insurance').attr('checked', true);
 
