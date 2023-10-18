@@ -739,6 +739,13 @@ class AccountController extends Controller
             $this->design->assign('loan_doctor_steps', $this->loan_doctor_steps);
             $this->design->assign('loan_doctor_payment', $this->loan_doctor_payment);
             $this->design->assign('loan_doctor_steps_count', count($this->loan_doctor_steps));
+
+            $user_date = new DateTime(date('Y-m-d', strtotime($order->birth)));
+            $now_date = new DateTime(date('Y-m-d'));
+            $user_age = date_diff($user_date, $now_date);
+            $user_age_year = $user_age->y;
+
+            $this->design->assign('user_age_year', $user_age_year);
             return $this->design->fetch('account/home.tpl');
         }
     }
