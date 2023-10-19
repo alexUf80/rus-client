@@ -723,9 +723,11 @@ class AccountController extends Controller
                 $card_exp = date('Y-m-t', strtotime($year.'-'.$month));
                 $now_date = date('Y-m-d');
 
-                if($now_date > $card_exp){
-                    $last_four_digits = substr($card->pan, -4);
-                    $warning_card .= "Пожалуйста, замените карту *$last_four_digits. Она не активна, мы не сможем зачислить займ<br>";
+                if ($card->expdate != '') {
+                    if($now_date > $card_exp){
+                        $last_four_digits = substr($card->pan, -4);
+                        $warning_card .= "Пожалуйста, замените карту *$last_four_digits. Она не активна, мы не сможем зачислить займ<br>";
+                    }
                 }
 
             }
