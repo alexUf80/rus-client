@@ -105,7 +105,17 @@ class AccountPayController extends Controller
 
         $this->design->assign('user_id', ($this->user->id));
 
+        $date1 = new DateTime(date('Y-m-d', strtotime($contract->inssuance_date)));
+        $date1->modify('+'.$contract->period.' days');
+        $date2 = new DateTime(date('Y-m-d'));
+        
+        $order = $this->orders->get_order($order_id);
+        
         $full_amount = $contract->loan_body_summ + $contract->loan_percents_summ + $contract->loan_peni_summ + $contract->loan_charge_summ;
+        if($order->client_status == 'kd' && $date1 > $date2){
+            $full_amount = $contract->loan_body_summ;
+        }
+        
         $this->design->assign('full_amount', $full_amount);
         $this->design->assign('contract', $contract);
 
