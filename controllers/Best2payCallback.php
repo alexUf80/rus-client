@@ -491,7 +491,7 @@ class Best2PayCallback extends Controller
     public function paymentKD_action()
     {
         $register_id = $this->request->get('id', 'integer');
-        $operation = $this->request->get('operation', 'integer');
+        // $operation = $this->request->get('operation', 'integer');
         $error = $this->request->get('error', 'integer');
         $code = $this->request->get('code', 'integer');
 
