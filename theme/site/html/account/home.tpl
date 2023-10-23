@@ -370,495 +370,473 @@
                 {/if}
 
                 {* кредитный доктор *}
-                {*}
-                {*}
-                {*}
-                {*}
-                {if ($order->status == 3 || $order->status == 8) && $order->reason_id != 54 && $order->reason_id != 53 && $user_age_year >= 18 && $reject_block}
-                    {if !$cards}
-                        <div class="-fs-24 -gil-b -red text-center pb-3">
-                            Для получения займа необходимо привязать карту
-                            <div class="pt-3">
-                                <a href="/account/cards" class="btn btn-primary">Привязать карту</a>
-                            </div>
-                        </div>
-                    
-                    {else}
-                        <div class="new_order_box js-new-order-doctor" data-status="3">
-                            <div class="row">
-                                <div class="col-lg-2 col-md-0">
-                                </div>
-                                {if $loan_doctor_steps_count > $user->loan_doctor}
-                                    <div class="col-lg-8 col-md-12">
-                                        <div class="-fs-32 -gil-b text-center pb-3" style="color:#bd9457">Вам согласован займ по специальному тарифу</div>
-                                    </div>
-                                {/if}
-                                <div class="col-lg-2 col-md-0">
+                {if $kd_on}
+                    {if ($order->status == 3 || $order->status == 8) && $order->reason_id != 54 && $order->reason_id != 53 && $user_age_year >= 18 && $reject_block}
+                        {if !$cards}
+                            <div class="-fs-24 -gil-b -red text-center pb-3">
+                                Для получения займа необходимо привязать карту
+                                <div class="pt-3">
+                                    <a href="/account/cards" class="btn btn-primary">Привязать карту</a>
                                 </div>
                             </div>
-
-                            <div class="row mt-3">
-                                <div class="col-lg-2  col-md-1 col-sm-0">
-                                </div>
-                                <div class="col-lg-4  col-md-5 col-sm-6">
-                                    <div class="col-12 p-0 pt-1">
-                                        {if $loan_doctor_steps_count <= $user->loan_doctor}
-                                            <button type="button" class="btn btn-primary w-100 h-100 p-2" style="background-color: #B7B7B7; cursor: auto">
-                                                Все шаги <br> кредитного доктора пройдены
-                                            </button>
-                                        {else}
-                                            <button type="button" class="btn btn-success js-open-loan-doctor-block w-100 h-100 p-2">
-                                                {if $user->loan_doctor == 0}
-                                                    Получить займ <br> по специальному тарифу
-                                                {else}
-                                                    Кредитный доктор <br> шаг {$user->loan_doctor + 1}
-                                                {/if}
-                                            </button>
-                                        {/if}
-                                    </div>
-                                </div>
-                                <div class="col-lg-4  col-md-5 col-sm-6">
-                                        <div class="col-12 p-0 pt-1  w-100 h-100">
-                                        {if $reject_block}
-                                            <button type="button" class="btn btn-primary w-100 h-100 p-2" style="background-color: #B7B7B7; cursor: auto">
-                                                Подать заявку<br>
-                                                Будет доступно {$reject_block|date}
-                                            </button>
-                                        {else}
-                                            <button type="button" class="btn btn-primary js-open-repeat-block w-100 h-100 p-2" style="background-color: #1948C0">
-                                                Подать заявку
-                                            </button>
-                                        {/if}
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-1 col-sm-0">
-                                </div>
-                            </div>
-
-                            <div class="row mt-5">
-                                <div class="col-12 text-center ">
-                                    <a href="https://luchshie-zaymi.ru" target="_blank" class="blue-link">
-                                        Получите займ у наших партнёров
-                                        <br/>
-                                        <span class="sc-htoDjs fOeadG"></span>
-                                        <span class="sc-iwsKbI jQhHGA">Лучшие предложения для вас</span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                         
-                        <div class="new_order_box hide js-order-doctor">
-                            <div class="-fs-32 -gil-b" style="color:#bd9457">
-                                Специальное предложение<br> – Улучшение кредитной истории
-                            </div>
-                            <p class="doctor-p pt-3">При принятии решения об одобрении займа, наш сервис анализирует множество параметров. Поэтому мы одобряем займы клиентам не только с хорошей кредитной историей, но и, в некоторых случаях, с пустой или проблемной. Для клиентов с пустой кредитной историей мы даем возможность ее создать, а для клиентов с проблемной кредитной историей - шанс ее улучшить.</p>
-                            <div class="steps mt-5">
-                                <div class="steps-step">
-                                    <div class="steps-img">
-                                        <img src="theme/site/new/doctor/step1.svg" alt="">
+                        {else}
+                            <div class="new_order_box js-new-order-doctor" data-status="3">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-0">
                                     </div>
-                                    <div class="steps-text">
-                                        Оформление услуги
+                                    {if $loan_doctor_steps_count > $user->loan_doctor}
+                                        <div class="col-lg-8 col-md-12">
+                                            <div class="-fs-32 -gil-b text-center pb-3" style="color:#bd9457">Вам согласован займ по специальному тарифу</div>
+                                        </div>
+                                    {/if}
+                                    <div class="col-lg-2 col-md-0">
                                     </div>
-                                </div>
-                                <div class="steps-arrow">
-                                    <img src="theme/site/new/doctor/steps-arrow.svg" alt="">
-                                </div>
-                                <div class="steps-step">
-                                    <div class="steps-img">
-                                        <img src="theme/site/new/doctor/step2.svg" alt="">
-                                    </div>
-                                    <div class="steps-text">
-                                        Получение займа
-                                    </div>
-                                </div>
-                                <div class="steps-arrow">
-                                    <img src="theme/site/new/doctor/steps-arrow.svg" alt="">
-                                </div>
-                                <div class="steps-step">
-                                    <div class="steps-img">
-                                        <img src="theme/site/new/doctor/step3.svg" alt="">
-                                    </div>
-                                    <div class="steps-text">
-                                        Возвращение займа без просрочки
-                                    </div>
-                                </div>
-                                <div class="steps-arrow">
-                                    <img src="theme/site/new/doctor/steps-arrow.svg" alt="">
-                                </div>
-                                <div class="steps-step">
-                                    <div class="steps-img">
-                                        <img src="theme/site/new/doctor/step4.svg" alt="">
-                                    </div>
-                                    <div class="steps-text">
-                                        Повышение кредитного рейтинга - открытие новой ступени
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="degress">
-                                <div class="-fs-32 -gil-b degress-title" style="color:#bd9457">
-                                    Ступени
-                                </div>
-                                <div class="degress-items">
-                                    <div class="degress-item">
-                                        <div class="degress-number" style="color: #FF5F5F;">
-                                            01
-                                        </div>
-                                        <div class="degress-color" style="background: #FF5F5F; margin-left: 24px;">
-                                        </div>
-                                        <div class="degress-text">
-                                            <div class="degress-big-text">
-                                                Стоимость услуги = 2000 руб.
-                                            </div>
-                                            <div class="degress-small-text">
-                                                Выдача займа = 1000 руб.<br>
-                                                Беспроцентный срок погашения = 14 дней
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="degress-item">
-                                        <div class="degress-number degress-number-second" style="color: #CDCDCD;">
-                                            02
-                                        </div>
-                                        <div class="degress-color degress-color-second" style="background: #CDCDCD; margin-left: 54px;">
-                                        </div>
-                                        <div class="degress-text">
-                                            <div class="degress-big-text">
-                                                Стоимость услуги = 3000 руб.
-                                            </div>
-                                            <div class="degress-small-text">
-                                                Выдача займа = 2000 руб.<br>
-                                                Беспроцентный срок погашения = 14 дней
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="degress-items-hide hide">
-                                        <div class="degress-item">
-                                            <div class="degress-number" style="color: #FFA25F;">
-                                                03
-                                            </div>
-                                            <div class="degress-color" style="background: #FFA25F; margin-left: 84px;">
-                                            </div>
-                                            <div class="degress-text">
-                                                <div class="degress-big-text">
-                                                    Стоимость услуги = 4000 руб.
-                                                </div>
-                                                <div class="degress-small-text">
-                                                    Выдача займа = 3000 руб.<br>
-                                                    Беспроцентный срок погашения = 14 дней
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="degress-item">
-                                            <div class="degress-number" style="color: #FFDC5F">
-                                                04
-                                            </div>
-                                            <div class="degress-color" style="background: #FFDC5F; margin-left: 114px;">
-                                            </div>
-                                            <div class="degress-text">
-                                                <div class="degress-big-text">
-                                                    Стоимость услуги = 5000 руб.
-                                                </div>
-                                                <div class="degress-small-text">
-                                                    Выдача займа = 4000 руб.<br>
-                                                    Беспроцентный срок погашения = 14 дней
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="degress-item">
-                                            <div class="degress-number" style="color: #F2FF5F">
-                                                05
-                                            </div>
-                                            <div class="degress-color" style="background: #F2FF5F; margin-left: 144px;">
-                                            </div>
-                                            <div class="degress-text">
-                                                <div class="degress-big-text">
-                                                    Стоимость услуги = 6000 руб.
-                                                </div>
-                                                <div class="degress-small-text">
-                                                    Выдача займа = 5000 руб.<br>
-                                                    Беспроцентный срок погашения = 14 дней
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="degress-item">
-                                            <div class="degress-number" style="color: #D5FF5F">
-                                                06
-                                            </div>
-                                            <div class="degress-color" style="background: #D5FF5F; margin-left: 174px;">
-                                            </div>
-                                            <div class="degress-text">
-                                                <div class="degress-big-text">
-                                                    Стоимость услуги = 7000 руб.
-                                                </div>
-                                                <div class="degress-small-text">
-                                                    Выдача займа = 6000 руб.<br>
-                                                    Беспроцентный срок погашения = 14 дней
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="degress-item">
-                                            <div class="degress-number" style="color: #D5FF5F">
-                                                07
-                                            </div>
-                                            <div class="degress-color" style="background: #D5FF5F; margin-left: 204px;">
-                                            </div>
-                                            <div class="degress-text">
-                                                <div class="degress-big-text">
-                                                    Стоимость услуги = 8000 руб.
-                                                </div>
-                                                <div class="degress-small-text">
-                                                    Выдача займа = 7000 руб.<br>
-                                                    Беспроцентный срок погашения = 14 дней
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="degress-item">
-                                            <div class="degress-number" style="color: #B8FF5F">
-                                                08
-                                            </div>
-                                            <div class="degress-color" style="background: #B8FF5F; margin-left: 234px;">
-                                            </div>
-                                            <div class="degress-text">
-                                                <div class="degress-big-text">
-                                                    Стоимость услуги = 9000 руб.
-                                                </div>
-                                                <div class="degress-small-text">
-                                                    Выдача займа = 8000 руб.<br>
-                                                    Беспроцентный срок погашения = 14 дней
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="degress-item">
-                                            <div class="degress-number" style="color: #88FF5F">
-                                                09
-                                            </div>
-                                            <div class="degress-color" style="background: #88FF5F; margin-left: 264px;">
-                                            </div>
-                                            <div class="degress-text">
-                                                <div class="degress-big-text">
-                                                    Стоимость услуги = 10 000 руб.
-                                                </div>
-                                                <div class="degress-small-text">
-                                                    Выдача займа = 9000 руб.<br>
-                                                    Беспроцентный срок погашения = 14 дней
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <button type="button" class="btn btn-success js-loan_doctor_degress p-2 pl-4 pr-4 mt-4" style="background: #19C034;">
-                                    Показать все ступени
-                                </button>
-                            </div>
-                            <div class="degress-about">
-                                <div class="-fs-32 -gil-b degress-about-title" style="color:#bd9457">
-                                    Подробнее о предложении
                                 </div>
 
-                                <div class="degress-about-items">
-                                    <div class="degress-about-item">
-                                        <div class="degress-about-big-text">
-                                            Улучшение кредитной истории
-                                            <span class="degress-h"></span>
-                                            <span class="degress-v"></span>
-                                        </div>
-                                        <div class="degress-about-text hide">
-                                            При принятии решения об одобрении займа, наш сервис анализирует множество параметров. Поэтому мы одобряем займы клиентам не только с хорошей кредитной историей, но и, в некоторых случаях, с пустой или проблемной. Для клиентов с пустой кредитной историей мы даем возможность ее создать, а для клиентов с проблемной кредитной историей - шанс ее улучшить.
+                                <div class="row mt-3">
+                                    <div class="col-lg-2  col-md-1 col-sm-0">
+                                    </div>
+                                    <div class="col-lg-4  col-md-5 col-sm-6">
+                                        <div class="col-12 p-0 pt-1">
+                                            {if $loan_doctor_steps_count <= $user->loan_doctor}
+                                                <button type="button" class="btn btn-primary w-100 h-100 p-2" style="background-color: #B7B7B7; cursor: auto">
+                                                    Все шаги <br> кредитного доктора пройдены
+                                                </button>
+                                            {else}
+                                                <button type="button" class="btn btn-success js-open-loan-doctor-block w-100 h-100 p-2">
+                                                    {if $user->loan_doctor == 0}
+                                                        Получить займ <br> по специальному тарифу
+                                                    {else}
+                                                        Кредитный доктор <br> шаг {$user->loan_doctor + 1}
+                                                    {/if}
+                                                </button>
+                                            {/if}
                                         </div>
                                     </div>
-                                    <div class="degress-about-item">
-                                        <div class="degress-about-big-text">
-                                            Как это работает
-                                            <span class="degress-h"></span>
-                                            <span class="degress-v"></span>
-                                        </div>
-                                        <div class="degress-about-text hide">
-                                            Информация обо всех полученных и возвращенных займах передается в Бюро Кредитных Историй, поэтому когда вы возвращаете займ в срок, вы формируете положительную кредитную историю и повышаете свой кредитный рейтинг. Сформировав положительную кредитную историю и высокий кредитный рейтинг, вы повышаете шансы на одобрение банковских кредитов и иных займов в будущем.
-                                        </div>
-                                    </div>
-                                    <div class="degress-about-item">
-                                        <div class="degress-about-big-text">
-                                            Что требуется от меня
-                                            <span class="degress-h"></span>
-                                            <span class="degress-v"></span>
-                                        </div>
-                                        <div class="degress-about-text hide">
-                                            Никаких дополнительных действий от вас не требуется. Информация о погашенных займах выгружается в Бюро Кредитных Историй для всех наших клиентов автоматически. Это происходит незаметно для вас, а наш сервис не взимает дополнительной платы.
+                                    <div class="col-lg-4  col-md-5 col-sm-6">
+                                            <div class="col-12 p-0 pt-1  w-100 h-100">
+                                            {if $reject_block}
+                                                <button type="button" class="btn btn-primary w-100 h-100 p-2" style="background-color: #B7B7B7; cursor: auto">
+                                                    Подать заявку<br>
+                                                    Будет доступно {$reject_block|date}
+                                                </button>
+                                            {else}
+                                                <button type="button" class="btn btn-primary js-open-repeat-block w-100 h-100 p-2" style="background-color: #1948C0">
+                                                    Подать заявку
+                                                </button>
+                                            {/if}
                                         </div>
                                     </div>
-                                    <div class="degress-about-item">
-                                        <div class="degress-about-big-text">
-                                            Возможно ли гарантировать улучшение
-                                            <span class="degress-h"></span>
-                                            <span class="degress-v"></span>
-                                        </div>
-                                        <div class="degress-about-text hide">
-                                            Гарантировать улучшение кредитной истории и повышения скорингового балла невозможно. Все финансовые организации имеют свою систему оценки кредитоспособности и по-разному учитывают информацию о погашенных кредитах и займах. Но существуют некоторые общие принципы - чтобы создать положительную кредитную историю, пользуйтесь кредитами и займами ответственно - вносите платежи вовремя и не допускайте просрочек.
-                                        </div>
+                                    <div class="col-lg-2 col-md-1 col-sm-0">
                                     </div>
-                                    <div class="degress-about-item">
-                                        <div class="degress-about-big-text">
-                                            Главные признаки «хорошего» заемщика
-                                            <span class="degress-h"></span>
-                                            <span class="degress-v"></span>
-                                        </div>
-                                        <div class="degress-about-text hide">
-                                            <ul>
-                                                <li>Наличие постоянного дохода</li>
-                                                <li>Своевременное внесение платежей (досрочное погашение не приветствуется)</li>
-                                                <li>Регулярное использование кредитов и займов </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="degress-about-item">
-                                        <div class="degress-about-big-text">
-                                            Преимущества займов для клиента с плохой кредитной историей
-                                            <span class="degress-h"></span>
-                                            <span class="degress-v"></span>
-                                        </div>
-                                        <div class="degress-about-text hide">
-                                            Если Вы не можете получить кредит с плохой кредитной историей, а в планах приобретение жилья, автомобиля или крупной бытовой техники, то можно воспользоваться оформлением займа с плохой кредитной историей.<br>
-                                            Мы даем нашим клиентам возможность быстро восстановить репутацию добросовестного заемщика — как правило, достаточно оформить и своевременно погасить 3 и более займов.<br>
-                                            Информация о каждом Вашем опыте пользования займом передается в кредитное бюро. Уже после первого опыта пользования нашим продуктом банки смогут получить данные о своевременном исполнении Вами обязательств по договору.<br>
-                                            Пользуйтесь займами даже с плохой кредитной историей, погашайте их в срок, и Вы сможете вновь получить одобрение в банках.<br>
-                                        </div>
+                                </div>
+
+                                <div class="row mt-5">
+                                    <div class="col-12 text-center ">
+                                        <a href="https://luchshie-zaymi.ru" target="_blank" class="blue-link">
+                                            Получите займ у наших партнёров
+                                            <br/>
+                                            <span class="sc-htoDjs fOeadG"></span>
+                                            <span class="sc-iwsKbI jQhHGA">Лучшие предложения для вас</span>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-
-                            {if $loan_doctor_steps_count <= $user->loan_doctor}
-                                <div class="-fs-32 -gil-b degress-about-title" style="color:#bd9457">
-                                    Все шаги пройдены
+                            
+                            <div class="new_order_box hide js-order-doctor">
+                                <div class="-fs-32 -gil-b" style="color:#bd9457">
+                                    Специальное предложение<br> – Улучшение кредитной истории
                                 </div>
-                            {else}
-                                <div class="-fs-32 -gil-b degress-about-title" style="color:#bd9457">
-                                    Кредитный доктор шаг {$user->loan_doctor + 1}
+                                <p class="doctor-p pt-3">При принятии решения об одобрении займа, наш сервис анализирует множество параметров. Поэтому мы одобряем займы клиентам не только с хорошей кредитной историей, но и, в некоторых случаях, с пустой или проблемной. Для клиентов с пустой кредитной историей мы даем возможность ее создать, а для клиентов с проблемной кредитной историей - шанс ее улучшить.</p>
+                                <div class="steps mt-5">
+                                    <div class="steps-step">
+                                        <div class="steps-img">
+                                            <img src="theme/site/new/doctor/step1.svg" alt="">
+                                        </div>
+                                        <div class="steps-text">
+                                            Оформление услуги
+                                        </div>
+                                    </div>
+                                    <div class="steps-arrow">
+                                        <img src="theme/site/new/doctor/steps-arrow.svg" alt="">
+                                    </div>
+                                    <div class="steps-step">
+                                        <div class="steps-img">
+                                            <img src="theme/site/new/doctor/step2.svg" alt="">
+                                        </div>
+                                        <div class="steps-text">
+                                            Получение займа
+                                        </div>
+                                    </div>
+                                    <div class="steps-arrow">
+                                        <img src="theme/site/new/doctor/steps-arrow.svg" alt="">
+                                    </div>
+                                    <div class="steps-step">
+                                        <div class="steps-img">
+                                            <img src="theme/site/new/doctor/step3.svg" alt="">
+                                        </div>
+                                        <div class="steps-text">
+                                            Возвращение займа без просрочки
+                                        </div>
+                                    </div>
+                                    <div class="steps-arrow">
+                                        <img src="theme/site/new/doctor/steps-arrow.svg" alt="">
+                                    </div>
+                                    <div class="steps-step">
+                                        <div class="steps-img">
+                                            <img src="theme/site/new/doctor/step4.svg" alt="">
+                                        </div>
+                                        <div class="steps-text">
+                                            Повышение кредитного рейтинга - открытие новой ступени
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <form class="calculator js-loan-doctor-form js-calc mt-4" method="POST" data-percent="{$loan_percent}">
-
-                                    <input type="hidden" name="local_time" class="js-local-time" value=""/>
-                                    <input type="hidden" name="juicescore_session_id" id="juicescore_session_id" value=""/>
-                                    <input type="hidden" name="loan_doctor_step" id="loan_doctor_step" value="{$user->loan_doctor + 1}"/>
-                                    <input type="hidden" name="phone" id="phone" value="{$user->phone_mobile}"/>
-                                    <input type="hidden" name="user_id" id="user_id" value="{$user->id}"/>
-                                    <input type="hidden" name="amount" id="amount" value="{$loan_doctor_payment[$user->loan_doctor+1]}"/>
-                                    <input type="hidden" name="sms" class="js-loan-code" value=""/>
-
-                                    <div class="row">
-                                        <div class="col-md-7">
-                                            <div class="form-group form-group-one">
-                                                <div class="form_row">
-                                                    <label class="form-group-title -fs-18 -gil-m" for="amount-one">
-                                                        Сумма займа:
-                                                    </label>
-                                                    <span class="range_res -fs-26 -gil-b js-info-summ" id="demo"></span>
-                                                </div>
-                                                <div class="amount" style="display: none">
-                                                    <input type="range" name="amount" min="{$loan_doctor_steps[$user->loan_doctor+1]}" max="{$loan_doctor_steps[$user->loan_doctor+1]}" 
-                                                        value="{$loan_doctor_steps[$user->loan_doctor+1]}" class="slider js-input-summ" id="amount-one">
-                                                </div>
+                                <div class="degress">
+                                    <div class="-fs-32 -gil-b degress-title" style="color:#bd9457">
+                                        Ступени
+                                    </div>
+                                    <div class="degress-items">
+                                        <div class="degress-item">
+                                            <div class="degress-number" style="color: #FF5F5F;">
+                                                01
                                             </div>
-                                            <div class="form-group form-group-two">
-                                                <div class="form_row">
-                                                    <label class="form-group-title -fs-18 -gil-m" for="amount-two">
-                                                        Срок займа:
-                                                    </label>
-                                                    <span class="range_res -fs-26 -gil-b js-info-period" id="demo2"></span>
+                                            <div class="degress-color" style="background: #FF5F5F; margin-left: 24px;">
+                                            </div>
+                                            <div class="degress-text">
+                                                <div class="degress-big-text">
+                                                    Стоимость услуги = 2000 руб.
                                                 </div>
-                                                <div class="amount" style="display: none">
-                                                    <input type="range" name="period" min="14" max="14"
-                                                        value="14" class="slider js-input-period" id="amount-two">
+                                                <div class="degress-small-text">
+                                                    Выдача займа = 1000 руб.<br>
+                                                    Беспроцентный срок погашения = 14 дней
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-5">
-                                            <div class="form-group form-group-res br-10">
-                                                <div class="form_row">
-                                                    <div class="res_title -fs-18 -gil-m">Итого к возврату:</div>
-                                                    <div class="res_info_sum -fs-20 -gil-b"><span class="js-total-summ1">{$loan_doctor_steps[$user->loan_doctor+1]}</span> ₽
+                                        <div class="degress-item">
+                                            <div class="degress-number degress-number-second" style="color: #CDCDCD;">
+                                                02
+                                            </div>
+                                            <div class="degress-color degress-color-second" style="background: #CDCDCD; margin-left: 54px;">
+                                            </div>
+                                            <div class="degress-text">
+                                                <div class="degress-big-text">
+                                                    Стоимость услуги = 3000 руб.
+                                                </div>
+                                                <div class="degress-small-text">
+                                                    Выдача займа = 2000 руб.<br>
+                                                    Беспроцентный срок погашения = 14 дней
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="degress-items-hide hide">
+                                            <div class="degress-item">
+                                                <div class="degress-number" style="color: #FFA25F;">
+                                                    03
+                                                </div>
+                                                <div class="degress-color" style="background: #FFA25F; margin-left: 84px;">
+                                                </div>
+                                                <div class="degress-text">
+                                                    <div class="degress-big-text">
+                                                        Стоимость услуги = 4000 руб.
                                                     </div>
-                                                </div>
-                                                <div class="form_row">
-                                                    <div class="res_title -fs-18 -gil-m">Срок до:</div>
-                                                    <div class="res_info_data  -fs-20 -gil-b"><span
-                                                                class="js-total-period">12.12.2020</span>
-                                                        г.
+                                                    <div class="degress-small-text">
+                                                        Выдача займа = 3000 руб.<br>
+                                                        Беспроцентный срок погашения = 14 дней
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <select name="card_id" class="form-control" style="padding: 0!important;">
-                                                    {foreach $cards as $card}
-                                                        <option value="{$card->id}">{$card->pan} {$card->expdate}</option>
-                                                    {/foreach}
-                                                </select>
+                                            <div class="degress-item">
+                                                <div class="degress-number" style="color: #FFDC5F">
+                                                    04
+                                                </div>
+                                                <div class="degress-color" style="background: #FFDC5F; margin-left: 114px;">
+                                                </div>
+                                                <div class="degress-text">
+                                                    <div class="degress-big-text">
+                                                        Стоимость услуги = 5000 руб.
+                                                    </div>
+                                                    <div class="degress-small-text">
+                                                        Выдача займа = 4000 руб.<br>
+                                                        Беспроцентный срок погашения = 14 дней
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="form-group">
-                                                <div class="form_row">
-                                                    <div class="check mb-0 js-loan-agreement-block">
-                                                        <input type="checkbox" class="custom-checkbox js-loan-agreement"
-                                                            id="check_agreement" name="agreement" value="1"/>
-                                                        <label for="check_agreement" class="check_box -gil-m">
-                                                            <span>Я ознакомлен и согласен со <a href="#agreement_list"
-                                                                                                class="green-link js-toggle-agreement-list"
-                                                                                                data-fancybox>следующим</a></span>
+                                            <div class="degress-item">
+                                                <div class="degress-number" style="color: #F2FF5F">
+                                                    05
+                                                </div>
+                                                <div class="degress-color" style="background: #F2FF5F; margin-left: 144px;">
+                                                </div>
+                                                <div class="degress-text">
+                                                    <div class="degress-big-text">
+                                                        Стоимость услуги = 6000 руб.
+                                                    </div>
+                                                    <div class="degress-small-text">
+                                                        Выдача займа = 5000 руб.<br>
+                                                        Беспроцентный срок погашения = 14 дней
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="degress-item">
+                                                <div class="degress-number" style="color: #D5FF5F">
+                                                    06
+                                                </div>
+                                                <div class="degress-color" style="background: #D5FF5F; margin-left: 174px;">
+                                                </div>
+                                                <div class="degress-text">
+                                                    <div class="degress-big-text">
+                                                        Стоимость услуги = 7000 руб.
+                                                    </div>
+                                                    <div class="degress-small-text">
+                                                        Выдача займа = 6000 руб.<br>
+                                                        Беспроцентный срок погашения = 14 дней
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="degress-item">
+                                                <div class="degress-number" style="color: #D5FF5F">
+                                                    07
+                                                </div>
+                                                <div class="degress-color" style="background: #D5FF5F; margin-left: 204px;">
+                                                </div>
+                                                <div class="degress-text">
+                                                    <div class="degress-big-text">
+                                                        Стоимость услуги = 8000 руб.
+                                                    </div>
+                                                    <div class="degress-small-text">
+                                                        Выдача займа = 7000 руб.<br>
+                                                        Беспроцентный срок погашения = 14 дней
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="degress-item">
+                                                <div class="degress-number" style="color: #B8FF5F">
+                                                    08
+                                                </div>
+                                                <div class="degress-color" style="background: #B8FF5F; margin-left: 234px;">
+                                                </div>
+                                                <div class="degress-text">
+                                                    <div class="degress-big-text">
+                                                        Стоимость услуги = 9000 руб.
+                                                    </div>
+                                                    <div class="degress-small-text">
+                                                        Выдача займа = 8000 руб.<br>
+                                                        Беспроцентный срок погашения = 14 дней
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="degress-item">
+                                                <div class="degress-number" style="color: #88FF5F">
+                                                    09
+                                                </div>
+                                                <div class="degress-color" style="background: #88FF5F; margin-left: 264px;">
+                                                </div>
+                                                <div class="degress-text">
+                                                    <div class="degress-big-text">
+                                                        Стоимость услуги = 10 000 руб.
+                                                    </div>
+                                                    <div class="degress-small-text">
+                                                        Выдача займа = 9000 руб.<br>
+                                                        Беспроцентный срок погашения = 14 дней
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" class="btn btn-success js-loan_doctor_degress p-2 pl-4 pr-4 mt-4" style="background: #19C034;">
+                                        Показать все ступени
+                                    </button>
+                                </div>
+                                <div class="degress-about">
+                                    <div class="-fs-32 -gil-b degress-about-title" style="color:#bd9457">
+                                        Подробнее о предложении
+                                    </div>
+
+                                    <div class="degress-about-items">
+                                        <div class="degress-about-item">
+                                            <div class="degress-about-big-text">
+                                                Улучшение кредитной истории
+                                                <span class="degress-h"></span>
+                                                <span class="degress-v"></span>
+                                            </div>
+                                            <div class="degress-about-text hide">
+                                                При принятии решения об одобрении займа, наш сервис анализирует множество параметров. Поэтому мы одобряем займы клиентам не только с хорошей кредитной историей, но и, в некоторых случаях, с пустой или проблемной. Для клиентов с пустой кредитной историей мы даем возможность ее создать, а для клиентов с проблемной кредитной историей - шанс ее улучшить.
+                                            </div>
+                                        </div>
+                                        <div class="degress-about-item">
+                                            <div class="degress-about-big-text">
+                                                Как это работает
+                                                <span class="degress-h"></span>
+                                                <span class="degress-v"></span>
+                                            </div>
+                                            <div class="degress-about-text hide">
+                                                Информация обо всех полученных и возвращенных займах передается в Бюро Кредитных Историй, поэтому когда вы возвращаете займ в срок, вы формируете положительную кредитную историю и повышаете свой кредитный рейтинг. Сформировав положительную кредитную историю и высокий кредитный рейтинг, вы повышаете шансы на одобрение банковских кредитов и иных займов в будущем.
+                                            </div>
+                                        </div>
+                                        <div class="degress-about-item">
+                                            <div class="degress-about-big-text">
+                                                Что требуется от меня
+                                                <span class="degress-h"></span>
+                                                <span class="degress-v"></span>
+                                            </div>
+                                            <div class="degress-about-text hide">
+                                                Никаких дополнительных действий от вас не требуется. Информация о погашенных займах выгружается в Бюро Кредитных Историй для всех наших клиентов автоматически. Это происходит незаметно для вас, а наш сервис не взимает дополнительной платы.
+                                            </div>
+                                        </div>
+                                        <div class="degress-about-item">
+                                            <div class="degress-about-big-text">
+                                                Возможно ли гарантировать улучшение
+                                                <span class="degress-h"></span>
+                                                <span class="degress-v"></span>
+                                            </div>
+                                            <div class="degress-about-text hide">
+                                                Гарантировать улучшение кредитной истории и повышения скорингового балла невозможно. Все финансовые организации имеют свою систему оценки кредитоспособности и по-разному учитывают информацию о погашенных кредитах и займах. Но существуют некоторые общие принципы - чтобы создать положительную кредитную историю, пользуйтесь кредитами и займами ответственно - вносите платежи вовремя и не допускайте просрочек.
+                                            </div>
+                                        </div>
+                                        <div class="degress-about-item">
+                                            <div class="degress-about-big-text">
+                                                Главные признаки «хорошего» заемщика
+                                                <span class="degress-h"></span>
+                                                <span class="degress-v"></span>
+                                            </div>
+                                            <div class="degress-about-text hide">
+                                                <ul>
+                                                    <li>Наличие постоянного дохода</li>
+                                                    <li>Своевременное внесение платежей (досрочное погашение не приветствуется)</li>
+                                                    <li>Регулярное использование кредитов и займов </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="degress-about-item">
+                                            <div class="degress-about-big-text">
+                                                Преимущества займов для клиента с плохой кредитной историей
+                                                <span class="degress-h"></span>
+                                                <span class="degress-v"></span>
+                                            </div>
+                                            <div class="degress-about-text hide">
+                                                Если Вы не можете получить кредит с плохой кредитной историей, а в планах приобретение жилья, автомобиля или крупной бытовой техники, то можно воспользоваться оформлением займа с плохой кредитной историей.<br>
+                                                Мы даем нашим клиентам возможность быстро восстановить репутацию добросовестного заемщика — как правило, достаточно оформить и своевременно погасить 3 и более займов.<br>
+                                                Информация о каждом Вашем опыте пользования займом передается в кредитное бюро. Уже после первого опыта пользования нашим продуктом банки смогут получить данные о своевременном исполнении Вами обязательств по договору.<br>
+                                                Пользуйтесь займами даже с плохой кредитной историей, погашайте их в срок, и Вы сможете вновь получить одобрение в банках.<br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {if $loan_doctor_steps_count <= $user->loan_doctor}
+                                    <div class="-fs-32 -gil-b degress-about-title" style="color:#bd9457">
+                                        Все шаги пройдены
+                                    </div>
+                                {else}
+                                    <div class="-fs-32 -gil-b degress-about-title" style="color:#bd9457">
+                                        Кредитный доктор шаг {$user->loan_doctor + 1}
+                                    </div>
+
+                                    <form class="calculator js-loan-doctor-form js-calc mt-4" method="POST" data-percent="{$loan_percent}">
+
+                                        <input type="hidden" name="local_time" class="js-local-time" value=""/>
+                                        <input type="hidden" name="juicescore_session_id" id="juicescore_session_id" value=""/>
+                                        <input type="hidden" name="loan_doctor_step" id="loan_doctor_step" value="{$user->loan_doctor + 1}"/>
+                                        <input type="hidden" name="phone" id="phone" value="{$user->phone_mobile}"/>
+                                        <input type="hidden" name="user_id" id="user_id" value="{$user->id}"/>
+                                        <input type="hidden" name="amount" id="amount" value="{$loan_doctor_payment[$user->loan_doctor+1]}"/>
+                                        <input type="hidden" name="sms" class="js-loan-code" value=""/>
+
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <div class="form-group form-group-one">
+                                                    <div class="form_row">
+                                                        <label class="form-group-title -fs-18 -gil-m" for="amount-one">
+                                                            Сумма займа:
                                                         </label>
+                                                        <span class="range_res -fs-26 -gil-b js-info-summ" id="demo"></span>
+                                                    </div>
+                                                    <div class="amount" style="display: none">
+                                                        <input type="range" name="amount" min="{$loan_doctor_steps[$user->loan_doctor+1]}" max="{$loan_doctor_steps[$user->loan_doctor+1]}" 
+                                                            value="{$loan_doctor_steps[$user->loan_doctor+1]}" class="slider js-input-summ" id="amount-one">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group form-group-two">
+                                                    <div class="form_row">
+                                                        <label class="form-group-title -fs-18 -gil-m" for="amount-two">
+                                                            Срок займа:
+                                                        </label>
+                                                        <span class="range_res -fs-26 -gil-b js-info-period" id="demo2"></span>
+                                                    </div>
+                                                    <div class="amount" style="display: none">
+                                                        <input type="range" name="period" min="14" max="14"
+                                                            value="14" class="slider js-input-period" id="amount-two">
                                                     </div>
                                                 </div>
                                             </div>
-                                            {include file='agreement_list_kd.tpl'}
-                                            <div class="form-group form-btn">
-                                                <a href="#" class="btn btn-secondary -fs-20 -fullwidth js-loan-repeat">Получить
-                                                    займ</a>
-                                                {*}
-                                                <span class="bottom_text -fs-14 -center">нажимая на кнопку, вы соглашаетесь с
-                                                <a href="#agreement_list" data-fancybox>договором оферты</a>
-                                                </span>
-                                                {*}
+                                            <div class="col-md-5">
+                                                <div class="form-group form-group-res br-10">
+                                                    <div class="form_row">
+                                                        <div class="res_title -fs-18 -gil-m">Итого к возврату:</div>
+                                                        <div class="res_info_sum -fs-20 -gil-b"><span class="js-total-summ1">{$loan_doctor_steps[$user->loan_doctor+1]}</span> ₽
+                                                        </div>
+                                                    </div>
+                                                    <div class="form_row">
+                                                        <div class="res_title -fs-18 -gil-m">Срок до:</div>
+                                                        <div class="res_info_data  -fs-20 -gil-b"><span
+                                                                    class="js-total-period">12.12.2020</span>
+                                                            г.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <select name="card_id" class="form-control" style="padding: 0!important;">
+                                                        {foreach $cards as $card}
+                                                            <option value="{$card->id}">{$card->pan} {$card->expdate}</option>
+                                                        {/foreach}
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="form_row">
+                                                        <div class="check mb-0 js-loan-agreement-block">
+                                                            <input type="checkbox" class="custom-checkbox js-loan-agreement"
+                                                                id="check_agreement" name="agreement" value="1"/>
+                                                            <label for="check_agreement" class="check_box -gil-m">
+                                                                <span>Я ознакомлен и согласен со <a href="#agreement_list"
+                                                                                                    class="green-link js-toggle-agreement-list"
+                                                                                                    data-fancybox>следующим</a></span>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {include file='agreement_list_kd.tpl'}
+                                                <div class="form-group form-btn">
+                                                    <a href="#" class="btn btn-secondary -fs-20 -fullwidth js-loan-repeat">Получить
+                                                        займ</a>
+                                                    {*}
+                                                    <span class="bottom_text -fs-14 -center">нажимая на кнопку, вы соглашаетесь с
+                                                    <a href="#agreement_list" data-fancybox>договором оферты</a>
+                                                    </span>
+                                                    {*}
+                                                </div>
+
                                             </div>
-
                                         </div>
-                                    </div>
-                                </form>
+                                    </form>
 
-                            {/if}
+                                {/if}
 
-                        </div>
+                            </div>
+                        {/if}
+
+                        
+
+
+
                     {/if}
-
-                    
-
-
-
                 {/if}
-                {*}
-                {*}
-                {*}
-                {*}
-
 
                 {* отказ по банкротству*}
 
-                {*}
-                {*}
-                {*}
-                {*}
-                {if ($order->status == 3 || $order->status == 8) && ($order->reason_id == 54 || $order->reason_id == 53 || $user_age_year < 18)}
-                {*}
-                {*}
-                {*}
-                {*}
 
-                {*}
-                {*}
-                {*}
-                {if ($order->status == 3 || $order->status == 8)}
-                {*}
-                {*}
-                {*}
-
+                {if ($kd_on && ($order->status == 3 || $order->status == 8) && ($order->reason_id == 54 || $order->reason_id == 53 || $user_age_year < 18))
+                || (!$kd_on && ($order->status == 3 || $order->status == 8))}
 
                     <div class="new_order_box " data-status="3" data-order="{$order->order_id}">
                         <div class="row">

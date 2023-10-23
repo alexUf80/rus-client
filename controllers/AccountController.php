@@ -749,6 +749,8 @@ class AccountController extends Controller
             $user_age_year = $user_age->y;
 
             $this->design->assign('user_age_year', $user_age_year);
+            $this->design->assign('kd_on', $this->settings->kd_on);
+
             return $this->design->fetch('account/home.tpl');
         }
     }
