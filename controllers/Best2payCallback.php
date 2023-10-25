@@ -147,36 +147,39 @@ class Best2PayCallback extends Controller
 
                                 $docs = 1;
 
-                                if ($payment_amount >= $contract->loan_percents_summ + $this->settings->prolongation_amount + $contract->loan_peni_summ) {
-                                    $operation_id = $this->operations->add_operation(array(
-                                        'contract_id' => $contract->id,
-                                        'user_id' => $contract->user_id,
-                                        'order_id' => $contract->order_id,
-                                        'transaction_id' => $transaction->id,
-                                        'type' => 'INSURANCE_BC',
-                                        'amount' => $this->settings->prolongation_amount,
-                                        'created' => date('Y-m-d H:i:s'),
-                                        'sent_status' => 0,
-                                    ));
+                                if (!empty($contract->service_insurance)) 
+                                {
+                                    if ($payment_amount >= $contract->loan_percents_summ + $this->settings->prolongation_amount + $contract->loan_peni_summ) {
+                                        $operation_id = $this->operations->add_operation(array(
+                                            'contract_id' => $contract->id,
+                                            'user_id' => $contract->user_id,
+                                            'order_id' => $contract->order_id,
+                                            'transaction_id' => $transaction->id,
+                                            'type' => 'INSURANCE_BC',
+                                            'amount' => $this->settings->prolongation_amount,
+                                            'created' => date('Y-m-d H:i:s'),
+                                            'sent_status' => 0,
+                                        ));
 
-                                    $insurance_id = $this->insurances->add_insurance(array(
-                                        'number' => '',
-                                        'amount' => $this->settings->prolongation_amount,
-                                        'user_id' => $contract->user_id,
-                                        'order_id' => $contract->order_id,
-                                        'create_date' => date('Y-m-d H:i:s'),
-                                        'start_date' => date('Y-m-d 00:00:00', time() + (1 * 86400)),
-                                        'end_date' => date('Y-m-d 23:59:59', time() + (31 * 86400)),
-                                        'operation_id' => $operation_id,
-                                        'protection' => 0,
-                                    ));
-                                    $this->transactions->update_transaction($transaction->id, array('insurance_id' => $insurance_id));
+                                        $insurance_id = $this->insurances->add_insurance(array(
+                                            'number' => '',
+                                            'amount' => $this->settings->prolongation_amount,
+                                            'user_id' => $contract->user_id,
+                                            'order_id' => $contract->order_id,
+                                            'create_date' => date('Y-m-d H:i:s'),
+                                            'start_date' => date('Y-m-d 00:00:00', time() + (1 * 86400)),
+                                            'end_date' => date('Y-m-d 23:59:59', time() + (31 * 86400)),
+                                            'operation_id' => $operation_id,
+                                            'protection' => 0,
+                                        ));
+                                        $this->transactions->update_transaction($transaction->id, array('insurance_id' => $insurance_id));
 
-                                    $rest_amount = $rest_amount - $this->settings->prolongation_amount;
+                                        $rest_amount = $rest_amount - $this->settings->prolongation_amount;
 
-                                    $payment_amount -= $this->settings->prolongation_amount;
+                                        $payment_amount -= $this->settings->prolongation_amount;
 
-                                    $docs = 2;
+                                        $docs = 2;
+                                    }
                                 }
 
                                 // продлеваем контракт
@@ -401,90 +404,90 @@ class Best2PayCallback extends Controller
 
 
                     // Снимаем страховку
-                    if (!empty($contract->service_insurance)) 
-                    {
-                        $insurance_cost = $this->insurances->get_insurance_cost($contract->amount);
+                    // if (!empty($contract->service_insurance)) 
+                    // {
+                    //     $insurance_cost = $this->insurances->get_insurance_cost($contract->amount);
 
-                        if ($insurance_cost > 0)
-                        {
-                            $insurance_amount = $insurance_cost * 100;
+                    //     if ($insurance_cost > 0)
+                    //     {
+                    //         $insurance_amount = $insurance_cost * 100;
 
-                            $description = 'Страховой полис';
+                    //         $description = 'Страховой полис';
 
-                            $xml = $this->BestPay->recurring_by_token($contract->card_id, $insurance_amount, $description);
-                            $status = (string)$xml->state;
+                    //         $xml = $this->BestPay->recurring_by_token($contract->card_id, $insurance_amount, $description);
+                    //         $status = (string)$xml->state;
 
-                            if ($status == 'APPROVED') {
+                    //         if ($status == 'APPROVED') {
                                 
-                                $transaction = $this->transactions->get_register_id_transaction($xml->order_id);
+                    //             $transaction = $this->transactions->get_register_id_transaction($xml->order_id);
                                 
-                                $contract = $this->contracts->get_contract($contract->id);
+                    //             $contract = $this->contracts->get_contract($contract->id);
 
-                                $max_service_value = $this->operations->max_service_number();
+                    //             $max_service_value = $this->operations->max_service_number();
 
-                                $operation_id = $this->operations->add_operation(array(
-                                    'contract_id' => $contract->id,
-                                    'user_id' => $contract->user_id,
-                                    'order_id' => $contract->order_id,
-                                    'type' => 'INSURANCE',
-                                    'amount' => $insurance_cost,
-                                    'created' => date('Y-m-d H:i:s'),
-                                    'transaction_id' => $transaction->id,
-                                    'service_number' => $max_service_value,
-                                ));
+                    //             $operation_id = $this->operations->add_operation(array(
+                    //                 'contract_id' => $contract->id,
+                    //                 'user_id' => $contract->user_id,
+                    //                 'order_id' => $contract->order_id,
+                    //                 'type' => 'INSURANCE',
+                    //                 'amount' => $insurance_cost,
+                    //                 'created' => date('Y-m-d H:i:s'),
+                    //                 'transaction_id' => $transaction->id,
+                    //                 'service_number' => $max_service_value,
+                    //             ));
 
-                                $dt = new DateTime();
-                                $dt->add(new DateInterval('P1M'));
-                                $end_date = $dt->format('Y-m-d 23:59:59');
+                    //             $dt = new DateTime();
+                    //             $dt->add(new DateInterval('P1M'));
+                    //             $end_date = $dt->format('Y-m-d 23:59:59');
 
-                                try{
-                                    $contract->insurance = new InsurancesORM();
-                                    $contract->insurance->amount = $insurance_cost;
-                                    $contract->insurance->user_id = $contract->user_id;
-                                    $contract->insurance->order_id = $contract->order_id;
-                                    $contract->insurance->start_date = date('Y-m-d 00:00:00', time() + (1 * 86400));
-                                    $contract->insurance->end_date = $end_date;
-                                    $contract->insurance->operation_id = $operation_id;
-                                    $contract->insurance->save();
+                    //             try{
+                    //                 $contract->insurance = new InsurancesORM();
+                    //                 $contract->insurance->amount = $insurance_cost;
+                    //                 $contract->insurance->user_id = $contract->user_id;
+                    //                 $contract->insurance->order_id = $contract->order_id;
+                    //                 $contract->insurance->start_date = date('Y-m-d 00:00:00', time() + (1 * 86400));
+                    //                 $contract->insurance->end_date = $end_date;
+                    //                 $contract->insurance->operation_id = $operation_id;
+                    //                 $contract->insurance->save();
 
-                                    $contract->insurance->number = InsurancesORM::create_number($contract->insurance->id);
+                    //                 $contract->insurance->number = InsurancesORM::create_number($contract->insurance->id);
 
-                                    InsurancesORM::where('id', $contract->insurance->id)->update(['number' => $contract->insurance->number]);
-                                }catch (Exception $e)
-                                {
+                    //                 InsurancesORM::where('id', $contract->insurance->id)->update(['number' => $contract->insurance->number]);
+                    //             }catch (Exception $e)
+                    //             {
 
-                                }
+                    //             }
 
-                                    $this->contracts->update_contract($contract->id, array(
-                                    'insurance_id' => $contract->insurance_id,
-                                    // 'loan_body_summ' => $contract->amount + $insurance_cost
-                                    'loan_body_summ' => $contract->amount
-                                ));
+                    //                 $this->contracts->update_contract($contract->id, array(
+                    //                 'insurance_id' => $contract->insurance_id,
+                    //                 // 'loan_body_summ' => $contract->amount + $insurance_cost
+                    //                 'loan_body_summ' => $contract->amount
+                    //             ));
 
-                                //создаем документы для страховки
-                                $this->create_document('POLIS', $contract);
+                    //             //создаем документы для страховки
+                    //             $this->create_document('POLIS', $contract);
 
-                                // //Отправляем чек по страховке
-                                // $return = $this->Cloudkassir->send_insurance($operation_id);
+                    //             // //Отправляем чек по страховке
+                    //             // $return = $this->Cloudkassir->send_insurance($operation_id);
 
-                                // if (!empty($return))
-                                // {
-                                //     $resp = json_decode($return);
+                    //             // if (!empty($return))
+                    //             // {
+                    //             //     $resp = json_decode($return);
 
-                                //     $this->receipts->add_receipt(array(
-                                //         'user_id' => $contract->user_id,
-                                //         'name' => 'Страхование от несчастных случаев',
-                                //         'order_id' => $contract->order_id,
-                                //         'contract_id' => $contract->id,
-                                //         'insurance_id' => $contract->insurance_id,
-                                //         'receipt_url' => (string)$resp->Model->ReceiptLocalUrl,
-                                //         'response' => serialize($return),
-                                //         'created' => date('Y-m-d H:i:s'),
-                                //     ));
-                                // }
-                            }
-                        }
-                    }
+                    //             //     $this->receipts->add_receipt(array(
+                    //             //         'user_id' => $contract->user_id,
+                    //             //         'name' => 'Страхование от несчастных случаев',
+                    //             //         'order_id' => $contract->order_id,
+                    //             //         'contract_id' => $contract->id,
+                    //             //         'insurance_id' => $contract->insurance_id,
+                    //             //         'receipt_url' => (string)$resp->Model->ReceiptLocalUrl,
+                    //             //         'response' => serialize($return),
+                    //             //         'created' => date('Y-m-d H:i:s'),
+                    //             //     ));
+                    //             // }
+                    //         }
+                    //     }
+                    // }
 
                 }
             }
