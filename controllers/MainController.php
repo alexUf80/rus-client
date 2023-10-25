@@ -110,6 +110,8 @@ class MainController extends Controller
 			$this->design->assign('meta_description', $this->page->meta_description);
 		}
 
+        $this->design->assign('safe_mode', $this->settings->safe_mode);
+
 		return $this->design->fetch('main.tpl');
 	}
 }

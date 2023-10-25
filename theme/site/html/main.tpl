@@ -1,7 +1,7 @@
 {capture name='page_scripts'}
 
 <script src="theme/site/js/calc.app.js?v=1.05"></script>
-<script src="theme/site/js/main.app.js?v=1.25"></script>
+<script src="theme/site/js/main.app.js?v=1.26"></script>
 
 {/capture}
 
