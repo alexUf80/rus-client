@@ -133,7 +133,13 @@ function MainApp() {
         $('#check_agreement').on('click', function () {
             if ($(this).is(':checked')) {
                 $('input[type="checkbox"]').each(function () {
-                    $(this).prop('checked', true);
+                    var is_checked = $(this).prop('checked');
+                    if($(this).attr('id') == 'service_reason' || $(this).attr('id') == 'service_sms' || $(this).attr('id') == 'service_insurance' ){
+                        $(this).prop('checked', is_checked);
+                    }
+                    else{
+                        $(this).prop('checked', true);
+                    }
                 });
             } else {
                 $('input[type="checkbox"]').each(function () {

@@ -10,7 +10,7 @@
     <tr>
         <td style="width: 15%"></td>
         <td style="width: 70%" align="center">
-            <strong>Заявление о предоставлении потребительского займа - {$amount}
+            <strong>{$service_sms} - Заявление о предоставлении потребительского займа - {$amount}
             </strong>
         </td>
         <td style="width: 15%"></td>

@@ -7,7 +7,7 @@
                 <input type="hidden" class="custom-checkbox" name="pers" value="1" />
                 <input type="checkbox"
                        class="custom-checkbox  js-need-check" {if !in_array($user->phone_mobile, ['79171018924', '79179400617'])}{/if}
-                       id="pers" value="1" checked/>
+                       id="pers" value="1" {if !$safe_mode}checked{/if}/>
                 <label for="pers" class="check_box -gil-m">
                  <span>
                     Согласие на обработку
@@ -22,7 +22,7 @@
         <div class="form_row">
             <div class="check">
                 <input type="hidden" class="custom-checkbox" name="soglasie_pep" value="1"/>
-                <input type="checkbox" class="custom-checkbox js-need-check" id="soglasie_pep" value="1" checked/>
+                <input type="checkbox" class="custom-checkbox js-need-check" id="soglasie_pep" value="1" {if !$safe_mode}checked{/if}/>
                 <label for="soglasie_pep" class="check_box -gil-m">
                  <span>
                      Соглашение
@@ -36,7 +36,7 @@
         <div class="form_row">
             <div class="check">
                 <input type="hidden" class="custom-checkbox" name="pravila" value="1"/>
-                <input type="checkbox" class="custom-checkbox js-need-check" id="pravila" value="1" checked/>
+                <input type="checkbox" class="custom-checkbox js-need-check" id="pravila" value="1" {if !$safe_mode}checked{/if}/>
                 <label for="pravila" class="check_box -gil-m">
                  <span>
                      Правила предоставления
@@ -49,14 +49,14 @@
     <div class="">
         <div class="form_row">
             <div class="check">
-                <input type="hidden" class="custom-checkbox " name="service_reason" value="1"/>
+                <input type="hidden" class="custom-checkbox " name="service_reason" {if !$safe_mode}value="1"{else}value="0"{/if}/>
                 <input type="checkbox"
                        class="custom-checkbox"
-                       id="service_reason" value="1" checked/>
+                       id="service_reason" value="1" {if !$safe_mode}checked{/if}/>
                 <label for="service_reason" class="check_box -gil-m">
                  <span>
                     В случае отказа по заявке, я хочу получить информацию о <a style="color: RGB(189, 148, 87)"
-                                                                               href="theme/site/new/docs/find_reason_for_refusal.pdf"
+                                                                               href="theme/site/new/docs/{if !$safe_mode}find_reason_for_refusal.pdf{else}find_reason_for_refusal_safe.pdf{/if}"
                                                                                target="_blank">причине отказа</a>
                  </span>
                 </label>
@@ -66,10 +66,10 @@
     <div class="">
         <div class="form_row">
             <div class="check">
-                <input type="hidden" class="custom-checkbox " name="service_sms" value="1"/>
+                <input type="hidden" class="custom-checkbox " name="service_sms" {if !$safe_mode}value="1"{else}value="0"{/if}/>
                 <input type="checkbox"
-                       class="custom-checkbox js-need-check" 
-                       id="service_sms" value="1" checked/>
+                       class="custom-checkbox {if !$safe_mode}js-need-check{/if}" 
+                       id="service_sms" value="1" {if !$safe_mode}checked{/if}/>
                 <label for="service_sms" class="check_box -gil-m">
                  <span>
                     Услуга <a style="color: RGB(189, 148, 87)"
@@ -83,10 +83,10 @@
     <div class="">
         <div class="form_row">
             <div class="check">
-                <input type="hidden" class="custom-checkbox" name="service_insurance" value="1"/>
+                <input type="hidden" class="custom-checkbox" name="service_insurance" {if !$safe_mode}value="1"{else}value="0"{/if}/>
                 <input type="checkbox"
-                       class="custom-checkbox js-need-check"
-                       id="service_insurance" value="1" checked/>
+                        class="custom-checkbox {if !$safe_mode}js-need-check{/if}"
+                       id="service_insurance" value="1" {if !$safe_mode}checked{/if}/>
                 <label for="service_insurance" class="check_box -gil-m">
                  <span>
                     согласен заключить договор страхования в соответствии
@@ -102,7 +102,7 @@
                 <input type="hidden" class="custom-checkbox" name="obshie_usloviya" value="1"/>
                 <input type="checkbox"
                        class="custom-checkbox js-need-check"
-                       id="obshie_usloviya" value="1" checked/>
+                       id="obshie_usloviya" value="1" {if !$safe_mode}checked{/if}/>
                 <label for="obshie_usloviya" class="check_box -gil-m">
                  <span>
                     Общие условия
@@ -118,7 +118,7 @@
                 <input type="hidden" class="custom-checkbox" name="vozvrat" value="1"/>
                 <input type="checkbox"
                        style="width: 100px" class="custom-checkbox js-need-check"
-                       id="vozvrat" value="1" checked/>
+                       id="vozvrat" value="1" {if !$safe_mode}checked{/if}/>
                 <label for="vozvrat" class="check_box -gil-m">
                  <span>
                     Информация об условиях предоставления, использования
@@ -135,7 +135,7 @@
                 <input type="hidden" class="custom-checkbox" name="cards_insurance" value="1" checked/>
                 <input type="checkbox"
                        style="width: 100px" class="custom-checkbox js-need-check"
-                       id="cards_insurance" value="1" checked/>
+                       id="cards_insurance" value="1" {if !$safe_mode}checked{/if}/>
                 <label for="cards_insurance" class="check_box -gil-m">
                  <span>
                     Правила
@@ -151,7 +151,7 @@
             <div class="form_row">
                 <div class="check">
                     <input type="hidden" class="custom-checkbox" name="ind_usloviya" value="1"/>
-                    <input type="checkbox" class="custom-checkbox js-need-check" id="ind_usloviya" value="1" checked/>
+                    <input type="checkbox" class="custom-checkbox js-need-check" id="ind_usloviya" value="1" {if !$safe_mode}checked{/if}/>
                     <label for="ind_usloviya" class="check_box -gil-m">
                         <a style="color: RGB(189, 148, 87)"
                            href="{$config->root_url}/preview/ind_usloviya_nl?contract_id={$order->contract->id}"
@@ -168,7 +168,7 @@
                     <div class="form_row">
                         <div class="check">
                             <input type="hidden" class="custom-checkbox" name="pep" value="1"/>
-                            <input type="checkbox" class="custom-checkbox" id="pep" value="1" checked/>
+                            <input type="checkbox" class="custom-checkbox js-need-check" id="pep" value="1" {if !$safe_mode}checked{/if}/>
                             <label for="pep" class="check_box -gil-m">
                                 <a class="pep" style="color: RGB(189, 148, 87)"
                                    href="/document/{$order->user_id}/{$document->id}?insurance=1"

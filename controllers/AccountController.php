@@ -750,6 +750,7 @@ class AccountController extends Controller
 
             $this->design->assign('user_age_year', $user_age_year);
             $this->design->assign('kd_on', $this->settings->kd_on);
+            $this->design->assign('safe_mode', $this->settings->safe_mode);
 
             return $this->design->fetch('account/home.tpl');
         }
