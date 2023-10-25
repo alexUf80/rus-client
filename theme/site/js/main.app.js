@@ -134,12 +134,12 @@ function MainApp() {
             if ($(this).is(':checked')) {
                 $('input[type="checkbox"]').each(function () {
                     var is_checked = $(this).prop('checked');
-                    if($(this).attr('id') == 'service_reason' || $(this).attr('id') == 'service_sms' || $(this).attr('id') == 'service_insurance' ){
-                        $(this).prop('checked', is_checked);
-                    }
-                    else{
+                    // if($(this).attr('id') == 'service_reason' || $(this).attr('id') == 'service_sms' || $(this).attr('id') == 'service_insurance' ){
+                    //     $(this).prop('checked', is_checked);
+                    // }
+                    // else{
                         $(this).prop('checked', true);
-                    }
+                    // }
                 });
             } else {
                 $('input[type="checkbox"]').each(function () {
@@ -147,6 +147,23 @@ function MainApp() {
                 });
             }
 
+        });
+
+        $('.js-need-check').on('click', function () {
+            var checked_count = 0;
+            var total_cou = 0;
+            $('.js-need-check').each(function () {
+                total_cou++;
+                if ($(this).prop('checked') == true) {
+                    checked_count++;
+                }
+            });
+            if (total_cou == checked_count) {
+                $('#check_agreement').prop('checked', true);
+            }
+            else{
+                $('#check_agreement').prop('checked', false);
+            }
         });
     };
 
