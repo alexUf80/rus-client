@@ -430,7 +430,7 @@ class Orders extends Core
         
         $order_date = strtotime($order['date']);
         $last_to_uid = substr(array_sum(str_split($id)),-2);
-        $end_to_uid = (strlen($last_to_uid) == 1 ? '0'.$last_to_uid : $last_to_uid);
+        $end_to_uid = $last_to_uid;
         $uid = 'a0'.$id.$end_to_uid.'-'.date('Y', $order_date).'-'.date('md', $order_date).'-'.date('Hi', $order_date).'-01771ca07de7-4';
         $this->update_order($id, array('uid' => $uid));
         
