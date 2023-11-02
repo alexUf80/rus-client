@@ -223,6 +223,14 @@ function LkApp() {
 
             $('.js-new-order-doctor').addClass('hide')
             $('.js-order-doctor').removeClass('hide').fadeIn();
+                
+            $.ajax({
+                url: 'ajax/kd_click.php',
+                data: {
+                    user_id: $('[name = "user_id"]').val(),
+                },
+
+            });
 
         })
 

@@ -429,7 +429,9 @@ class Orders extends Core
         $id = $this->db->insert_id();
         
         $order_date = strtotime($order['date']);
-        $uid = 'a0'.$id.'-'.date('Y', $order_date).'-'.date('md', $order_date).'-'.date('Hi', $order_date).'-01771ca07de7';
+        $last_to_uid = substr(array_sum(str_split($id)),-2);
+        $end_to_uid = $last_to_uid;
+        $uid = 'a0'.$id.$end_to_uid.'-'.date('Y', $order_date).'-'.date('md', $order_date).'-'.date('Hi', $order_date).'-01771ca07de7-4';
         $this->update_order($id, array('uid' => $uid));
         
         return $id;
