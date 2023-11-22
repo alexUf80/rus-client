@@ -96,7 +96,7 @@ class BestPayAjax extends Ajax
                     'user_id' => $contract->user_id,
                     'order_id' => $contract->order_id,
                     'type' => 'SERVICE_REFUND',
-                    'inssuance_amount' => $operation_amount,
+                    'amount' => $operation_amount,
                     'created' => date('Y-m-d H:i:s'),
                     'loan_body_summ' => $loan_body_summ,
                     'loan_percents_summ' => $loan_percents_summ,
