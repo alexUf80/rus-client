@@ -477,6 +477,20 @@ class DocumentController extends Controller
             $params['insurance'] = $insurance;
         }
 
+        if ($type == 'SERVICE_FUNDS_REFUND') {
+            $contract = $this->contracts->get_contract($contract_id);
+            $params['number'] = $contract->number;
+            $params['inssuance_date'] = $contract->inssuance_date;
+
+            $operations = $this->operations->get_operations(array('contract_id' => $contract->id));
+            foreach ($operations as $operation) {
+                if (in_array($operation->type, ['INSURANCE'])) {
+                    $amount += $operation->amount;
+                }
+            }
+            $params['amount'] = $amount;
+        }
+
         foreach ($params as $param_name => $param_value)
             $this->design->assign($param_name, $param_value);
 

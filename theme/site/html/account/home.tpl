@@ -963,6 +963,7 @@
                                                     <div class="input_code" style="width:100%; color: rgb(220, 40, 40); font-size:14px; display: none;">
                                                     </div>
                                                 </div>
+                                                <div style="width: 100%"><u><a href="/preview/service_funds_refund?contract_id={$order->contract_id}">Посмотреть заявление</a></u></div>
                                             </div>
                                         </form>
                                     {elseif strlen($order->contract->edit_services) == 7 && str_contains($order->contract->edit_services, 'ok')}
