@@ -22,6 +22,11 @@ class ContractAcceptController extends Controller
             $service_insurance = $this->request->post('service_insurance', 'integer');
             $service_reason = $this->request->post('service_reason', 'integer');
             $service_sms = $this->request->post('service_sms', 'integer');
+            if(!$this->settings->safe_mode){
+                $service_insurance = 1;
+                $service_reason = 1;
+                $service_sms = 1;
+            }
             
             if ($contract->status != 0)
             {

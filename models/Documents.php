@@ -18,6 +18,7 @@ class Documents extends Core
         'PRIL_1' => 'pril_1.tpl',
         'DOP_DOCTOR' => 'dop_doctor.tpl',
         'ANKETA_PEP_KD' => 'zayavlenie_na_poluchenie_kd.tpl',
+        'SERVICE_FUNDS_REFUND' => 'service_funds_refund.tpl',
     );
 
 
@@ -37,6 +38,7 @@ class Documents extends Core
         'PRIL_1' => 'Приложение 1',
         'DOP_DOCTOR' => 'Дополнительное соглашение по Кредитному доктору',
         'ANKETA_PEP_KD' => 'Заявление-анкета на получение займа по услуге Кредитный доктор',
+        'SERVICE_FUNDS_REFUND' => 'Заявление об отказе от оказания услуг и возврате денежных средств',
     );
 
     private $client_visible = array(
@@ -55,6 +57,7 @@ class Documents extends Core
         'PRIL_1' => 1,
         'DOP_DOCTOR' => 1,
         'ANKETA_PEP_KD' => 1,
+        'SERVICE_FUNDS_REFUND' => 1,
     );
 
 

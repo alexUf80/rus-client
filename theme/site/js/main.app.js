@@ -139,11 +139,19 @@ function MainApp() {
                     // }
                     // else{
                         $(this).prop('checked', true);
+                        $(this).val(1);
                     // }
+                });
+                $('.check .custom-checkbox').each(function () {
+                    $(this).val(1);
                 });
             } else {
                 $('input[type="checkbox"]').each(function () {
                     $(this).prop('checked', false);
+                    $(this).val(0);
+                });
+                $('.check .custom-checkbox').each(function () {
+                    $(this).val(0);
                 });
             }
 
