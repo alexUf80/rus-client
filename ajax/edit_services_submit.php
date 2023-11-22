@@ -48,11 +48,15 @@ class BestPayAjax extends Ajax
 
                 // Списать сумму допов (сначала с %, потом с ОД)
                 $amount = 0;
+                $inssuance_amount=0;
                 $oid = '';
                 $operations = $this->operations->get_operations(array('contract_id' => $contract->id));
                 foreach ($operations as $operation) {
                     if (in_array($operation->type, ['BUD_V_KURSE', 'INSURANCE'])) {
                         $amount += $operation->amount;
+                    }
+                    if (in_array($operation->type, ['INSURANCE'])) {
+                        $inssuance_amount += $operation->amount;
                     }
                 }
                 $operation_amount = $amount;
@@ -92,7 +96,7 @@ class BestPayAjax extends Ajax
                     'user_id' => $contract->user_id,
                     'order_id' => $contract->order_id,
                     'type' => 'SERVICE_REFUND',
-                    'amount' => $operation_amount,
+                    'inssuance_amount' => $operation_amount,
                     'created' => date('Y-m-d H:i:s'),
                     'loan_body_summ' => $loan_body_summ,
                     'loan_percents_summ' => $loan_percents_summ,
@@ -131,6 +135,7 @@ class BestPayAjax extends Ajax
                     'asp' => $code,
                     'accept_code' => $contract->accept_code,
                     'inssuance_date' => $contract->inssuance_date,
+                    'inssuance_amount' => $inssuance_amount,
                 );
 
                 if (!empty($user->contact_person_name))

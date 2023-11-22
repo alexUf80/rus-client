@@ -485,10 +485,10 @@ class DocumentController extends Controller
             $operations = $this->operations->get_operations(array('contract_id' => $contract->id));
             foreach ($operations as $operation) {
                 if (in_array($operation->type, ['INSURANCE'])) {
-                    $amount += $operation->amount;
+                    $inssuance_amount += $operation->amount;
                 }
             }
-            $params['amount'] = $amount;
+            $params['inssuance_amount'] = $inssuance_amount;
         }
 
         foreach ($params as $param_name => $param_value)
