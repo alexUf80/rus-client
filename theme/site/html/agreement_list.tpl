@@ -52,7 +52,7 @@
                 <input type="hidden" class="custom-checkbox " name="service_reason" {if !$safe_mode}value="1"{else}value="0"{/if}/>
                 <input type="checkbox"
                        class="custom-checkbox"
-                       id="service_reason" value="1" {if !$safe_mode}checked{/if}/>
+                       id="service_reason" {if !$safe_mode}value="1"{else}value="0"{/if} {if !$safe_mode}checked{/if}/>
                 <label for="service_reason" class="check_box -gil-m">
                  <span>
                     В случае отказа по заявке, я хочу получить информацию о <a style="color: RGB(189, 148, 87)"
@@ -68,8 +68,8 @@
             <div class="check">
                 <input type="hidden" class="custom-checkbox " name="service_sms" {if !$safe_mode}value="1"{else}value="0"{/if}/>
                 <input type="checkbox"
-                       class="custom-checkbox {if !$safe_mode}js-need-check{/if}" 
-                       id="service_sms" value="1" {if !$safe_mode}checked{/if}/>
+                       class="custom-checkbox" 
+                       id="service_sms" {if !$safe_mode}value="1"{else}value="0"{/if} {if !$safe_mode}checked{/if}/>
                 <label for="service_sms" class="check_box -gil-m">
                  <span>
                     Услуга <a style="color: RGB(189, 148, 87)"
@@ -85,8 +85,8 @@
             <div class="check">
                 <input type="hidden" class="custom-checkbox" name="service_insurance" {if !$safe_mode}value="1"{else}value="0"{/if}/>
                 <input type="checkbox"
-                        class="custom-checkbox {if !$safe_mode}js-need-check{/if}"
-                       id="service_insurance" value="1" {if !$safe_mode}checked{/if}/>
+                        class="custom-checkbox"
+                       id="service_insurance" {if !$safe_mode}value="1"{else}value="0"{/if} {if !$safe_mode}checked{/if}/>
                 <label for="service_insurance" class="check_box -gil-m">
                  <span>
                     согласен заключить договор страхования в соответствии

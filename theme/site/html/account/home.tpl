@@ -2,7 +2,7 @@
 
 {capture name='page_scripts'}
     <script src="theme/site/js/calc.app.js?v=1.09"></script>
-    <script src="theme/site/js/lk.app.js?v=1.13"></script>
+    <script src="theme/site/js/lk.app.js?v=1.14"></script>
     <script src="theme/site/js/contract_accept.app.js?v=1.09"></script>
     <script>
         $(function () {
@@ -25,6 +25,55 @@
                     success: function (resp) {
                     }
                 });
+            });
+
+            $('.edit_services_submit').on('submit', function (e) {
+                e.preventDefault();
+
+                if($('.edit_services_submit').find('.edit_services_code').val() == ''){
+                    $('.input_code').text('Введите код');
+                    $('.input_code').show();
+                    $('.edit_services_code').css('border', '1px solid rgb(220, 40, 40)'); 
+                    return;
+                }
+                
+                $('.edit_services_submit_btn').prop('disabled', true);
+                
+                var $form = $(this).closest('form');
+                console.log($form.serialize());
+
+                $.ajax({
+                    url: 'ajax/edit_services_submit.php',
+                    data: $form.serialize(),
+                    success: function(resp){
+                        $('.edit_services_submit_btn').prop('disabled', false);
+                        console.log(resp);
+                        if (!!resp.error)
+                        {
+                            var error_text = '';
+                            if (resp.error == 'UNDEFINED_ACTION')
+                                error_text = 'Неизвестное действие!';
+                            else if (resp.error == 'WRONG_CODE')
+                                error_text = 'Неверный код!';
+                            else if (resp.error == 'WRONG_CONTRACT')
+                                error_text = 'Неверный контракт!';
+                            else
+                                error_text = resp.error;
+                                
+                            $('.input_code').text(error_text);
+                            $('.input_code').show();
+                            $('.edit_services_code').css('border', '1px solid rgb(220, 40, 40)');
+                            $('.edit_services_code').val(''); 
+                        }
+                        else
+                        {
+                            location.reload();
+                        }
+                        
+                    }
+                }); 
+
+                
             });
         });
     </script>
@@ -897,6 +946,34 @@
                                 <div class="-fs-32 -gil-b -green text-center pb-3">
                                     У Вас есть активный займ от {$order->contract->create_date|date}г.
                                 </div>
+                                
+                                {if !is_null($order->contract->edit_services)}
+                                    <hr>
+                                    {if strlen($order->contract->edit_services) == 4}
+                                        <form action="account" method="POST" class="edit_services_submit">
+                                            <input type="hidden" name="action" value="edit_services"/>
+                                            <input type="hidden" name="contractId" value="{$order->contract_id}"/>
+                                            <div class="-fs-20 -gil-b -red text-center pb-2 pt-2 d-flex flex-wrap">
+                                                <div class="pr-4 pb-3 col-xl-9 col-lg-8 col-md-12">Подпишите заявление о возврате средств за доп услуги</div>
+                                                <div class="d-flex flex-wrap col-xl-3 col-lg-4 col-md-12" style="width: 100%; justify-content: center;">
+                                                    <div class="d-flex">
+                                                        <input type="text" placeholder="код" name="code" style="width: 80px" class="edit_services_code">
+                                                        <button type="submit" class="btn btn-info btn-block edit_services_submit_btn" style="width: 130px">Подписать</button>
+                                                    </div>
+                                                    <div class="input_code" style="width:100%; color: rgb(220, 40, 40); font-size:14px; display: none;">
+                                                    </div>
+                                                </div>
+                                                <div style="width: 100%"><u><a href="/preview/service_funds_refund?contract_id={$order->contract_id}" target="_blank">Посмотреть заявление</a></u></div>
+                                            </div>
+                                        </form>
+                                    {elseif strlen($order->contract->edit_services) == 7 && str_contains($order->contract->edit_services, 'ok')}
+                                        <div class="-fs-20 -gil-b text-success text-center pb-3 d-flex flex-wrap" style="justify-content: center;">
+                                            Заявление о возврате средств за доп услуги принято
+                                        </div>
+                                    {/if}
+                                    <hr>
+                                {/if}
+
                                 {if $order->contract->status == 4}
                                     <div class="-fs-32 -gil-b -red text-center pb-3">
                                         Ваш займ просрочен!
