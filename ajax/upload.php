@@ -32,9 +32,15 @@ class UploadApp extends Core
         elseif ($user_id = $this->request->post('user_id', 'integer'))
             $this->user = $this->users->get_user($user_id);
             
+        $file_ext = pathinfo($this->request->files('file')['name'], PATHINFO_EXTENSION);
+
         if (empty($this->user))
         {
             $this->response->error = 'unknown_user';
+        }
+        elseif (!in_array(strtolower($file_ext), ['png', 'gif', 'jpeg', 'jpg', 'jp2']))
+        {
+            $this->response->error = 'wrong_ext';
         }
         else
         {
