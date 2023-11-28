@@ -26,8 +26,17 @@
 <div>
     <br><br>
     <p>&nbsp;&nbsp;&nbsp;&nbsp; Между мною {$lastname} {$firstname} {$patronymic} (паспорт гражданина РФ: {$passport_serial}) и Обществом с ограниченной ответственностью Микрокредитная компания «Русзаймсервис» (далее – Общество) был заключен Договор микрозайма № {$number}  от {$inssuance_date|date}.</p>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp; Подписывая Заявление о предоставлении потребительского займа, Мною было выражено согласие на подключение услуги «СМС-информирование» стоимостью 149 (Сто сорок девять) рублей.</p>
-    <p>&nbsp;&nbsp;&nbsp;&nbsp; Также Мною было выражено согласие на заключение договора страхования «САО ВСК» (далее – Страховщик) стоимостью {$inssuance_amount} РУБЛЕЙ 00 КОПЕЕК ({$inssuance_amount|price_string|upper}).</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp; Подписывая Заявление о предоставлении потребительского займа, </p>
+    {foreach $sms_amounts as $sms_amount}
+        {if $sms_amount}
+            <p>&nbsp;&nbsp;&nbsp;&nbsp; Мною было выражено согласие на подключение услуги «СМС-информирование» стоимостью {$sms_amount} {*}({$sms_amount|price_string|upper}){*}.</p>
+        {/if}
+    {/foreach}
+    {foreach $inssuance_amounts as $inssuance_amount}
+        {if $inssuance_amount}
+            <p>&nbsp;&nbsp;&nbsp;&nbsp; Мною было выражено согласие на заключение договора страхования «САО ВСК» стоимостью {$inssuance_amount} РУБЛЕЙ 00 КОПЕЕК {*}({$inssuance_amount|price_string|upper}){*}.</p>
+        {/if}
+    {/foreach}
     <p>&nbsp;&nbsp;&nbsp;&nbsp; На момент составления заявления данные услуги Мною не использованы.</p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp; В соответствии с п. 2.5 ст. 7 ФЗ № 353 "О потребительском кредите (займе)" от 21.12.2013.</p>
     <p>&nbsp;&nbsp;&nbsp;&nbsp; <strong>Прошу:</strong></p>

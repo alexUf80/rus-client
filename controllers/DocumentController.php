@@ -162,6 +162,25 @@ class DocumentController extends Controller
 
             }
 
+            // if (in_array($document->type, ['SERVICE_FUNDS_REFUND'])){
+            //     $operations_str = $this->RefundForServices->get($contract_id)->operations_ids;
+            //     $operations_arr = explode(',', $operations_str);
+            //     $inssuance_amount = [];
+            //     $sms_amount = [];
+            //     foreach ($operations_arr as $operation_id) {
+            //         $operation = $this->operations->get_operation($operation_id);
+            //         if (in_array($operation->type, ['INSURANCE', 'INSURANCE_BC'])) {
+            //             $inssuance_amount[] = $operation->amount;
+            //         }
+            //         if (in_array($operation->type, ['BUD_V_KURSE'])) {
+            //             $sms_amount[] = $operation->amount;
+            //         }
+            //     }
+
+            //     $params['inssuance_amounts'] = $inssuance_amount;
+            //     $params['sms_amounts'] = $sms_amount;
+            // }
+
             foreach ($document->params as $param_name => $param_value) {
                 if ($param_name == 'insurance')
                     $this->design->assign('insurances', (object)$param_value);
@@ -175,6 +194,12 @@ class DocumentController extends Controller
                 else if ($param_name == 'return_amount_percents'){
                     // $this->design->assign('return_amount_percents', round($contract->amount * $contract->base_percent * $contract->period / 100, 2),);
                     // $this->design->assign('return_amount_percents', 0);
+                }else if ($param_name == 'inssuance_amount'){
+                    $inssuance_amount = explode(',', $param_value);
+                    $this->design->assign('inssuance_amounts', $inssuance_amount);
+                }else if ($param_name == 'sms_amount'){
+                    $sms_amount = explode(',', $param_value);
+                    $this->design->assign('sms_amounts', $sms_amount);
                 } else
                     $this->design->assign($param_name, $param_value);
 
@@ -482,13 +507,23 @@ class DocumentController extends Controller
             $params['number'] = $contract->number;
             $params['inssuance_date'] = $contract->inssuance_date;
 
-            $operations = $this->operations->get_operations(array('contract_id' => $contract->id));
-            foreach ($operations as $operation) {
-                if (in_array($operation->type, ['INSURANCE'])) {
-                    $inssuance_amount += $operation->amount;
+
+            $operations_str = $this->RefundForServices->get($contract_id)->operations_ids;
+            $operations_arr = explode(',', $operations_str);
+            $inssuance_amount = [];
+            $sms_amount = [];
+            foreach ($operations_arr as $operation_id) {
+                $operation = $this->operations->get_operation($operation_id);
+                if (in_array($operation->type, ['INSURANCE', 'INSURANCE_BC'])) {
+                    $inssuance_amount[] = $operation->amount;
+                }
+                if (in_array($operation->type, ['BUD_V_KURSE'])) {
+                    $sms_amount[] = $operation->amount;
                 }
             }
-            $params['inssuance_amount'] = $inssuance_amount;
+
+            $params['inssuance_amounts'] = $inssuance_amount;
+            $params['sms_amounts'] = $sms_amount;
         }
 
         foreach ($params as $param_name => $param_value)

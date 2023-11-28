@@ -48,15 +48,23 @@ class BestPayAjax extends Ajax
 
                 // Списать сумму допов (сначала с %, потом с ОД)
                 $amount = 0;
-                $inssuance_amount=0;
-                $oid = '';
-                $operations = $this->operations->get_operations(array('contract_id' => $contract->id));
-                foreach ($operations as $operation) {
-                    if (in_array($operation->type, ['BUD_V_KURSE', 'INSURANCE'])) {
+
+                $refund_for_services = $this->RefundForServices->get($contract_id);
+                $operations_str = $refund_for_services->operations_ids;
+                $operations_arr = explode(',', $operations_str);
+                
+                $inssuance_amount = [];
+                $sms_amount = [];
+                foreach ($operations_arr as $operation_id) {
+                    $operation = $this->operations->get_operation($operation_id);
+                    if (in_array($operation->type, ['BUD_V_KURSE', 'INSURANCE', 'INSURANCE_BC'])) {
                         $amount += $operation->amount;
                     }
-                    if (in_array($operation->type, ['INSURANCE'])) {
-                        $inssuance_amount += $operation->amount;
+                    if (in_array($operation->type, ['INSURANCE', 'INSURANCE_BC'])) {
+                        $inssuance_amount[] = $operation->amount;
+                    }
+                    if (in_array($operation->type, ['BUD_V_KURSE'])) {
+                        $sms_amount[] = $operation->amount;
                     }
                 }
                 $operation_amount = $amount;
@@ -84,7 +92,7 @@ class BestPayAjax extends Ajax
                 }
 
                 $upd_contract = $this->contracts->update_contract($contract_id, array(
-                    'edit_services' => $code.',ok',
+                    'edit_services' => null,
                     'loan_body_summ' => $loan_body_summ,
                     'loan_percents_summ' => $loan_percents_summ,
                     'loan_peni_summ' => $loan_peni_summ,
@@ -135,7 +143,9 @@ class BestPayAjax extends Ajax
                     'asp' => $code,
                     'accept_code' => $contract->accept_code,
                     'inssuance_date' => $contract->inssuance_date,
-                    'inssuance_amount' => $inssuance_amount,
+                    'inssuance_amount' => implode(",", $inssuance_amount),
+                    'sms_amount' => implode(",", $sms_amount),
+                    'refund_for_services_id' => $refund_for_services->id,
                 );
 
                 if (!empty($user->contact_person_name))
@@ -166,6 +176,9 @@ class BestPayAjax extends Ajax
                     'type' => 'SERVICE_FUNDS_REFUND',
                     'params' => json_encode($params),
                 ));
+
+                // Добавить флаг возврата услуг
+                $operations_str = $this->RefundForServices->update_by_contract($contract_id,['done' => 1]);
     
                 $this->response['success'] = $upd_contract;
             }
