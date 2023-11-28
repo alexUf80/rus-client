@@ -64,9 +64,14 @@
                         error_text = 'Превышен максимально допустимый размер файла.';
                     else if (resp.error == 'error_uploading')
                         error_text = 'Файл не удалось загрузить, попробуйте еще.';
+                    else if (resp.error == 'unknown_user')
+                        error_text = 'Неизвестный пользователь.';
+                    else if (resp.error == 'wrong_ext')
+                        error_text = 'Неверное расширение файла. Выберите файл с расширением "png", "gif", "jpeg", "jpg" или "jp2"';
                     else
                         error_text = resp.error;
                         
+                    $fileblock.find(".error_text").remove();
                     $fileblock.append('<div class="error_text">'+error_text+'</div>');
                 }
                 else
