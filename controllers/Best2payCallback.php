@@ -403,14 +403,24 @@ class Best2PayCallback extends Controller
                     ));
 
 
-                    // Снимаем страховку по КД
+                    // Снимаем страховку
                     if (!empty($contract->service_insurance)) 
                     {
-                        $insurance_cost = $this->insurances->get_insurance_cost($contract->amount);
+                        // $insurance_cost = $this->insurances->get_insurance_cost($contract->amount);
+                        $insurance_cost = 0;
                         
                         $order = $this->orders->get_order($contract->order_id);
 
-                        if ($order->client_status == 'kd' && $insurance_cost > 0)
+                        if ($order->client_status == 'kd')
+                        {
+                            $insurance_cost = $this->insurances->get_insurance_cost($contract->amount);
+                        }
+                        else{
+                            $insurance_cost = 1000;
+                        }
+
+                        // if ($order->client_status == 'kd' && $insurance_cost > 0)
+                        if ($insurance_cost > 0)
                         {
                             $insurance_amount = $insurance_cost * 100;
 
