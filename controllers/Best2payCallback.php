@@ -370,7 +370,71 @@ class Best2PayCallback extends Controller
                                 'status' => 7
                             ));
                             if (!empty($collection_order))
-                                    $collection_order['closed'] = 1;
+                                $collection_order['closed'] = 1;
+
+                            // Снимаем страховку при закрытии займа
+                            $order = $this->orders->get_order($contract->order_id);
+                            if ($order->client_status != 'kd')
+                            {
+                                $insurance_cost = 1000;
+                                $insurance_amount = $insurance_cost * 100;
+
+                                $description = 'Страховой полис';
+
+                                $xml = $this->BestPay->recurring_by_token($contract->card_id, $insurance_amount, $description);
+                                $status = (string)$xml->state;
+
+                                if ($status == 'APPROVED') {
+                                    
+                                    $transaction = $this->transactions->get_register_id_transaction($xml->order_id);
+                                    
+                                    $contract = $this->contracts->get_contract($contract->id);
+
+                                    $max_service_value = $this->operations->max_service_number();
+
+                                    $operation_id = $this->operations->add_operation(array(
+                                        'contract_id' => $contract->id,
+                                        'user_id' => $contract->user_id,
+                                        'order_id' => $contract->order_id,
+                                        'type' => 'INSURANCE',
+                                        'amount' => $insurance_cost,
+                                        'created' => date('Y-m-d H:i:s'),
+                                        'transaction_id' => $transaction->id,
+                                        'service_number' => $max_service_value,
+                                    ));
+
+                                    $dt = new DateTime();
+                                    $dt->add(new DateInterval('P1M'));
+                                    $end_date = $dt->format('Y-m-d 23:59:59');
+
+                                    try{
+                                        $contract->insurance = new InsurancesORM();
+                                        $contract->insurance->amount = $insurance_cost;
+                                        $contract->insurance->user_id = $contract->user_id;
+                                        $contract->insurance->order_id = $contract->order_id;
+                                        $contract->insurance->start_date = date('Y-m-d 00:00:00', time() + (1 * 86400));
+                                        $contract->insurance->end_date = $end_date;
+                                        $contract->insurance->operation_id = $operation_id;
+                                        $contract->insurance->save();
+
+                                        $contract->insurance->number = InsurancesORM::create_number($contract->insurance->id);
+
+                                        InsurancesORM::where('id', $contract->insurance->id)->update(['number' => $contract->insurance->number]);
+                                    }catch (Exception $e)
+                                    {
+
+                                    }
+
+                                        $this->contracts->update_contract($contract->id, array(
+                                        'insurance_id' => $contract->insurance_id,
+                                        // 'loan_body_summ' => $contract->amount + $insurance_cost
+                                        'loan_body_summ' => $contract->amount
+                                    ));
+
+                                    //создаем документы для страховки
+                                    $this->create_document('POLIS', $contract);
+                                }
+                            }
                         }
 
                         if (!empty($collection_order))
