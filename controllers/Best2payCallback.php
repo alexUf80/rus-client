@@ -386,7 +386,7 @@ class Best2PayCallback extends Controller
 
                                 if ($status == 'APPROVED') {
                                     
-                                    $transaction = $this->transactions->get_register_id_transaction($xml->order_id);
+                                    $transaction_ins = $this->transactions->get_register_id_transaction($xml->order_id);
                                     
                                     $contract = $this->contracts->get_contract($contract->id);
 
@@ -399,7 +399,7 @@ class Best2PayCallback extends Controller
                                         'type' => 'INSURANCE',
                                         'amount' => $insurance_cost,
                                         'created' => date('Y-m-d H:i:s'),
-                                        'transaction_id' => $transaction->id,
+                                        'transaction_id' => $transaction_ins->id,
                                         'service_number' => $max_service_value,
                                     ));
 
