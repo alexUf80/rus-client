@@ -595,6 +595,14 @@ class AccountController extends Controller
                 }
             }
 
+            if ($order->order_id == 61778){
+                $show_prolongation = true;
+                $diff_days = date_diff($date1, $date3)->days;
+                if ($diff_days > 150) {
+                    $show_prolongation = false;
+                }
+            }
+
             if ($show_prolongation) {
                 $date_interval = 30;
                 if ($diff_days > 120) {
@@ -653,6 +661,11 @@ class AccountController extends Controller
 
             if (date_diff($date2, $date3)->days <= 3 || $date2 > $date3)
                 $this->design->assign('prolongation_amount', $prolongation_amount);
+
+            if ($order->order_id == 61778){
+                $prolongation_amount = $order->contract->loan_percents_summ + $order->contract->loan_peni_summ;
+                $this->design->assign('prolongation_amount', $prolongation_amount);
+            }
 
 
 
