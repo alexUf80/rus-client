@@ -339,6 +339,14 @@ class Best2PayCallback extends Controller
                                 'type' => 'ZAYAVLENIE_PROLONGATION',
                                 'params' => json_encode($document_params)
                             ));
+                            // Заявление о предоставлении услуг
+                            $this->documents->create_document(array(
+                                'user_id' => $contract->user_id,
+                                'order_id' => $contract->order_id,
+                                'contract_id' => $contract->id,
+                                'type' => 'USLUGI_ZAYAVL',
+                                'params' => json_encode($document_params)
+                            ));
 
                             if ($docs == 2) {
                                 $document_params['insurance'] = $this->insurances->get_insurance($insurance_id);
@@ -433,6 +441,7 @@ class Best2PayCallback extends Controller
 
                                     //создаем документы для страховки
                                     $this->create_document('POLIS', $contract);
+                                    $this->create_document('USLUGI_ZAYAVL', $contract);
                                 }
                             }
                         }
@@ -532,6 +541,7 @@ class Best2PayCallback extends Controller
 
                                 //создаем документы для страховки
                                 $this->create_document('POLIS', $contract);
+                                $this->create_document('USLUGI_ZAYAVL', $contract);
 
                                 // //Отправляем чек по страховке
                                 // $return = $this->Cloudkassir->send_insurance($operation_id);
@@ -872,6 +882,7 @@ class Best2PayCallback extends Controller
                                         //создаем документы для страховки
                                         $this->create_document('POLIS', $contract);
                                         $this->create_document('KID', $contract);
+                                        $this->create_document('USLUGI_ZAYAVL', $contract);
                                         
                                     }
                                 }

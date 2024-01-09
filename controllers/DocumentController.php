@@ -162,6 +162,24 @@ class DocumentController extends Controller
 
             }
 
+            if (in_array($document->type, ['USLUGI_ZAYAVL'])){
+                $min = date('i', strtotime($document->created));
+                $min++;
+                $operations = OperationsORM::query()
+                ->where('order_id', '=', $order->order_id)
+                ->where('created', '>=', date('Y-m-d H:i:00', strtotime($document->created)))
+                ->where('created', '<=', date('Y-m-d H:' . $min . ':59', strtotime($document->created)))
+                ->get();
+    
+                $o = [];
+                foreach ($operations as $operation) {
+                    if (in_array($operation->type, ['BUD_V_KURSE', 'INSURANCE', 'INSURANCE_BC', 'DOCTOR'])){
+                        $o[] = $operation;
+                    }
+                }
+                $this->design->assign('operations', $o);
+            }
+
             // if (in_array($document->type, ['SERVICE_FUNDS_REFUND'])){
             //     $operations_str = $this->RefundForServices->get($contract_id)->operations_ids;
             //     $operations_arr = explode(',', $operations_str);
@@ -245,6 +263,7 @@ class DocumentController extends Controller
             $this->design->assign('amount', $amount);
             $this->design->assign('contract', $contract);
             $this->design->assign('accept_sms', $order->accept_sms);
+            $this->design->assign('doc_date', $document->created);
 
         }
 
