@@ -109,7 +109,7 @@
                                     <input type="hidden" class="custom-checkbox" name="service_insurance" value="1"/>
                                     <input type="checkbox"
                                            class="custom-checkbox"
-                                           id="service_insurance" value="1" checked="true"/>
+                                           id="service_insurance" value="1" />
                                     <label for="service_insurance" class="check_box -gil-m">
                                         <span>согласен заключить договор страхования в соответствии
                                             <a class="text-success"
@@ -120,7 +120,7 @@
                                 <div class="check">
                                     <input type="checkbox"
                                            class="custom-checkbox"
-                                           id="service_prolongation" name="service_prolongation" checked="true" value="1"/>
+                                           id="service_prolongation" name="service_prolongation" value="1"/>
                                     <label for="service_prolongation" class="check_box -gil-m">
                                         <span>согласен с
                                             <a class="text-success"
