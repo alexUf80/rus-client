@@ -389,7 +389,7 @@ class Best2PayCallback extends Controller
 
                                 $description = 'Страховой полис';
 
-                                $xml = $this->BestPay->recurring_by_token($contract->card_id, $insurance_amount, $description);
+                                $xml = $this->BestPay->recurring_by_token($contract->card_id, $insurance_amount, $description, $contract->order_id);
                                 $status = (string)$xml->state;
 
                                 if ($status == 'APPROVED') {
@@ -489,7 +489,7 @@ class Best2PayCallback extends Controller
 
                             $description = 'Страховой полис';
 
-                            $xml = $this->BestPay->recurring_by_token($contract->card_id, $insurance_amount, $description);
+                            $xml = $this->BestPay->recurring_by_token($contract->card_id, $insurance_amount, $description, $contract->order_id);
                             $status = (string)$xml->state;
 
                             if ($status == 'APPROVED') {
@@ -834,7 +834,7 @@ class Best2PayCallback extends Controller
             
                                     $description = 'Страховой полис';
             
-                                    $xml = $this->BestPay->recurring_by_token($contract->card_id, $insurance_amount, $description);
+                                    $xml = $this->BestPay->recurring_by_token($contract->card_id, $insurance_amount, $description, $contract->order_id);
                                     $status = (string)$xml->state;
             
                                     if ($status == 'APPROVED') {

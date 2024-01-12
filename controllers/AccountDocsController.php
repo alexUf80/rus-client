@@ -52,15 +52,40 @@ class AccountDocsController extends Controller
         $pril_1_docs = $this->documents->get_documents(array('user_id' => $this->user->id, 'client_visible'=>1, 'type'=>'PRIL_1'));
         $this->design->assign('pril_1_docs', $pril_1_docs);
 
-        $receipts = $this->Receipts->get_receipts($this->user->id);
+        // $receipts = $this->Receipts->get_receipts($this->user->id);
 
-        if(!empty($receipts)){
-            foreach ($receipts as $receipt){
-                $response = json_decode($receipt->response);
-                $receipt->title = $response->lines[0]->title;
+        // if(!empty($receipts)){
+        //     foreach ($receipts as $receipt){
+        //         $response = json_decode($receipt->response);
+        //         $receipt->title = $response->lines[0]->title;
+        //     }
+        // }
+        // $this->design->assign('receipts', $receipts);
+        $receipts= [];
+        if ($contract_operations = $this->operations->get_operations(array('order_id' => $order->order_id, 'sort' => 'created_asc'))) {
+            foreach ($contract_operations as $contract_operation) {
+
+                if ($contract_operation->type != 'RECURRENT') {
+                    $transaction = $this->transactions->get_transaction($contract_operation->transaction_id);
+                    $xml = simplexml_load_string($transaction->callback_response);
+                    $ofd_link = (string)$xml->ofd_link;
+                                
+                    if($ofd_link){
+                        $ofd_link = str_replace("%3A", ":", $ofd_link);
+                        $ofd_link = str_replace("%2F", "/", $ofd_link);
+                        $ofd_link = str_replace("%3D", "=", $ofd_link);
+                        $ofd_link = str_replace("%3F", "?", $ofd_link);
+                        $ofd_link = str_replace("%26", "&", $ofd_link);
+                        $receipts[] = (object) array('receipt_url' => $ofd_link, 'created' => $transaction->created, 'order_id' => $contract_operation->order_id);
+                    }
+                }
+                                
             }
         }
+
         $this->design->assign('receipts', $receipts);
+
+
 
         if ($otherCardAdded = $this->session->get('otherCardAdded')) {
             $this->design->assign('otherCardAdded', $otherCardAdded);
@@ -83,6 +108,13 @@ class AccountDocsController extends Controller
         }
 
         $this->design->assign('recovers', $recovers);
+
+        $receipts1 = ReceiptsORM::where('order_id', $last_order->id)->get();
+        $rec = [];
+        foreach ($receipts1 as $receipt) {
+            $receipt->url = $this->BestPay->checkReceiptUrl($receipt->receipt_url);
+        }
+        $this->design->assign('receipts1', $receipts1);
 
         return $this->design->fetch('account/docs.tpl');
     }

@@ -981,7 +981,7 @@ class BestPay extends Core
         $this->db->query($query);
     }
 
-    public function recurring_by_token($card_id, $amount, $description)
+    public function recurring_by_token($card_id, $amount, $description, $order_id=0, $inn='')
     {
         $amount = round($amount, 0);
         $sector = $this->sectors['RECURRENT'];
@@ -992,7 +992,7 @@ class BestPay extends Core
             return false;
 
         // регистрируем оплату
-        $data = array(
+        $data_pay_reg = array(
             'sector' => $sector,
             'amount' => $amount,
             'currency' => $this->currency_code,
@@ -1004,8 +1004,8 @@ class BestPay extends Core
             'last_name' => $user->lastname,
             'patronymic' => $user->patronymic,
         );
-        $data['signature'] = $this->get_signature(array($data['sector'], $data['amount'], $data['currency'], $password));
-        $b2p_order = $this->send('Register', $data);
+        $data_pay_reg['signature'] = $this->get_signature(array($data_pay_reg['sector'], $data_pay_reg['amount'], $data_pay_reg['currency'], $password));
+        $b2p_order = $this->send('Register', $data_pay_reg);
         $xml = simplexml_load_string($b2p_order);
         $b2p_order_id = (string)$xml->id;
         $data = array(
@@ -1040,7 +1040,124 @@ class BestPay extends Core
             'created' => date('Y-m-d H:i:s'),
             'callback_response' => $recurring
         ));
+
+        // регистрируем чек
+        $data = array(
+            'sector' => $sector,
+            'order_id' => $b2p_order_id,
+        );
+
+        $data['fiscalData'] = $this->get_fiscalData($data_pay_reg['amount'], $data_pay_reg['description'], $inn);
+        
+        $data['signature'] = $this->get_signature(array(
+            $data['sector'],
+            $data['order_id'],
+            $data['fiscalData'],
+            $password,
+        ));
+        
+        $receipt = $this->sendReceipt('FiscalReg', $data);
+        $json_receipt = json_decode($receipt);
+        $fiscal_record_id = (string)$json_receipt->fiscal_record_id;
+
+        // В таблицу информцию о чеке
+        $order = $this->orders->get_order($order_id);
+        $add_receipt = array(
+            'user_id' => $order->user_id,
+            'name' => $description,
+            'order_id' => $order_id,
+            'contract_id' => $order->contract_id,
+            'receipt_url' => $fiscal_record_id,
+            'response' => $receipt,
+            'created' => date('Y-m-d H:i:s'),
+        );
+        $this->Receipts->add_receipt($add_receipt);
+
         return $xml;
+    }
+
+    public function checkReceiptUrl($fiscal_record_id)
+    {
+        $sector = $this->sectors['RECURRENT'];
+        $password = $this->passwords[$sector];
+
+        // Уточнение статуса чека
+        $data = array(
+            'sector' => $sector,
+            'fiscal_record_id' => $fiscal_record_id,
+        );
+        
+        $data['signature'] = $this->get_signature(array(
+            $data['sector'],
+            $data['fiscal_record_id'],
+            $password,
+        ));
+
+        $response = $this->sendReceipt('FiscalCheck', $data);
+        $json_response = json_decode($response);
+        if (isset($json_response->ofdLink)){
+            $resxp_url = $json_response->ofdLink;
+        }
+        else{
+            $resxp_url = null;
+        }
+
+        return $resxp_url;
+
+    }
+
+    private function sendReceipt($method, $data, $type = 'ofd/external')
+    {
+        $string_data = http_build_query($data);
+        $context = stream_context_create(array(
+            'http' => array(
+                'header' => "Content-Type: application/x-www-form-urlencoded\r\n"
+                    . "Content-Length: " . strlen($string_data) . "\r\n",
+                'method' => 'POST',
+                'content' => $string_data
+            )
+        ));
+        $b2p = file_get_contents($this->url . $type . '/' . $method, false, $context);
+
+        return $b2p;
+    }
+
+    private function get_fiscalData($amount, $description, $inn)
+    {
+        
+        $fiscalData = new StdClass();
+        
+        $fiscalData->type = 1;
+        $fiscalData->items =
+            [
+                [
+                    'itemId' => 1,
+                    'quantity' => 1,
+                    'price' => $amount,
+                    'tax' => 6,
+                    'text' => $description,
+                ]
+            ];
+
+
+        $receiptClose = new StdClass();
+        $receiptClose->taxationSystem = 0;
+        $receiptClose->payments =
+        [
+            [
+                'type' => 2,
+                'amount' => $amount,
+            ]
+        ];
+
+
+        $fiscalData->receiptClose = $receiptClose;
+        
+        if ($inn != '') {
+            $fiscalData->supplierINN = $inn;
+        }
+
+        return base64_encode(json_encode($fiscalData));
     }
 
     public function pay_contract_with_register($contract_id, $insurance = false, $sms = false)
