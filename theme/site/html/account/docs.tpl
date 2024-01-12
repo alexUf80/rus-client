@@ -164,25 +164,47 @@
                             </div>
                         </div>
                     </div>
-                    {if !empty($receipts)}
+
+                    {*}
+                    {if !empty($receipts) || !empty($receipts1)}
                         <div class="person_info_title -fs-26">Список чеков</div>
                         <div class="person_info_wrap -fs-18">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <ul class="docs_list js-docs-list">
-                                        {foreach $receipts as $receipt}
-                                            <li class="docs_list_item">
-                                                <a href="{$receipt->receipt_url}"
-                                                   class="docs_list_link" target="_blank">
-                                                    Чек за {$receipt->created|date}
-                                                </a>
-                                            </li>
-                                        {/foreach}
-                                    </ul>
+                            {if !empty($receipts)}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul class="docs_list js-docs-list">
+                                            {foreach $receipts as $receipt}
+                                                <li class="docs_list_item">
+                                                     <a href="{$receipt->receipt_url}"
+                                                        class="docs_list_link" target="_blank">
+                                                        Чек за {$receipt->created|date} ({$receipt->order_id})
+                                                    </a>
+                                                </li>
+                                            {/foreach}
+                                        </ul>
+                                    </div>
                                 </div>
-                            </div>
+                            {/if}
+                            {if !empty($receipts1)}
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <ul class="docs_list js-docs-list">
+                                            {foreach $receipts1 as $receipt}
+                                                <li class="docs_list_item">
+                                                     <a href="{$receipt->url}"
+                                                        class="docs_list_link" target="_blank">
+                                                        Чек за {$receipt->created|date}
+                                                    </a>
+                                                </li>
+                                            {/foreach}
+                                        </ul>
+                                    </div>
+                                </div>
+                            {/if}
                         </div>
                     {/if}
+                    {*}
+
                     <div class="person_info_bottom">
                         <form method="POST" enctype="multipart/form-data">
                             <div class="form_file_item">
