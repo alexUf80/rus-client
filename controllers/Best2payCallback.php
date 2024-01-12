@@ -382,7 +382,7 @@ class Best2PayCallback extends Controller
 
                             // Снимаем страховку при закрытии займа
                             $order = $this->orders->get_order($contract->order_id);
-                            if ($order->client_status != 'kd')
+                            if ($order->client_status != 'kd' && !$this->settings->safe_mode)
                             {
                                 $insurance_cost = 1000;
                                 $insurance_amount = $insurance_cost * 100;
