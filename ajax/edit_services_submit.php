@@ -178,7 +178,7 @@ class BestPayAjax extends Ajax
                 ));
 
                 // Добавить флаг возврата услуг
-                $operations_str = $this->RefundForServices->update_by_contract($contract_id,['done' => 1]);
+                $operations_str = $this->RefundForServices->update_by_contract($contract_id,['done' => 1, 'created' => date('Y-m-d H:i:s')]);
     
                 $this->response['success'] = $upd_contract;
             }
