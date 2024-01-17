@@ -99,7 +99,7 @@ class BestPayAjax extends Ajax
                 ));
 
                 // Добавить операцию
-                $this->operations->add_operation(array(
+                $refund_operation_id = $this->operations->add_operation(array(
                     'contract_id' => $contract->id,
                     'user_id' => $contract->user_id,
                     'order_id' => $contract->order_id,
@@ -178,7 +178,11 @@ class BestPayAjax extends Ajax
                 ));
 
                 // Добавить флаг возврата услуг
-                $operations_str = $this->RefundForServices->update_by_contract($contract_id,['done' => 1, 'created' => date('Y-m-d H:i:s')]);
+                $operations_str = $this->RefundForServices->update_by_contract($contract_id,[
+                    'done' => 1, 
+                    'created' => date('Y-m-d H:i:s'),
+                    'refund_operation_id' => $refund_operation_id,
+                ]);
     
                 $this->response['success'] = $upd_contract;
             }
