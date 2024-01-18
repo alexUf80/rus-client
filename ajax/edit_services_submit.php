@@ -73,6 +73,10 @@ class BestPayAjax extends Ajax
                 $loan_percents_summ = $contract->loan_percents_summ;
                 $loan_body_summ = $contract->loan_body_summ;
 
+                $loan_peni_summ_old = $contract->loan_peni_summ;
+                $loan_percents_summ_old = $contract->loan_percents_summ;
+                $loan_body_summ_old = $contract->loan_body_summ;
+
                 if ($amount >= $loan_peni_summ) {
                     $amount -= $loan_peni_summ;
                     $loan_peni_summ = 0;
@@ -182,6 +186,9 @@ class BestPayAjax extends Ajax
                     'done' => 1, 
                     'created' => date('Y-m-d H:i:s'),
                     'refund_operation_id' => $refund_operation_id,
+                    'loan_body_summ' => $loan_body_summ_old,
+                    'loan_percents_summ' => $loan_percents_summ_old,
+                    'loan_peni_summ' => $loan_peni_summ_old,
                 ]);
     
                 $this->response['success'] = $upd_contract;
