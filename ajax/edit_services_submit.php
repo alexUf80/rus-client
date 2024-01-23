@@ -55,10 +55,14 @@ class BestPayAjax extends Ajax
                 
                 $inssuance_amount = [];
                 $sms_amount = [];
+                $i = 0;
                 foreach ($operations_arr as $operation_id) {
+                    $i++;
+                    $contract = $this->contracts->get_contract($contract_id);
                     $operation = $this->operations->get_operation($operation_id);
                     if (in_array($operation->type, ['BUD_V_KURSE', 'INSURANCE', 'INSURANCE_BC'])) {
-                        $amount += $operation->amount;
+                        // $amount += $operation->amount;
+                        $amount = $operation->amount;
                     }
                     if (in_array($operation->type, ['INSURANCE', 'INSURANCE_BC'])) {
                         $inssuance_amount[] = $operation->amount;
@@ -66,54 +70,94 @@ class BestPayAjax extends Ajax
                     if (in_array($operation->type, ['BUD_V_KURSE'])) {
                         $sms_amount[] = $operation->amount;
                     }
-                }
-                $operation_amount = $amount;
 
-                $loan_peni_summ = $contract->loan_peni_summ;
-                $loan_percents_summ = $contract->loan_percents_summ;
-                $loan_body_summ = $contract->loan_body_summ;
 
-                $loan_peni_summ_old = $contract->loan_peni_summ;
-                $loan_percents_summ_old = $contract->loan_percents_summ;
-                $loan_body_summ_old = $contract->loan_body_summ;
 
-                if ($amount >= $loan_peni_summ) {
-                    $amount -= $loan_peni_summ;
-                    $loan_peni_summ = 0;
 
-                    if ($amount >= $loan_percents_summ) {
-                        $amount -= $loan_percents_summ;
-                        $loan_percents_summ = 0;
-
-                        $loan_body_summ -= $amount;
-
+                    // распределяем сумму
+                    $operation_amount = $amount;
+    
+                    $loan_peni_summ = $contract->loan_peni_summ;
+                    $loan_percents_summ = $contract->loan_percents_summ;
+                    $loan_body_summ = $contract->loan_body_summ;
+    
+                    $loan_peni_summ_old = $contract->loan_peni_summ;
+                    $loan_percents_summ_old = $contract->loan_percents_summ;
+                    $loan_body_summ_old = $contract->loan_body_summ;
+    
+                    if ($amount >= $loan_peni_summ) {
+                        $amount -= $loan_peni_summ;
+                        $loan_peni_summ = 0;
+    
+                        if ($amount >= $loan_percents_summ) {
+                            $amount -= $loan_percents_summ;
+                            $loan_percents_summ = 0;
+    
+                            $loan_body_summ -= $amount;
+    
+                        } else {
+                            $loan_percents_summ -= $amount;
+                        }
+    
                     } else {
-                        $loan_percents_summ -= $amount;
+                        $loan_peni_summ -= $amount;
                     }
+                
+                
+                
+                    $upd_contract = $this->contracts->update_contract($contract_id, array(
+                        'edit_services' => null,
+                        'loan_body_summ' => $loan_body_summ,
+                        'loan_percents_summ' => $loan_percents_summ,
+                        'loan_peni_summ' => $loan_peni_summ,
+                    ));
 
-                } else {
-                    $loan_peni_summ -= $amount;
+
+
+
+
+                    // Добавить операцию
+                    $refund_operation_id = $this->operations->add_operation(array(
+                        'contract_id' => $contract->id,
+                        'user_id' => $contract->user_id,
+                        'order_id' => $contract->order_id,
+                        'type' => 'SERVICE_REFUND',
+                        'amount' => $operation_amount,
+                        'created' => date('Y-m-d H:i:s'),
+                        'loan_body_summ' => $loan_body_summ,
+                        'loan_percents_summ' => $loan_percents_summ,
+                        'loan_peni_summ' => $loan_peni_summ,
+                    ));
+
+
+
+                    if ($i == 1) {
+                        // Добавить флаг возврата услуг
+                        $operations_str = $this->RefundForServices->update_by_contract($contract_id,[
+                            'operations_ids' => $operation_id,
+                            'done' => 1, 
+                            'created' => date('Y-m-d H:i:s'),
+                            'refund_operation_id' => $refund_operation_id,
+                            'loan_body_summ' => $loan_body_summ_old,
+                            'loan_percents_summ' => $loan_percents_summ_old,
+                            'loan_peni_summ' => $loan_peni_summ_old,
+                        ]);
+                    }
+                    else{
+                        // Добавить в таблицу s_refund_for_services еще один возврат
+                        $operations_str = $this->RefundForServices->add([
+                            'contract_id' => $contract_id,
+                            'operations_ids' => $operation_id,
+                            'done' => 1, 
+                            'created' => date('Y-m-d H:i:s'),
+                            'refund_operation_id' => $refund_operation_id,
+                            'loan_body_summ' => $loan_body_summ_old,
+                            'loan_percents_summ' => $loan_percents_summ_old,
+                            'loan_peni_summ' => $loan_peni_summ_old,
+                        ]);
+                    }
                 }
 
-                $upd_contract = $this->contracts->update_contract($contract_id, array(
-                    'edit_services' => null,
-                    'loan_body_summ' => $loan_body_summ,
-                    'loan_percents_summ' => $loan_percents_summ,
-                    'loan_peni_summ' => $loan_peni_summ,
-                ));
-
-                // Добавить операцию
-                $refund_operation_id = $this->operations->add_operation(array(
-                    'contract_id' => $contract->id,
-                    'user_id' => $contract->user_id,
-                    'order_id' => $contract->order_id,
-                    'type' => 'SERVICE_REFUND',
-                    'amount' => $operation_amount,
-                    'created' => date('Y-m-d H:i:s'),
-                    'loan_body_summ' => $loan_body_summ,
-                    'loan_percents_summ' => $loan_percents_summ,
-                    'loan_peni_summ' => $loan_peni_summ,
-                ));
     
                 // Добавить документ
                 $params = array(
@@ -181,15 +225,7 @@ class BestPayAjax extends Ajax
                     'params' => json_encode($params),
                 ));
 
-                // Добавить флаг возврата услуг
-                $operations_str = $this->RefundForServices->update_by_contract($contract_id,[
-                    'done' => 1, 
-                    'created' => date('Y-m-d H:i:s'),
-                    'refund_operation_id' => $refund_operation_id,
-                    'loan_body_summ' => $loan_body_summ_old,
-                    'loan_percents_summ' => $loan_percents_summ_old,
-                    'loan_peni_summ' => $loan_peni_summ_old,
-                ]);
+                
     
                 $this->response['success'] = $upd_contract;
             }
