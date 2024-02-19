@@ -939,7 +939,7 @@
 
 
                 {* Займ выдан *}
-                {if $order->status == 5}
+                {if $order->status == 5 && $order->contract->status != 7}
                     <div class="new_order_box " data-status="{$order->status}" data-order="{$order->order_id}">
                         <div class="row">
                             <div class="col-12">
@@ -1089,6 +1089,11 @@
 
                         </div>
                     </div>
+                {/if}
+
+                {* Цессия *}
+                {if $order->status == 5 && $order->contract->status == 7}
+                    <h1 style="color: red; background: rgb(247, 225, 225); text-align: center; padding: 20px;">Ваш займ продан по цессии</h1>
                 {/if}
             {/if}
 
