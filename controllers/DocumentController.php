@@ -163,17 +163,17 @@ class DocumentController extends Controller
             }
 
             if (in_array($document->type, ['USLUGI_ZAYAVL'])){
-                $min = date('i', strtotime($document->created));
-                $min++;
+                // $min = date('i', strtotime($document->created));
+                // $min++;
                 $operations = OperationsORM::query()
                 ->where('order_id', '=', $order->order_id)
-                ->where('created', '>=', date('Y-m-d H:i:00', strtotime($document->created)))
-                ->where('created', '<=', date('Y-m-d H:' . $min . ':59', strtotime($document->created)))
+                ->where('created', '>=', date('Y-m-d H:i:00', strtotime($document->created) - 86400))
+                ->where('created', '<=', date('Y-m-d H:i:s', strtotime($document->created) + 60))
                 ->get();
-    
+
                 $o = [];
                 foreach ($operations as $operation) {
-                    if (in_array($operation->type, ['BUD_V_KURSE', 'INSURANCE', 'INSURANCE_BC', 'DOCTOR'])){
+                    if (in_array($operation->type, ['BUD_V_KURSE', 'INSURANCE', 'INSURANCE_BC', 'DOCTOR', 'REJECT_REASON'])){
                         $o[] = $operation;
                     }
                 }

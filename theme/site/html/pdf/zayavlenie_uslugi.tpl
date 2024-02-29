@@ -61,11 +61,36 @@
             <table border="0.5" cellpadding="5">
                 <tbody>
                 <tr>
-                    <td style="width: 10%" align="center">{if $service_insurance}V{/if}</td>
+                    <td style="width: 10%" align="center">V</td>
                     <td style="width: 10%; text-align: center">Да</td>
                 </tr>
                 <tr>
-                    <td style="width: 10%">{if !$service_insurance}V{/if}</td>
+                    <td style="width: 10%"></td>
+                    <td style="width: 10%; text-align: center">Нет</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    {/if}
+{/foreach}
+
+{foreach $operations as $operation}
+    {if $operation->type == 'REJECT_REASON'}
+        <div align="justify">
+            Я выражаю согласие на подключение услуги «Причина отказа» стоимостью {$operation->amount} рублей. ({$operation->amount|price_string|upper}). 
+        </div>
+        <div align="justify"> 
+            Я предварительно изучил(а) и согласен(а) с правилами предоставления услуги «Причина отказа».
+        </div>
+        <div style="display:flex; justify-content: center; align-items: center;">
+            <table border="0.5" cellpadding="5">
+                <tbody>
+                <tr>
+                    <td style="width: 10%" align="center">V</td>
+                    <td style="width: 10%; text-align: center">Да</td>
+                </tr>
+                <tr>
+                    <td style="width: 10%"></td>
                     <td style="width: 10%; text-align: center">Нет</td>
                 </tr>
                 </tbody>
@@ -86,11 +111,11 @@
             <table border="0.5" cellpadding="5">
                 <tbody>
                 <tr>
-                    <td style="width: 10%" align="center">{if $service_insurance}V{/if}</td>
+                    <td style="width: 10%" align="center">V</td>
                     <td style="width: 10%; text-align: center">Да</td>
                 </tr>
                 <tr>
-                    <td style="width: 10%">{if !$service_insurance}V{/if}</td>
+                    <td style="width: 10%"></td>
                     <td style="width: 10%; text-align: center">Нет</td>
                 </tr>
                 </tbody>
