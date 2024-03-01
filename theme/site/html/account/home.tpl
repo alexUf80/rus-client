@@ -949,7 +949,7 @@
                                 
                                 {if !is_null($order->contract->edit_services)}
                                     <hr>
-                                    {if strlen($order->contract->edit_services) == 4}
+                                    {if strlen($order->contract->edit_services) >= 3}
                                         <form action="account" method="POST" class="edit_services_submit">
                                             <input type="hidden" name="action" value="edit_services"/>
                                             <input type="hidden" name="contractId" value="{$order->contract_id}"/>
