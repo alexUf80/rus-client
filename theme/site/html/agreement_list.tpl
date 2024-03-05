@@ -21,14 +21,13 @@
     <div class="">
         <div class="form_row">
             <div class="check">
-                <input type="hidden" class="custom-checkbox" name="pers" value="1" />
+                <input type="hidden" class="custom-checkbox" name="bki" value="1" />
                 <input type="checkbox"
                        class="custom-checkbox  js-need-check" {if !in_array($user->phone_mobile, ['79171018924', '79179400617'])}{/if}
-                       id="pers" value="1" {if !$safe_mode}checked{/if}/>
-                <label for="pers" class="check_box -gil-m">
+                       id="bki" value="1" {if !$safe_mode}checked{/if}/>
+                <label for="bki" class="check_box -gil-m">
                  <span>
                     Согласие на получение 
-                    <a href="theme/site/new/docs/Согласие_на_получение_информации_от_БКИ.pdf" target="_blank"
                        style="color: RGB(189, 148, 87)">информации от БКИ</a>
                  </span>
                 </label>
