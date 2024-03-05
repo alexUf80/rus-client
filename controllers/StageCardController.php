@@ -248,6 +248,14 @@ class StageCardController extends Controller
                 'params' => json_encode($params),
             ));
 
+            // Согласие на НБКИ
+            $this->documents->create_document(array(
+                'user_id' => $this->user->id,
+                'order_id' => $order_id,
+                'type' => 'SOGLASIE_NBKI',
+                'params' => json_encode($params),
+            ));
+
             // Заявление на получение займа
             $this->documents->create_document(array(
                 'user_id' => $this->user->id,
