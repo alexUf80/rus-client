@@ -28,6 +28,7 @@
                 <label for="bki" class="check_box -gil-m">
                  <span>
                     Согласие на получение 
+                    <a href="theme/site/new/docs/Согласие_на_получение_информации_от_БКИ.pdf" target="_blank"
                        style="color: RGB(189, 148, 87)">информации от БКИ</a>
                  </span>
                 </label>
