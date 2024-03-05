@@ -174,19 +174,23 @@
                                             <span class="input_name {if $amount_pay || $amount_pay=='0'}-top{/if}">Сумма просроченных кредитов и займов</span>
                                         </label>
                                     </div>
+                                    {*}
+                                    {*}
                                     <div class="form_row">
                                         <label class="input_box">
                                             <input type="text" class="ss form-control  js-input-required"
-                                                   name="name_director" id="name_director" value="{$iname_director}" onkeypress="noDigits(event)"/>
+                                                   name="name_director" id="name_director" value="{($iname_director) ? $iname_director : 'ФИО'}" onkeypress="noDigits(event)"/>
                                             <span class="input_name {if $name_director}-top{/if}">ФИО руководителя</span>
                                         </label>
                                         <label class="input_box">
                                             <input type="number" oninput="phoneInput(this);" onblur="phoneOnblur(this);" 
                                                    class="form-control  js-input-required "
-                                                   name="workphone_director" id="workphone_director" value="{$workphone_director}" placeholder="7(___)___-__-__"/>
+                                                   name="workphone_director" id="workphone_director" value="{($workphone_director) ? $workphone_director : '71234567890'}"  placeholder="7(___)___-__-__"/>
                                             <span style="margin-left: 15px;" class="input_name {if $workphone_director}-top{/if}">Телефон руководителя</span>
                                         </label>   
                                     </div>
+                                    {*}
+                                    {*}
                                 </div>
                                 <div class="step_box_btn">
                                     <a href="/stage/work?step=prev"

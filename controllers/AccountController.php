@@ -35,13 +35,14 @@ class AccountController extends Controller
         }
 
         if(($this->user->lead_partner_id > 0) && empty($this->user->stage_contact)){
-            header('Location: /stage/contact_persons');
-            exit;
-        }
+        //     header('Location: /stage/contact_persons');
+        //     exit;
+        // }
 
         if (empty($this->user->stage_personal)) {
             header('Location: /stage/personal');
             exit;
+        }
         }
 
         if (empty($this->user->stage_passport)) {

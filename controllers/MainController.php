@@ -102,8 +102,8 @@ class MainController extends Controller
                 setcookie('loan_amount', null);
                 setcookie('loan_period', null);
 
-                //header('Location: /stage/personal');
-                header('Location: /stage/contact_persons');
+                header('Location: /stage/personal');
+                // header('Location: /stage/contact_persons');
                 exit;
             }
         }
