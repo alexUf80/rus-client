@@ -35,13 +35,14 @@ class AccountController extends Controller
         }
 
         if(($this->user->lead_partner_id > 0) && empty($this->user->stage_contact)){
-            header('Location: /stage/contact_persons');
-            exit;
-        }
+        //     header('Location: /stage/contact_persons');
+        //     exit;
+        // }
 
         if (empty($this->user->stage_personal)) {
             header('Location: /stage/personal');
             exit;
+        }
         }
 
         if (empty($this->user->stage_passport)) {
@@ -299,6 +300,15 @@ class AccountController extends Controller
                                 'order_id' => $contract->order_id,
                                 'contract_id' => $contract->id,
                                 'type' => 'SOGLASIE_OPD',
+                                'params' => json_encode($params),
+                            ));
+
+                            // Согласие на НБКИ
+                            $this->documents->create_document(array(
+                                'user_id' => $this->user->id,
+                                'order_id' => $contract->order_id,
+                                'contract_id' => $contract->id,
+                                'type' => 'SOGLASIE_NBKI',
                                 'params' => json_encode($params),
                             ));
                             

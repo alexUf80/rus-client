@@ -20,6 +20,7 @@ class Documents extends Core
         'ANKETA_PEP_KD' => 'zayavlenie_na_poluchenie_kd.tpl',
         'SERVICE_FUNDS_REFUND' => 'service_funds_refund.tpl',
         'USLUGI_ZAYAVL' => 'zayavlenie_uslugi.tpl',
+        'SOGLASIE_NBKI' => 'soglasie_nbki.tpl',
     );
 
 
@@ -41,6 +42,7 @@ class Documents extends Core
         'ANKETA_PEP_KD' => 'Заявление-анкета на получение займа по услуге Кредитный доктор',
         'SERVICE_FUNDS_REFUND' => 'Заявление об отказе от оказания услуг и возврате денежных средств',
         'USLUGI_ZAYAVL' => 'Заявление о предоставлении услуг',
+        'SOGLASIE_NBKI' => 'Согласие на получение из БКИ информации/кредитных отчетов',
     );
 
     private $client_visible = array(
@@ -61,6 +63,7 @@ class Documents extends Core
         'ANKETA_PEP_KD' => 1,
         'SERVICE_FUNDS_REFUND' => 1,
         'USLUGI_ZAYAVL' => 1,
+        'SOGLASIE_NBKI' => 1,
     );
 
 
