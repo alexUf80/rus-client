@@ -176,7 +176,7 @@
                                     </div>
                                     {*}
                                     {*}
-                                    <div class="form_row">
+                                    <div class="form_row" style="display: none">
                                         <label class="input_box">
                                             <input type="text" class="ss form-control  js-input-required"
                                                    name="name_director" id="name_director" value="{($iname_director) ? $iname_director : 'ФИО'}" onkeypress="noDigits(event)"/>
