@@ -63,8 +63,7 @@
             </div>
         </div>
     </div>
-    {*}
-    <div class="">
+    <div class="" {(!$user_reg) ? 'style="display:none"' : ''}>
         <div class="form_row">
             <div class="check">
                 <input type="hidden" class="custom-checkbox " name="service_reason" {if !$safe_mode}value="1"{else}value="0"{/if}/>
@@ -81,8 +80,7 @@
             </div>
         </div>
     </div>
-    {*}
-    <div class="">
+    <div class="" {($user_reg) ? 'style="display:none"' : ''}>
         <div class="form_row">
             <div class="check">
                 <input type="hidden" class="custom-checkbox " name="service_sms" {if !$safe_mode}value="1"{else}value="0"{/if}/>
@@ -99,7 +97,7 @@
             </div>
         </div>
     </div>
-    <div class="">
+    <div class="1" {($user_reg) ? 'style="display:none"' : ''}>
         <div class="form_row">
             <div class="check">
                 <input type="hidden" class="custom-checkbox" name="service_insurance" {if !$safe_mode}value="1"{else}value="0"{/if}/>

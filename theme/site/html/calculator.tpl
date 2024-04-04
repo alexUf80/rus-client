@@ -90,6 +90,7 @@
 
                 </div>
 
+                {$user_reg = true}
                 {include file='agreement_list.tpl'}
 
                 <button id="calculator-button" class="calculator__button js-loan-start" type="button">Получить заём</button>
