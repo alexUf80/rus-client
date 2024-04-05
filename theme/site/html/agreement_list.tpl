@@ -72,9 +72,13 @@
                        id="service_reason" {if !$safe_mode}value="1"{else}value="0"{/if} {if !$safe_mode}checked{/if}/>
                 <label for="service_reason" class="check_box -gil-m">
                  <span>
-                    В случае отказа по заявке, я хочу получить информацию о <a style="color: RGB(189, 148, 87)"
+                    {*}
+                    В случае отказа по заявке,    я хочу получить информацию о <a style="color: RGB(189, 148, 87)"
                                                                                href="theme/site/new/docs/{if !$safe_mode}find_reason_for_refusal.pdf{else}find_reason_for_refusal_safe.pdf{/if}"
                                                                                target="_blank">причине отказа</a>
+                    {*}
+                    Услуга <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/{if !$safe_mode}find_reason_for_refusal.pdf{else}find_reason_for_refusal_safe.pdf{/if}" target="_blank">«Узнай причину отказа»</a>
+                    Стоимостью 39,00 рублей. предоставляется ООО МКК «Русзаймсервис» в целях получения информации о причинах отказа в заключении договора потребительского займа с ООО МКК «Русзаймсервис».
                  </span>
                 </label>
             </div>
@@ -89,9 +93,13 @@
                        id="service_sms" {if !$safe_mode}value="1"{else}value="0"{/if} {if !$safe_mode}checked{/if}/>
                 <label for="service_sms" class="check_box -gil-m">
                  <span>
+                    {*}
                     Услуга <a style="color: RGB(189, 148, 87)"
                                                                                href="theme/site/new/docs/sms-information.pdf"
                                                                                target="_blank">СМС-информирование</a>
+                    {*}
+                    Услуга <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/sms-information.pdf" target="_blank">«СМС-ИНФОРМИРОВАНИЕ»</a>
+                    Стоимостью 199,00 рублей предоставляется ООО МКК «Русзаймсервис». Дает Вам возможность получать в течение процентного периода информацию по Договору посредством Смс-сообщений.
                  </span>
                 </label>
             </div>
@@ -106,8 +114,12 @@
                        id="service_insurance" {if !$safe_mode}value="1"{else}value="0"{/if} {if !$safe_mode}checked{/if}/>
                 <label for="service_insurance" class="check_box -gil-m">
                  <span>
+                    Услуга <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/страхование_кард.pdf" target="_blank">страхование от несчастных случаев</a>
+                    Стоимостью 199,00 рублей предоставляется САО «ВСК». В случае наступления страхового случая страховая сумма, подлежащая выплате, составит 10 000,00 рублей. Подробнее ознакомится с правилами можно по ссылке: <a href="https://www.vsk.ru/o-kompanii/dlya-kliyentov?t=pravila_i_tarifi_strahovaniya%2F&case=pravila">https://www.vsk.ru/</a>
+                    {*}
                     согласен заключить договор страхования в соответствии
                     <a style="color: RGB(189, 148, 87)" href="theme/site/new/docs/страхование_кард.pdf" target="_blank">с правилами</a>
+                    {*}
                  </span>
                 </label>
             </div>

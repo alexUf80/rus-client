@@ -111,10 +111,14 @@
                                            class="custom-checkbox"
                                            id="service_insurance" value="1" />
                                     <label for="service_insurance" class="check_box -gil-m">
+                                        {*}
                                         <span>согласен заключить договор страхования в соответствии
                                             <a class="text-success"
                                                href="https://{$config->main_domain}/theme/site/new/docs/polis.pdf"
                                                target="_blank">с правилами</a></span>
+                                        {*}
+                                        <span>Услуга <a class="text-success" href="https://{$config->main_domain}/theme/site/new/docs/polis.pdf" target="_blank">страхования банковских карт</a>
+                                            Стоимостью 99,00 рублей предоставляется САО «ВСК». При наступлении страхового случая страховая сумма, подлежащая выплате, составит 10 000,00 рублей. Подробнее ознакомиться с правилами можно по ссылке: <a href = "https://www.vsk.ru/o-kompanii/dlya-kliyentov?t=pravila_i_tarifi_strahovaniya%2F&case=pravila">https://www.vsk.ru/</a>
                                     </label>
                                 </div>
                                 <div class="check">
