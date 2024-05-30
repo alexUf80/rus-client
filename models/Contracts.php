@@ -190,7 +190,8 @@ class Contracts extends Core
         $contract_date = strtotime($contract['create_date']);
         $last_to_uid = substr(array_sum(str_split($id)),-2);
         $end_to_uid = (strlen($last_to_uid) == 1 ? '0'.$last_to_uid : $last_to_uid);
-        $uid = 'c0'.$id.$end_to_uid.'-'.date('Y', $contract_date).'-'.date('md', $contract_date).'-'.date('Hi', $contract_date).'-c041777ac177-4';
+        // $uid = 'c0'.$id.$end_to_uid.'-'.date('Y', $contract_date).'-'.date('md', $contract_date).'-'.date('Hi', $contract_date).'-c041777ac177-4';
+        $uid = exec($this->config->root_dir.'vendor/bin/uidgen');
     
         if (empty($contract['number']))
         {
